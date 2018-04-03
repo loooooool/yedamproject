@@ -30,8 +30,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<!-- Alias 설정 -->
 	<typeAliases>
-		
 		<typeAlias alias="emp" type="com.yedam.app.emp.EmployeeVO" />
+		<typeAlias alias="sugt" type="com.yedam.app.sugt.SuggestionVO" />
 	</typeAliases>
 	
 
