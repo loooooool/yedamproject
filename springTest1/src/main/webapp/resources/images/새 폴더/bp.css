@@ -1,0 +1,647 @@
+body {
+	background-color: white;
+	margin:0;
+	padding:0;
+	font-size: 0.75em;
+	line-height: 1.2em;
+	color: black;
+    
+}
+
+#wrap {
+	width:1920px;
+	text-align:left;
+	margin: 0; 
+	background-color: white;
+	min-height:1080px;
+    font-family: 'NanumGothic';
+}
+.clear{
+    clear: both;
+}
+header {
+    position: fixed;
+     z-index: 100;
+     top: 0;
+     right: 0;
+     left: 0;
+     height: 45px;
+     background-color: #670e10;
+}
+header h1{
+        position: absolute;
+        z-index: 1;
+        top: -10px;
+        left: 50%;
+        margin-left: -49px;
+        font-weight: normal;
+      }
+header h1 a{
+        display: block;
+        width: 98px;
+        height: 133px;
+      }
+
+header .top_util{
+        overflow: hidden;
+        margin: 0 auto;
+        width: 1200px;
+        height: 33px;
+      }
+header .top_util div{
+        display: inline-block;
+        margin-top: 15px;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+/*네비 */
+nav{
+        position: relative;
+        background-color: #AF1E23;
+}
+nav .nav_wrap{
+        margin: 0 auto;
+        width: 1200px;
+        text-align: right;
+}
+nav .nav_wrap ul{
+        list-style-type: none;
+        list-style: none;
+}
+nav .nav_wrap ul li.m1, .nav_wrap ul li.m2{
+        flex: left;
+        margin-right: 100px;
+        display: inline-block;
+}
+
+nav .nav_wrap ul li.m3, .nav_wrap ul li.m4{
+        margin-right: 100px;
+        display: inline-block;
+}
+
+nav .nav_wrap ul li a{
+        display: block;
+        position: relative;
+        padding: 0 22px;
+        color: #fff;
+        font-size: 18px;
+        line-height: 60px;
+        text-decoration: none;
+}
+
+nav .nav_wrap ul li a:hover{
+    background-image: url(01mainnavbar1.jpg);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    display: block;
+   text-transform: uppercase;
+}
+
+nav .nav_wrap ul li:hover ul {
+	opacity: 1;
+	visibility: visible;
+	margin-top: 0px;
+}
+
+
+nav .nav_wrap ul li ul {
+	display:block;
+	position:absolute;
+	background-color:#5c5c5c;
+    text-align: left;
+    float: left;
+    width: 100%;
+    height: 
+}
+
+
+nav .nav_wrap ul li ul li {
+	font-size: 11px;
+	position: relative;
+	display: block;
+	padding: 1px 1px; 
+    float:none;
+}
+
+nav .nav_wrap ul li ul li a{
+        display: block;
+        position: relative;
+        color: #fff;
+        font-size: 15px;
+        line-height: 60px;
+        text-decoration: none;
+}
+
+
+
+
+
+nav .nav_wrap ul li ul :hover ul {
+	display: inline-block;
+}
+
+
+nav .nav_wrap ul li.m3, .nav_wrap ul li.m4{
+        margin-right: 100px;
+        display: inline-block;
+}
+
+
+nav .nav_wrap ul li .sub {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: 83px;
+    right: 0;
+    left: 0;
+    height: 0;
+    background: #fff;
+    text-align: left;
+    -webkit-transition: height 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    -moz-transition: height 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    -ms-transition: height 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    -o-transition: height 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition: height 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+}
+
+.nav_wrap ul li .sub ul {
+    margin: 0 auto;
+    width: 100%;
+    height: 40px;
+}
+
+.nav_wrap ul li.m1 .sub ul li:first-child {
+    margin-left: 0px;
+}
+
+nav .nav_wrap ul li {
+    display: inline-block;
+}
+
+
+nav .nav_wrap ul li ul	li a {
+    position: relative;
+    padding: 0 10px;
+    color: #262626;
+    font-size: 14px;
+    line-height: 60px;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*메인배너*/
+#main_img{
+    height: 600px;
+    background-image: url(main_01mainBanner.jpg);
+    background-position: center center;
+    margin-top: 105px;
+}
+#contents{
+    width: 100%;
+    background-color: #ae1e22;
+    height: 400px;
+    margin-top: -1px;
+}
+#contents_size{
+    margin: 0 auto;
+    width: 1200px;
+    height: 370px;
+    margin: 20px 0 0 360px;
+    float: left;
+}
+    
+/* 팀 랭킹 */
+#team_raking{
+    float: left;
+    width: 345px;
+    height: 340px;
+}
+#team_raking H2{
+    padding: 7px;
+    color: white;
+    font-size: 20px;
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: white
+}
+#team_raking_bg{
+    height: 284px;
+    background-color: white;  
+}
+#team_raking_bg dl{
+    font-size: 18px;
+    text-align: center;
+    color: #4a4b4d;
+    padding: 20px 0;
+    
+}
+#team_raking_bg dt{
+    color: #ae1e22;
+    font-size: 18px;
+    margin-top: 40px;
+}
+
+#team_raking_bg dt h1{
+margin-bottom: 25px;
+    font-size: 60px;
+}
+#team_raking_bg dd{
+    float: right;
+    font-size: 15px;
+    padding: 0 20px;
+    margin-top: -20px;
+    color: #ae1e22;
+}
+#team_raking table{
+    clear: both;
+    margin: 20px 5px 0 5px;
+    font-size: 15px;
+    padding: 2px 0;
+    text-align: center;
+    font-style: normal;
+}
+#team_raking table #line{
+   border-bottom: 0.5px;
+    border-bottom-style: solid;
+    border-bottom-color: black; 
+}
+
+#team_raking table th.tranking{
+   w
+}
+#team_raking table th.tname{
+   width: 60px;
+    
+}
+#team_raking table th.tpoint{
+   width: 30px;
+}
+#team_raking table th.twin{
+   width: 30px;
+}
+#team_raking table th.tdraw{
+   width: 30px;
+}
+#team_raking table th.tlose{
+   width: 30px;
+}
+#team_raking table th.tgoal{
+   width: 45px;
+}
+#team_raking table th.txgoal{
+   width: 45px;
+}
+#team_raking table td{
+    padding: 10px 0;
+}
+
+/* 스케줄 */
+#schedule{
+    float: left;
+    background-color: #e3e3e3;
+    width: 446px;
+    height: 341px;
+    margin: 8px 32px 0 32px;
+}
+#schedule #stitle{
+    font-size: 20px;
+    text-align: center;
+    padding: 15px 0;
+    font-weight: bold;
+}
+#schedule #stitle a{
+     border-bottom: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+    padding: 5px;
+}
+#schedule #smiddle{
+    float: left;
+    width: 100%;
+    height: 200px;
+}
+#schedule #smiddle1{
+    float: left;
+    padding: 10px 10px;
+}
+
+#schedule #smiddle2{
+        float: left;
+    padding: 10px 10px;
+    font-size: 70px;
+    margin-top: 70px;
+}
+
+#schedule #smiddle3{
+    float: right;
+    padding: 10px 10px;
+    margin-top: 50px;
+}
+#schedule #sunder{
+    clear: both;
+    background-color: #ae1e22;
+    width: 90%;
+    height: 25%;
+    float: left;
+    margin-left: 5%;
+   font-size: 20px;
+    text-align: center;
+    color: white;
+}
+#schedule #bleft{
+        float: left;
+    margin: 27px 0 0 5px;
+}
+#schedule #stext{
+     padding: 18px 35px;
+    line-height:1.3em
+}
+#schedule #bright{
+    float: right;
+    margin: -61px 5px 0 0;
+}
+    
+    
+    
+    
+    
+/* 선수 랭킹 */
+
+#player_raking{
+    float: right;
+    width: 345px;
+    height: 340px;
+    font-size: 20px;
+    
+}
+
+#player_raking H2{
+    padding: 7px;
+    color: white;
+    font-size: 20px;
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: white
+}
+
+.player_raking_bg{
+    height: 137px;
+    background-color: white; 
+    margin-bottom: 12px;
+   
+    
+}
+.palyer_photo{
+    float: left;
+}
+#ranking1 , #reaking2 {
+    float: left;
+    line-height:1.2em;
+    margin: 20px 20px; 0 0;
+}
+#goal{
+    float: left;
+    margin-left: 20px;
+    font-size: 15px;
+}
+.goall{
+    float: left;
+    margin: 20px 0 0 0px;
+}
+
+/* 뉴스 랭킹 */
+
+#news{
+    margin: 0 auto;
+    background-color: #cccccc;
+    height: 420px;
+   
+ 
+}
+#news_size{
+    margin: 27px 0 0 360px;
+    float: left;
+    width: 1200px;
+    height: 420px;
+    paddingd: 40px 0;
+    text-align: center;
+}
+.title{
+    padding: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    text-align: center;
+}
+.news1{
+    float: left;
+    margin: 50px 20px 0 0;
+    width: 23.7%;
+    height: 300px;
+    background-color: #e7e7e7
+}
+.ntext{
+    font-size: 1.3em;
+    line-height: 1.5em;
+    padding: 0.5em;
+    
+}
+.news2{
+    float: right;
+    margin: 50px 0 0 0;
+    width: 23.6%;
+    height: 300px;
+    background-color: #e7e7e7
+}
+
+/* 포토존과 선수사진 시작 하는 영역 */
+
+#contents1{
+    margin: 0 auto;
+    background-color: white;
+    height: 1300px;
+    width:  62.5%;
+    
+}
+
+/* 포토존 */
+
+#csize{
+    margin-left: 42%;
+}
+#csize1{
+    float: left;
+    margin-top: 4%;
+}
+.csize{
+    float: left;
+}
+
+.csize2{
+	margin: 0;
+	overflow: hidden;
+	float: left;
+	position: relative;
+}
+.csize2 a {
+	text-decoration: none;
+	float: left;
+}
+.csize2 a:hover {
+	cursor: pointer;
+}
+.csize2 a img {
+	float: left;
+	margin: 0;
+	background: #fff;
+}
+
+.csize2 a .text {	display: none; }
+
+.csize2 a:hover .text{ /*캡션 텍스트*/
+	display: block;
+	font-size: 25px;
+	letter-spacing:-1px;
+	line-height:140%;
+	padding: 10px 0;
+	background: #111;
+	filter:alpha(opacity=75);/*익스용 투명도 필터*/
+	opacity:.75;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)"; /*--익스8용 투명도 필터--*/
+	color: #fff;
+	position: absolute;
+	bottom: 0px;
+	margin: 0;
+	widthd: 580px; /*이미지 사이즈에서 -20뺀 값*/
+	width: 100%;
+    border-toph: 1px solid #999;
+    text-align: center;
+}
+
+/* 화살표 영역 */
+
+#bsize{
+    width: 1400px;
+    color: aqua;
+}
+
+/* 선수소개 */
+
+.isize{
+    float: left;
+    margin-top: 30px;
+    text-align: center;
+    width: 100%;
+}
+.isize2{
+    margin-top: 4.5%;
+    float: left;
+    width: 100%;
+}
+.iimg{
+    float: left;
+    margin-right: 20px;
+}
+
+.iimg{
+    float: left;
+}
+
+#iimg1{
+    
+    background-image: url(main_05player1.jpg);
+    float: left;
+    background-repeat: no-repeat;
+    width: 25%;
+    height: 285px;
+        background-position: center;
+}
+
+#iimg2{
+    float: left;
+    background-repeat: no-repeat;
+   background-image: url(main_05player2.jpg);
+        width: 25%;
+    height: 285px;
+        background-position: center;
+
+}
+
+#iimg3{
+    float: left;
+    background-repeat: no-repeat;
+   background-image: url(main_05player3.jpg);
+        width: 25%;
+    height: 285px;
+        background-position: center;
+}
+
+#iimg4{
+    float: left;
+    background-repeat: no-repeat;
+   background-image: url(main_05player4.jpg);
+       width: 25%;
+    height: 285px;
+        background-position: center;
+}
+
+.ibox1{
+    background-image: url(main_05player1_box.jpg);
+    width: 25%;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: left;
+    margin-top: 1%;
+    color: white;
+    font-size: 1.6em;
+    
+}
+
+/* 하단 */
+
+footer{
+    margin: 0 auto;
+    width: 100%;
+    background-color: #ae1e22;
+    height: 135px;
+    color: white;
+    font-size: 0.9em;
+    line-height: 2.2em;
+}
+#fsize{
+    margin: 0 auto;
+    width: 60%; 
+}
+#fsize p{
+    padding: 13px;
+}
+#em{
+    background-image: url(main_01emblem.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width:93px;
+    height: 93px;
+    float: left;
+    padding: 12px;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+
+
