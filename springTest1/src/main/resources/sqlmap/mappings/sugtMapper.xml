@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sugt">
+	
+	<insert id="insertSugt" parameterType="sugt">
+	<selectKey keyProperty="s_no" resultType="int" order="BEFORE">
+		SELECT NVL(MAX(s_no),0)+1 FROM SUGGESTION
+	</selectKey>
+		INSERT INTO SUGGESTION(
+								s_no
+								,s_parent_no
+								,title
+								,content
+								,s_date
+								,cnt
+								,member_id
+							   )
+		VALUES(
+				#{s_no}
+				,#{s_parent_no}
+				,#{title}
+				,#{content}
+				,sysdate
+				,#{cnt}
+				,#{member_id}
+			)
+	</insert>
+
+	<update id="updateSugt" parameterType="sugt">
+		update suggestion set 
+								title=#{title}
+								,content=#{content}
+								,s_date=sysdate
+		where s_no = #{s_no}
+	</update>
+	
+	<delete id="deleteSugt" parameterType="sugt">
+		delete suggestion where s_no=#{s_no}
+	</delete>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from suggestion
+	</select>
+	
+	<select id="getSugt" resultType="sugt" parameterType="sugt">
+		select * from suggestion where s_no=#{s_no}	
+	</select>
+	
+	<select id="getSugtList" resultType="sugt">
+		SELECT  s_no
+				,s_parent_no
+				,title
+				,content
+				,s_date
+				,cnt
+				,member_id
+		FROM SUGGESTION 
+		ORDER BY s_date DESC
+	</select>
+
+	
+
+
+</mapper>
