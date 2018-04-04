@@ -1,0 +1,93 @@
+/* 탭 선택 시 표시할 요소(div) 정의(1번 탭 선택 시 첫 번째 div 요소 표시) */
+#css_tabs input:nth-of-type(1), #css_tabs input:nth-of-type(1) ~ div:nth-of-type(1),
+#css_tabs input:nth-of-type(2), #css_tabs input:nth-of-type(2) ~ div:nth-of-type(2),
+#css_tabs input:nth-of-type(3), #css_tabs input:nth-of-type(3) ~ div:nth-of-type(3),
+#css_tabs input:nth-of-type(4), #css_tabs input:nth-of-type(4) ~ div:nth-of-type(4) {
+    display:none
+}
+#css_tabs input:nth-of-type(1):checked ~ div:nth-of-type(1),
+#css_tabs input:nth-of-type(2):checked ~ div:nth-of-type(2),
+#css_tabs input:nth-of-type(3):checked ~ div:nth-of-type(3),
+#css_tabs input:nth-of-type(4):checked ~ div:nth-of-type(4){
+    display:block
+}
+
+/* 라벨 기본 스타일 지정 */
+#css_tabs > label {
+    display:inline-block;
+    font-variant:small-caps;
+    font-size:.8em;
+    padding:5px;
+    text-align:center;
+    width:23.14%;
+    line-height:1.8em;
+    border-radius:3px 3px 0 0;
+    background:#4a4b4d;;
+    color:white;
+    border:1px solid #ccc;
+    border-width:1px 1px 0;
+    margin-top: 4%;
+}
+#css_tabs > label:hover {
+    cursor:pointer
+}
+#css_tabs label[for=tab1] {
+    margin-leftc:1.5em
+}
+
+/* 선택된 라벨, 커서를 올린 라벨 스타일 지정 */
+#css_tabs input:nth-of-type(1):checked ~ label:nth-of-type(1), #css_tabs > label[for=tab1]:hover {
+    background:#ae1e22;
+    color:#fff
+}
+#css_tabs input:nth-of-type(2):checked ~ label:nth-of-type(2), #css_tabs > label[for=tab2]:hover {
+    background:#ae1e22;
+    color:#fff
+}
+#css_tabs input:nth-of-type(3):checked ~ label:nth-of-type(3), #css_tabs > label[for=tab3]:hover {
+    background:#ae1e22;
+    color:#fff
+}
+#css_tabs input:nth-of-type(4):checked ~ label:nth-of-type(4), #css_tabs > label[for=tab4]:hover {
+    background:#ae1e22;
+    color:#fff
+}
+
+/* 실제 내용이 담긴 div 요소 스타일 지정 */
+#css_tabs .tab1_content, #css_tabs .tab2_content, #css_tabs .tab3_content {
+    width: 90%;
+    height:100%
+}
+
+
+/*경기별 내용*/
+.table2{
+    width: 850px;
+    margin: 20px 0px 0 0px;
+    font-size: 15px;
+    text-align: center;
+    line-height: 1em;
+    border-collapse: collapse;
+}
+#line1{
+    background-color: #dbdbdc;
+    line-height: 2.5em;
+}
+
+.date1, .match1, .team1, .otherteam1{
+    width: 100px; 
+}
+.into1{
+     width: 80px;
+}
+.change1 {
+     width: 110px;
+}
+.goal1, .yellow1, .red1 {
+      width: 60px;
+}
+
+.table2 td{
+    padding: 30px 0px;
+    border-bottom: 0.5px solid #d6d6d6; 
+}
