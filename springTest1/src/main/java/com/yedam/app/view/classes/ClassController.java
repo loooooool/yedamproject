@@ -2,6 +2,7 @@ package com.yedam.app.view.classes;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -72,12 +74,13 @@ public class ClassController {
 	public String deleteClass(ClassVO vo) {
 		classService.deleteClass(vo);
 		return "redirect:/getClassList";
+	}
 		
 	// 단건 삭제 처리
 	@RequestMapping("deleteClassList")
-	pubilc String deleteClassList(@RequestParam ArrayList<String> cl_no) {
-		classService.deleteClass(vo);
+	private String deleteClassList(@RequestParam ArrayList<Int>cl_no) {
+		ClassService.deleteClassList(cl_no);
 		return "redirect:/getClassList";
-	}
+		
 	}
 }

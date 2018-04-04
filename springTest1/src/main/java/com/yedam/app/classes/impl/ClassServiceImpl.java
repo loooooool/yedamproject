@@ -1,5 +1,6 @@
 package com.yedam.app.classes.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,16 @@ public class ClassServiceImpl implements ClassService{
 	public void deleteClass(ClassVO vo) {
 		dao.deleteClass(vo);
 	}
-	
+
 	@Override
 	public List<ClassVO> getClassList(ClassVO vo) {
 		return dao.getClassList(vo);
 	}
+
+	@Override
+	public void deleteClassList(ArrayList<String> cl_no) {
+		dao.deleteClassList(cl_no);
+	}
+	
+
 }

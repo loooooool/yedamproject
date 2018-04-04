@@ -31,7 +31,7 @@ public class ClassDAO {
 		return sqlSession.selectList("class.getClassList", vo);
 	}
 	
-	public int deleteClassList(ArrayList<String> cl_no) {
-		return sqlSession.delete("class.getClassList", cl_no);
+	public void deleteClassList(ArrayList<String> cl_no) {
+		sqlSession.delete("class.getClassList", cl_no);
 	}
 }
