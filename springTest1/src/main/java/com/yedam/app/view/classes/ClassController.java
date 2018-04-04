@@ -78,8 +78,8 @@ public class ClassController {
 		
 	// 단건 삭제 처리
 	@RequestMapping("deleteClassList")
-	private String deleteClassList(@RequestParam ArrayList<Int>cl_no) {
-		ClassService.deleteClassList(cl_no);
+	private String deleteClassList(@RequestParam ArrayList<String>cl_no) {
+		//ClassService.deleteClassList(cl_no);
 		return "redirect:/getClassList";
 		
 	}

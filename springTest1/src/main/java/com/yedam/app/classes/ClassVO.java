@@ -6,8 +6,7 @@ public class ClassVO {
 	private int cl_no;
 	private String className;
 	private String address;
-	private MultipartFile timeTable;
-	private String uploadFileName;
+	private String timeTable;
 	private int totalTime;
 	private String class_cd;
 	
@@ -29,19 +28,7 @@ public class ClassVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public MultipartFile getTimeTable() {
-		return timeTable;
-	}
-	public void setTimeTable(MultipartFile timeTable) {
-		this.timeTable = timeTable;
-	}
-	public String getUploadFileName() {
-		return uploadFileName;
-	}
-	public void setUploadFileName(String uploadFileName) {
-		this.uploadFileName = uploadFileName;
-	}
-	public int getTotalTime() {
+		public int getTotalTime() {
 		return totalTime;
 	}
 	public void setTotalTime(int totalTime) {
@@ -53,13 +40,19 @@ public class ClassVO {
 	public void setClass_cd(String class_cd) {
 		this.class_cd = class_cd;
 	}
-	
+	public String getTimeTable() {
+		return timeTable;
+	}
+	public void setTimeTable(String timeTable) {
+		this.timeTable = timeTable;
+	}
 	@Override
 	public String toString() {
 		return "ClassVO [cl_no=" + cl_no + ", className=" + className + ", address=" + address + ", timeTable="
-				+ timeTable + ", uploadFileName=" + uploadFileName + ", totalTime=" + totalTime + ", class_cd="
-				+ class_cd + "]";
+				+ timeTable + ", totalTime=" + totalTime + ", class_cd=" + class_cd + "]";
 	}
+	
+	
 	
 	
 	
