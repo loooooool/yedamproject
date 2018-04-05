@@ -92,7 +92,7 @@
        <div class="container-fluid">
         <div id="ui-view"></div>
    			 <div class="col-lg-12">
-     			<div class="card">
+     			<div class="card" style="border:0px">
      			    <tiles:insertAttribute name="content" />
     			</div> 
   			</div>

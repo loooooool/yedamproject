@@ -1,17 +1,9 @@
 package com.yedam.app.sugt.view;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.yedam.app.common.Paging;
 import com.yedam.app.sugt.SuggestionService;
@@ -29,14 +21,12 @@ public class SuggestionController {
 	
 			//전체 레코드 건수
 			paging.setTotalRecord(sugtService.getCount(vo));
-			
 			//vo의 first, last 셋팅
 			vo.setFirst(paging.getFirst());
 			vo.setLast(paging.getLast());
 			//결과저장
 			model.addAttribute("sugtList",sugtService.getSugtList(vo));
 			model.addAttribute("paging",paging);	
-			
 			return "sugt/getSugtList";
 			
 		}
@@ -46,9 +36,7 @@ public class SuggestionController {
 		
 		SugtVO vo = new SugtVO();
 		vo.setS_no(s_no);
-		
 		model.addAttribute("sugt", sugtService.getSugt(vo)); 
-		
 		return "sugt/getSugt";
 	}
 	
@@ -64,7 +52,7 @@ public class SuggestionController {
 	public String updateSugt( SugtVO vo) { 
 		int s_no = vo.getS_no();
 		sugtService.updateSugt(vo);
-		return "redirect:/getSugt?id="+s_no;
+		return "redirect:/getSugt?s_no="+s_no;
 		}
 	
 	//삭제처리
@@ -73,6 +61,19 @@ public class SuggestionController {
 		sugtService.deleteSugt(vo);
 		return "redirect:/getSugtList";
 		}
+	
+	@RequestMapping("/insertSugt")
+	public String insertSugt(SugtVO vo) {
+		vo.setS_parent_no(0);
+		vo.setMember_id("700101-04");
+		sugtService.insertSugt(vo);
+		return "redirect:/getSugtList";
+	}
+	
+	@RequestMapping("/insertSugtForm")
+	public String insertSugtForm(SugtVO vo) {
+		return "sugt/insertSugt";
+	}
 	
 
 	
