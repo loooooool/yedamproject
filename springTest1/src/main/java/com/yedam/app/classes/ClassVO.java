@@ -2,11 +2,13 @@ package com.yedam.app.classes;
 
 public class ClassVO {
 	private int cl_no;
-	private String className;
+	private String class_name;
 	private String address;
 	private String timeTable;
 	private int totalTime;
 	private String class_cd;
+	private int first;
+	private int last;
 
 	public int getCl_no() {
 		return cl_no;
@@ -16,12 +18,12 @@ public class ClassVO {
 		this.cl_no = cl_no;
 	}
 
-	public String getClassName() {
-		return className;
+	public String getClass_name() {
+		return class_name;
 	}
 
-	public void setClassName(String className) {
-		this.className = className;
+	public void setClass_name(String class_name) {
+		this.class_name = class_name;
 	}
 
 	public String getAddress() {
@@ -56,10 +58,29 @@ public class ClassVO {
 		this.timeTable = timeTable;
 	}
 
+	public int getFirst() {
+		return first;
+	}
+
+	public void setFirst(int first) {
+		this.first = first;
+	}
+
+	public int getLast() {
+		return last;
+	}
+
+	public void setLast(int last) {
+		this.last = last;
+	}
+
 	@Override
 	public String toString() {
-		return "ClassVO [cl_no=" + cl_no + ", className=" + className + ", address=" + address + ", timeTable="
+		return "ClassVO [cl_no=" + cl_no + ", class_name=" + class_name + ", address=" + address + ", timeTable="
 				+ timeTable + ", totalTime=" + totalTime + ", class_cd=" + class_cd + "]";
 	}
 
+	
+
+	
 }

@@ -1,6 +1,5 @@
 package com.yedam.app.classes.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -31,7 +30,11 @@ public class ClassDAO {
 		return sqlSession.selectList("class.getClassList", vo);
 	}
 	
-	public void deleteClassList(ArrayList<String> cl_no) {
-		sqlSession.delete("class.getClassList", cl_no);
+	public ClassVO getClass(ClassVO vo) {
+		return sqlSession.selectOne("class.getClass", vo);
+	}
+	
+	public int getCount(ClassVO vo) {
+		return sqlSession.selectOne("class.getCount", vo);
 	}
 }
