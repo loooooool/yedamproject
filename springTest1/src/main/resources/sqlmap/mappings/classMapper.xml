@@ -4,66 +4,66 @@
 
 <mapper namespace="class">
 	<resultMap type="class" id="classResult">
-		<id property="cl_no" column="cl_no"/>
-		<result property="className" column="className"/>
-		<result property="address" column="address"/>
-		<result property="timeTable" column="timeTable"/>
-		<result property="uploadFileName" column="uploadFileName"/>
-		<result property="totalTime" column="totalTime"/>
-		<result property="class_cd" column="class_cd"/>
+		<id property="cl_no" column="cl_no" />
+		<result property="className" column="className" />
+		<result property="address" column="address" />
+		<result property="timeTable" column="timeTable" />
+		<result property="totalTime" column="totalTime" />
+		<result property="class_cd" column="class_cd" />
 	</resultMap>
-	
+
 	<select id="getClassList" resultType="class">
 		SELECT CL_NO
-				,CLASS_NAME
-				,ADDRESS
-				,TIMETABLE
-				,TOTALTIME
-				CLASS_CD
+		,CLASS_NAME
+		,ADDRESS
+		,TIMETABLE
+		,TOTALTIME
+		CLASS_CD
 		FROM CLASS
 	</select>
-	
+
 	<insert id="insertClass" parameterType="class">
-	<selectKey keyProperty="cl_no" resultType="int" order="BEFORE">
-		select nvl(max(seq),0)+1 from board
-			</selectKey>
-				INSERT INTO CLASS(
-				CL_NO
-				,CLASS_NAME
-				,ADDRESS
-				,TIMETABLE
-				,TOTALTIME
-				CLASS_CD
-				<if test="uploadFileName != null">
-				,UPLOAD_FILE_NAME
-			</if>
-			)
-			VALUES(
-			#{CL_NO},
-			#{CLASS_NAME},
-			#{ADDRESS},
-			#{TIMETABLE},
-			#{TOTALTIME},
-			#{CLASS_CD}
-				)
-				<if test="uploadFileName != null">
-				,#{uploadFileName}
-			</if>
-				)
+		<selectKey keyProperty="cl_no" resultType="int" order="BEFORE">
+			select nvl(max(seq),0)+1 from board
+		</selectKey>
+		INSERT INTO CLASS(
+		CL_NO
+		,CLASS_NAME
+		,ADDRESS
+		,TIMETABLE
+		,TOTALTIME
+		CLASS_CD
+		<if test="timeTable != null">
+			,TIMETABLE
+		</if>
+		)
+		VALUES(
+		#{cl_no},
+		#{class_name},
+		#{address},
+		#{timetable},
+		#{totaltime},
+		#{class_cd}
+		)
+		<if test="timeTable != null">
+			,#{timetable}
+		</if>
+		)
 	</insert>
-	
+
 	<update id="updateClass" parameterType="class">
 		UPDATE CLASS SET
-			CLASS_NAME=#{CLASS_NAME},
-			ADDRESS=#{ADDRESS},
-			TIMETABLE=#{TIMETABLE},
-			TOTALTIME=#{TOTALTIME},
-			CLASS_CD=#{CLASS_CD}
-		WHERE CL_NO=#{CL_NO}
+		CLASS_NAME=#{class_name},
+		ADDRESS=#{address},
+		TIMETABLE=#{timetable},
+		TOTALTIME=#{totaltime},
+		CLASS_CD=#{class_cd}
+		WHERE CL_NO=#{cl_no}
 	</update>
-	
+
 	<delete id="deleteClass" parameterType="class">
 		DELETE CLASS
-		WHERE CL_NO=#{CL_NO}
+		WHERE
+		CL_NO=#{cl_no}
 	</delete>
 </mapper>

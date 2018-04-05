@@ -66,18 +66,17 @@ $(document).ready(function() {
 <h2>과정 등록</h2>
 <br>
 <form action="insertClass" method="post" enctype="multipart/form-data">
-
   <div class="form-group">
     <label for="exampleInputEmail1">과정명</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
-    placeholder="과정명을 입력하세요">
+    	placeholder="과정명을 입력하세요" value="${cl.className}">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">강의실</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
-    placeholder="강의실을 입력하세요">
+    	placeholder="강의실을 입력하세요" value="${cl.address}">
   </div>
-	<div class="form-group">
+  <div class="form-group">
  	<label for="inputContent">시간표 등록</label>
  <div class="col-sm-10">
   <div class="input-group">
@@ -91,16 +90,16 @@ $(document).ready(function() {
   </div>
  </div>
 </div>
-<div class="form-group">
+  <div class="form-group">
     <label for="exampleInputEmail1">총수업시간</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
-    placeholder="총 수업시간을 입력하세요">
+   		placeholder="총 수업시간을 입력하세요" value="${cl.totalTime}">
   </div>
- <div class="form-group">
+		<div class="form-group">
    <label for="exampleInputEmail1">과정명</label>구분<br>
         <input type="radio" name="myradio">과정평가형 &nbsp; <input type="radio" name="myradio">단위기간형
     </div>
-  <input type="submit" class="btn btn-default" value="등록"/>
+  <input type="submit" class="btn btn-default" value="수정"/>
 </form>
 
 
