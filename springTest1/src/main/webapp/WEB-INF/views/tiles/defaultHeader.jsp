@@ -1,28 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-	
 
-    <div class="w3-col s8 w3-bar">
-      <span>Welcome, <strong>Mike</strong></span><br>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
-    </div>
-  </div>
-  <hr>
-  <div class="w3-container">
-    <h5>예담</h5>
-  </div>
-  <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="getBoardList" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>게시판</a>
-    <a href="getUserList" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i> 회원</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i> 메뉴</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>메뉴</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  메뉴</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  메뉴</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  메뉴</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  메뉴</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  메뉴</a><br><br>
-  </div>
+ <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="nav navbar-nav d-md-down-none">
+      <li class="nav-item px-3">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item px-3">
+        <a class="nav-link" href="#">Users</a>
+      </li>
+      <li class="nav-item px-3">
+        <a class="nav-link" href="#">Admin</a>
+      </li>
+    </ul>
+   
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item d-md-down-none">
+        <a class="nav-link" href="#">login<i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+      </li>
+      <li class="nav-item d-md-down-none">
+        <a class="nav-link" href="#">logout<i class="icon-list"></i></a>
+      </li>
+      <li class="nav-item d-md-down-none">
+        <a class="nav-link" href="#">회원가입<i class="icon-location-pin"></i></a>
+      </li>
+     
+    </ul>
+ 

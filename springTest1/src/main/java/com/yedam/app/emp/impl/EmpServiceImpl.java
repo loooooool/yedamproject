@@ -17,7 +17,6 @@ public class EmpServiceImpl implements EmpService {
 	
 	
 	public List<EmployeeVO> getEmpList(EmployeeVO vo){
-
 		return dao.getEmpList(vo);
 		 
 	}
