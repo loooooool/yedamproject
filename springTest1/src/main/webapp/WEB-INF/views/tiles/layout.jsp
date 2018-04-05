@@ -81,6 +81,9 @@
     <!-- Main content -->
     <main class="main">
 
+
+
+
 <!--       Breadcrumb
       <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
@@ -97,12 +100,18 @@
         </li>
       </ol>
  -->
-      <div class="container-fluid">
+       <div class="container-fluid">
         <div id="ui-view"></div>
-      </div>
-      <!-- /.conainer-fluid -->
-  	<tiles:insertAttribute name="content" />
-	</main>
+   			 <div class="col-lg-12">
+     			<div class="card">
+     			    <tiles:insertAttribute name="content" />
+    			</div> 
+  			</div>
+  		</div>
+  
+
+ 
+  </main>
   </div>
   
   
