@@ -9,6 +9,7 @@
 </script>
 </head>
 <body>
+
 <c:forEach items="${sugtList}" var="sugt">
 	${sugt.s_no} 
 	<a href="getSugt?s_no=${sugt.s_no}">${sugt.title}</a> 
