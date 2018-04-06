@@ -8,7 +8,7 @@ public class SugtVO {
 	private Integer s_parent_no; 	//부모글번호
 	private String title;			//제목
 	private String content;			//내용
-	private Date s_date;			//작성일자
+	private String s_date;			//작성일자
 	private Integer cnt;			//조회수
 	private String member_id; 		//작성자 관리자만 작성자에 보임.
 	
@@ -40,10 +40,10 @@ public class SugtVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getS_date() {
+	public String getS_date() {
 		return s_date;
 	}
-	public void setS_date(Date s_date) {
+	public void setS_date(String s_date) {
 		this.s_date = s_date;
 	}
 	public Integer getCnt() {

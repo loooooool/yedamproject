@@ -23,7 +23,7 @@
 				,#{title}
 				,#{content}
 				,sysdate
-				,#{cnt}
+				,0
 				,#{member_id}
 			)
 	</insert>
@@ -53,7 +53,7 @@
 				,s_parent_no
 				,title
 				,content
-				,s_date
+				,TO_CHAR(s_date,'YYYY-MM-DD') "s_date"
 				,cnt
 				,member_id
 		FROM SUGGESTION 
