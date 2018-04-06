@@ -4,10 +4,8 @@
 <html>
 <head><title>Insert title here</title>
 <link rel="stylesheet" href="./resources/codebase/dhtmlxscheduler.css" type="text/css">
-<!-- <script src="./scripts/jquery-3.3.1.min.js"></script> -->
 <script src="./resources/codebase/dhtmlxscheduler.js" type="text/javascript"></script>
-<!-- <script src="src/main/webapp/resources/codebase/dhtmlxscheduler.css"></script>
-<script src="src/main/webapp/resources/codebase/dhtmlxscheduler.js"></script> -->
+
 <style type="text/css" media="screen">
     html, body{
         margin:0px;

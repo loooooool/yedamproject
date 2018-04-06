@@ -23,31 +23,26 @@ public class NoticeController {
 	
 	@Autowired
 	NoticeService noticeService;
-
 	
-	//목록을 조회하는 컨트롤러
-	/*@RequestMapping("/getNoticeList")
-	public String getNoticeList(Model model) {
-		model.addAttribute("noticeList",NoticeService.getNoticeList(null));
-		return "notice/getNoticeList";
-	}*/
-
-	@RequestMapping("/getNoticeList") //페이징 처리
+	//목록,페이징 처리
+	@RequestMapping("/getNoticeList") 
 	public String getNotice(Model model, NoticeVO vo,Paging paging, Locale locale) {
-		System.out.println(locale.getCountry()+":"+locale.getLanguage());
 		//전체 레코드 건수
-		paging.setPageUnit(5);
 		paging.setTotalRecord(noticeService.getCount(vo));
 		//vo에 first와 last 셋팅
 		vo.setFirst(paging.getFirst());
 		vo.setLast(paging.getLast());
+		//저장
 		model.addAttribute("noticeList", noticeService.getNoticeList(vo));
+		model.addAttribute("paging",paging);	
 		return "notice/getNoticeList";
 	}
 
 	// 상세 보기
 	@RequestMapping("/getNotice")
-	public String getNotice(Model model, NoticeVO vo) {
+	public String getNotice(Model model, Integer n_no) {
+		NoticeVO vo = new NoticeVO();
+		vo.setN_no(n_no);
 		model.addAttribute("notice", noticeService.getNotice(vo));
 		return "notice/getNotice";
 	}
@@ -87,21 +82,15 @@ public class NoticeController {
 	// 수정처리
 	@RequestMapping("/updateNotice")
 	public String updateNotice(NoticeVO vo) {
+		int n_no = vo.getN_no();
 		noticeService.updateNotice(vo);
-		return "redirect:/getNoticeList";
+		return "redirect:/getNoticeList?n_no="+n_no;
 	}
 
-	// 단건삭제
+	// 삭제
 	@RequestMapping("/deleteNotice")
 	public String deleteNotice(NoticeVO vo) {
 		noticeService.deleteNotice(vo);
-		return "redirect:/getNoticeList";
-	}
-    
-	// 선택삭제
-	@RequestMapping("/deleteNoticeList")
-	public String deleteNoticeList(@RequestParam ArrayList<String> n_no) {
-		noticeService.deleteNoticeList(n_no);
 		return "redirect:/getNoticeList";
 	}
 }

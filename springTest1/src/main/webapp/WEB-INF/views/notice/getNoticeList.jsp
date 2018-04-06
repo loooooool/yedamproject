@@ -1,44 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<script>
+	function go_list(page) {
+		document.getElementsByName("page")[0].value = page;
+		document.forms[0].submit();
+		//location.href="getBoardList?page="+page;
+	}
+</script>
 </head>
-
 <body>
-	<table class="table table-bordered">
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회수</th>
-			</tr>
-			<c:forEach items="${getNoticeList}" var="noticee">
-				<tr>
-					<th>${noticee.n_no}</th>
-					<th>${noticee.title}</th>
-					<th>${noticee.writer}</th>
-					<th>${noticee.ndate}</th>
-					<th>${noticee.viewcount}</th>
-				</tr>
-			</c:forEach>
-	</table>
-</html>
+	<div class="card">
+		<div class="card-body">
+			<form action="getBoardList">
+						<!-- <button type="button" class="btn btn-secondary">Search</button> -->
+						<input type="text" class="form-control" name="searchKeyword" value="${noticeVO.searchKeyword}" /> 
+					    <input type="submit" class="btn btn-secondary" value="Search" />
+			</form>
+	</div>
+		<div class="card-header">
+			<h2>공지사항</h2>
+		</div>
+		<div class="card-body" style="border-bottom: :0px">
+			<table class="table table-responsive-sm table-striped">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${noticeList}" var="notice">
+						<tr>
+							<td>${notice.n_no}</td>
+							<td><a href="getNotice?n_no=${notice.n_no}">${sugt.title}</a></td>
+							<td>${notice.writer}</td>
+							<td>${notice.ndate}</td>
+							<td>${notice.viewcount}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+
+			</table>
+			<div class="card-body" align="right">
+				<a href="insertNoticeForm"><button type="button"
+						class="btn btn-info ">글쓰기</button></a>
+			</div>
+			<my:paging paging="${paging}" jsfunc="go_list" />
+		</div>
+	</div>
+
+	<!--/.col-->
+
+	<!--/.row-->

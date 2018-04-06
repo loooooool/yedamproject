@@ -5,10 +5,11 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.yedam.app.notice.NoticeVO;
 
-
+@Repository
 public class NoticeDAO {
 	
 	@Autowired
