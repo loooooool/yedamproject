@@ -5,65 +5,76 @@
 <mapper namespace="class">
 	<resultMap type="class" id="classResult">
 		<id property="cl_no" column="cl_no" />
-		<result property="className" column="className" />
+		<result property="class_name" column="class_name" />
 		<result property="address" column="address" />
-		<result property="timeTable" column="timeTable" />
-		<result property="totalTime" column="totalTime" />
+		<result property="timetable" column="timetable" />
+		<result property="totalTime" column="totaltime" />
 		<result property="class_cd" column="class_cd" />
 	</resultMap>
 
 	<select id="getClassList" resultType="class">
-		SELECT CL_NO
-		,CLASS_NAME
-		,ADDRESS
-		,TIMETABLE
-		,TOTALTIME
-		CLASS_CD
-		FROM CLASS
+		select a.* from ( select rownum rn, b.* from (
+		
+		SELECT cl_no
+			,class_name
+			,address
+			,timetable
+			,totaltime
+			,class_cd
+		FROM class
+		ORDER BY cl_no
+		
+		) b ) a where rn between #{first} and #{last}
+	</select>
+	
+	<select id="getClass" resultType="class" parameterType="class">
+		SELECT * FROM class WHERE cl_no=#{cl_no}	
 	</select>
 
 	<insert id="insertClass" parameterType="class">
 		<selectKey keyProperty="cl_no" resultType="int" order="BEFORE">
-			select nvl(max(seq),0)+1 from board
+			SELECT NVL(MAX(cl_no),0)+1 FROM CLASS
 		</selectKey>
-		INSERT INTO CLASS(
-		CL_NO
-		,CLASS_NAME
-		,ADDRESS
-		,TIMETABLE
-		,TOTALTIME
-		CLASS_CD
+		INSERT INTO class(
+				cl_no
+				,class_name
+				,address
+				,timetable
+				,totaltime
+				,class_cd
 		<if test="timeTable != null">
-			,TIMETABLE
+				,timetable
 		</if>
 		)
 		VALUES(
-		#{cl_no},
-		#{class_name},
-		#{address},
-		#{timetable},
-		#{totaltime},
-		#{class_cd}
-		)
+				#{cl_no},
+				#{class_name},
+				#{address},
+				#{timetable},
+				#{totaltime},
+				#{class_cd}
 		<if test="timeTable != null">
-			,#{timetable}
+				,#{timetable}
 		</if>
-		)
+			)
 	</insert>
 
 	<update id="updateClass" parameterType="class">
-		UPDATE CLASS SET
-		CLASS_NAME=#{class_name},
-		ADDRESS=#{address},
-		TIMETABLE=#{timetable},
-		TOTALTIME=#{totaltime},
-		CLASS_CD=#{class_cd}
-		WHERE CL_NO=#{cl_no}
+		UPDATE class SET
+				class_name=#{class_name},
+				address=#{address},
+				timetable=#{timetable},
+				totaltime=#{totaltime},
+				class_cd=#{class_cd}
+		WHERE cl_no=#{cl_no}
 	</update>
 
 	<delete id="deleteClass" parameterType="class">
-		DELETE CLASS
-		WHERE
-		CL_NO=#{cl_no}
+		DELETE class WHERE cl_no=#{cl_no}
 	</delete>
+	
+	<select id="getCount" resultType="int" parameterType="class">
+		SELECT COUNT(*)
+		FROM CLASS
+	</select>
 </mapper>

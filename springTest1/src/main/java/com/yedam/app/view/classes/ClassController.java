@@ -2,8 +2,6 @@ package com.yedam.app.view.classes;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,28 +9,39 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classes.ClassVO;
+import com.yedam.app.common.Paging;
 
 @Controller
-@SessionAttributes("class")
 public class ClassController {
 
 	@Autowired
 	ClassService classService;
 
 	// 목록
-	@RequestMapping("getClassList")
-	public String getClassList(Model model, ClassVO vo) {
+	@RequestMapping("/getClassList")
+	public String getClassList(Model model, ClassVO vo, Paging paging) {
+		// 전체 레코드 건수
+		paging.setTotalRecord(classService.getCount(vo));
+		
+		// vo의 first, last setting
+		vo.setFirst(paging.getFirst());
+		vo.setLast(paging.getLast());
+		
+		// 결과저장
 		model.addAttribute("classList", classService.getClassList(vo));
+		model.addAttribute("paging",paging);
+		
 		return "class/getClassList";
 	}
 
@@ -59,34 +68,37 @@ public class ClassController {
 		classService.insertClass(vo);
 		return "redirect:/getClassList";
 	}
+	
+	// 상세보기
+	@RequestMapping("/getClass/{cl_no}")
+	public ModelAndView getClass(@PathVariable Integer cl_no) {
+		ClassVO vo = new ClassVO();
+		vo.setCl_no(cl_no);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("class", classService.getClass(vo));
+		mv.setViewName("class/getClass");
+		return mv;
+	}
 
 	// 수정폼
-	@RequestMapping("updateClassForm")
+	@RequestMapping("/updateClassForm")
 	public String updateClassForm(Model model, ClassVO vo) {
 		model.addAttribute("class", classService.getClassList(vo));
 		return "class/updateClass";
 	}
 
 	// 수정처리
-	@RequestMapping("updateClass")
-	public String updateClass(ClassVO vo, SessionStatus sessionStatus) {
+	@RequestMapping("/updateClass")
+	public String updateClass(@ModelAttribute("class") ClassVO vo, SessionStatus sessionStatus) {
 		classService.updateClass(vo);
 		sessionStatus.setComplete();
 		return "redirect:/getClassList";
 	}
 
 	// 삭제
-	@RequestMapping("deleteClass")
+	@RequestMapping("/deleteClass")
 	public String deleteClass(ClassVO vo) {
 		classService.deleteClass(vo);
 		return "redirect:/getClassList";
-	}
-
-	// 단건 삭제 처리
-	@RequestMapping("deleteClassList")
-	private String deleteClassList(@RequestParam ArrayList<String> cl_no) {
-		classService.deleteClassList(cl_no);
-		return "redirect:/getClassList";
-
 	}
 }
