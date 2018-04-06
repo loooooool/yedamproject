@@ -1,0 +1,51 @@
+package com.yedam.app.member;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.yedam.app.member.impl.MemberService;
+
+@Controller
+public class LoginController {
+
+	@Autowired
+	MemberService memberService;
+	
+	//로그인폼
+	@RequestMapping("/loginForm")
+	public String loginForm() {
+		return "member/loginForm";
+	}
+	
+	//로그인
+	@RequestMapping("/login")
+	public String login(@ModelAttribute("member") MemberVO vo, HttpSession session) {
+		System.out.println("로그인 인증 처리");
+		if(memberService.login(vo)) {
+			session.setAttribute("member", memberService.getMember_id(vo));
+			return "redirect:/";
+		} else {
+			return "login.jsp";
+		}
+	}
+	
+	//로그아웃 
+		@RequestMapping("/logout")
+		public String logout(HttpSession session) {
+			session.invalidate();
+			return "redirect:/";
+		}
+			
+}
+	
+	
+

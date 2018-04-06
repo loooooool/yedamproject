@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<!-- getMemberList 목록검색 -->
+	<select id="getMemberList" resultType="member" parameterType="String">
+	select a.* from(select rownum rn, b.* from(
+		select * from member
+		 <where>
+		 <if test="searchKeyword != null and searchKeyword != ''" >
+ 		 	<if test="searchCondition == 'member_cd' ">
+		 		 and member_cd like '%' ||#{searchKeyword}||'%'
+		 	</if>
+		 </if>
+		 </where>
+		 order by member_cd desc
+		  )b)a
+		 where rn between #{member_id} and #{member_cd}	
+	</select>
+	
+	<!-- <select id="getCount" resultType="int" parameterType="emp">
+		select count(*) 
+		from hr.employees
+		 <where>
+		 <if test="searchKeyword != null and searchKeyword != ''" >
+ 		 	<if test="searchCondition == 'last_name' ">
+		 		 and last_name like '%' ||#{searchKeyword}||'%'
+		 	</if>
+		 	<if test="searchCondition == 'salary' ">
+		 		  salary like '%' ||#{searchKeyword}||'%'
+		 	</if>
+		 </if>
+		 </where>
+	</select> -->
+	
+	<!-- <select id="getDeptEmpStatistic" resultType="map">
+		select dept.department_name "name", count(*) "cnt", avg(emp.salary) "sal"
+		from hr.departments dept join hr.employees emp
+		on(dept.department_id = emp.department_id)
+		group by dept.department_name
+	</select> -->
+	
+
+</mapper>
