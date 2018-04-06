@@ -23,8 +23,10 @@
           <li class="nav-title">
             ~회원님
           </li>
+         
           <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> 마이페이지</a>
+            
             <ul class="nav-dropdown-items">
               <li class="nav-item">
                 <a class="nav-link" href="base/breadcrumb.html"><i class="icon-puzzle"></i>회원정보수정</a>
@@ -38,9 +40,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="base/collapse.html"><i class="icon-puzzle"></i> 휴가신청</a>
               </li>
-          <li class="nav-item">
-            <a class="nav-link" href="widgets.html"><i class="icon-calculator"></i>건의하기<span class="badge badge-primary">NEW</span></a>
-          </li>
+          	  <li class="nav-item">
+          	    <a class="nav-link" href="getSugtList"><i class="icon-calculator"></i>건의하기<span class="badge badge-primary">NEW</span></a>
+        	  </li>
             </ul>
           </li>
           <!-- 관리자 -->

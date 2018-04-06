@@ -15,26 +15,26 @@
   <link rel="shortcut icon" href="resources/img/favicon.png">
 
   <!-- Bootstrap and necessary plugins -->
-  <script src="scripts/jquery-3.3.1.min.js"></script>
-  <script src="scripts/popper.min.js"></script>
-  <script src="scripts/bootstrap.js"></script>
-  <script src="scripts/pace.min.js"></script>
+  <script src="${pageContext.request.contextPath}/scripts/jquery-3.3.1.min.js"></script>
+  <script src="${pageContext.request.contextPath}/scripts/popper.min.js"></script>
+  <script src="${pageContext.request.contextPath}/scripts/bootstrap.js"></script>
+  <script src="${pageContext.request.contextPath}/scripts/pace.min.js"></script>
 
   <!-- Plugins and scripts required by all views -->
-  <script src="scripts/charts.js"></script>
+  <script src="${pageContext.request.contextPath}/scripts/charts.js"></script>
 
   <!-- CoreUI main scripts -->
-  <script src="scripts/app.js"></script>
+  <script src="${pageContext.request.contextPath}/scripts/app.js"></script>
 
   <title>예담 학원 관리 시스템</title>
 
   <!-- Icons -->
-  <link href="resources/css/flag-icon.min.css" rel="stylesheet">
-  <link href="resources/css/fontawesome.css" rel="stylesheet">
-  <link href="resources/css/simple-line-icons.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/flag-icon.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/fontawesome.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/simple-line-icons.css" rel="stylesheet">
 
   <!-- Main styles for this application -->
-  <link href="resources/css/style.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
 </head>
 
 <!-- BODY options, add following classes to body to change options
