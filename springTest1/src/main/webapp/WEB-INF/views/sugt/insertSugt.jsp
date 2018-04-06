@@ -19,7 +19,7 @@
 	<div class="card-body" align="right" >
  
         <a href="insertSugt" > <button type="submit" class="btn btn-info" >등록</button></a>
-        <a href="getBoardList" class ="btn btn-secondary">목록</a>
+        <a href="getSugtList" class ="btn btn-secondary">목록</a>
         <button type="reset" class="btn btn-success" >취소</button>
  	 </div>
  	 </form>

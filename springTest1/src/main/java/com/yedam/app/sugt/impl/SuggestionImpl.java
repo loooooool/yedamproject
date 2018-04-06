@@ -41,6 +41,12 @@ public class SuggestionImpl implements SuggestionService{
 	public int getCount(SugtVO vo) {
 		return dao.getCount(vo);
 	}
+
+
+	public void increaseCnt(SugtVO vo) {
+		dao.increaseCnt(vo);
+		
+	}
 	
 	
 	
