@@ -24,14 +24,12 @@
    
     <ul class="nav navbar-nav ml-auto">
       <li class="nav-item d-md-down-none">
-        <a class="nav-link" href="#">login<i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+        <a class="loginForm" href="loginForm">login<i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
       </li>
       <li class="nav-item d-md-down-none">
         <a class="nav-link" href="#">logout<i class="icon-list"></i></a>
       </li>
-      <li class="nav-item d-md-down-none">
-        <a class="nav-link" href="#">회원가입<i class="icon-location-pin"></i></a>
-      </li>
+      
      
     </ul>
  
