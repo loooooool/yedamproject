@@ -46,13 +46,13 @@ public class ClassController {
 	}
 
 	// 등록폼
-	@RequestMapping(value = "insertClass", method = RequestMethod.GET)
+	@RequestMapping(value = "/insertClass", method = RequestMethod.GET)
 	public String insertClassForm() {
 		return "class/insertClass";
 	}
 
 	// 등록처리
-	@RequestMapping(value = "insertClass", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertClass", method = RequestMethod.POST)
 	public String insertClass(ClassVO vo, HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		// 첨부파일이 있는지 확인
@@ -75,7 +75,7 @@ public class ClassController {
 		ClassVO vo = new ClassVO();
 		vo.setCl_no(cl_no);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("class", classService.getClass(vo));
+		mv.addObject("cl", classService.getClass(vo));
 		mv.setViewName("class/getClass");
 		return mv;
 	}
@@ -89,10 +89,10 @@ public class ClassController {
 
 	// 수정처리
 	@RequestMapping("/updateClass")
-	public String updateClass(@ModelAttribute("class") ClassVO vo, SessionStatus sessionStatus) {
+	public String updateClass(ClassVO vo) {
+		int cl_no = vo.getCl_no();
 		classService.updateClass(vo);
-		sessionStatus.setComplete();
-		return "redirect:/getClassList";
+		return "redirect:/getClassList"+cl_no;
 	}
 
 	// 삭제

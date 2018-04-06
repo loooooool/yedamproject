@@ -31,7 +31,7 @@ function go_list(page){
 							<th scope="col">강의실</th>
 							<th scope="col">시간표</th>
 							<th scope="col">총수업시간</th>
-							<th scope="col">코드</th>
+							<th scope="col">과정</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -42,7 +42,7 @@ function go_list(page){
 								<td>${cl.address}</td>
 								<td>${cl.timeTable}</td>
 								<td>${cl.totalTime}</td>
-								<td>${cl.class_cd}</td>
+								<td>${cl.class_nm}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

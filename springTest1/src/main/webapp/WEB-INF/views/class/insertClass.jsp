@@ -16,12 +16,12 @@
 			<form action="insertClass" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="nf-email"><strong>과정명</strong></label> 
-					<input type="text" id="nf-email" name="nf-email" class="form-control" placeholder="과정명"> 
+					<input type="text" id="nf-email" name="class_name" class="form-control" placeholder="과정명"> 
 					<span class="help-block">과정명을 입력하세요</span>
 				</div>
 				<div class="form-group">
 					<label for="nf-email"><strong>강의실</strong></label>
-					<input type="text" id="nf-email" name="nf-email" class="form-control" placeholder="강의실"> 
+					<input type="text" id="nf-email" name="address" class="form-control" placeholder="강의실"> 
 					<span class="help-block">강의실을 입력하세요</span>
 				</div>
 				<div class="form-group row">
@@ -32,22 +32,25 @@
 				</div>
 				<div class="form-group">
 					<label for="nf-email"><strong>총 수업시간</strong></label> 
-					<input type="text" id="nf-email" name="nf-email" class="form-control" placeholder="총 수업시간"> 
+					<input type="text" id="nf-email" name="totalTime" class="form-control" placeholder="총 수업시간"> 
 					<span class="help-block">총	수업시간을 입력하세요</span>
 				</div>
 				<div class="form-group">
-					<label for="nf-email"><strong>과정구분</strong></label>
+					<label for="nf-email"><strong>과정</strong></label>
 						<div class="form-check">
-							<input class="form-check-input" type="radio" value="radio1" id="radio1" name="myRadio"> 
-							<label class="form-check-label" for="radio1"> 과정평가형</label>
+							<input class="form-check-input" type="radio" value="C1" id="radio1" name="class_cd"> 
+							<label class="form-check-label" for="radio1"> 과정평가반</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="radio" value="radio2" id="radio2" name="myRadio"> 
-							<label class="form-check-label" for="radio2"> 단위기간형</label>
+							<input class="form-check-input" type="radio" value="C2" id="radio2" name="class_cd"> 
+							<label class="form-check-label" for="radio2"> 단위기간평가반</label>
 					</div>
 				</div>
+				<div class="card-body">
 				<input type="submit" class="btn btn-info" value="등록" />&nbsp; 
-				<input type="button" class="btn btn-success" onclick="location.href='getClassList'" value="취소" />
+				<input type="reset" class="btn btn-success" value="초기화" />&nbsp; 
+				<input type="button" class="btn btn-secondary" onclick="location.href='getClassList'" value="목록" />
+				</div>
 			</form>
 		</div>
 	</div>

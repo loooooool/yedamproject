@@ -7,8 +7,17 @@ public class ClassVO {
 	private String timeTable;
 	private int totalTime;
 	private String class_cd;
+	private String class_nm;
 	private int first;
 	private int last;
+
+	public String getClass_nm() {
+		return class_nm;
+	}
+
+	public void setClass_nm(String class_nm) {
+		this.class_nm = class_nm;
+	}
 
 	public int getCl_no() {
 		return cl_no;
