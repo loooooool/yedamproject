@@ -3,7 +3,7 @@
 */
 
 //Main navigation
-$.navigation = $('nav > ul.nav');
+/*$.navigation = $('nav > ul.nav');*/
 
 $.panelIconOpened = 'icon-arrow-up';
 $.panelIconClosed = 'icon-arrow-down';
@@ -29,7 +29,7 @@ $.grayLightest =  '#f8f9fa';
 
 $(document).ready(function($){
 
-  // Add class .active to current link
+/*  // Add class .active to current link
   $.navigation.find('a').each(function(){
 
     var cUrl = String(window.location).split('?')[0];
@@ -59,7 +59,7 @@ $(document).ready(function($){
       resizeBroadcast();
     }
 
-  });
+  });*/
 
   function resizeBroadcast() {
 

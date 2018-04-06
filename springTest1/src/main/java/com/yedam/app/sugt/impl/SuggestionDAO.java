@@ -38,4 +38,9 @@ public class SuggestionDAO {
 		return sqlSession.selectOne("sugt.getCount", vo);
 
 	}
+	
+	public void increaseCnt(SugtVO vo) {
+		sqlSession.update("sugt.increaseCnt",vo);
+	}
+	
 }

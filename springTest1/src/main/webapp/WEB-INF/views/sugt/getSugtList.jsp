@@ -34,7 +34,7 @@ function go_list(page){
 							<td>${sugt.s_no}</td>
 							<td><a href="getSugt?s_no=${sugt.s_no}">${sugt.title}</a></td>
 							<td>${sugt.s_date}</td>
-							<td>${sugt.cnt }</td>
+							<td>${sugt.cnt}</td>
 						</tr>
 					</c:forEach>
 

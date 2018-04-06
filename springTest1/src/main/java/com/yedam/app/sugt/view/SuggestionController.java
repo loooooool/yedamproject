@@ -33,9 +33,9 @@ public class SuggestionController {
 	//상세보기
 	@RequestMapping("/getSugt")
 	public String getsugt(Model model, Integer s_no ) {
-		
 		SugtVO vo = new SugtVO();
 		vo.setS_no(s_no);
+		sugtService.increaseCnt(vo);
 		model.addAttribute("sugt", sugtService.getSugt(vo)); 
 		return "sugt/getSugt";
 	}
@@ -64,7 +64,6 @@ public class SuggestionController {
 	
 	@RequestMapping("/insertSugt")
 	public String insertSugt(SugtVO vo) {
-		vo.setS_parent_no(0);
 		vo.setMember_id("700101-04");
 		sugtService.insertSugt(vo);
 		return "redirect:/getSugtList";

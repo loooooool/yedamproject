@@ -12,4 +12,5 @@ public interface SuggestionService {
 	public SugtVO getSugt(SugtVO vo);
 	public List<SugtVO> getSugtList(SugtVO vo);
 	public int getCount(SugtVO vo);
+	public void increaseCnt(SugtVO vo);
 }
