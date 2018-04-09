@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.yedam.app.classes.ClassVO;
 import com.yedam.app.subject.SubjectVO;
 
 @Repository
@@ -28,6 +29,14 @@ public class SubjectDAO {
 	
 	public List<SubjectVO> getSubjectList(SubjectVO vo) {
 		return sqlSession.selectList("subject.getSubjectList", vo);
+	}
+	
+	public SubjectVO getSubject(SubjectVO vo) {
+		return sqlSession.selectOne("subject.getSubject", vo);
+	}
+	
+	public int getCount(SubjectVO vo) {
+		return sqlSession.selectOne("subject.getCount", vo);
 	}
 
 }

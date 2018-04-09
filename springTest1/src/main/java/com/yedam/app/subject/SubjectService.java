@@ -8,4 +8,6 @@ public interface SubjectService {
 	public void updateSubject(SubjectVO vo);
 	public void deleteSubject(SubjectVO vo);
 	public List<SubjectVO> getSubjectList(SubjectVO vo);
+	public SubjectVO getSubject(SubjectVO vo);
+	public int getCount(SubjectVO vo);
 }

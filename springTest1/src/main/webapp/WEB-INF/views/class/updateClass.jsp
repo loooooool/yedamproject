@@ -15,6 +15,7 @@
 		</div>
 		<div class="card-body">
 			<form action="updateClass" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="cl_no" value="${cl.cl_no }">
 				<div class="form-group">
 					<label for="nf-email"><strong>과정명</strong></label> 
 					<input type="text" id="nf-email" name="class_name" class="form-control" value="${cl.class_name }"> 
@@ -28,7 +29,7 @@
 				<div class="form-group">
 				<c:if test="${not empty timeTable}">
 					<label for="nf-email"><strong>기존 파일</strong></label>
-					<input type="text" id="nf-email" name="file-input" class="form-control" value="${cl.timeTable }"> 
+					${cl.timeTable } 
 				</c:if>
 				</div>				
 				<div class="form-group row">
@@ -47,17 +48,15 @@
 				<div class="form-group">
 					<label for="nf-email"><strong>과정</strong></label>
 						<div class="form-check">
-							<input class="radio" type="radio" value="C1" id="radio1" name="class_cd"> 
-							<label class="radio" for="radio1"> 과정평가반</label>
-						</div>
-						<div class="form-check">
-							<input class="radio" type="radio" value="C2" id="radio2" name="class_cd"> 
-							<label class="radio" for="radio2"> 단위기간평가반</label>
+							<input type="radio" name="class_cd" id = "radio1" value="C1"  
+								<c:if test="${cl.class_cd eq 'C1'}"> checked="checked" </c:if>/>과정평가반
+							<br>
+							<input type="radio" name="class_cd" id = "radio2" value="C2" 
+								<c:if test="${cl.class_cd eq 'C2'}"> checked="checked" </c:if>/>단위기간평가반
 					</div>
 				</div>
 				<div class="card-body">
 				<input type="submit" class="btn btn-warning" value="수정" />&nbsp; 
-				<input type="reset" class="btn btn-success" value="초기화" />&nbsp; 
 				<input type="button" class="btn btn-secondary" onclick="location.href='getClassList'" value="목록" />
 				</div>
 			</form>
