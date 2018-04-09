@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="consult">
+
+	<insert id="insertConsult" parameterType="consult">
+	<selectKey keyProperty="c_no" resultType="int" order="BEFORE">
+		SELECT NVL(MAX(c_no),0)+1 FROM CONSULT
+	</selectKey>
+		INSERT INTO CONSULT(
+								c_no
+								,cdate
+								,S_DETAIL
+								,course_cd
+								,title
+								,content
+								,writer
+							   )
+		VALUES(
+				#{c_no}
+				,sysdate
+				,#{S_DETAIL}
+				,#{course_cd}
+				,#{title}
+				,#{content}
+				,#{writer}
+			)
+	</insert>
+
+	<update id="updateConsult" parameterType="consult">
+		UPDATE CONSULT SET 
+								s_detail=#{s_detail}
+								,course_cd=#{course_cd}
+								,c_date=sysdate
+								,title=#{title}
+								,content=#{content}
+		WHERE C_NO = #{c_no}
+	</update>
+	
+	<delete id="deleteConsult" parameterType="consult">
+		DELETE CONSULT WHERE c_no=#{c_no}
+	</delete>
+	
+	<select id="getCount" resultType="int">
+		SELECT COUNT(*) FROM CONSULT
+	</select>
+	
+	<select id="getConsult" resultType="consult" parameterType="consult">
+		SELECT * FROM CONSULT WHERE C_NO=#{C_NO}	
+	</select>
+	
+	<select id="getConsultList" resultType="consult">
+		SELECT  c_no
+				,cdate
+				,S_DETAIL
+				,course_cd
+				,title
+				,content
+				,writer
+		FROM CONSULT
+		ORDER BY cdate DESC
+	</select>
+
+	
+
+</mapper>
