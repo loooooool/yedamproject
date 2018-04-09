@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="class" type="com.yedam.app.classes.ClassVO"/>
 		<typeAlias alias="notice" type="com.yedam.app.notice.NoticeVO"/>
 		<typeAlias alias="consult" type="com.yedam.app.consult.ConsultVO"/>
-		
+		<typeAlias alias="subject" type="com.yedam.app.subject.SubjectVO"/>
 	</typeAliases>
 	
 
