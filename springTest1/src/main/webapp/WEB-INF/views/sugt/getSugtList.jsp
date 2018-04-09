@@ -41,7 +41,7 @@ function go_list(page){
 				</tbody>
 			</table>
 			<div class="card-body" align="right">
-				<a href="insertSugtForm"><button type="button" class="btn btn-info ">글쓰기</button></a>
+				<a href="insertSugtForm"><input type="button" class="btn btn-info " value="글쓰기"/></a>
 			</div>
 			<my:paging paging="${paging}" jsfunc="go_list" />
 		</div>

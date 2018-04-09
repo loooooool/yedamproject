@@ -8,7 +8,7 @@ import com.yedam.app.sugt.SuggestionService;
 import com.yedam.app.sugt.SugtVO;
 
 @Service("sugtService")
-public class SuggestionImpl implements SuggestionService{
+public class SuggestionServiceImpl implements SuggestionService{
 	
 	@Autowired
 	SuggestionDAO dao;
