@@ -6,18 +6,10 @@
 
 	<!-- getMemberList 목록검색 -->
 	<select id="getMemberList" resultType="member" parameterType="String">
-	select a.* from(select rownum rn, b.* from(
+	
 		select * from member
-		 <where>
-		 <if test="searchKeyword != null and searchKeyword != ''" >
- 		 	<if test="searchCondition == 'member_id' ">
-		 		 and member_id like '%' ||#{searchKeyword}||'%'
-		 	</if>
-		 </if>
-		 </where>
-		 order by member_cd desc
-		  )b)a
-		 where rn between #{start} and #{end}   
+    	 order by member_cd desc
+		
 	</select> 
 	
 	<select id="getMember_id" resultType="member" parameterType="String">

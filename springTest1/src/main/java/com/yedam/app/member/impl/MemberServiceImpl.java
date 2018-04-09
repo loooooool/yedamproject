@@ -1,5 +1,7 @@
 package com.yedam.app.member.impl;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean loginCheck(MemberVO vo, HttpSession session) {
 		return false;
+	}
+
+	@Override
+	public List<MemberVO> getMemberList(MemberVO vo) {
+		return dao.getMemberList(vo);
 	}
 	
 }
