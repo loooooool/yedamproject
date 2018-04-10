@@ -13,20 +13,25 @@
 	</resultMap>
 
 	<select id="getClassList" resultType="class">
-		
+
 		SELECT cl_no
-			,class_name
-			,address
-			,timetable
-			,totaltime
-			,GET_CODENAME(class_cd) "class_nm"
+		,class_name
+		,address
+		,timetable
+		,totaltime
+		,GET_CODENAME(class_cd) "class_nm"
 		FROM class
 		ORDER BY cl_no DESC
-		
+
+	</select>
+
+	<select id="getClass" resultType="class" parameterType="class">
+		SELECT *
+		FROM class WHERE cl_no=#{cl_no}
 	</select>
 	
-	<select id="getClass" resultType="class" parameterType="class">
-		SELECT * FROM class WHERE cl_no=#{cl_no}	
+	<select id="getCount" resultType="int">
+		select count(*) from class
 	</select>
 
 	<insert id="insertClass" parameterType="class">
@@ -34,47 +39,44 @@
 			SELECT NVL(MAX(cl_no),0)+1 FROM CLASS
 		</selectKey>
 		INSERT INTO class(
-				cl_no
-				,class_name
-				,address
-				,totaltime
-				,class_cd
+		cl_no
+		,class_name
+		,address
+		,totaltime
+		,class_cd
 		<if test="timeTable != null and timeTable != ''">
-				,timetable
+			,timetable
 		</if>
 		)
 		VALUES(
-				#{cl_no},
-				#{class_name},
-				#{address},
-				#{totalTime},
-				#{class_cd}
+		#{cl_no},
+		#{class_name},
+		#{address},
+		#{totalTime},
+		#{class_cd}
 		<if test="timeTable != null and timeTable != ''">
-				,#{timeTable}
+			,#{timeTable}
 		</if>
-			)
+		)
 	</insert>
 
 	<update id="updateClass" parameterType="class">
-	
+
 		UPDATE class SET
-				class_name=#{class_name}
-				,address=#{address}
-				<if test="timeTable != null and timeTable != ''">
-				,timetable=#{timeTable}
-				</if>
-				,totaltime=#{totalTime}
-				,class_cd=#{class_cd}
+		class_name=#{class_name}
+		,address=#{address}
+		<if test="timeTable != null and timeTable != ''">
+			,timetable=#{timeTable}
+		</if>
+		,totaltime=#{totalTime}
+		,class_cd=#{class_cd}
 		WHERE cl_no=#{cl_no}
-		
+
 	</update>
 
 	<delete id="deleteClass" parameterType="class">
-		DELETE class WHERE cl_no=#{cl_no}
+		DELETE class WHERE
+		cl_no=#{cl_no}
 	</delete>
-	
-	<select id="getCount" resultType="int" parameterType="class">
-		SELECT COUNT(*)
-		FROM CLASS
-	</select>
+
 </mapper>
