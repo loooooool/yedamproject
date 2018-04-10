@@ -22,6 +22,10 @@ public class NoticeDAO {
 	public void updateNotice(NoticeVO vo){
 		sqlSession.update("notice.updateNotice",vo);
 	}
+	
+	public void updateView(NoticeVO vo) {
+		sqlSession.update("notice.updateView",vo);
+	}
 
 	public void deleteNotice(NoticeVO vo){
 		sqlSession.delete("notice.deleteNotice",vo);
@@ -38,12 +42,10 @@ public class NoticeDAO {
 		return sqlSession.selectList("notice.getNoticeList",vo);
 	}
 	
-	public void deleteNoticeList(ArrayList<String> n_no){
-		sqlSession.delete("notice.deleteNoticeList",n_no);
-
-	}
+	
 	
 	public int getCount(NoticeVO vo) {
 		return sqlSession.selectOne("notice.getCount",vo);
 	}
+	
 }

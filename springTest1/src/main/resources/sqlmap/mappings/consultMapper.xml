@@ -11,8 +11,8 @@
 		INSERT INTO CONSULT(
 								c_no
 								,cdate
-								,S_DETAIL
-								,course_cd
+								,s_detail
+								,cl_no
 								,title
 								,content
 								,writer
@@ -20,8 +20,8 @@
 		VALUES(
 				#{c_no}
 				,sysdate
-				,#{S_DETAIL}
-				,#{course_cd}
+				,#{s_detail}
+				,#{cl_no}
 				,#{title}
 				,#{content}
 				,#{writer}
@@ -31,7 +31,7 @@
 	<update id="updateConsult" parameterType="consult">
 		UPDATE CONSULT SET 
 								s_detail=#{s_detail}
-								,course_cd=#{course_cd}
+								,cl_no=#{cl_no}
 								,c_date=sysdate
 								,title=#{title}
 								,content=#{content}
@@ -47,21 +47,68 @@
 	</select>
 	
 	<select id="getConsult" resultType="consult" parameterType="consult">
-		SELECT * FROM CONSULT WHERE C_NO=#{C_NO}	
+		SELECT c_no
+				,TO_CHAR(cdate,'YYYY-MM-DD') "cdate"
+				,s_detail
+				,(	SELECT m.name 
+					FROM member m
+					WHERE m.member_id = c.s_detail)	"s_name"
+				,cl_no
+				,( SELECT cl.class_name
+					FROM class cl
+					WHERE cl.cl_no = c.cl_no) "c_name"
+				,title
+				,content
+				,writer
+		 FROM CONSULT c WHERE C_NO=#{C_NO}	
+	</select>
+	
+	<select id="getConsultAjax" resultType="consult" parameterType="consult">
+		SELECT c_no
+				,TO_CHAR(cdate,'YYYY-MM-DD') "cdate"
+				,s_detail
+				,(	SELECT m.name 
+					FROM member m
+					WHERE m.member_id = c.s_detail)	"s_name"
+				,cl_no
+				,( SELECT cl.class_name
+					FROM class cl
+					WHERE cl.cl_no = c.cl_no) "c_name"
+				,title
+				,content
+				,writer
+		
+		 FROM CONSULT c WHERE s_detail=#{s_detail}	
 	</select>
 	
 	<select id="getConsultList" resultType="consult">
 		SELECT  c_no
-				,cdate
-				,S_DETAIL
-				,course_cd
+				,TO_CHAR(cdate,'YYYY-MM-DD') "cdate"
+				,s_detail
+				,(	SELECT m.name 
+					FROM member m
+					WHERE m.member_id = c.s_detail)	"s_name"
+				,cl_no
+				,( SELECT cl.class_name
+					FROM class cl
+					WHERE cl.cl_no = c.cl_no) "c_name"
 				,title
 				,content
 				,writer
-		FROM CONSULT
+		FROM CONSULT c
 		ORDER BY cdate DESC
 	</select>
 
+	<select id="getStudentList" resultType="member" parameterType="consult">
+		SELECT m.name as "name"
+				,m.member_id "member_id"
+		FROM member m JOIN class_info ci
+		ON(m.member_id = ci.member_id)
+		JOIN class c
+		ON(ci.CL_NO = c.cl_no)
+		WHERE c.cl_no=#{cl_no}
+		
+	</select>
 	
 
 </mapper>

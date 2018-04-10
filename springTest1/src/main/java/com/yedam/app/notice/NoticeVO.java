@@ -14,6 +14,7 @@ public class NoticeVO {
 	private String writer;     //작성자
 	private String filename;   //첨부파일
 	private Integer priority_yn;  //필독공지
+	private int cnt;
 	
 	private String searchCondition;
 	private String searchKeyword;
@@ -26,6 +27,13 @@ public class NoticeVO {
 	
 	
 	
+	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public Integer getFirst() {
 		return first;
 	}

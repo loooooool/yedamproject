@@ -1,13 +1,20 @@
 package com.yedam.app.consult.view;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yedam.app.classes.ClassService;
+import com.yedam.app.classes.ClassVO;
 import com.yedam.app.common.Paging;
 import com.yedam.app.consult.ConsultService;
 import com.yedam.app.consult.ConsultVO;
+import com.yedam.app.member.MemberVO;
+import com.yedam.app.member.impl.MemberService;
 
 @Controller
 public class ConsultController {
@@ -15,9 +22,16 @@ public class ConsultController {
 	@Autowired 
 	ConsultService consultService;
 	
+	@Autowired 
+	MemberService memberService;
+	
+	@Autowired 
+	ClassService classService;
+	
+	
 	//목록보기
 	@RequestMapping("/getConsultList")
-	public String getConsultList(Model model, ConsultVO vo, Paging paging) {
+	public String getConsultList(Model model, ConsultVO vo, ClassVO cvo, MemberVO mvo,Paging paging) {
 	
 		//전체 레코드 건수
 		paging.setTotalRecord(consultService.getCount(vo));
@@ -25,6 +39,9 @@ public class ConsultController {
 		vo.setFirst(paging.getFirst());
 		vo.setLast(paging.getLast());
 		//결과저장
+		
+		model.addAttribute("memberList",memberService.getMemberList(mvo));
+		model.addAttribute("classList",classService.getClassList(cvo));
 		model.addAttribute("consultList",consultService.getConsultList(vo));
 		model.addAttribute("paging",paging);	
 		return "consult/getConsultList";
@@ -67,9 +84,25 @@ public class ConsultController {
 		return "redirect:/getConsultList";
 	}
 	
+	@RequestMapping("/getConsultAjax")
+	@ResponseBody
+	public List<ConsultVO> getconsult(String s_detail ) {
+		ConsultVO vo = new ConsultVO();
+		vo.setS_detail(s_detail);
+		return consultService.getConsultAjax(vo);
+	}
+	
 	@RequestMapping("/insertConsultForm")
-	public String insertConsultForm(ConsultVO vo) {
+	public String insertConsultForm(Model model, ConsultVO vo, ClassVO cvo, MemberVO mvo) {
+		model.addAttribute("memberList",memberService.getMemberList(mvo));
+		model.addAttribute("classList",classService.getClassList(cvo));
 		return "consult/insertConsult";
+	}
+	
+	@RequestMapping("/getStudentList")
+	@ResponseBody
+	public List<MemberVO> getStudentList( ConsultVO vo) {
+		return consultService.getStudentList(vo);
 	}
 	
 }

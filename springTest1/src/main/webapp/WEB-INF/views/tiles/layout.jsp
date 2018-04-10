@@ -32,7 +32,7 @@
   <link href="${pageContext.request.contextPath}/resources/css/flag-icon.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/fontawesome.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/simple-line-icons.css" rel="stylesheet">
-
+  
   <!-- Main styles for this application -->
   <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
 </head>

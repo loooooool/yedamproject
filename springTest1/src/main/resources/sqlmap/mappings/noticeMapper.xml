@@ -12,25 +12,40 @@
 		<result property="writer" column="writer" />
 		<result property="filename" column="filename" />
 		<result property="priority_yn" column="priority_yn" />
+		<result property="view_cnt" column="view_cnt" />
 	</resultMap>
 
 	<!-- 공지사항 목록조회 -->
-	<select id="getNoticeList" resultType="notice">
-		select n_no
-			  ,title
-			  ,content
-			  ,ndate
-			  ,viewcount
-			  ,writer
-			  ,filename
-			  ,priority_yn
-			  from notice
+	<select id="getNoticeList" resultType="notice">	 <!--id 값은 메소드 명 --> <!-- resultMap은 위 resultMap id와 매치 --> <!-- resultType : sql-map-config에 alias 사용 (원래는 경로 다 써야함) -->
+		<![CDATA[
+		select a.* from ( select rownum rn,b.* from(
+		select 	n_no 	
+				,title
+				,content
+				,writer
+				,ndate
+				,viewcount
+				,filename 	
+		 from notice 
+		 ]]>
+		 <where>
+		 <if test="searchKeyword != null and searchKeyword != ''" >
+ 		 	<if test="searchCondition == 'title' ">
+		 		 and title like '%' ||#{searchKeyword}||'%'
+		 	</if>
+		 	<if test="searchCondition == 'content' ">
+		 		 content like '%' ||#{searchKeyword}||'%'
+		 	</if>
+		 </if>
+		 </where>
+		  order by n_no desc
+		 ) b ) a where rn between #{first} and #{last}		
 	</select>
 
 	<!-- 공지사항 등록 -->
 	<insert id="insertNotice" parameterType="notice">
 		<selectKey keyProperty="n_no" resultType="int" order="BEFORE">
-			select nvl(max(seq),0)+1 from notice
+			select view_cnt.nextval from dual
 		</selectKey>
 		insert into notice(
 		n_no
@@ -39,28 +54,35 @@
 		,ndate
 		,viewcount
 		,writer
-		,filename
 		,priority_yn
-		<if test="filename != null">
+		<if test="filename != null and filename !=''">
 			,filename
 		</if>
 		)
 		values(
-		#{n_no},
-		#{title},
-		#{content},
-		#{ndate},
-		#{viewcount},
-		#{writer}, 
-		#{filename}, 
-		#{priority_yn}
-		)
-		<if test="filename != null">
+		#{n_no}
+		,#{title}
+		,#{content}
+		,sysdate
+		,0
+		,#{writer} 
+		,nvl(#{priority_yn},0)
+		<if test="filename != null and filename !=''">
 			,#{filename}
 		</if>
 		)
 	</insert>
-	
+	 
+	 <!-- 조회수 증가 -->
+	 <update id="updateView" parameterType="notice">
+         update notice
+         set
+            viewcount = nvl(viewcount, 0) + 1
+         where
+            n_no = ${n_no}
+	 </update>
+
+
 	<!-- 공지사항 수정 -->
 	<update id="updateNotice" parameterType="notice">
 		update notice set
@@ -74,31 +96,17 @@
 		where n_no=#{n_no}
 	</update>
 	
+	
 	<!-- 공지사항 삭제 -->
 	<delete id="deleteNotice" parameterType="notice">
-		delete notice
-		where 
-		n_no=#{n_no}
+		delete notice where n_no=#{n_no}  
 	</delete>
-	
-	<!-- 공지사항 선택삭제 -->
-	<delete id="deleteNoticeList" parameterType="list">
-		delete from notice
-		where n_no in 
-		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
-			#{item}
-		</foreach>
- 	</delete> <!-- LIST는 ARRAYLIST의 ALIAS. -->
  	
+ 	<!-- 검색목록 페이징 -->
  	<select id="getCount" resultType="int">
 		select count(*) from notice 
-	</select>
-	
-	
-	<select id="getNotice" resultType="int" parameterType="notice">
-		select count(*) from notice
 		<where>
-		 <if test="searchKeyword != null and searchKeyword != ''" >
+		 <if test="searchKeyword != null and searchKeyword !=''" >
  		 	<if test="searchCondition == 'title' ">
 		 		 and title like '%' ||#{searchKeyword}||'%'
 		 	</if>
@@ -108,4 +116,11 @@
 		 </if>
 		 </where>
 	</select>
+	
+	<!-- 상세보기 -->
+	<select id="getNotice" resultType="int" parameterType="notice">
+		select count(*) from notice where n_no=#{n_no}
+	</select>
+	
+	
 </mapper>

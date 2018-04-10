@@ -24,6 +24,10 @@ public class NoticeServiceImpl implements NoticeService {
 	public void updateNotice(NoticeVO vo) {
 		dao.updateNotice(vo);
 	}
+	
+	public void updateView(NoticeVO vo) {
+		dao.updateView(vo);
+	}
 
 	@Override
 	public void deleteNotice(NoticeVO vo) {
@@ -38,20 +42,12 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<NoticeVO> getNoticeList(NoticeVO vo) {
 		return dao.getNoticeList(vo);
 	}
-
-	@Override
-	public void deleteNoticeList(ArrayList<String> n_no) {
-		dao.deleteNoticeList(n_no);
-		
-	}
+	
 	
 	public int getCount(NoticeVO vo) {
 		return dao.getCount(vo);
 	}
 
-	/*@Override
-	public List<NoticeVO> getNoticeList(HashMap<String, String> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
+	
+	
 }

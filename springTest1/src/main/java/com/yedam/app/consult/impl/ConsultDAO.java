@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.yedam.app.consult.ConsultVO;
+import com.yedam.app.member.MemberVO;
 
 @Repository
 public class ConsultDAO {
@@ -30,6 +31,10 @@ public class ConsultDAO {
 		return sqlSession.selectOne("consult.getConsult",vo); 
 	}
 	
+	public List<ConsultVO> getConsultAjax(ConsultVO vo) {
+		return sqlSession.selectList("consult.getConsultAjax",vo);
+	}
+	
 	public List<ConsultVO> getConsultList(ConsultVO vo){
 		return sqlSession.selectList("consult.getConsultList", vo);
 	}
@@ -37,6 +42,10 @@ public class ConsultDAO {
 	public int getCount(ConsultVO vo) {
 		return sqlSession.selectOne("consult.getCount", vo);
 
+	}
+	
+	public List<MemberVO> getStudentList(ConsultVO vo ){
+		return sqlSession.selectList("consult.getStudentList",vo);
 	}
 
 	
