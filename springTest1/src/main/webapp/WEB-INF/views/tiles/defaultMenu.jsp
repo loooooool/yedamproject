@@ -26,11 +26,11 @@
           </li>
          
           <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="mypage"><i class="icon-puzzle"></i> 마이페이지</a>
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> 마이페이지</a>
             
             <ul class="nav-dropdown-items">
               <li class="nav-item">
-                <a class="nav-link" href="base/breadcrumb.html"><i class="icon-puzzle"></i>회원정보수정</a>
+                <a class="nav-link" href="mypage"><i class="icon-puzzle"></i>회원정보수정</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="base/cards.html"><i class="icon-puzzle"></i> 나의 시간표</a>
