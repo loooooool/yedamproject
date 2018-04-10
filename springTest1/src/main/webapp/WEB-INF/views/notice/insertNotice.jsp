@@ -63,7 +63,7 @@
 										class="form-control" placeholder="Content.."></textarea>
 									<script>
 							            CKEDITOR.replace( 'content', {
-											filebrowserUploadUrl: './ckeditorfileupload/fileUpload.jsp'
+											filebrowserUploadUrl: './ckeditorfileupload/fileUpload.jsp',height : '500px'
 										}); 
 							        </script>
 								</div>
@@ -82,7 +82,7 @@
 			</table>
 			<div align="right">
 				<input type="submit" value="등록" class="btn btn-info"/>
-				<input type="reset" value="취소" class="btn btn-success"/>
+				<input type="reset" value="취소" class="btn btn-success" onclick="CKEDITOR.instances.content.setData('')"/>
 				<input type="reset" value="목록" class="btn btn-secondary"/>
 			</div>
 		</form>
