@@ -5,15 +5,32 @@ import java.util.Date;
 public class ConsultVO {
 
 	private Integer c_no;
-	private Date cdate;
+	private String cdate;
 	private String s_detail;
-	private String course_cd;
+	private String cl_no;
 	private String title;
 	private String content;
 	private String writer;
 	
+	private String s_name;
+	private String c_name;
+	
 	private Integer first;
 	private Integer last;
+	
+	
+	public String getS_name() {
+		return s_name;
+	}
+	public void setS_name(String s_name) {
+		this.s_name = s_name;
+	}
+	public String getC_name() {
+		return c_name;
+	}
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
+	}
 	
 	public Integer getC_no() {
 		return c_no;
@@ -21,10 +38,10 @@ public class ConsultVO {
 	public void setC_no(Integer c_no) {
 		this.c_no = c_no;
 	}
-	public Date getCdate() {
+	public String getCdate() {
 		return cdate;
 	}
-	public void setCdate(Date cdate) {
+	public void setCdate(String cdate) {
 		this.cdate = cdate;
 	}
 	public String getS_detail() {
@@ -33,11 +50,11 @@ public class ConsultVO {
 	public void setS_detail(String s_detail) {
 		this.s_detail = s_detail;
 	}
-	public String getCourse_cd() {
-		return course_cd;
+	public String getCl_no() {
+		return cl_no;
 	}
-	public void setCourse_cd(String course_cd) {
-		this.course_cd = course_cd;
+	public void setCl_no(String cl_no) {
+		this.cl_no = cl_no;
 	}
 	public String getTitle() {
 		return title;
@@ -73,7 +90,7 @@ public class ConsultVO {
 	}
 	@Override
 	public String toString() {
-		return "ConsultVO [c_no=" + c_no + ", cdate=" + cdate + ", s_detail=" + s_detail + ", course_cd=" + course_cd
+		return "ConsultVO [c_no=" + c_no + ", cdate=" + cdate + ", s_detail=" + s_detail + ", cl_no=" + cl_no
 				+ ", title=" + title + ", content=" + content + ", writer=" + writer + "]";
 	}
 

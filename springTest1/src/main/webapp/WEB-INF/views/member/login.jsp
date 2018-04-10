@@ -1,30 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%
-	request.setCharacterEncoding("euc-kr");
-%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
 
-<%
-	String member_id = request.getParameter("member_id"); // request¿¡¼­ id ÆÄ¶ó¹ÌÅÍ¸¦ °¡Á®¿Â´Ù
-	String passwd = request.getParameter("pwd"); // request¿¡¼­ passwd ÆÄ¶ó¹ÌÅÍ¸¦ °¡Á®¿Â´Ù.
-
-	if (member_id!=null) { // ·Î±×ÀÎ ¼º°ø½Ã
-		session.setAttribute("member_id", member_id); // ¼¼¼Ç¿¡ "id" ÀÌ¸§À¸·Î id µî·Ï
-		response.sendRedirect("main.jsp"); // ·Î±×ÀÎ ¼º°ø ¸ŞÀÎÆäÀÌÁö ÀÌµ¿
-	} else {	// ·Î±×ÀÎ ½ÇÆĞ
-%>
-
+<title>ë¡œê·¸ì¸ í˜ì´ì§€</title>
+<!--  ë¡œê·¸ì¸ ì„±ê³µ,ì‹¤íŒ¨ ì•Œë¦¼ -->
 
 <script>
-	alert("·Î±×ÀÎ ½ÇÆĞ");
-	history.go(-1); // ÀÌÀü ÆäÀÌÁö·Î ÀÌµ¿
+$(document).ready(function(){
+    $("#btnLogin").click(function(){
+        // íƒœí¬.val() : íƒœê·¸ì— ì…ë ¥ëœ ê°’
+        // íƒœí¬.val("ê°’") : íƒœê·¸ì˜ ê°’ì„ ë³€ê²½ 
+        var member_id = $("#member_id").val();
+        var pwd = $("#pwd").val();
+        
+        if(member_id == ""){
+            alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+            $("#member_id").focus(); // ì…ë ¥í¬ì»¤ìŠ¤ ì´ë™
+            return; // í•¨ìˆ˜ ì¢…ë£Œ
+        }
+        if(pwd == ""){
+            alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+            $("#pwd").focus();
+            return;
+        }
+        // í¼ ë‚´ë¶€ì˜ ë°ì´í„°ë¥¼ ì „ì†¡í•  ì£¼ì†Œ
+        document.form1.action="${path}/member/loginCheck.do"
+        // ì œì¶œ
+        document.form1.submit();
+    });
+});
 </script>
 
-<%
-	}
-%>
-
-
-
+</head>
+<body>
+	
+	   <form action="login" name="form1" method="post">
+        <table border="1" width="400px">
+            <tr>
+                <td>ì•„ì´ë””</td>
+                <td><input name="member_id" id="member_id"></td>
+            </tr>
+            <tr>
+                <td>ë¹„ë°€ë²ˆí˜¸</td>
+                <td><input type="password" name="pwd" id="pwd"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" id="btnLogin">ë¡œê·¸ì¸</button>
+                <c:if test="${msg == 'failure'}">
+                    <div style="color: red">
+                        ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+                    </div>
+                </c:if>
+                <c:if test="${msg == 'logout'}">
+                    <div style="color: red">
+                        ë¡œê·¸ì•„ì›ƒë˜ì—ˆìŠµë‹ˆë‹¤.
+                    </div>
+                </c:if>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

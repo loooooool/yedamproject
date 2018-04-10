@@ -26,7 +26,7 @@ public class MemberMyBatisDAO {
 		return sqlSession.selectOne("member.getCount", vo);
 	}
 	
-	public List getMember_id(MemberVO vo) {
-		return sqlSession.selectList("member",vo);
+	public MemberVO getMember_id(MemberVO vo) {
+		return sqlSession.selectOne("member.getMember_id",vo);
 	}
 }

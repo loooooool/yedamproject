@@ -33,6 +33,16 @@ public class SubjectServiceImpl implements SubjectService {
 	public List<SubjectVO> getSubjectList(SubjectVO vo) {
 		return dao.getSubjectList(vo);
 	}
+
+	@Override
+	public int getCount(SubjectVO vo) {
+		 return dao.getCount(vo);
+	}
+
+	@Override
+	public SubjectVO getSubject(SubjectVO vo) {
+		return dao.getSubject(vo);
+	}
 	
 	
 

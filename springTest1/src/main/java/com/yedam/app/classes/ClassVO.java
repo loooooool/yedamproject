@@ -10,6 +10,7 @@ public class ClassVO {
 	private String class_nm;
 	private int first;
 	private int last;
+	
 
 	public String getClass_nm() {
 		return class_nm;

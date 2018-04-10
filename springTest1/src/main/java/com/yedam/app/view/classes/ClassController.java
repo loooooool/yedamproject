@@ -2,6 +2,8 @@ package com.yedam.app.view.classes;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +29,7 @@ public class ClassController {
 
 	@Autowired
 	ClassService classService;
-
+	
 	// 목록
 	@RequestMapping("/getClassList")
 	public String getClassList(Model model, ClassVO vo, Paging paging) {
@@ -83,16 +85,15 @@ public class ClassController {
 	// 수정폼
 	@RequestMapping("/updateClassForm")
 	public String updateClassForm(Model model, ClassVO vo) {
-		model.addAttribute("class", classService.getClassList(vo));
+		model.addAttribute("cl", classService.getClass(vo));
 		return "class/updateClass";
 	}
 
 	// 수정처리
 	@RequestMapping("/updateClass")
 	public String updateClass(ClassVO vo) {
-		int cl_no = vo.getCl_no();
 		classService.updateClass(vo);
-		return "redirect:/getClassList"+cl_no;
+		return "redirect:/getClassList";
 	}
 
 	// 삭제

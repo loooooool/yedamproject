@@ -1,5 +1,6 @@
 package com.yedam.app.member;
 
+import java.lang.reflect.Member;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.yedam.app.member.impl.MemberService;
 
@@ -36,6 +39,19 @@ public class LoginController {
 		} else {
 			return "login.jsp";
 		}
+	}
+	
+	//로그인 체크
+	@RequestMapping(value="loginCheck", method = RequestMethod.POST)
+	public ModelAndView loginCheck (@ModelAttribute MemberVO vo, HttpSession session) {
+		boolean result = memberService.loginCheck(vo, session);
+		ModelAndView mav = new ModelAndView();
+		 if (result == true) { // 로그인 성공
+			 mav.setViewName("redirect:/");
+			 session.setAttribute("member_id",vo.getMember_id());
+	        }
+		return mav; 
+       
 	}
 	
 	//로그아웃 

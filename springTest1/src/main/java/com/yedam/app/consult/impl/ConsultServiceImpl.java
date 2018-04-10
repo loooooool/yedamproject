@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.yedam.app.consult.ConsultService;
 import com.yedam.app.consult.ConsultVO;
+import com.yedam.app.member.MemberVO;
 
 @Service("consultService")
 public class ConsultServiceImpl implements ConsultService{
@@ -32,6 +33,10 @@ public class ConsultServiceImpl implements ConsultService{
 	public ConsultVO getConsult(ConsultVO vo) {
 		return dao.getConsult(vo);
 	}
+	
+	public List<ConsultVO> getConsultAjax(ConsultVO vo) {
+		return dao.getConsultAjax(vo);
+	}
 
 	public List<ConsultVO> getConsultList(ConsultVO vo) {
 		return dao.getConsultList(vo);
@@ -40,6 +45,13 @@ public class ConsultServiceImpl implements ConsultService{
 
 	public int getCount(ConsultVO vo) {
 		return dao.getCount(vo);
+	}
+
+
+	@Override
+	public List<MemberVO> getStudentList(ConsultVO vo) {
+		return dao.getStudentList(vo);
+		
 	}
 
 }

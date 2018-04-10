@@ -16,12 +16,12 @@
 			<form action="insertClass" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="nf-email"><strong>과정명</strong></label> 
-					<input type="text" id="nf-email" name="class_name" class="form-control" placeholder="과정명"> 
+					<input type="text" id="nf-email" name="class_name" class="form-control" value="과정명" onfocus="this.value=''"> 
 					<span class="help-block">과정명을 입력하세요</span>
 				</div>
 				<div class="form-group">
 					<label for="nf-email"><strong>강의실</strong></label>
-					<input type="text" id="nf-email" name="address" class="form-control" placeholder="강의실"> 
+					<input type="text" id="nf-email" name="address" class="form-control" value="강의실" onfocus="this.value=''"> 
 					<span class="help-block">강의실을 입력하세요</span>
 				</div>
 				<div class="form-group row">
@@ -32,7 +32,7 @@
 				</div>
 				<div class="form-group">
 					<label for="nf-email"><strong>총 수업시간</strong></label> 
-					<input type="text" id="nf-email" name="totalTime" class="form-control" placeholder="총 수업시간"> 
+					<input type="text" id="nf-email" name="totalTime" class="form-control" value="총 수업시간" onfocus="this.value=''"> 
 					<span class="help-block">총	수업시간을 입력하세요</span>
 				</div>
 				<div class="form-group">
@@ -48,7 +48,6 @@
 				</div>
 				<div class="card-body">
 				<input type="submit" class="btn btn-info" value="등록" />&nbsp; 
-				<input type="reset" class="btn btn-success" value="초기화" />&nbsp; 
 				<input type="button" class="btn btn-secondary" onclick="location.href='getClassList'" value="목록" />
 				</div>
 			</form>
