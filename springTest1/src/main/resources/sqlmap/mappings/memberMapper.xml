@@ -16,8 +16,20 @@
 		select * from member 
 		
 		where member_id = #{member_id}
-		
 	</select>
+	
+	<update id="update_pwd" parameterType="member">
+		update member set pwd = #{pwd} where member_id = #{member_id}
+	</update>
+
+	<update id="update_email" parameterType="member">
+		update member 
+		set email = #{email} 
+		where member_id = #{member_id}
+	</update>
+
+
+
 	
 	<!-- <select id="getCount" resultType="int" parameterType="emp">
 		select count(*) 

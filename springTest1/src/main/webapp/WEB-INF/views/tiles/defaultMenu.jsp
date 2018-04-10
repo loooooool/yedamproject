@@ -12,7 +12,7 @@
             	예담
           </li>
           <li class="nav-item">
-            <a href="colors.html" class="nav-link"><i class="icon-drop"></i> 공지사항</a>
+            <a href="getNoticeList" class="nav-link"><i class="icon-drop"></i> 공지사항</a>
           </li>
           <li class="nav-item">
             <a href="typography.html" class="nav-link"><i class="icon-pencil"></i> 예담 수업</a>
@@ -26,7 +26,7 @@
           </li>
          
           <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> 마이페이지</a>
+            <a class="nav-link nav-dropdown-toggle" href="mypage"><i class="icon-puzzle"></i> 마이페이지</a>
             
             <ul class="nav-dropdown-items">
               <li class="nav-item">

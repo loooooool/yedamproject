@@ -34,26 +34,26 @@ public class LoginController {
 	public String login(@ModelAttribute("member") MemberVO vo, HttpSession session) {
 		System.out.println("로그인 인증 처리");
 		if(memberService.login(vo)) {
-			session.setAttribute("member", memberService.getMember_id(vo));
+			session.setAttribute("memberVO", memberService.getMember_id(vo));
 			return "redirect:/";
 		} else {
-			return "login.jsp";
+			return "member/loginForm";
 		}
 	}
 	
-	//로그인 체크
+	/*//로그인 체크
 	@RequestMapping(value="loginCheck", method = RequestMethod.POST)
 	public ModelAndView loginCheck (@ModelAttribute MemberVO vo, HttpSession session) {
 		boolean result = memberService.loginCheck(vo, session);
 		ModelAndView mav = new ModelAndView();
 		 if (result == true) { // 로그인 성공
-			 mav.setViewName("redirect:/");
+			 mav.setViewName("redirect:/"); //메인으로
 			 session.setAttribute("member_id",vo.getMember_id());
 	        }
 		return mav; 
        
 	}
-	
+	*/
 	//로그아웃 
 		@RequestMapping("/logout")
 		public String logout(HttpSession session) {

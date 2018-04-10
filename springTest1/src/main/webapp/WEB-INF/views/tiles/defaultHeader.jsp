@@ -24,15 +24,15 @@
       </li>
     </ul>
    
-   <c:if test="${empty sessionScope.member_id}"> <!-- sessionScope id가 없으면 -->
+   <c:if test="${empty sessionScope.memberVO}"> <!-- sessionScope id가 없으면 -->
     <ul class="nav navbar-nav ml-auto">
       <li class="nav-item d-md-down-none">
         <a class="loginForm" href="loginForm">login<i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
       </li>
    </c:if>    
    
-   <c:if test="${not empty sessionScope.member_id}"> <!-- sessionScopre.id가 있으면 -->
-   	${sessionScope.name} 님 어서오세요!
+   <c:if test="${not empty sessionScope.memberVO}"> <!-- sessionScope id가 있으면 -->
+   	${sessionScope.memberVO.name} 님 어서오세요!
       <li class="nav-item d-md-down-none">
         <a class="login" href="logout">logout<i class="icon-list"></i></a>
       </li>

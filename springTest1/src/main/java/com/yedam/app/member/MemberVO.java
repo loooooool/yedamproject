@@ -6,13 +6,14 @@ public class MemberVO {
 
 	private String member_id;
 	private String pwd;
-	private Integer member_cd;
+	private String member_cd;
 	private String name;
 	private String eng_name;
 	private String social_number;
 	private String school_spec_cd;
 	private String major;
 	private String email;
+	private String email2;
 	private String address;
 	private String phone;
 	private String h_phone;
@@ -37,10 +38,10 @@ public class MemberVO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public Integer getMember_cd() {
+	public String getMember_cd() {
 		return member_cd;
 	}
-	public void setMember_cd(Integer member_cd) {
+	public void setMember_cd(String member_cd) {
 		this.member_cd = member_cd;
 	}
 	public String getName() {
@@ -78,6 +79,12 @@ public class MemberVO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getEmail2() {
+		return email2;
+	}
+	public void setEmail2(String email2) {
+		this.email2 = email2;
 	}
 	public String getAddress() {
 		return address;
@@ -143,20 +150,13 @@ public class MemberVO {
 	public String toString() {
 		return "MemberVO [member_id=" + member_id + ", pwd=" + pwd + ", member_cd=" + member_cd + ", name=" + name
 				+ ", eng_name=" + eng_name + ", social_number=" + social_number + ", school_spec_cd=" + school_spec_cd
-				+ ", major=" + major + ", email=" + email + ", address=" + address + ", phone=" + phone + ", h_phone="
-				+ h_phone + ", status_cd=" + status_cd + ", open_route_cd=" + open_route_cd + ", open_route_etc="
-				+ open_route_etc + ", unemployee_pay_yn=" + unemployee_pay_yn + ", previous_job=" + previous_job
-				+ ", job_change_date=" + job_change_date + ", bohun_yn=" + bohun_yn + ", getMember_id()="
-				+ getMember_id() + ", getPwd()=" + getPwd() + ", getMember_cd()=" + getMember_cd() + ", getName()="
-				+ getName() + ", getEng_name()=" + getEng_name() + ", getSocial_number()=" + getSocial_number()
-				+ ", getSchool_spec_cd()=" + getSchool_spec_cd() + ", getMajor()=" + getMajor() + ", getEmail()="
-				+ getEmail() + ", getAddress()=" + getAddress() + ", getPhone()=" + getPhone() + ", getH_phone()="
-				+ getH_phone() + ", getStatus_cd()=" + getStatus_cd() + ", getOpen_route_cd()=" + getOpen_route_cd()
-				+ ", getOpen_route_etc()=" + getOpen_route_etc() + ", getUnemployee_pay_yn()=" + getUnemployee_pay_yn()
-				+ ", getPrevious_job()=" + getPrevious_job() + ", getJob_change_date()=" + getJob_change_date()
-				+ ", getBohun_yn()=" + getBohun_yn() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+				+ ", major=" + major + ", email=" + email + ", email2=" + email2 + ", address=" + address + ", phone="
+				+ phone + ", h_phone=" + h_phone + ", status_cd=" + status_cd + ", open_route_cd=" + open_route_cd
+				+ ", open_route_etc=" + open_route_etc + ", unemployee_pay_yn=" + unemployee_pay_yn + ", previous_job="
+				+ previous_job + ", job_change_date=" + job_change_date + ", bohun_yn=" + bohun_yn + "]";
 	}
+	
+	
 	
 	
 	

@@ -20,8 +20,7 @@ public class MemberServiceImpl implements MemberService {
 	public boolean login(MemberVO vo) {
 		//id 조회
 		MemberVO memberVO = (MemberVO) dao.getMember_id(vo);
-		
-				
+						
 		//입력 패스워드 db 패스워드 비교
 		if(memberVO != null && vo.getPwd().equals(memberVO.getPwd())) {
 			return true;
@@ -35,14 +34,15 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getMember_id(vo);
 	}
 
-	@Override
+	/*@Override
 	public boolean loginCheck(MemberVO vo, HttpSession session) {
 		return false;
-	}
+	}*/
 
 	@Override
 	public List<MemberVO> getMemberList(MemberVO vo) {
 		return dao.getMemberList(vo);
 	}
+
 	
 }
