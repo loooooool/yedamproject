@@ -5,14 +5,14 @@
  <nav class="sidebar-nav">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="main.html"><i class="icon-speedometer"></i> 홈으로 <span class="badge badge-primary">NEW</span></a>
+            <a class="nav-link" href=""><i class="icon-speedometer"></i> 홈으로 <span class="badge badge-primary">NEW</span></a>
           </li>
 
           <li class="nav-title">
             	예담
           </li>
           <li class="nav-item">
-            <a href="colors.html" class="nav-link"><i class="icon-drop"></i> 공지사항</a>
+            <a href="getNoticeList" class="nav-link"><i class="icon-drop"></i> 공지사항</a>
           </li>
           <li class="nav-item">
             <a href="typography.html" class="nav-link"><i class="icon-pencil"></i> 예담 수업</a>
