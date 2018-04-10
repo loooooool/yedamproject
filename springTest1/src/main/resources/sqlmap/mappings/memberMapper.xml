@@ -25,7 +25,7 @@
 	<update id="update_email" parameterType="member">
 		update member 
 		set email = #{email} 
-		where member_id = #{member_id}
+		where email = #{email} ||  "@" || #{email2}
 	</update>
 
 

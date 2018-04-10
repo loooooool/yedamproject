@@ -25,6 +25,8 @@ public class MemberController {
 		return "member/getMemberList";
 	}
 	
+	
+	//비밀번호 찾기(4.10 미완성)
 	@RequestMapping(value="/find_pwd_form")
 	public String find_pwd_form() throws Exception{
 		return "/member/find_pwd_form";
