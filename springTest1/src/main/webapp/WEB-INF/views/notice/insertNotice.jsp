@@ -4,8 +4,13 @@
 <html>
 <head>
 <title>insertNotice.jsp</title>
-<script src="./scripts/ckeditor/ckeditor.js"></script>
-<script src="./scripts/ckeditor/ko.js"></script>
+<script>
+	var context='${pageContext.request.contextPath}';
+	
+	
+</script>
+<script src="${pageContext.request.contextPath}/scripts/ckeditor/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/scripts/ckeditor/ko.js"></script>
 </head>
 
 <body>
