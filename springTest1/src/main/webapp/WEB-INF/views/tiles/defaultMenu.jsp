@@ -52,7 +52,7 @@
           </li>
           
            <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-cursor"></i>과정관리</a>
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-cursor"></i>과정</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
                 <a class="nav-link" href="getClassList"><i class="icon-cursor"></i>과정관리</a>
@@ -64,7 +64,7 @@
           </li>
           
           <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-cursor"></i> 출결관리</a>
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-cursor"></i> 출결</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
                 <a class="nav-link" href="buttons/buttons.html"><i class="icon-cursor"></i>출석부생성</a>
@@ -75,13 +75,13 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="charts.html"><i class="icon-pie-chart"></i> 일정표관리</a>
+            <a class="nav-link" href="charts.html"><i class="icon-pie-chart"></i> 일정표</a>
           </li>
           <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>학생관리</a>
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>학생</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="widgets.html"><i class="icon-calculator"></i>공휴일관리<span class="badge badge-primary">NEW</span></a>
+            <a class="nav-link" href="widgets.html"><i class="icon-calculator"></i>공휴일<span class="badge badge-primary">NEW</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="getConsultList"><i class="icon-calculator"></i>상담일지<span class="badge badge-primary">NEW</span></a>
