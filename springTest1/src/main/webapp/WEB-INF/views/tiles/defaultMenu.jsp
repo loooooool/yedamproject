@@ -50,6 +50,19 @@
           <li class="nav-title">
             ~관리자님
           </li>
+          
+           <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-cursor"></i>과정관리</a>
+            <ul class="nav-dropdown-items">
+              <li class="nav-item">
+                <a class="nav-link" href="getClassList"><i class="icon-cursor"></i>과정관리</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="getSubjectList"><i class="icon-cursor"></i>과목관리</a>
+              </li>
+            </ul>
+          </li>
+          
           <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-cursor"></i> 출결관리</a>
             <ul class="nav-dropdown-items">
@@ -66,9 +79,6 @@
           </li>
           <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>학생관리</a>
-          </li>
-          <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="getClassList"><i class="icon-bell"></i>과정관리</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="widgets.html"><i class="icon-calculator"></i>공휴일관리<span class="badge badge-primary">NEW</span></a>
