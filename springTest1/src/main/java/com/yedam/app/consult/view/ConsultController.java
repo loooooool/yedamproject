@@ -110,20 +110,4 @@ public class ConsultController {
 		return consultService.getConsultAjax(vo);
 	}
 	
-<<<<<<< HEAD
-=======
-	@RequestMapping("/insertConsultForm")
-	public String insertConsultForm(Model model, ConsultVO vo, ClassVO cvo, MemberVO mvo) {
-		model.addAttribute("memberList",memberService.getMemberList(mvo));
-		model.addAttribute("classList",classService.getClassList(cvo));
-		return "consult/insertConsult";
-	}
-	
-	@RequestMapping("/getStudentList")
-	@ResponseBody
-	public List<MemberVO> getStudentList(ConsultVO vo) {
-		return consultService.getStudentList(vo);
-	}
-	
->>>>>>> branch 'master' of https://github.com/loooooool/yedamproject.git
 }

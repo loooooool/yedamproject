@@ -57,7 +57,7 @@
                 <a class="nav-link" href="buttons/buttons.html"><i class="icon-cursor"></i>출석부생성</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="buttons/button-group.html"><i class="icon-cursor"></i>출석부현황</a>
+                <a class="nav-link" href="buttons/button-group.html"><i class="icon-cursor"></i>출석현황</a>
               </li>
             </ul>
           </li>
