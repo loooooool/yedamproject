@@ -37,4 +37,8 @@ public class MemberMyBatisDAO {
 	public MemberVO getName(MemberVO vo) {
 		return sqlSession.selectOne("member.getName", vo);
 	}
+	
+	public void memberUpdate(MemberVO vo) {
+		sqlSession.update("memberUpdate", vo);
+	}
 }
