@@ -1,10 +1,8 @@
-package com.yedam.app.member.impl;
+package com.yedam.app.member;
 
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-
-import com.yedam.app.member.MemberVO;
 
 public interface MemberService {
 
@@ -13,4 +11,5 @@ public interface MemberService {
 	public boolean login(MemberVO vo);
 	//public boolean loginCheck(MemberVO vo, HttpSession session);
 	public List<MemberVO> getMemberList(MemberVO vo);
+	public void memberUpdate(MemberVO vo);
 }
