@@ -31,6 +31,8 @@
 		})
 	}
 </script>
+<script src="${pageContext.request.contextPath}/scripts/ckeditor/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/scripts/ckeditor/ko.js"></script>
 </head>
 <body>
 
@@ -39,14 +41,13 @@
 			<h2>상담일지</h2>
 		</div>
 		<div class="card-body" style="border-bottom: :0px">
-			<form action="updateConsult" method="post">
-				<input type="hidden" name="c_no" value="${consult.c_no}"/>
+			<form action="insertConsult" method="post">
 				<input type="hidden" name="writer" value=""/>
 				<div class="form-group row">
 					<label class="col-md-3 col-form-label" for="select1">과정</label>
 					<div class="col-md-9">
 						<select id="selectStudent" name="cl_no"  onchange="getStudent()" class="form-control">
-							<option value="${consult.cl_no}">${consult.c_name}</option>
+							<option value="0">과정선택</option>
 							<c:forEach items="${classList}" var="cl">
 							<option value="${cl.cl_no}">${cl.class_name}</option>
 							</c:forEach>					
@@ -59,23 +60,8 @@
 					<label class="col-md-3 col-form-label" for="select1">학생이름</label>
 					<div class="col-md-9">
 						<select id="studentName" name="s_detail"  onchange="getConsultAjax()" class="form-control">
-							<option value="${consult.s_detail}">${consult.s_name}</option>
+							<option value="">학생선택</option>
 						</select>
-					</div>
-				</div>
-			<hr>
-				<div class="form-group row">
-					<label class="col-md-3 col-form-label" for="select1">작성날짜</label>
-					<div class="col-md-9">
-						${consult.cdate}
-					</div>
-				</div>
-			<hr>
-			
-				<div class="form-group row">
-					<label class="col-md-3 col-form-label" for="select1">작성자</label>
-					<div class="col-md-9">
-						${consult.c_writer}
 					</div>
 				</div>
 			<hr>
@@ -83,18 +69,25 @@
 				<div class="form-group row">
 	              <label class="col-md-3 col-form-label" for="text-input">제목</label>
 	              <div class="col-md-9">
-	                <input type="text" id="text-input" value="${consult.title}" name="title" class="form-control" placeholder="Text">
+	                <input type="text" id="text-input" name="title" class="form-control" placeholder="Text">
 	              </div>
 	             </div>
+	        <hr>     
 				<div class="form-group row">
 	              <label class="col-md-3 col-form-label" for="textarea-input">내용</label>
 	              <div class="col-md-9">
-	                <textarea id="textarea-input" name="content" rows="9" class="form-control" placeholder="Content..">${consult.content}</textarea>
+	                <textarea id="textarea-input" name="content" rows="9" class="form-control" placeholder="Content.."></textarea>
+	             		<script>
+				            CKEDITOR.replace( 'content', {
+								filebrowserUploadUrl: './ckeditorfileupload/fileUpload.jsp',height : '500px'
+							}); 
+						 </script>
 	              </div>
 	            </div>
+	        <hr>    
 				<div class="card-body" align="right">
-					<a href="getConsultList" class="btn btn-secondary"> 목록</a>
 					<input type="submit" class="btn btn-info " value="등록"/>
+					<input type="reset" value="취소" class="btn btn-success" onclick="CKEDITOR.instances.content.setData('')"/>
 				</div>
 		</form>
 	</div>

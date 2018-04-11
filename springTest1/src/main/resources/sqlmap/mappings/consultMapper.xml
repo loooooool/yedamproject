@@ -32,10 +32,10 @@
 		UPDATE CONSULT SET 
 								s_detail=#{s_detail}
 								,cl_no=#{cl_no}
-								,c_date=sysdate
+								,cdate=sysdate
 								,title=#{title}
 								,content=#{content}
-		WHERE C_NO = #{c_no}
+		WHERE c_no = #{c_no}
 	</update>
 	
 	<delete id="deleteConsult" parameterType="consult">
@@ -60,7 +60,10 @@
 				,title
 				,content
 				,writer
-		 FROM CONSULT c WHERE C_NO=#{C_NO}	
+				,(	SELECT m.name
+					FROM member m
+					WHERE m.member_id=c.writer ) "c_writer"
+		 FROM CONSULT c WHERE c_no=#{c_no}	
 	</select>
 	
 	<select id="getConsultAjax" resultType="consult" parameterType="consult">
@@ -77,6 +80,9 @@
 				,title
 				,content
 				,writer
+				,(	SELECT m.name
+					FROM member m
+					WHERE m.member_id=c.writer ) "c_writer"
 		
 		 FROM CONSULT c WHERE s_detail=#{s_detail}	
 	</select>
@@ -95,6 +101,9 @@
 				,title
 				,content
 				,writer
+				,(	SELECT m.name
+					FROM member m
+					WHERE m.member_id=c.writer ) "c_writer"
 		FROM CONSULT c
 		ORDER BY cdate DESC
 	</select>

@@ -24,11 +24,11 @@ window.onload = function() {
 			$("#table").empty();
 			for(i=0; i<datas.length;i++){
 				$("#table").append("<tr><td>"+ datas[i].c_no + "</td>"
-									+"<td><a href='getConsult?c_no=datas[i].c_no}'>"+datas[i].title+"</a></td>"
+									+"<td><a href=getConsult?c_no="+datas[i].c_no+">"+datas[i].title+"</a></td>"
 									+"<td>" +datas[i].s_name+"</td>"
 									+"<td>" +datas[i].cdate+"</td>"
 									+"<td>" +datas[i].c_name+"</td>"
-									+"<td>" +datas[i].writer+"</td></tr>");
+									+"<td>" +datas[i].c_writer+"</td></tr>");
 			}
 			
 		})
@@ -64,11 +64,11 @@ window.onload = function() {
 					</select>
 				</div>
 			</div>
-		</div>
-		<div class="card-body" align="right">
 		
-
-		<a href="insertSugtForm"><input type="button" class="btn btn-info " value="글쓰기"/></a>
+		
+		<div class="card-body" align="right">
+			<a href="getConsultList" class="btn btn-secondary"> 목록</a>
+			<a href="insertConsultForm" class="btn btn-info">글쓰기</a>
 		</div>
 		
 			<table class="table table-responsive-sm table-striped">
@@ -90,12 +90,13 @@ window.onload = function() {
 							<td>${consult.s_name}</td>
 							<td>${consult.cdate}</td>
 							<td>${consult.c_name}</td>
-							<td>${consult.writer}</td>
+							<td>${consult.c_writer}</td>
 						</tr>
 					</c:forEach>
 
 				</tbody>
 			</table>
 					  	<my:paging paging="${paging}" jsfunc="go_list" />
+		</div>
 	</div>
 </body>
