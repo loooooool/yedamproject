@@ -12,4 +12,5 @@ public interface MemberService {
 	//public boolean loginCheck(MemberVO vo, HttpSession session);
 	public List<MemberVO> getMemberList(MemberVO vo);
 	public void memberUpdate(MemberVO vo);
+	public void changePwd(MemberVO vo);
 }

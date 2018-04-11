@@ -50,5 +50,10 @@ public class MemberServiceImpl implements MemberService {
 		dao.memberUpdate(vo);
 	}
 
+	@Override
+	public void changePwd(MemberVO vo) {
+		dao.changePwd(vo);
+	}
+
 	
 }

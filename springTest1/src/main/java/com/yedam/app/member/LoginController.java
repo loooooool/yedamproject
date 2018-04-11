@@ -51,7 +51,6 @@ public class LoginController {
 			 session.setAttribute("member_id",vo.getMember_id());
 	        }
 		return mav; 
-       
 	}
 	*/
 	//로그아웃 
@@ -59,6 +58,18 @@ public class LoginController {
 		public String logout(HttpSession session) {
 			session.invalidate();
 			return "redirect:/";
+		}
+		
+	//비밀번호 변경 폼
+		@RequestMapping("/changePwdForm")
+		public String changePwdForm(MemberVO vo) {
+			return "member/changePwd";
+		}
+		
+	//비밀번호 변경 처리
+		@RequestMapping(value="/changePwd", method=RequestMethod.POST)
+		public void changePwd(MemberVO vo) {
+			memberService.changePwd(vo);
 		}
 			
 }
