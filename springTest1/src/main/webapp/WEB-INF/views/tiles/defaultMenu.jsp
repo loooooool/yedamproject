@@ -30,7 +30,7 @@
             
             <ul class="nav-dropdown-items">
               <li class="nav-item">
-                <a class="nav-link" href="memberUpdate"><i class="icon-puzzle"></i>회원정보수정</a>
+                <a class="nav-link" href="mypage"><i class="icon-puzzle"></i>회원정보수정</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="base/cards.html"><i class="icon-puzzle"></i> 나의 시간표</a>

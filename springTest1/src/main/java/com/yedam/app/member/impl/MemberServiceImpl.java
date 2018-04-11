@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yedam.app.member.MemberService;
 import com.yedam.app.member.MemberVO;
 
 
@@ -31,20 +30,19 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO getMember_id(MemberVO vo) {
+		// TODO Auto-generated method stub
 		return dao.getMember_id(vo);
 	}
+
+	/*@Override
+	public boolean loginCheck(MemberVO vo, HttpSession session) {
+		return false;
+	}*/
 
 	@Override
 	public List<MemberVO> getMemberList(MemberVO vo) {
 		return dao.getMemberList(vo);
 	}
-
-	@Override
-	public void memberUpdate(MemberVO vo) {
-		
-	}
-	
-	
 
 	
 }
