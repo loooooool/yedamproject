@@ -46,7 +46,7 @@
 					<span class="help-block">수정할 총 수업시간을 입력하세요</span>
 				</div>
 				<div class="form-group">
-					<label for="nf-email"><strong>과정</strong></label>
+					<label for="nf-email"><strong>과정 구분</strong></label>
 						<div class="form-check">
 							<input type="radio" name="class_cd" id = "radio1" value="C1"  
 								<c:if test="${cl.class_cd eq 'C1'}"> checked="checked" </c:if>/>과정평가반
@@ -55,7 +55,7 @@
 								<c:if test="${cl.class_cd eq 'C2'}"> checked="checked" </c:if>/>단위기간평가반
 					</div>
 				</div>
-				<div class="card-body">
+				<div class="card-body" align="right">
 				<input type="submit" class="btn btn-warning" value="수정" />&nbsp; 
 				<input type="button" class="btn btn-secondary" onclick="location.href='getClassList'" value="목록" />
 				</div>

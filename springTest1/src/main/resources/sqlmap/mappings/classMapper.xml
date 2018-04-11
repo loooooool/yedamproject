@@ -13,7 +13,6 @@
 	</resultMap>
 
 	<select id="getClassList" resultType="class">
-
 		SELECT cl_no
 		,class_name
 		,address
@@ -22,14 +21,13 @@
 		,GET_CODENAME(class_cd) "class_nm"
 		FROM class
 		ORDER BY cl_no DESC
-
 	</select>
 
 	<select id="getClass" resultType="class" parameterType="class">
 		SELECT *
 		FROM class WHERE cl_no=#{cl_no}
 	</select>
-	
+
 	<select id="getCount" resultType="int">
 		select count(*) from class
 	</select>

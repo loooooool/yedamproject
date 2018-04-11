@@ -7,6 +7,24 @@ public class SubjectVO {
 	private int totalTime;
 	private int first;
 	private int last;
+	private String class_name;
+	private int cl_no;
+	
+	public int getCl_no() {
+		return cl_no;
+	}
+
+	public void setCl_no(int cl_no) {
+		this.cl_no = cl_no;
+	}
+
+	public String getClass_name() {
+		return class_name;
+	}
+
+	public void setClass_name(String class_name) {
+		this.class_name = class_name;
+	}
 
 	public int getFirst() {
 		return first;
@@ -59,6 +77,7 @@ public class SubjectVO {
 	@Override
 	public String toString() {
 		return "SubjectVO [su_no=" + su_no + ", status_yn=" + status_yn + ", subject=" + subject + ", totalTime="
-				+ totalTime + "]";
+				+ totalTime + ", class_name=" + class_name + "]";
 	}
+
 }

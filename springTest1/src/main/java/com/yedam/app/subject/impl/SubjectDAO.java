@@ -38,5 +38,10 @@ public class SubjectDAO {
 	public int getCount(SubjectVO vo) {
 		return sqlSession.selectOne("subject.getCount", vo);
 	}
+	
+	public List<SubjectVO> getSubjectListAjax( SubjectVO vo) {
+		return sqlSession.selectList("subject.getSubjectListAjax", vo);
+	}
+	
 
 }
