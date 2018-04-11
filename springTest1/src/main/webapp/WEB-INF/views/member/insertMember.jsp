@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
           <form action="" method="post" class="form-horizontal">
-            <div class="dropdown">
+            
             
                  <!--  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     	과정명선택
@@ -25,25 +25,33 @@
                   <select id="subject" name="subject">
                   	<option value="" selected="selected">과정선택</option>
                   <c:forEach items="${classList}" var="classs">
-                  <option value="${cl_no}">${classs.class_name}</option>
+                  <option value="${classs.cl_no}">${classs.class_name}</option>
              
                   </c:forEach>
                   </select>
-                </div>
+                  
+                  <select id="subjectType" name="subjectType">
+                  	<option value="" selected="selected">과정구분</option>
+                  <c:forEach items="${CodeList}" var="codelist">
+                  <option value="${codelist.code_no}">${codelist.code_name}</option>
+             
+                  </c:forEach>
+                  </select>
+                
                <hr>
             <div class="form-group row">
             
             
               <label class="col-md-3 col-form-label" for="hf-email">이름</label>
               <div class="col-md-9">
-                <input type="email" id="hf-email" name="hf-email" class="form-control" placeholder="이름">
+                <input type="email" id="name" name="name" class="form-control" placeholder="이름">
                 
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 col-form-label" for="hf-password">생년월일</label>
               <div class="col-md-9">
-                <input type="password" id="hf-password" name="hf-password" class="form-control" placeholder="ex)920903">
+                <input type="password" id="social_number" name="social_number" class="form-control" placeholder="ex)920903">
                 
               </div>
             </div>

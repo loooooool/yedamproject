@@ -1,5 +1,7 @@
 package com.yedam.app.member.view;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classes.ClassVO;
+import com.yedam.app.code.impl.CodeDAO;
 import com.yedam.app.common.Paging;
 import com.yedam.app.member.MemberService;
 import com.yedam.app.member.MemberVO;
@@ -20,6 +23,9 @@ public class MemberController {
 	
 	@Autowired
 	ClassService classService;
+	
+	@Autowired
+	CodeDAO dao;
 	
 	@RequestMapping("/getMemberList")
 	public String getBoardList(Model model, MemberVO vo, Paging paging) {
@@ -50,8 +56,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/insertMember")
-	public String insertMember(Model model, ClassVO vo){
+	public String insertMember(Model model, ClassVO vo, Map<String,Object> vo2){
 		model.addAttribute("classList", classService.getClassList(vo));
+		model.addAttribute("CodeList", dao.getCodeList(vo2));
 		return "member/insertMember";
 }
 	
