@@ -106,10 +106,10 @@ function updateComment(){
 		작성일:${sugt.s_date} 조회수 : ${sugt.cnt} 
 	</div>
 	<div class="card-body" align="right" >
-          <a href="getSugtList"> <button type="button" class="btn btn-secondary">목록</button></a>
-          <a href="insertSugtForm"><button type="button" class="btn btn-info">글쓰기</button></a>
-          <a href="updateSugtForm?s_no=${sugt.s_no}"><button type="button" class="btn btn-warning" >수정</button></a>
-          <a href="deleteSugt?s_no=${sugt.s_no}"><button type="button" class="btn btn-danger" >삭제</button></a>
+          <a href="getSugtList" class="btn btn-secondary"> 목록</a>
+          <a href="insertSugtForm" class="btn btn-info">글쓰기</a>
+          <a href="updateSugtForm?s_no=${sugt.s_no}" class="btn btn-warning">수정</a>
+          <a href="deleteSugt?s_no=${sugt.s_no}" class="btn btn-danger">삭제</a>
  	 </div>
  	
  	<hr>

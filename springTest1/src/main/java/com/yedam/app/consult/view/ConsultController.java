@@ -58,7 +58,8 @@ public class ConsultController {
 	
 	//수정폼
 	@RequestMapping("/updateConsultForm")
-	public String updateConsultForm(Model model, ConsultVO vo) {
+	public String updateConsultForm(Model model, ConsultVO vo, ClassVO cvo) {
+		model.addAttribute("classList",classService.getClassList(cvo));
 		model.addAttribute("consult", consultService.getConsult(vo));
 		return "consult/updateConsult";
 	}
@@ -78,31 +79,35 @@ public class ConsultController {
 		return "redirect:/getConsultList";
 		}
 	
+	//등록처리
 	@RequestMapping("/insertConsult")
 	public String insertConsult(ConsultVO vo) {
 		consultService.insertConsult(vo);
 		return "redirect:/getConsultList";
 	}
 	
+	//등록폼으로
+	@RequestMapping("/insertConsultForm")
+	public String insertConsultForm(Model model, ConsultVO vo, ClassVO cvo, MemberVO mvo) {
+		model.addAttribute("memberList",memberService.getMemberList(mvo));
+		model.addAttribute("classList",classService.getClassList(cvo));
+		return "consult/insertConsultForm";
+	}
+	
+	//과정에 해당하는 학생 불러오기
+	@RequestMapping("/getStudentList")
+	@ResponseBody
+	public List<MemberVO> getStudentList( ConsultVO vo) {
+		return consultService.getStudentList(vo);
+	}
+
+	//학생 선택하면 해당하는 상담일지 가져오기
 	@RequestMapping("/getConsultAjax")
 	@ResponseBody
 	public List<ConsultVO> getconsult(String s_detail ) {
 		ConsultVO vo = new ConsultVO();
 		vo.setS_detail(s_detail);
 		return consultService.getConsultAjax(vo);
-	}
-	
-	@RequestMapping("/insertConsultForm")
-	public String insertConsultForm(Model model, ConsultVO vo, ClassVO cvo, MemberVO mvo) {
-		model.addAttribute("memberList",memberService.getMemberList(mvo));
-		model.addAttribute("classList",classService.getClassList(cvo));
-		return "consult/insertConsult";
-	}
-	
-	@RequestMapping("/getStudentList")
-	@ResponseBody
-	public List<MemberVO> getStudentList(ConsultVO vo) {
-		return consultService.getStudentList(vo);
 	}
 	
 }

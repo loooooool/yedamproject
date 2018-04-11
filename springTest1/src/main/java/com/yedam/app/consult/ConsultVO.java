@@ -1,6 +1,5 @@
 package com.yedam.app.consult;
 
-import java.util.Date;
 
 public class ConsultVO {
 
@@ -14,11 +13,20 @@ public class ConsultVO {
 	
 	private String s_name;
 	private String c_name;
+	private String c_writer;
 	
 	private Integer first;
 	private Integer last;
 	
 	
+	
+	
+	public String getC_writer() {
+		return c_writer;
+	}
+	public void setC_writer(String c_writer) {
+		this.c_writer = c_writer;
+	}
 	public String getS_name() {
 		return s_name;
 	}
@@ -91,9 +99,10 @@ public class ConsultVO {
 	@Override
 	public String toString() {
 		return "ConsultVO [c_no=" + c_no + ", cdate=" + cdate + ", s_detail=" + s_detail + ", cl_no=" + cl_no
-				+ ", title=" + title + ", content=" + content + ", writer=" + writer + "]";
+				+ ", title=" + title + ", content=" + content + ", writer=" + writer + ", s_name=" + s_name
+				+ ", c_name=" + c_name + ", c_writer=" + c_writer + ", first=" + first + ", last=" + last + "]";
 	}
-
+	
 	
 	
 	
