@@ -1,22 +1,25 @@
 package com.yedam.app.member.view;
 
-import java.util.Locale;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.yedam.app.classes.ClassService;
+import com.yedam.app.classes.ClassVO;
 import com.yedam.app.common.Paging;
-import com.yedam.app.member.MemberVO;
 import com.yedam.app.member.MemberService;
+import com.yedam.app.member.MemberVO;
 
 @Controller
 public class MemberController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	ClassService classService;
 	
 	@RequestMapping("/getMemberList")
 	public String getBoardList(Model model, MemberVO vo, Paging paging) {
@@ -46,7 +49,11 @@ public class MemberController {
 		return "/member/find_pwd_form";
 	}
 	
-	
+	@RequestMapping("/insertMember")
+	public String insertMember(Model model, ClassVO vo){
+		model.addAttribute("classList", classService.getClassList(vo));
+		return "member/insertMember";
+}
 	
 	
 

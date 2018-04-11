@@ -83,7 +83,7 @@
             <a class="nav-link" href="charts.html"><i class="icon-pie-chart"></i> 일정표</a>
           </li>
           <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>학생</a>
+            <a class="nav-link nav-dropdown-toggle" href="insertMember"><i class="icon-star"></i>학생관리</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="widgets.html"><i class="icon-calculator"></i>공휴일<span class="badge badge-primary">NEW</span></a>
