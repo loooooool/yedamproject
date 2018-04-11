@@ -43,6 +43,11 @@ public class SubjectServiceImpl implements SubjectService {
 	public SubjectVO getSubject(SubjectVO vo) {
 		return dao.getSubject(vo);
 	}
+
+	@Override
+	public List<SubjectVO> getSubjectListAjax(SubjectVO vo) {
+		return dao.getSubjectListAjax(vo);
+	}
 	
 	
 

@@ -36,7 +36,7 @@
 					<span class="help-block">총	수업시간을 입력하세요</span>
 				</div>
 				<div class="form-group">
-					<label for="nf-email"><strong>과정</strong></label>
+					<label for="nf-email"><strong>과정 구분</strong></label>
 						<div class="form-check">
 							<input class="form-check-input" type="radio" value="C1" id="radio1" name="class_cd"> 
 							<label class="form-check-label" for="radio1"> 과정평가반</label>
@@ -46,7 +46,7 @@
 							<label class="form-check-label" for="radio2"> 단위기간평가반</label>
 					</div>
 				</div>
-				<div class="card-body">
+				<div class="card-body" align="right">
 				<input type="submit" class="btn btn-info" value="등록" />&nbsp; 
 				<input type="button" class="btn btn-secondary" onclick="location.href='getClassList'" value="목록" />
 				</div>

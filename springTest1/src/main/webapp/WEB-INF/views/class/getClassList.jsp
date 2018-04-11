@@ -8,11 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>과정 목록</title>
 <script>
-function go_list(page){
-	document.getElementsByName("page")[0].value=page;
-	// location.href="getBoardList?page="+page;
-	document.forms[0].submit();
-}
+	function go_list(page) {
+		document.getElementsByName("page")[0].value = page;
+		// location.href="getBoardList?page="+page;
+		document.forms[0].submit();
+	}
 </script>
 </head>
 <body>
@@ -22,6 +22,7 @@ function go_list(page){
 		</div>
 		<div class="card-body">
 			<form action="getClassList">
+				<input type="hidden" name="page" value="1" /> <br>
 				<table id="example" class="table table-responsive-sm table-striped"
 					style="width: 100%">
 					<thead>
@@ -31,7 +32,7 @@ function go_list(page){
 							<th scope="col">강의실</th>
 							<th scope="col">시간표</th>
 							<th scope="col">총수업시간</th>
-							<th scope="col">과정</th>
+							<th scope="col">과정구분</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -48,9 +49,10 @@ function go_list(page){
 					</tbody>
 				</table>
 			</form>
-			<my:paging paging="${paging }" jsfunc="go_list"/>
-			<div class="card-body">
-			<input type="button" class="btn btn-info" onclick="location.href='insertClass'" value="등록" />
+			<my:paging paging="${paging }" jsfunc="go_list" />
+			<div class="card-body" align="right">
+				<input type="button" class="btn btn-info"
+					onclick="location.href='insertClass'" value="등록" />
 			</div>
 		</div>
 	</div>

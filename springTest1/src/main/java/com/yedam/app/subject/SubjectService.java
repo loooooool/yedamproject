@@ -10,4 +10,5 @@ public interface SubjectService {
 	public List<SubjectVO> getSubjectList(SubjectVO vo);
 	public SubjectVO getSubject(SubjectVO vo);
 	public int getCount(SubjectVO vo);
+	public List<SubjectVO> getSubjectListAjax( SubjectVO vo);
 }

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,21 +28,21 @@ public class ClassController {
 
 	@Autowired
 	ClassService classService;
-	
+
 	// 목록
 	@RequestMapping("/getClassList")
 	public String getClassList(Model model, ClassVO vo, Paging paging) {
 		// 전체 레코드 건수
 		paging.setTotalRecord(classService.getCount(vo));
-		
+
 		// vo의 first, last setting
 		vo.setFirst(paging.getFirst());
 		vo.setLast(paging.getLast());
-		
+
 		// 결과저장
 		model.addAttribute("classList", classService.getClassList(vo));
-		model.addAttribute("paging",paging);
-		
+		model.addAttribute("paging", paging);
+
 		return "class/getClassList";
 	}
 
@@ -70,7 +69,7 @@ public class ClassController {
 		classService.insertClass(vo);
 		return "redirect:/getClassList";
 	}
-	
+
 	// 상세보기
 	@RequestMapping("/getClass/{cl_no}")
 	public ModelAndView getClass(@PathVariable Integer cl_no) {

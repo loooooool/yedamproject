@@ -11,7 +11,6 @@ public class ClassVO {
 	private int first;
 	private int last;
 	
-
 	public String getClass_nm() {
 		return class_nm;
 	}

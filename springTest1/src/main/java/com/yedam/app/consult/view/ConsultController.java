@@ -101,7 +101,7 @@ public class ConsultController {
 	
 	@RequestMapping("/getStudentList")
 	@ResponseBody
-	public List<MemberVO> getStudentList( ConsultVO vo) {
+	public List<MemberVO> getStudentList(ConsultVO vo) {
 		return consultService.getStudentList(vo);
 	}
 	

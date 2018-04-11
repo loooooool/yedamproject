@@ -61,7 +61,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="card-body">
+	<div class="card-body" align="right">
 	<input type="button" class="btn btn-warning" onclick="location.href='../updateClassForm?cl_no=${cl.cl_no}'" value="수정" />&nbsp;
 	<input type="button" class="btn btn-danger"  onclick="location.href='../deleteClass?cl_no=${cl.cl_no }'" value="삭제" />&nbsp;
 	<input type="button" class="btn btn-secondary" onclick="location.href='../getClassList'" value="목록" />
