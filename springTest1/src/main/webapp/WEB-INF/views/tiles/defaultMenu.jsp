@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
  <nav class="sidebar-nav">
         <ul class="nav">
@@ -21,10 +21,11 @@
             <a href="typography.html" class="nav-link"><i class="icon-pencil"></i> 예담 달력</a>
           </li>
           <!-- -회원 -->
+        
+        <c:if test="${sessionScope.memberVO.member_cd=='M1'}">
           <li class="nav-title">
-            ~회원님
+         	${sessionScope.memberVO.name} 회원님
           </li>
-         
           <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> 마이페이지</a>
             
@@ -46,9 +47,13 @@
         	  </li>
             </ul>
           </li>
+         </c:if>
+          
           <!-- 관리자 -->
+          
+          <c:if test="${sessionScope.memberVO.member_cd=='M2' or sessionScope.memberVO.member_cd=='M3'}">
           <li class="nav-title">
-            ~관리자님
+            ${sessionScope.memberVO.name} 관리자님
           </li>
           
            <li class="nav-item nav-dropdown">
@@ -86,7 +91,9 @@
           <li class="nav-item">
             <a class="nav-link" href="getConsultList"><i class="icon-calculator"></i>상담일지<span class="badge badge-primary">NEW</span></a>
           </li>
+         </c:if>  
         </ul>
+         
       </nav>
       <button class="sidebar-minimizer brand-minimizer" type="button"></button>
       
