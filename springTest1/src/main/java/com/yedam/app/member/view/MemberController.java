@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yedam.app.common.Paging;
 import com.yedam.app.member.MemberVO;
-import com.yedam.app.member.impl.MemberService;
+import com.yedam.app.member.MemberService;
 
 @Controller
 public class MemberController {

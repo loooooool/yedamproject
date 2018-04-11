@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.yedam.app.member.impl.MemberService;
+import com.yedam.app.member.MemberService;
 
 @Controller
 public class LoginController {

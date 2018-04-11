@@ -14,7 +14,7 @@ import com.yedam.app.common.Paging;
 import com.yedam.app.consult.ConsultService;
 import com.yedam.app.consult.ConsultVO;
 import com.yedam.app.member.MemberVO;
-import com.yedam.app.member.impl.MemberService;
+import com.yedam.app.member.MemberService;
 
 @Controller
 public class ConsultController {
