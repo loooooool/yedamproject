@@ -11,7 +11,6 @@
 <script>
 	function go_list(page) {
 		document.getElementsByName("page")[0].value = page;
-		// location.href="getBoardList?page="+page;
 		document.forms[0].submit();
 	}
 
@@ -20,7 +19,9 @@
 	var context = '${pageContext.request.contextPath}';
 
 	function getClass() {
-		var params = {	cl_no : $("#selectClass").val() }
+		var params = {
+			cl_no : $("#selectClass").val()
+		}
 		$.getJSON(context + "/getSubjectListAjax", params, function(datas) {
 			$("#table").empty();
 			for (i = 0; i < datas.length; i++) {
@@ -44,7 +45,7 @@
 				<label class="col-md-3 col-form-label" for="select1">과정</label>
 				<div class="col-md-9">
 					<select id="selectClass" name="select1" onchange="getClass()" class="form-control">
-						<option value="0">과정선택</option>
+						<option value="">과정선택</option>
 						<c:forEach items="${classList}" var="cl">
 							<option value="${cl.cl_no}">${cl.class_name}</option>
 						</c:forEach>
@@ -55,6 +56,10 @@
 			<div class="card-body">
 				<form action="getSubjectList">
 					<br>
+					<div class="card-body" align="right">
+						<input type="button" class="btn btn-secondary" onclick="location.href='getSubjectList'" value="목록" />
+						<input type="button" class="btn btn-info" onclick="location.href='insertSubject'" value="등록" />
+					</div>
 					<table id="example" class="table table-responsive-sm table-striped"
 						style="width: 100%">
 						<thead>
@@ -80,9 +85,7 @@
 					</table>
 				</form>
 				<my:paging paging="${paging }" jsfunc="go_list" />
-				<div class="card-body" align="right">
-					<input type="button" class="btn btn-info" onclick="location.href='insertSubject'" value="등록" />
-				</div>
+				
 			</div>
 		</div>
 	</div>

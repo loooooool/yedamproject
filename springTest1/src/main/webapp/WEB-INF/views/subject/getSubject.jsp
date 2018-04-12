@@ -6,6 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>과목 상세</title>
+<script>
+$(document).ready(function(){ 
+	$('#del').click(function() { 
+		var result = confirm('정말로 삭제하시겠습니까?');
+			if(result) { 
+				location.replace('../deleteSubject?su_no=${su.su_no }'); 
+			} else { 
+		} 
+	});
+});
+
+</script>
 
 </head>
 <body>
@@ -51,7 +63,7 @@
 	</div>
 	<div class="card-body" align="right">
 	<input type="button" class="btn btn-warning" onclick="location.href='../updateSubjectForm?su_no=${su.su_no}'" value="수정" />&nbsp;
-	<input type="button" class="btn btn-danger"  onclick="location.href='../deleteSubject?su_no=${su.su_no }'" value="삭제" />&nbsp;
+	<input type="button" class="btn btn-danger"  id="del" value="삭제" />&nbsp;
 	<input type="button" class="btn btn-secondary" onclick="location.href='../getSubjectList'" value="목록" />
 	</div>
 </body>

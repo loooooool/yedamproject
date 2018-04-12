@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>과정 등록</title>
+<script>
+    function insert(){
+        alert("등록하시겠습니까?");
+    }
+</script>
 
 </head>
 <body>
@@ -52,7 +57,7 @@
 					</div>
 				</div>
 				<div class="card-body" align="right">
-				<input type="submit" class="btn btn-info" value="등록" />&nbsp; 
+				<input type="submit" class="btn btn-info" value="등록" onclick="javascript:insert()"/>&nbsp; 
 				<input type="button" class="btn btn-secondary" onclick="location.href='getClassList'" value="목록" />
 				</div>
 			</form>
