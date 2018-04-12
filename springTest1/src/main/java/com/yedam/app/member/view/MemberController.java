@@ -2,11 +2,14 @@ package com.yedam.app.member.view;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classes.ClassVO;
@@ -55,13 +58,29 @@ public class MemberController {
 		return "/member/find_pwd_form";
 	}
 	
-	@RequestMapping("/insertMember")
-	public String insertMember(Model model, ClassVO vo, Map<String,Object> vo2){
+	//학생 등록 폼
+	@RequestMapping("/insertMemberForm")
+	public String insertMemberForm(Model model, ClassVO vo, Map<String,Object> vo2){
 		model.addAttribute("classList", classService.getClassList(vo));
 		model.addAttribute("CodeList", dao.getCodeList(vo2));
 		return "member/insertMember";
-}
-	
+}	
+	//학생등록 처리
+	@RequestMapping(value="/memberTestView", method=RequestMethod.POST)
+	public String memberTestView(@RequestParam String[] name,@RequestParam String[] social_number,HttpServletRequest request){
+		
+		System.out.println(request.getParameter("subject"));
+		System.out.println(request.getParameter("subjectType"));
+		
+		for(int i=0;i<name.length;i++) {
+			System.out.println(name[i]);
+			System.out.println(social_number[i]);
+		}
+		
+		
+		
+		return "redirect:/insertMemberForm";
+	}
 	
 
 }
