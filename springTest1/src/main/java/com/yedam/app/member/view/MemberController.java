@@ -1,8 +1,6 @@
 package com.yedam.app.member.view;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classes.ClassVO;
+import com.yedam.app.classinfo.ClassInfoService;
 import com.yedam.app.code.impl.CodeDAO;
 import com.yedam.app.common.Paging;
 import com.yedam.app.member.MemberService;
@@ -29,6 +28,9 @@ public class MemberController {
 	
 	@Autowired
 	ClassService classService;
+	
+	@Autowired
+	ClassInfoService classInfoService;
 	
 	@Autowired
 	CodeDAO dao;
@@ -94,6 +96,7 @@ public class MemberController {
 			map.put("course_type_cd", request.getParameter("subjectType"));
 			
 			memberService.insertMember(map);
+			classInfoService.insertClassInfo(map);
 		}
 		
 		//

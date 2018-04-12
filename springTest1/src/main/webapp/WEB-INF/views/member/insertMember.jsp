@@ -7,7 +7,7 @@
 
 <style>
 #add{
-	margin-left : 560px;
+	margin-left : 590px;
 }
 
 </style>
