@@ -17,6 +17,7 @@
 	</resultMap>
 
 	<select id="getSubjectList" resultType="subject">
+	select a.* from ( select rownum rn, b.* from (
 
 		select su.su_no "su_no"
 		,su.subject "subject"
@@ -26,6 +27,8 @@
 		from subject su join class cl
 		on(su.cl_no = cl.cl_no)
 		order by su.su_no desc
+		
+	) b ) a where rn between #{first} and #{last}
 	</select>
 
 	<select id="getSubject" resultType="subject" parameterType="subject">
