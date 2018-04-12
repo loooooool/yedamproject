@@ -1,8 +1,10 @@
 package com.yedam.app.member;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+
 
 public interface MemberService {
 
@@ -13,4 +15,6 @@ public interface MemberService {
 	public List<MemberVO> getMemberList(MemberVO vo);
 	public void memberUpdate(MemberVO vo);
 	public void changePwd(MemberVO vo);
+	public void insertMember(Map<String,Object> vo);
+	public String getRn();
 }
