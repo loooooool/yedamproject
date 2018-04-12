@@ -46,6 +46,19 @@ public class MemberController {
 		memberService.memberUpdate(vo);
 	}
 	
+	//비밀번호 변경 폼
+	@RequestMapping("/changePwdForm")
+	public String changePwdForm(MemberVO vo) {
+		return "member/changePwd";
+	}
+	
+	//비밀번호 변경 처리
+	@RequestMapping(value="/changePwd", method=RequestMethod.POST)
+	public String changePwd(MemberVO vo) {
+		memberService.changePwd(vo);
+		return "redirect:/changePwdForm";
+	}
+	
 	
 	
 	

@@ -39,10 +39,15 @@ public class MemberMyBatisDAO {
 	}
 	
 	public void memberUpdate(MemberVO vo) {
-		sqlSession.update("memberUpdate", vo);
+		sqlSession.update("member.memberUpdate", vo);
 	}
 	
 	public void changePwd(MemberVO vo) {
-		sqlSession.update("changePwd", vo);
+		sqlSession.update("member.changePwd", vo);
 	}
+	
+	
+	/*public void changePwd(MemberVO vo) {
+		sqlSession.update("member.changePwd", vo);
+	}*/
 }
