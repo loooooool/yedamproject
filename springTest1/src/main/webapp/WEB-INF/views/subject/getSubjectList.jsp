@@ -24,8 +24,8 @@
 		$.getJSON(context + "/getSubjectListAjax", params, function(datas) {
 			$("#table").empty();
 			for (i = 0; i < datas.length; i++) {
-				$("#table").append("<tr><td>" + datas[i].su_no + "</td>"
-					+ "<td><a href='getSubject?su_no=datas[i].su_no}'>" + datas[i].subject + "</a></td>"
+				$("#table").append("<tr><td><a href=getSubject/" + datas[i].su_no + ">" + datas[i].su_no + "</a></td>"
+					+ "<td>" + datas[i].subject + "</td>"
 					+ "<td>" + datas[i].totalTime + "</td>"
 					+ "<td>" + datas[i].class_name + "</td>"
 					+ "<td>" + datas[i].status_yn + "</td></tr>");
@@ -59,7 +59,7 @@
 						style="width: 100%">
 						<thead>
 							<tr>
-								<th scope="col">No</th>
+								<th scope="col">번호</th>
 								<th scope="col">과목명</th>
 								<th scope="col">시간</th>
 								<th scope="col">과정명</th>

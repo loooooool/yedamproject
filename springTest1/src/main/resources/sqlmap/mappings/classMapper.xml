@@ -10,15 +10,16 @@
 		<result property="timeTable" column="timetable" />
 		<result property="totalTime" column="totaltime" />
 		<result property="class_cd" column="class_cd" />
+		<result property="totaldays" column="totaldays" />
 	</resultMap>
 
 	<select id="getClassList" resultType="class">
 		SELECT cl_no
 		,class_name
 		,address
-		,timetable
 		,totaltime
 		,GET_CODENAME(class_cd) "class_nm"
+		,totaldays
 		FROM class
 		ORDER BY cl_no DESC
 	</select>
@@ -41,6 +42,7 @@
 		,class_name
 		,address
 		,totaltime
+		,totaldays
 		,class_cd
 		<if test="timeTable != null and timeTable != ''">
 			,timetable
@@ -51,6 +53,7 @@
 		#{class_name},
 		#{address},
 		#{totalTime},
+		#{totaldays},
 		#{class_cd}
 		<if test="timeTable != null and timeTable != ''">
 			,#{timeTable}
@@ -68,6 +71,7 @@
 		</if>
 		,totaltime=#{totalTime}
 		,class_cd=#{class_cd}
+		,totaldays=#{totaldays}
 		WHERE cl_no=#{cl_no}
 
 	</update>
