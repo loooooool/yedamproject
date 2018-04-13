@@ -1,8 +1,7 @@
 package com.yedam.app.member.impl;
 
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,7 +54,26 @@ public class MemberServiceImpl implements MemberService {
 		dao.changePwd(vo);
 	}
 
+	//학생추가
+	@Override
+	public void insertMember(Map<String,Object> vo) {
+		dao.insertMember(vo);
+	}
 	
+	@Override
+	public String getRn() {
+		return dao.getRn();
+	}
+		
+	/*//학생추가
+	@Override
+	public void insertMember(Map<String,Object> vo) {
+		dao.insertMember(vo);
+	}
 	
+	@Override
+	public String getRn() {
+		return dao.getRn();
+	}*/
 	
 }

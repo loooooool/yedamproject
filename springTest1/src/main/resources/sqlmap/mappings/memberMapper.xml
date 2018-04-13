@@ -6,52 +6,27 @@
 
 	<!-- getMemberList 목록검색 -->
 	<select id="getMemberList" resultType="member" parameterType="String">
-
+	
 		select * from member
-		order by member_cd desc
-
-	</select>
-
+    	 order by member_cd desc
+		
+	</select> 
+	
 	<select id="getMember_id" resultType="member" parameterType="String">
-		select * from members_vo
-
+		select * from member 
+		
 		where member_id = #{member_id}
 	</select>
-
-	<!-- <member_id> - <과정명>   연결, 조회  -->
-	<select id="class_name" resultType="member" parameterType="String">
-		select name, class_name
-		from CLASS_INFO ci
-			inner join CLASS cs
-		on cs.CL_NO = ci.CL_NO
-			inner join MEMBER m
-		on ci.MEMBER_ID = m.MEMBER_ID
-	</select>
-
-	<!--  비밀번호 맞는지 체크 -->
-	<select id="checkPwd" resultType="member" parameterType="String">
-		select count (*) 
-		from member
-		where member_id = #{member_id} AND pwd = #{pwd}
-	</select>
 	
-	
-	
-	<!-- 비밀번호 update -->
-	<update id="changePwd" parameterType="member">
-		update member 
-		set pwd = #{pwd2} 
-		where member_id = #{member_id}
-	</update>
-
-	<!-- update -->
+	<!-- update : 패스워드, 이메일형식 -->
 	<update id="memberUpdate" parameterType="member">
-		update member
-		set	eng_name = #{eng_name},
+		update member 
+		set pwd = #{pwd}, 
+			eng_name = #{eng_name},
 			school_spec_cd = #{school_spec_cd},
 			major = #{major},
 			social_number = #{social_number},
-			email = #{email}, <!-- 이메일 형식:@선택 혹은 직접입력 -->
+			email = #{email}, <!--  이메일 형식:@선택 혹은 직접입력 -->
 			address = #{address},
 			phone = #{phone},
 			h_phone = #{h_phone},

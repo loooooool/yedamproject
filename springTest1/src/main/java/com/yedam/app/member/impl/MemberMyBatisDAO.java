@@ -2,6 +2,7 @@ package com.yedam.app.member.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,4 +51,12 @@ public class MemberMyBatisDAO {
 	/*public void changePwd(MemberVO vo) {
 		sqlSession.update("member.changePwd", vo);
 	}*/
+	
+	public void insertMember(Map<String,Object> vo) {
+		sqlSession.insert("member.insertMember",vo);
+	}
+	
+	public String getRn() {
+		return sqlSession.selectOne("member.getRn");
+	}
 }

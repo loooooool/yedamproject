@@ -6,7 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>과목 수정</title>
-
+<script>
+    function update(){
+        alert("수정하시겠습니까?");
+    }
+</script>
 </head>
 <body>
 	<div class="card">
@@ -50,7 +54,7 @@
 					</div>
 				</div>
 				<div class="card-body" align="right">
-				<input type="submit" class="btn btn-warning" value="수정" />&nbsp; 
+				<input type="submit" class="btn btn-warning" value="수정" onclick="javascript:update()"/>&nbsp; 
 				<input type="button" class="btn btn-secondary" onclick="location.href='getSubjectList'" value="목록" />
 				</div>
 			</form>

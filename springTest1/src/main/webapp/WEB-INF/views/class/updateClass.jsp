@@ -6,7 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>과정 등록</title>
-
+<script>
+    function update(){
+        alert("수정하시겠습니까?");
+    }
+</script>
 </head>
 <body>
 	<div class="card">
@@ -27,16 +31,16 @@
 					<span class="help-block">수정할 강의실을 입력하세요</span>
 				</div>
 				<div class="form-group">
-				<c:if test="${not empty timeTable}">
+				<c:if test="${not empty cl.timeTable}">
 					<label for="nf-email"><strong>기존 파일</strong></label>
-					${cl.timeTable } 
+										${cl.timeTable } 
 				</c:if>
 				</div>				
 				<div class="form-group row">
 				<c:if test="${empty timeTable}">
 					<label class="col-md-3 col-form-label" for="file-input"><strong>시간표 수정</strong></label>
 					<div class="col-md-10">
-						<input type="file" id="file-input" name="file-input">
+						<input type="file" id="file-input" name="attach_file">
 					</div>
 				</c:if>
 				</div>
@@ -44,6 +48,11 @@
 					<label for="nf-email"><strong>총 수업시간</strong></label> 
 					<input type="text" id="nf-email" name="totalTime" class="form-control" value="${cl.totalTime }"> 
 					<span class="help-block">수정할 총 수업시간을 입력하세요</span>
+				</div>
+				<div class="form-group">
+					<label for="nf-email"><strong>총 수업일수</strong></label> 
+					<input type="text" id="nf-email" name="totaldays" class="form-control" value="${cl.totalTime }"> 
+					<span class="help-block">수정할 총 수업일수를 입력하세요</span>
 				</div>
 				<div class="form-group">
 					<label for="nf-email"><strong>과정 구분</strong></label>
@@ -56,7 +65,7 @@
 					</div>
 				</div>
 				<div class="card-body" align="right">
-				<input type="submit" class="btn btn-warning" value="수정" />&nbsp; 
+				<input type="submit" class="btn btn-warning" value="수정" onclick="javascript:update()"/>&nbsp; 
 				<input type="button" class="btn btn-secondary" onclick="location.href='getClassList'" value="목록" />
 				</div>
 			</form>

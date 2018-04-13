@@ -10,7 +10,16 @@ public class ClassVO {
 	private String class_nm;
 	private int first;
 	private int last;
+	private int totaldays;
 	
+	public int getTotaldays() {
+		return totaldays;
+	}
+
+	public void setTotaldays(int totaldays) {
+		this.totaldays = totaldays;
+	}
+
 	public String getClass_nm() {
 		return class_nm;
 	}

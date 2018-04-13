@@ -10,7 +10,7 @@
 <script>
 	function go_list(page) {
 		document.getElementsByName("page")[0].value = page;
-		// location.href="getBoardList?page="+page;
+		 //location.href="getClassList?page="+page;
 		document.forms[0].submit();
 	}
 </script>
@@ -23,27 +23,26 @@
 		<div class="card-body">
 			<form action="getClassList">
 				<input type="hidden" name="page" value="1" /> <br>
-				<table id="example" class="table table-responsive-sm table-striped"
-					style="width: 100%">
+				<table id="example" class="table table-responsive-sm table-striped" style="width: 100%">
 					<thead>
 						<tr>
-							<th scope="col">No</th>
+							<th scope="col">번호</th>
+							<th scope="col">과정구분</th>
 							<th scope="col">과정명</th>
 							<th scope="col">강의실</th>
-							<th scope="col">시간표</th>
 							<th scope="col">총수업시간</th>
-							<th scope="col">과정구분</th>
+							<th scope="col">총수업일수</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${classList }" var="cl">
 							<tr>
 								<th scope="row"><a href="getClass/${cl.cl_no }">${cl.cl_no}</a></th>
+								<td>${cl.class_nm}</td>
 								<td>${cl.class_name}</td>
 								<td>${cl.address}</td>
-								<td>${cl.timeTable}</td>
 								<td>${cl.totalTime}</td>
-								<td>${cl.class_nm}</td>
+								<td>${cl.totaldays}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -51,8 +50,7 @@
 			</form>
 			<my:paging paging="${paging }" jsfunc="go_list" />
 			<div class="card-body" align="right">
-				<input type="button" class="btn btn-info"
-					onclick="location.href='insertClass'" value="등록" />
+				<input type="button" class="btn btn-info" onclick="location.href='insertClass'" value="등록" />
 			</div>
 		</div>
 	</div>
