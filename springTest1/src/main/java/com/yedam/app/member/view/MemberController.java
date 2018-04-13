@@ -54,10 +54,21 @@ public class MemberController {
 		memberService.memberUpdate(vo);
 	}
 	
+	//비밀번호 변경 폼
+		@RequestMapping("/changePwdForm")
+		public String changePwdForm(MemberVO vo) {
+			return "member/changePwd";
+		}
+		
+	//비밀번호 변경 처리
+		@RequestMapping(value="/changePwd", method=RequestMethod.POST)
+		public String changePwd(MemberVO vo) {
+			memberService.changePwd(vo);
+			return "redirect:/changePwdForm";
+		}
 	
 	
-	
-	//비밀번호 찾기(4.10 미완성)
+	//비밀번호 찾기(4.10 미완성)------------------------------------------------------------
 	@RequestMapping(value="/find_pwd_form")
 	public String find_pwd_form() throws Exception{
 		return "/member/find_pwd_form";

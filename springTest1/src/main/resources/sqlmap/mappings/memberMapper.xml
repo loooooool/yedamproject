@@ -13,10 +13,17 @@
 	</select> 
 	
 	<select id="getMember_id" resultType="member" parameterType="String">
-		select * from member 
+		select * from members_vo
 		
 		where member_id = #{member_id}
 	</select>
+	
+	<!-- 비밀번호 update -->
+	<update id="changePwd" parameterType="member">
+		update member 
+		set pwd = #{pwd2} 
+		where member_id = #{member_id}
+	</update>
 	
 	<!-- update : 패스워드, 이메일형식 -->
 	<update id="memberUpdate" parameterType="member">
