@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 </head>
 <body>
-<form action="find_pwd">
+<form action="mailSend" name="form1">
 	<!-- <div class="w3-content w3-container w3-margin-top">
 		<div class="w3-container w3-card-4">
 			<div class="w3-center w3-large w3-margin-top">
