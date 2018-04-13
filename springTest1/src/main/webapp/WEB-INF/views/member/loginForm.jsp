@@ -26,7 +26,6 @@ $(document).ready(function(){
             $("#pwd").focus();
             return false;
         }
-  
         // 제출
         document.form1.submit();
     });
@@ -58,11 +57,13 @@ $(document).ready(function(){
               </div>
               <div class="row">
                 <div class="col-6">
-                  <button type="button" id="btnLogin" class="btn btn-primary px-4" value="login"> Login </button>
+                  <button type="button" id="btnLogin" name="btnLogin" class="btn btn-primary px-4" value="login"> Login </button>
                 </div>
                 <!-- <input type="submit" value="login"> -->
                 <div class="col-6 text-right">
-                  <button type="button" class="btn btn-link px-0" id="find_pwd_btn">Forgot password?</button>
+                  <button type="button" id="find_pwd" name="find_pwd" class="btn btn-link px-0" value="Forgot password?" onclick="location.href='find_pwd'" >
+                  Forgot password?
+                  </button> 
                 </div>
               </div>
             </div>

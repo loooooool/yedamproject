@@ -73,11 +73,17 @@ public class MemberController {
 			}
 		}
 	
-	//비밀번호 찾기(4.10 미완성)-- email 발송
-	@RequestMapping(value="/find_pwd_form")
-	public String find_pwd_form() throws Exception{
-		return "/member/find_pwd_form";
+	//비밀번호 찾기 폼
+	@RequestMapping("/find_pwd_Form")
+	public String find_pwd_form(MemberVO vo) {
+		return "member/find_pwd";
 	}
+	
+	//비밀번호 찾기 처리
+		@RequestMapping(value="/find_pwd", method=RequestMethod.GET)
+		public String find_pwd(MemberVO vo) {
+			return "member/find_pwd";
+		}
 	
 	//학생 등록 폼
 	@RequestMapping("/insertMemberForm")

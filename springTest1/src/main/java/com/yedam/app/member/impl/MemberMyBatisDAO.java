@@ -54,4 +54,8 @@ public class MemberMyBatisDAO {
 	public String getRn() {
 		return sqlSession.selectOne("member.getRn");
 	}
+	
+	public void find_pwd(MemberVO vo) {
+		sqlSession.update("member.find_pwd", vo);
+	}
 }
