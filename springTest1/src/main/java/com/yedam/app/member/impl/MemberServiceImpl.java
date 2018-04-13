@@ -65,15 +65,4 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getRn();
 	}
 		
-	/*//학생추가
-	@Override
-	public void insertMember(Map<String,Object> vo) {
-		dao.insertMember(vo);
-	}
-	
-	@Override
-	public String getRn() {
-		return dao.getRn();
-	}*/
-	
 }

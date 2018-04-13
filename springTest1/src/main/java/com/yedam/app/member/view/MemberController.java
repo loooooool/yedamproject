@@ -63,12 +63,17 @@ public class MemberController {
 	//비밀번호 변경 처리
 		@RequestMapping(value="/changePwd", method=RequestMethod.POST)
 		public String changePwd(MemberVO vo) {
-			memberService.changePwd(vo);
-			return "redirect:/changePwdForm";
+			int pwd2 = 0;
+			int checkPwd2 = 0;
+			if(pwd2 == checkPwd2) {
+				memberService.changePwd(vo);
+				return "redirect:/";
+			} else {
+				return "redirect:/changePwdForm";
+			}
 		}
 	
-	
-	//비밀번호 찾기(4.10 미완성)------------------------------------------------------------
+	//비밀번호 찾기(4.10 미완성)-- email 발송
 	@RequestMapping(value="/find_pwd_form")
 	public String find_pwd_form() throws Exception{
 		return "/member/find_pwd_form";

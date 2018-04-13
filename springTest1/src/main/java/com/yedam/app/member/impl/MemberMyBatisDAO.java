@@ -47,11 +47,6 @@ public class MemberMyBatisDAO {
 		sqlSession.update("member.changePwd", vo);
 	}
 	
-	
-	/*public void changePwd(MemberVO vo) {
-		sqlSession.update("member.changePwd", vo);
-	}*/
-	
 	public void insertMember(Map<String,Object> vo) {
 		sqlSession.insert("member.insertMember",vo);
 	}
