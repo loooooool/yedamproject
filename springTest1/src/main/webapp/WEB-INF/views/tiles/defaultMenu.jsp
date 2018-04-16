@@ -83,7 +83,15 @@
             <a class="nav-link" href="charts.html"><i class="icon-pie-chart"></i> 일정표</a>
           </li>
           <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="insertMemberForm"><i class="icon-star"></i>학생관리</a>
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i>학생관리</a>
+            <ul class="nav-dropdown-items">
+              <li class="nav-item">
+                <a class="nav-link" href="insertMemberForm" id="sub"><i class="icon-cursor"></i>학생등록</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="viewMember" id="sub"><i class="icon-cursor"></i>학생조회</a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="widgets.html"><i class="icon-calculator"></i>공휴일<span class="badge badge-primary">NEW</span></a>
@@ -96,8 +104,20 @@
          
       </nav>
       <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+	<style>
+      	
+      	#sub{
+      		margin-left:30px;
+      	}
+      
+  </style>
+
       
 <script>
+
+
+
+
 $.navigation = $('nav > ul.nav');
 // Add class .active to current link
 $.navigation.find('a').each(function(){

@@ -1,5 +1,6 @@
 package com.yedam.app.memberAdd.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,4 +32,16 @@ public class MemberAddServiceImpl implements MemberAddService {
 		public String getRn() {
 			return dao.getRn();
 		}
+		
+		@Override
+		public List<Map<String,Object>> getMemberAddList(){
+			return dao.getMemberAddList();
+		}
+
+		@Override
+		public List<Map<String, Object>> getMembertAjax(String m_detail) {
+			return dao.getMemberAjax(m_detail);
+		}
+		
+		
 }

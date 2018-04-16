@@ -1,6 +1,7 @@
 package com.yedam.app.view.memberAdd;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,11 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classes.ClassVO;
 import com.yedam.app.classinfo.ClassInfoService;
 import com.yedam.app.code.impl.CodeDAO;
+import com.yedam.app.consult.ConsultVO;
 import com.yedam.app.memberAdd.MemberAddService;
 
 @Controller
@@ -41,6 +44,22 @@ public class MemberAddController {
 			model.addAttribute("CodeList", dao.getCodeList(vo2));
 			return "member/insertMember";
 	}	
+		
+		@RequestMapping("/viewMember")
+		public String viewMember(Model model,ClassVO vo) {
+			model.addAttribute("classList", classService.getClassList2(vo));
+			model.addAttribute("memberAddList", memberAddService.getMemberAddList());
+			return "member/viewMember";
+		}
+		
+		@RequestMapping("/getMemberAjax")
+		@ResponseBody
+		public List<Map<String,Object>> getMemberAddList(String m_detail) {
+			return memberAddService.getMembertAjax(m_detail);
+		}
+		
+		
+		
 		//학생등록 처리
 		@RequestMapping(value="/memberTestView", method=RequestMethod.POST)
 		public String memberTestView(@RequestParam String[] name,@RequestParam String[] social_number,HttpServletRequest request){

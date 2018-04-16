@@ -1,5 +1,6 @@
 package com.yedam.app.memberAdd.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -21,4 +22,11 @@ public class MemberAddDAO {
 		return sqlSession.selectOne("memberAdd.getRn");
 	}
 	
+	public List<Map<String,Object>> getMemberAddList(){
+		return sqlSession.selectList("memberAdd.getMemberAddList");
+	}
+	
+	public List<Map<String,Object>> getMemberAjax(String m_detail){
+		return sqlSession.selectList("memberAdd.getMemberAjax",m_detail);
+	}
 }
