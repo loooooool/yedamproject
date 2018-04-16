@@ -10,6 +10,11 @@
 		select * from member
     	 order by member_cd desc
 		
+	</select>
+	
+	<select	id="">
+	
+	
 	</select> 
 	
 	<select id="getMember_id" resultType="member" parameterType="String">
