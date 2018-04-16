@@ -20,8 +20,7 @@
 
 <script>
 
-window.onload = function() {
-}
+
 
 	var context='${pageContext.request.contextPath}';
 
