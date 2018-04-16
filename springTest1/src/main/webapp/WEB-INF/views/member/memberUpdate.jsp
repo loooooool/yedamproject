@@ -15,80 +15,32 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
 <script>
-	window.onload = function() {}
+ $(function() {
+	    $( "#datepicker" ).datepicker({
+	      showButtonPanel: true
+	    });
+	  });
+</script>	
 
-	var context = '${pageContext.request.contextPath}';
-
-	function getStudent() {
-		var params = {
-			cl_no : $("#selectStudent").val()
-		}
-		$.getJSON(context + "/getStudentList", params, function(datas) {
-			$("#studentName option:gt(0)").remove();
-			for (i = 0; i < datas.length; i++) {
-				$("#studentName").append("<option value='" + datas[i].member_id + "'>" + datas[i].name + "</option>");
-			}
-		})
-	}
-
-	function getConsultAjax() {
-		var params = {
-			s_detail : $("#studentName").val()
-		}
-		$.getJSON(context + "/getConsultAjax", params, function(datas) {
-			$("#table").empty();
-			for (i = 0; i < datas.length; i++) {
-				$("#table").append("<tr><td>" + datas[i].c_no + "</td>"
-					+ "<td><a href=getConsult?c_no=" + datas[i].c_no + ">" + datas[i].title + "</a></td>"
-					+ "<td>" + datas[i].s_name + "</td>"
-					+ "<td>" + datas[i].cdate + "</td>"
-					+ "<td>" + datas[i].c_name + "</td>"
-					+ "<td>" + datas[i].c_writer + "</td></tr>");
-			}
-
-		})
-	}
-</script>
 </head>
 <body>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
-					<h1>훈련 수강 신청서</h1>
+					<h1>${sessionScope.memberVO.name}님의 훈련 수강 신청서</h1>
 				</div>
 
 				<div class="card-body">
-					<form action="memberUpdate" method="post"
-						enctype="multipart/form-data">
-
-						<div class="card-body" style="border-bottom: :1px">
-							<div class="form-group row">
-								<label class="col-md-3 col-form-label" for="select1">과정</label>
-								<div class="col-md-9">
-									<select id="selectStudent" name="select1"
-										onchange="getStudent()" class="form-control">
-										<option value="0">과정선택</option>
-										<c:forEach items="${classList}" var="cl">
-											<option value="${cl.cl_no}">${cl.class_name}</option>
-										</c:forEach>
-									</select>
-								</div>
-							</div>
-
-
-							<div class="form-group row">
-								<label class="col-md-3 col-form-label" for="select1">학생이름</label>
-								<div class="col-md-9">
-									<select id="studentName" name="select1"
-										onchange="getConsultAjax()" class="form-control">
-										<option value="">학생선택</option>
-									</select>
-								</div>
-							</div>
-						</div>
-
+					<form action="memberUpdate" method="post">
+					
+						<input type="hidden" id=member_id name=member_id value="${sessionScope.memberVO.member_id}">
+						<input type="hidden" id=member_cd name=member_cd value="${sessionScope.memberVO.member_cd}">
 
 						<div class="form-group">
 							<label for="nf-email"><strong> 과정구분 </strong></label>
@@ -118,27 +70,40 @@
 							</div>
 						</div>
 
-
-
+						<div class="form-group">
+							<label for="nf-email"><strong>과정명</strong></label> <input
+								type="text" id="class_name" name="class_name" class="form-control"
+								value="${sessionScope.memberVO.class_name}" readonly
+								> 
+						</div>
+						
+						
+						
 						<div class="form-group">
 							<label for="nf-email"><strong>영문명</strong></label> <input
-								type="text" id="ebg_name" name="eng_name" class="form-control"
-								value="여권(passport)상의 영문명과 동일하게 작성하여 주세요"
-								onfocus="this.value=''"> <span class="help-block">
-							</span>
+								type="text" id="eng_name" name="eng_name" class="form-control"
+								placeholder="여권(passport)상의 영문명과 동일하게 작성하여 주세요"
+								onfocus="this.value=''"> 
 						</div>
 
 						<div class="form-group">
-							<label for="nf-email"><strong>최종학력 / 전공</strong></label> <input
+							<label for="nf-email"><strong>최종학력</strong></label> <input
 								type="text" id="school_spec_cd" name="school_spec_cd"
-								class="form-control" value="최종학력 및 전공" onfocus="this.value=''">
+								class="form-control" onfocus="this.value=''">
+							<span class="help-block">예)대졸/전문졸/고졸</span>
+						</div>
+						
+						<div class="form-group">
+							<label for="nf-email"><strong>전공</strong></label> <input
+								type="text" id="major" name="major"
+								class="form-control" onfocus="this.value=''">
 							<span class="help-block"></span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>주민등록번호</strong></label> <input
 								type="text" id="social_number" name="social_number"
-								class="form-control" value="주민등록번호" onfocus="this.value=''">
+								class="form-control" onfocus="this.value=''">
 							<span class="help-block">예)910808-2785623</span>
 						</div>
 
@@ -146,7 +111,7 @@
 						<div class="form-group">
 							<label for="nf-email"><strong>이메일</strong></label> <input
 								type="text" id="email" name="email" class="form-control"
-								value="이메일" onfocus="this.value=''"> <span
+								onfocus="this.value=''"> <span
 								class="help-block">예)abcde@gmail.com</span>
 						</div>
 
@@ -159,14 +124,14 @@
 						<div class="form-group">
 							<label for="nf-email"><strong>연락처</strong></label> <input
 								type="text" id="phone" name="phone" class="form-control"
-								value="자택전화" onfocus="this.value=''"> <span
+								placeholder="자택전화" onfocus="this.value=''"> <span
 								class="help-block"></span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>휴대폰</strong></label> <input
 								type="text" id="h_phone" name="h_phone" class="form-control"
-								value="휴대폰" onfocus="this.value=''"> <span
+								placeholder="휴대폰" onfocus="this.value=''"> <span
 								class="help-block"></span>
 						</div>
 
@@ -197,7 +162,7 @@
 						<div class="form-group">
 							<label for="nf-email"><strong>훈련참여경로 기타</strong></label> <input
 								type="text" id="open_route_etc" name="open_route_etc"
-								class="form-control" value="이밖의 훈련참여경로가 있으시다면 적으세요"
+								class="form-control" placeholder="이밖의 훈련참여경로가 있으시다면 적으세요"
 								onfocus="this.value=''"> <span class="help-block"></span>
 						</div>
 
@@ -217,15 +182,15 @@
 
 						<div class="form-group">
 							<label for="nf-email"><strong>이직 전 직장명</strong></label> <input
-								type="text" id="previout_job" name="previout_job"
-								class="form-control" value="최종 근무지명을 적으세요"
+								type="text" id="previous_job" name="previous_job"
+								class="form-control" placeholder="최종 근무지명을 적으세요"
 								onfocus="this.value=''"> <span class="help-block"></span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>이직 일자</strong></label> <input
-								type="text" id="job_change_date" name="job_change_date"
-								class="form-control" value="최종 퇴사일을 적으세요"
+								type="date" id="job_change_date" name="job_change_date"
+								class="form-control" placeholder="최종 퇴사일을 적으세요" 
 								onfocus="this.value=''"> <span class="help-block"></span>
 						</div>
 
@@ -242,14 +207,24 @@
 								<input class="form-check-input" type="radio" value="B2"
 									id="radio2" name="bohun_yn"> <label
 									class="form-check-label" for="radio2"> 해당없음 </label>
-							</div><br>
+							</div>
+							<br><br><br><br>
+							
+							<p>
+							위 본인은 귀 교육원 및 노동부 관련규정을 준수하고, 
+							훈련생으로서 본분을 다할 것을 서약하며 상기와 같이 신청합니다.<br><br><br>
+							
+							날짜를 선택하세요->
+							<input type="text" id="datepicker"><br><br><br>
+							신청인               (서명 또는 인)
+							</p><br><br>
 
 							<div class="card-body">
 								<input type="submit" class="btn btn-info" value="수정" /><br><br>
 								<input type="button" class="btn btn-secondary"
 									onclick="location.href='getClassList'" value="과정목록" />&nbsp;&nbsp;&nbsp;
 								<input type="button" class="btn btn-secondary"
-									onclick="location.href=''" value="비밀번호변경" />&nbsp;&nbsp;&nbsp;
+									onclick="location.href='changePwdForm'" value="비밀번호변경" />&nbsp;&nbsp;&nbsp;
 							</div>
 						</div>
 

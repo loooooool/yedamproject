@@ -64,5 +64,10 @@ public class MemberServiceImpl implements MemberService {
 	public String getRn() {
 		return dao.getRn();
 	}
-	
+
+	@Override
+	public void find_pwd(MemberVO vo) {
+		dao.find_pwd(vo);
+	}
+		
 }
