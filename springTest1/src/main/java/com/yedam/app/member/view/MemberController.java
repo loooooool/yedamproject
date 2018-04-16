@@ -32,7 +32,8 @@ public class MemberController {
 	@Autowired
 	ClassInfoService classInfoService;
 	
-	
+	@Autowired
+	CodeDAO dao;
 	
 	@RequestMapping("/getMemberList")
 	public String getBoardList(Model model, MemberVO vo, Paging paging) {
@@ -53,16 +54,77 @@ public class MemberController {
 		memberService.memberUpdate(vo);
 	}
 	
+	//비밀번호 변경 폼
+		@RequestMapping("/changePwdForm")
+		public String changePwdForm(MemberVO vo) {
+			return "member/changePwd";
+		}
+		
+	//비밀번호 변경 처리
+		@RequestMapping(value="/changePwd", method=RequestMethod.POST)
+		public String changePwd(MemberVO vo) {
+			int pwd2 = 0;
+			int checkPwd2 = 0;
+			if(pwd2 == checkPwd2) {
+				memberService.changePwd(vo);
+				return "redirect:/";
+			} else {
+				return "redirect:/changePwdForm";
+			}
+		}
 	
-	
-	
-	//비밀번호 찾기(4.10 미완성)
-	@RequestMapping(value="/find_pwd_form")
-	public String find_pwd_form() throws Exception{
-		return "/member/find_pwd_form";
+	//비밀번호 찾기 폼
+	@RequestMapping("/find_pwd_Form")
+	public String find_pwd_form(MemberVO vo) {
+		return "member/find_pwd";
 	}
 	
+	//비밀번호 찾기 처리
+		@RequestMapping(value="/find_pwd", method=RequestMethod.GET)
+		public String find_pwd(MemberVO vo) {
+			return "member/find_pwd";
+		}
 	
+	//학생 등록 폼
+	@RequestMapping("/insertMemberForm")
+	public String insertMemberForm(Model model, ClassVO vo, Map<String,Object> vo2){
+		model.addAttribute("classList", classService.getClassList(vo));
+		model.addAttribute("CodeList", dao.getCodeList(vo2));
+		return "member/insertMember";
+}	
+	//학생등록 처리
+	@RequestMapping(value="/memberTestView", method=RequestMethod.POST)
+	public String memberTestView(@RequestParam String[] name,@RequestParam String[] social_number,HttpServletRequest request){
+		
+		/*System.out.println(request.getParameter("subject"));
+		System.out.println(request.getParameter("subjectType"));
+		
+		for(int i=0;i<name.length;i++) {
+			System.out.println(name[i]);
+			System.out.println(social_number[i]);
+		}*/
+		//List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		Map<String,Object> map = new HashMap<String,Object>();
+		//Map<String,Object> infomap = new HashMap<String,Object>();
+		
+		String[] id= new String[social_number.length];
+		for(int i=0;i<social_number.length;i++) {
+			id[i]=social_number[i];
+			id[i]+="-"+memberService.getRn();
+			map.put("id", id[i]);
+			map.put("name", name[i]);
+			map.put("social_number", social_number[i]);
+			map.put("cl_no", request.getParameter("subject"));
+			map.put("course_type_cd", request.getParameter("subjectType"));
+			
+			memberService.insertMember(map);
+			classInfoService.insertClassInfo(map);
+		}
+		
+		//
+		
+		return "redirect:/insertMemberForm";
+	}
 	
 
 }

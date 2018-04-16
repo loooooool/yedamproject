@@ -37,4 +37,7 @@ public class ClassDAO {
 	public int getCount(ClassVO vo) {
 		return sqlSession.selectOne("class.getCount", vo);
 	}
+	public List<ClassVO> getClassListNP(ClassVO vo){
+		return sqlSession.selectList("class.getClassListNP", vo);
+	}
 }

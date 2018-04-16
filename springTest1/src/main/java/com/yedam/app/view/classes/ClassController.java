@@ -36,11 +36,11 @@ public class ClassController {
 
 	@Autowired
 	ClassService classService;
-
 	// 목록
 	@RequestMapping("/getClassList")
 	public String getClassList(Model model, ClassVO vo, Paging paging) {
 		// 전체 레코드 건수
+		paging.setPageUnit(5);
 		paging.setTotalRecord(classService.getCount(vo));
 
 		// vo의 first, last setting

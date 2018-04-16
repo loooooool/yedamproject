@@ -15,5 +15,7 @@ public interface MemberService {
 	public List<MemberVO> getMemberList(MemberVO vo);
 	public void memberUpdate(MemberVO vo);
 	public void changePwd(MemberVO vo);
-	
+	public void insertMember(Map<String,Object> vo);
+	public String getRn();
+	public void find_pwd(MemberVO vo);
 }

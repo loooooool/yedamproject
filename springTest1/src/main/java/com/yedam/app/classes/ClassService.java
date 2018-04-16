@@ -10,4 +10,5 @@ public interface ClassService {
 	public ClassVO getClass(ClassVO vo);
 	public List<ClassVO> getClassList(ClassVO vo);
 	public int getCount(ClassVO vo);
+	public List<ClassVO> getClassListNP(ClassVO vo);
 }

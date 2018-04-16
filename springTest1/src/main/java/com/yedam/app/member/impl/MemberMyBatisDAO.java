@@ -40,14 +40,22 @@ public class MemberMyBatisDAO {
 	}
 	
 	public void memberUpdate(MemberVO vo) {
-		sqlSession.update("memberUpdate", vo);
+		sqlSession.update("member.memberUpdate", vo);
 	}
 	
 	public void changePwd(MemberVO vo) {
-		sqlSession.update("changePwd", vo);
+		sqlSession.update("member.changePwd", vo);
 	}
 	
+	public void insertMember(Map<String,Object> vo) {
+		sqlSession.insert("member.insertMember",vo);
+	}
 	
+	public String getRn() {
+		return sqlSession.selectOne("member.getRn");
+	}
 	
-	
+	public void find_pwd(MemberVO vo) {
+		sqlSession.update("member.find_pwd", vo);
+	}
 }

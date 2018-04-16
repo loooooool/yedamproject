@@ -35,6 +35,7 @@ public class SubjectController {
 	@RequestMapping("/getSubjectList")
 	public String getSubjectList(Model model, SubjectVO vo, ClassVO cvo, Paging paging) {
 		// 전체 레코드 건수
+		paging.setPageUnit(5);
 		paging.setTotalRecord(subjectService.getCount(vo));
 
 		// vo의 first, last setting

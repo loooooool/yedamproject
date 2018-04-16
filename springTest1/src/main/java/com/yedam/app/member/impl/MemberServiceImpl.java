@@ -54,6 +54,20 @@ public class MemberServiceImpl implements MemberService {
 		dao.changePwd(vo);
 	}
 
+	//학생추가
+	@Override
+	public void insertMember(Map<String,Object> vo) {
+		dao.insertMember(vo);
+	}
 	
-	
+	@Override
+	public String getRn() {
+		return dao.getRn();
+	}
+
+	@Override
+	public void find_pwd(MemberVO vo) {
+		dao.find_pwd(vo);
+	}
+		
 }
