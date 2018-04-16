@@ -41,7 +41,7 @@ public class ConsultController {
 		//결과저장
 		
 		model.addAttribute("memberList",memberService.getMemberList(mvo));
-		model.addAttribute("classList",classService.getClassList(cvo));
+		model.addAttribute("classList",classService.getClassListNP(cvo));
 		model.addAttribute("consultList",consultService.getConsultList(vo));
 		model.addAttribute("paging",paging);	
 		return "consult/getConsultList";
@@ -59,7 +59,7 @@ public class ConsultController {
 	//수정폼
 	@RequestMapping("/updateConsultForm")
 	public String updateConsultForm(Model model, ConsultVO vo, ClassVO cvo) {
-		model.addAttribute("classList",classService.getClassList(cvo));
+		model.addAttribute("classList",classService.getClassListNP(cvo));
 		model.addAttribute("consult", consultService.getConsult(vo));
 		return "consult/updateConsult";
 	}
@@ -90,7 +90,7 @@ public class ConsultController {
 	@RequestMapping("/insertConsultForm")
 	public String insertConsultForm(Model model, ConsultVO vo, ClassVO cvo, MemberVO mvo) {
 		model.addAttribute("memberList",memberService.getMemberList(mvo));
-		model.addAttribute("classList",classService.getClassList(cvo));
+		model.addAttribute("classList",classService.getClassListNP(cvo));
 		return "consult/insertConsultForm";
 	}
 	

@@ -13,6 +13,21 @@
 		<result property="totaldays" column="totaldays" />
 	</resultMap>
 
+	<select id="getClassListNP" resultType="class">
+
+	
+		SELECT cl_no
+		,class_name
+		,address
+		,totaltime
+		,GET_CODENAME(class_cd) "class_nm"
+		,totaldays
+		FROM class
+		ORDER BY cl_no DESC
+		
+	</select>
+
+
 	<select id="getClassList" resultType="class">
 	select a.* from ( select rownum rn, b.* from (
 	

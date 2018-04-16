@@ -36,7 +36,6 @@ public class ClassController {
 
 	@Autowired
 	ClassService classService;
-
 	// 목록
 	@RequestMapping("/getClassList")
 	public String getClassList(Model model, ClassVO vo, Paging paging) {
