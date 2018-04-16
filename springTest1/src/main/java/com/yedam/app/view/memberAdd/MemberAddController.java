@@ -58,6 +58,12 @@ public class MemberAddController {
 			return memberAddService.getMembertAjax(m_detail);
 		}
 		
+		@RequestMapping("/getMemberAjaxAll")
+		@ResponseBody
+		public List<Map<String,Object>> getMemberAddListAll() {
+			return memberAddService.getMemberAddList();
+		}
+		
 		
 		
 		//학생등록 처리

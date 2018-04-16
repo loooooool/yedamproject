@@ -13,6 +13,6 @@ public interface ConsultService {
 	public List<ConsultVO> getConsultList(ConsultVO vo);
 	public int getCount(ConsultVO vo);
 	public List<MemberVO> getStudentList(ConsultVO vo);
-
+	public List<ConsultVO> getConsultListSelect(String m_memberid);
 	
 }

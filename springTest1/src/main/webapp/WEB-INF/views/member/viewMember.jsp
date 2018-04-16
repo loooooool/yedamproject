@@ -24,22 +24,51 @@
 
 	var context='${pageContext.request.contextPath}';
 
+function getMemberCS(member_id){
+	
+	var params = "m_memberid="+member_id;
+	
+	location.href=context+"/getConsultListSelect?"+params;
+	
+}
+	
 
 function getMemberAddList(){
+	alert($("#className").val());
 	var params = {m_detail : $("#className").val() }
-	$.getJSON(context+"/getMemberAjax",params, function(datas){
-		$("#table").empty();
-		for(i=0; i<datas.length;i++){
-			$("#table").append("<tr><td>"+ datas[i].name + "</td>"
-								+"<td>"+datas[i].class_name+"</td>"
-								+"<td>" +datas[i].address+"</td>"
-								+"<td>" +datas[i].status_cd+"</td>"
-								+"<td><button type='button' class='btn btn-sm btn-primary' value=''"+datas[i].member_id+"'><i class='fa fa-dot-circle-o'></i>정보수정</button></td>"
-								+"<td><button type='button' class='btn btn-sm btn-primary' value=''"+datas[i].member_id+"' id='sbtn'><i class='fa fa-dot-circle-o'></i>상담내용</button></td>");
-		}
-		
-	})
+	
+	if($("#className").val()=='all'){
+		$.getJSON(context+"/getMemberAjaxAll", function(datas){
+			$("#table").empty();
+			for(i=0; i<datas.length;i++){
+				$("#table").append("<tr><td>"+ datas[i].name + "</td>"
+									+"<td>"+datas[i].class_name+"</td>"
+									+"<td>" +datas[i].address+"</td>"
+									+"<td>" +datas[i].status_cd+"</td>"
+									+"<td><button type='button' class='btn btn-sm btn-primary' value=''"+datas[i].member_id+"'><i class='fa fa-dot-circle-o'></i>정보수정</button></td>"
+									+"<td><button type='button' class='btn btn-sm btn-primary' value=''"+datas[i].member_id+"' id='sbtn'><i class='fa fa-dot-circle-o'></i>상담내용</button></td>");
+			}
+			
+		})
+	}else{
+		$.getJSON(context+"/getMemberAjax",params, function(datas){
+			$("#table").empty();
+			for(i=0; i<datas.length;i++){
+				$("#table").append("<tr><td>"+ datas[i].name + "</td>"
+									+"<td>"+datas[i].class_name+"</td>"
+									+"<td>" +datas[i].address+"</td>"
+									+"<td>" +datas[i].status_cd+"</td>"
+									+"<td><button type='button' class='btn btn-sm btn-primary' value='"+datas[i].member_id+"'><i class='fa fa-dot-circle-o'></i>정보수정</button></td>"
+									+"<td><button type='button' class='btn btn-sm btn-primary' value='"+datas[i].member_id+"' id='sbtn' onclick='getMemberCS()'><i class='fa fa-dot-circle-o'></i>상담내용</button></td>");
+			}
+			
+		})
+	}
+	
+	
 }
+
+
 
 </script>
 
@@ -70,7 +99,7 @@ function getMemberAddList(){
 				<div class="col-md-9">
 					<select id="className" name="select1"  onchange="getMemberAddList()" class="form-control">
 						<option value="">과정선택</option>
-						<option value="">모든과정</option>
+						<option value="all">모든과정</option>
 						<c:forEach items="${classList}" var="cl">
 						<option value="${cl.class_name}">${cl.class_name}</option>
 						</c:forEach>	
@@ -101,7 +130,7 @@ function getMemberAddList(){
 							<td>${mem.address}</td>
 							<td>${mem.status_cd}</td>
 							<td><button type="button" class="btn btn-sm btn-primary" value="${mem.member_id}"><i class="fa fa-dot-circle-o"></i>정보수정</button></td>
-							<td><button type="button" class="btn btn-sm btn-primary" value="${mem.member_id}" id="sbtn"><i class="fa fa-dot-circle-o"></i>상담내용</button></td>
+							<td><button type="button" class="btn btn-sm btn-primary" value="${mem.member_id}" id="sbtn" onclick="getMemberCS('${mem.member_id}')"><i class="fa fa-dot-circle-o"></i>상담내용</button></td>
 							
 						</tr>
 					</c:forEach>
