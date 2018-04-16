@@ -42,6 +42,10 @@
 		
 	) b ) a where rn between #{first} and #{last}
 	</select>
+	
+	<select id="getClassList2" resultType="class">
+		select * from class
+	</select>
 
 	<select id="getClass" resultType="class" parameterType="class">
 		SELECT *

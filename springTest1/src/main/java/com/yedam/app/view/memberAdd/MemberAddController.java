@@ -37,7 +37,7 @@ public class MemberAddController {
 	//학생 등록 폼
 		@RequestMapping("/insertMemberForm")
 		public String insertMemberForm(Model model, ClassVO vo, Map<String,Object> vo2){
-			model.addAttribute("classList", classService.getClassList(vo));
+			model.addAttribute("classList", classService.getClassList2(vo));
 			model.addAttribute("CodeList", dao.getCodeList(vo2));
 			return "member/insertMember";
 	}	
