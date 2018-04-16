@@ -49,11 +49,5 @@ public class MemberMyBatisDAO {
 	
 	
 	
-	public void insertMember(Map<String,Object> vo) {
-		sqlSession.insert("member.insertMember",vo);
-	}
 	
-	public String getRn() {
-		return sqlSession.selectOne("member.getRn");
-	}
 }
