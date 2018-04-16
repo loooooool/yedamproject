@@ -39,6 +39,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="consult" type="com.yedam.app.consult.ConsultVO"/>
 		<typeAlias alias="subject" type="com.yedam.app.subject.SubjectVO"/>
 		<typeAlias alias="unit" type="com.yedam.app.unit.UnitVO"/>
+		<typeAlias alias="timeTable" type="com.yedam.app.timetable.TimeTableVO"/>
 	</typeAliases>
 	
 
