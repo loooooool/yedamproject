@@ -22,4 +22,9 @@ public class ClassAttServiceImpl implements ClassAttService {
 	public List<Map<String,Object>> getAttList(Integer cl_no){
 		return dao.getAttList(cl_no);
 	}
+	
+	@Override
+	public List<Map<String,Object>> getAttSubjectList(Integer cl_no){
+		return dao.getAttSubjectList(cl_no);
+	}
 }

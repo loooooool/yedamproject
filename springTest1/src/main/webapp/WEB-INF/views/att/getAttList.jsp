@@ -24,9 +24,11 @@
 		
 			<table class="table table-responsive-sm table-striped">
 				<thead>
-					<tr >
+					<tr>
 						<th>학생명</th>
-						
+						<c:forEach items="${attSubjectList}" var="as">
+						<th>${as.subject}</th>
+						</c:forEach>
 					</tr>
 				</thead>
 				<tbody id="table">

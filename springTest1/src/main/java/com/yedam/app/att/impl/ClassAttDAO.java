@@ -18,4 +18,10 @@ public class ClassAttDAO {
 		return sqlSession.selectList("classAtt.getAttList",cl_no);
 		
 	}
+	
+	public List<Map<String,Object>> getAttSubjectList(Integer cl_no){
+		
+		return sqlSession.selectList("classAtt.getAttSubjectList",cl_no);
+		
+	}
 }

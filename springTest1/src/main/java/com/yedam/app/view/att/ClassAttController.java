@@ -33,6 +33,7 @@ public class ClassAttController {
 	public String getClassAtt(Model model, Integer cl_no) {
 		
 		model.addAttribute("attList",classAttService.getAttList(cl_no));
+		model.addAttribute("attSubjectList",classAttService.getAttSubjectList(cl_no));
 		return "att/getAttList";
 	}
 }

@@ -9,6 +9,11 @@
  	</resultMap>
  	
  	
+ 	<resultMap type="map" id="subjectAttResult">
+	<id property="subject" column="subject"/>
+ 	</resultMap>
+ 	
+ 	
  	
 
 
@@ -21,6 +26,15 @@
 		from class_info ci join member m
 		on(ci.member_id = m.member_id)
 		where ci.cl_no=#{cl_no}
+	
+	</select>
+	
+	
+	<select id="getAttSubjectList" resultMap="subjectAttResult" parameterType="Integer">
+	
+		select subject
+    	from subject
+    	where cl_no=#{cl_no}
 	
 	</select>
 	
