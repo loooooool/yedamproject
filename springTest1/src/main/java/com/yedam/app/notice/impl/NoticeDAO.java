@@ -23,8 +23,8 @@ public class NoticeDAO {
 		sqlSession.update("notice.updateNotice",vo);
 	}
 	
-	public void updateView(NoticeVO vo) {
-		sqlSession.update("notice.updateView",vo);
+	public void updateView(int n_no) {
+		sqlSession.update("notice.updateView",n_no);
 	}
 
 	public void deleteNotice(NoticeVO vo){
@@ -32,17 +32,12 @@ public class NoticeDAO {
 	}
 
 	public NoticeVO getNotice(NoticeVO vo){
-		System.out.println("mybatis getnotice");
 		return sqlSession.selectOne("notice.getNotice",vo);
 	}
 
-	
 	public List<NoticeVO> getNoticeList(NoticeVO vo){
-		System.out.println("mybatis getnoticeList");
 		return sqlSession.selectList("notice.getNoticeList",vo);
 	}
-	
-	
 	
 	public int getCount(NoticeVO vo) {
 		return sqlSession.selectOne("notice.getCount",vo);
