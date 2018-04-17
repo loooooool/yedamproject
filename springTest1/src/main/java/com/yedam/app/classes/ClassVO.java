@@ -1,6 +1,6 @@
 package com.yedam.app.classes;
 
-public class ClassVO {
+public class ClassVO{
 	private int cl_no;
 	private String class_name;
 	private String address;

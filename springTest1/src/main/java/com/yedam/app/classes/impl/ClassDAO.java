@@ -44,4 +44,10 @@ public class ClassDAO {
 	public List<ClassVO> getClassListNP(ClassVO vo){
 		return sqlSession.selectList("class.getClassListNP", vo);
 	}
+	
+	public List<ClassVO> getClassAttList(ClassVO vo){
+		return sqlSession.selectList("class.getClassAttList", vo);
+	}
+	
+	
 }

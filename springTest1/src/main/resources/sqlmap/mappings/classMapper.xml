@@ -26,6 +26,21 @@
 		ORDER BY cl_no DESC
 		
 	</select>
+	
+	
+	<select id="getClassAttList" resultType="class">
+
+	
+		SELECT cl_no
+		,class_name
+		,address
+		,totaltime
+		,class_cd
+		,totaldays
+		FROM class
+		ORDER BY cl_no DESC
+		
+	</select>
 
 
 	<select id="getClassList" resultType="class">
