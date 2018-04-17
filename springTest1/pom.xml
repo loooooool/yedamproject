@@ -124,6 +124,7 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.2</version>
 		</dependency>
+		
 
 		<!-- aspect weaver 추가 -->
 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
@@ -217,7 +218,17 @@
 			<artifactId>commons-email</artifactId>
 			<version>1.4</version>
 		</dependency>
-
+		<!-- poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.7</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

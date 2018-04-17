@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dataview">
+
+
+	<resultMap type="map" id="sampleResult">
+	<id property="t_id" column="T_ID"/>
+	<result property="s_date" column="S_DATE"/>
+	<result property="classtime_cd" column="CLASSTIME_CD"/>
+	<result property="subject" column="SUBJECT"/>
+	<result property="totaltime" column="TOTALTIME"/>
+	<result property="cl_no" column="CL_NO"/>
+ 	</resultMap>
+ 	
+ 	
+ 	<resultMap type="map" id="codeResult">
+	<id property="code_no" column="CODE_NO"/>
+	<result property="code_name" column="CODE_NAME"/>
+ 	</resultMap>
+
+
+
+
+	<select id="getDataList" resultMap="sampleResult" parameterType="map">
+
+	select st.t_id,to_char(st.s_date,'YYYY-MM-DD') s_date,st.classtime_cd,st.subject,sb.totaltime,sb.cl_no 
+	from subject_timetable st join subject sb
+	on (sb.su_no = st.subject)
+	where s_date=#{day} and cl_no=(select cl_no from class where class_name=#{classs})
+
+
+
+		<!-- select t_id,classtime_cd from total_data_v 
+		where class_name=#{classs}
+		 -->
+	</select>
+	
+	<select id="getCodeName" resultMap="codeResult" parameterType="map">
+
+		select code_no,code_name from code
+		where code_no=#{classtime_cd}
+
+	</select>
+
+
+
+	<update id="updateAtt" parameterType="map">
+
+		update SUBJECT_ATTENDANCE
+		set attendance=1
+		where t_id=#{t_id} and s_name=#{name}
+
+	</update>
+	
+
+
+
+	
+
+</mapper>
