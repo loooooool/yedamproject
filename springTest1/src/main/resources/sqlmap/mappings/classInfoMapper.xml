@@ -4,6 +4,12 @@
 
 <mapper namespace="classInfo">
 
+	<select id="getClassInfoList" parameterType="map">
+		
+		select * 
+		from class_info
+		
+	</select>
 
 	<insert id="insertClassInfo" parameterType="map">
 		

@@ -26,8 +26,8 @@ function makeCommentView(comment){
 	div.comment = comment;  //{id:1,.... }
 	
 	var str = "<strong>" + comment.member_id + "</strong>" + comment.content
-			  +"<input type=\"button\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.co_no+"')\"/>"
-			  +"<input type=\"button\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.co_no+"')\"/>"
+			  +"<input type=\"button\" class=\"btn btn-warning\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.co_no+"')\"/>"
+			  +"<input type=\"button\" class=\"btn btn-danger\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.co_no+"')\"/>"
 	div.innerHTML = str;
 	return div;
 }
@@ -89,6 +89,7 @@ function updateComment(){
 
 
 <body>
+<div class="card-body">
 	<div class="form-group row">
   		<label class="col-md-3 col-form-label" for="input-normal">제목</label>
    		      <div class="col-md-9">
@@ -103,7 +104,7 @@ function updateComment(){
 		</div>
 	</div>
 	<div  align="right" >
-		작성일:${sugt.s_date} 조회수 : ${sugt.cnt} 
+		작성일 : ${sugt.s_date} 조회수 : ${sugt.cnt} 
 	</div>
 	<div class="card-body" align="right" >
           <a href="getSugtList" class="btn btn-secondary"> 목록</a>
@@ -117,7 +118,8 @@ function updateComment(){
  	<div id="comments" >
  		<div id="commentList"></div>
  			<div id="commentAdd">
-	 			<form action="" name="addForm"> <!-- 댓글등록폼 -->
+	 			<form action="" name="addForm"> 
+	 			<!-- 댓글등록폼 -->
 	 				<input type="hidden" name="parent_no" value="${sugt.s_no}"> 
 					<input type="hidden" name="member_id" value=" " /> 
 	 				<div class="form-group row">
@@ -151,7 +153,7 @@ function updateComment(){
 				</form>
 			</div>
 			
-
+</div>
 	</div>
 
  	
