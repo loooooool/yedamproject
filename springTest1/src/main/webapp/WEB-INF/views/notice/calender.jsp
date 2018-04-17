@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
 <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
     <div class="dhx_cal_navline">
         <div class="dhx_cal_prev_button">&nbsp;</div>
@@ -51,4 +50,5 @@
 
 </script>
 </body>
+
 </html>

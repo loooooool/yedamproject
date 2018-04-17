@@ -7,26 +7,43 @@
 	function go_list(page) {
 		document.getElementsByName("page")[0].value = page;
 		document.noticeForm.submit();
-		
 	}
 </script>
+<style>
+.search{
+    width: 100px;
+    font-size: 16px;
+    color: gray;
+    border: 1px solid gray;
+    padding-top: 3px;
+    padding-bottom: 3px;
+} 
+
+#pp{
+ color: red;
+}
+</style>
 </head>
-<body >
+<body>
 	<div class="card" style="border:50px solid white;">
 		<div class="card-header">
-			<h2>공지사항
-				<div class="card-body" align="right">
-					<form action="getNoticeList" style="height:10.96px;">
-							<input type="hidden" name="page" />
-							<input type="submit" value="Search" class="btn btn-secondary" style="height:35.5px; margin-bottom:4px;"/>
-							<input type="text" name="searchKeyword" style="width:160px; height:35px;"/>
+			<h2>공지사항</h2>
+				<div  class="card-body" align="right">
+					<form action="getNoticeList" name="noticeForm" style="height:15.96px;">
+							<input type="hidden" name="page" value="${paging.page}" />
+							<select name="searchCondition" class="search">
+								<option value="">선택</option> 
+								<c:forEach items="${conditionMap}" var="option">
+									<option value="${option.value}">${option.key}</option>		
+								</c:forEach>
+							</select>
+							<input type="text" name="searchKeyword" style="width:160px;"></input>
+							<input type="submit" value="Search" class="btn btn-secondary" />
 					</form>
 				</div>
-			</h2>
 		</div>
-		<div class="card-body" >
+		<div> <!-- class="card" class="table table-responsive-sm table-striped" -->
 			<table class="table table-responsive-sm table-striped">
-				<thead>
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
@@ -34,21 +51,19 @@
 						<th>작성일</th>
 						<th>조회수</th>
 					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${noticeList}" var="notice">
+					<c:set var="vno" value="${paging.totalRecord-(paging.page-1)*10}"></c:set>
+					<c:forEach items="${noticeList}" var="notice" varStatus="s">
 						<tr>
-							<td>${notice.n_no}</td>
-							<td><a href="getNotice?n_no=${notice.n_no}">${notice.title}</a></td>
+							<td>${vno-s.index}</td>				
+							<td><c:if test="${notice.priority_yn == 1}"><a id="pp">[필독]</a></c:if>
+							<a href="getNotice?n_no=${notice.n_no}" style="color:;">
+							${notice.title}</a></td>
 							<td>${notice.writer}</td>
-							<td><fmt:formatDate pattern = "yyyy-MM-dd"  value = "${notice.ndate}" /></td>
+							<td><fmt:formatDate pattern = "yyyy-MM-dd"  value="${notice.ndate}" /></td>
 							<td>${notice.viewcount}</td>
 						</tr>
 					</c:forEach>
-				</tbody>
-
 			</table>
-			
 			<div class="card-body" align="right">
 				<a href="insertNotice">
 					<button type="button" class="btn btn-info">
