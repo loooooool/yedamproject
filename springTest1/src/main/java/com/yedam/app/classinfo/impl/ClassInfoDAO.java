@@ -1,5 +1,6 @@
 package com.yedam.app.classinfo.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -13,8 +14,8 @@ public class ClassInfoDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public void getClassInfoList(Map<String, Object> vo) {
-		sqlSession.selectList("classInfo.getClassInfoList", vo);
+	public String getClassInfo(Map<String, Object> vo) {
+		return sqlSession.selectOne("classInfo.getClassInfo", vo);
 	}
 	
 	public void insertClassInfo(Map<String,Object> vo) {

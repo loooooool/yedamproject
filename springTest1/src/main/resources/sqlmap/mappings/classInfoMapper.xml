@@ -4,10 +4,12 @@
 
 <mapper namespace="classInfo">
 
-	<select id="getClassInfoList" parameterType="map">
+	<select id="getClassInfo" resultType="string">
 		
-		select * 
-		from class_info
+		select class_cd, cl_no
+		from class cl, class_info clinfo
+		where cl.cl_no = clinfo.cl_no
+		and member_id =#{member_id}
 		
 	</select>
 

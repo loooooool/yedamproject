@@ -6,19 +6,25 @@
 		
 	<select id="getTimeTableList" resultType="timeTable">
 		
-		select st.t_id "t_id",
-		        TO_CHAR(st.s_date,'YYYY-MM-DD') "s_date",
-		        get_codename(classtime_cd) "classtime_cd",
-		        su.subject "subject"
+		select SUBSTR(st.t_id, '2') "t_id",
+		       TO_CHAR(st.s_date,'YYYY-MM-DD') "s_date",
+		       get_codename(classtime_cd) "classtime_cd",
+		       su.subject "subject"
 		from subject_timetable st join subject su
-		on (st.subject = su.su_no) 
+		on (st.subject = su.su_no)
+		<where>
+		 <if test="searchKeyword != null and searchKeyword != ''" >
+ 		 	<if test="searchCondition == 's_date' ">
+		 		 and s_date like '%' ||#{searchKeyword}||'%'
+		 	</if>
+		 	<if test="searchCondition == 'subject' ">
+		 		 su.subject like '%' ||#{searchKeyword}||'%'
+		 	</if>
+		 </if>
+		 </where> 
 		order by st.t_id
 		
-	</select>
-	
-	<select id="getCount" resultType="int">
-		select count(*) 
-		from subject_timetable
+		
 	</select>
 	
 </mapper>
