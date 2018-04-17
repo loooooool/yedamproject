@@ -78,7 +78,7 @@ public class ClassController {
 		if (multipartFile != null && multipartFile.getSize() > 0) {
 			// 파일을 업로드 위치에 저장
 
-			multipartFile.transferTo(new File("d:/upload", multipartFile.getOriginalFilename()));
+			multipartFile.transferTo(new File(uploadfolder, multipartFile.getOriginalFilename()));
 			vo.setTimeTable(multipartFile.getOriginalFilename());
 		}
 		classService.insertClass(vo);
@@ -119,7 +119,7 @@ public class ClassController {
 		if (multipartFile != null && multipartFile.getSize() > 0) {
 			// 파일을 업로드 위치에 저장
 
-			multipartFile.transferTo(new File("d:/upload", multipartFile.getOriginalFilename()));
+			multipartFile.transferTo(new File(uploadfolder, multipartFile.getOriginalFilename()));
 			vo.setTimeTable(multipartFile.getOriginalFilename());
 		}
 		classService.updateClass(vo);

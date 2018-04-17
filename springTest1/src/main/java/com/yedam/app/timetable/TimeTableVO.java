@@ -8,21 +8,20 @@ public class TimeTableVO {
 	private String classtime_cd;
 	private String subject;
 	private String ctypecd;
-	private int first;
-	private int last;
+	private String searchCondition;
+	private String searchKeyword;
 	
-	
-	public int getFirst() {
-		return first;
+	public String getSearchCondition() {
+		return searchCondition;
 	}
-	public void setFirst(int first) {
-		this.first = first;
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
 	}
-	public int getLast() {
-		return last;
+	public String getSearchKeyword() {
+		return searchKeyword;
 	}
-	public void setLast(int last) {
-		this.last = last;
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
 	}
 	public String getCtypecd() {
 		return ctypecd;
@@ -58,9 +57,15 @@ public class TimeTableVO {
 	@Override
 	public String toString() {
 		return "TimeTableVO [t_id=" + t_id + ", s_date=" + s_date + ", classtime_cd=" + classtime_cd + ", subject="
-				+ subject + ", ctypecd=" + ctypecd + ", first=" + first + ", last=" + last + "]";
+				+ subject + ", ctypecd=" + ctypecd + ", searchCondition=" + searchCondition + ", searchKeyword="
+				+ searchKeyword + "]";
 	}
 	
+	
+	
+	
+	
+
 	
 	
 	

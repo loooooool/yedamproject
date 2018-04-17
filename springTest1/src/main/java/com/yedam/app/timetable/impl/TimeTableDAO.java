@@ -17,8 +17,4 @@ public class TimeTableDAO {
 		return sqlSession.selectList("timeTable.getTimeTableList", vo);
 	}
 	
-	public int getCount(TimeTableVO vo) {
-		return sqlSession.selectOne("timeTable.getCount", vo);
-		
-	}
 }
