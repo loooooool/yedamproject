@@ -22,7 +22,7 @@
 			
 
 		
-			<table class="table table-responsive-sm table-striped">
+			<table class="table2 table-striped">
 				<thead>
 					<tr>
 						<th>학생명</th>
@@ -31,7 +31,7 @@
 						</c:forEach>
 					</tr>
 				</thead>
-				<tbody id="table">
+				<tbody id="table2">
 					<c:forEach items="${attList}" var="at">
 						<tr>
 							<td>${at.name}</td>

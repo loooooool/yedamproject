@@ -1233,6 +1233,13 @@ pre {
   max-width: 100%;
   margin-bottom: 1rem;
   background-color: transparent; }
+ 
+ .table2 {
+  width: 2000px;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent; }
+  
   .table th,
   .table td {
     padding: 0.75rem;
@@ -1245,6 +1252,28 @@ pre {
     border-top: 2px solid #a4b7c1; }
   .table .table {
     background-color: #e4e5e6; }
+    
+    
+    
+    .table2 th,
+  .table2 td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #a4b7c1; }
+  .table2 thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #a4b7c1; }
+  .table2 tbody + tbody {
+    border-top: 2px solid #a4b7c1; }
+  .table2 .table2 {
+    background-color: #e4e5e6; }
+    
+    
+    
+    
+    
+    
+    
 
 .table-sm th,
 .table-sm td {
@@ -4281,7 +4310,11 @@ tbody.collapse.show {
 .card-body, .card-block {
   -ms-flex: 1 1 auto;
       flex: 1 1 auto;
-  padding: 1.25rem; }
+  padding: 1.25rem; 
+  overflow:auto;
+  }
+  
+ 
 
 .card-title {
   margin-bottom: 0.75rem; }
