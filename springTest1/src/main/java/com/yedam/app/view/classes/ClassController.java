@@ -132,8 +132,7 @@ public class ClassController {
 		classService.deleteClass(vo);
 		return "redirect:/getClassList";
 	}
-	
-	/******** 다운로드 ************/
+
 	private String getBrowser(HttpServletRequest request) {
 		String header = request.getHeader("User-Agent");
 		if (header.indexOf("MSIE") > -1) {
