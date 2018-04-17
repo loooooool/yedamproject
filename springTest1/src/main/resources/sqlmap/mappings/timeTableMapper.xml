@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="timeTable">
+		
+	<select id="getTimeTableList" resultType="timeTable">
+		
+		select st.t_id "t_id",
+		        TO_CHAR(st.s_date,'YYYY-MM-DD') "s_date",
+		        get_codename(classtime_cd) "classtime_cd",
+		        su.subject "subject"
+		from subject_timetable st join subject su
+		on (st.subject = su.su_no) 
+		order by st.t_id
+		
+	</select>
+	
+	<select id="getCount" resultType="int">
+		select count(*) 
+		from subject_timetable
+	</select>
+	
+</mapper>
