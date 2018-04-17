@@ -13,7 +13,9 @@ public class ClassInfoDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	
+	public void getClassInfoList(Map<String, Object> vo) {
+		sqlSession.selectList("classInfo.getClassInfoList", vo);
+	}
 	
 	public void insertClassInfo(Map<String,Object> vo) {
 		sqlSession.insert("classInfo.insertClassInfo",vo);

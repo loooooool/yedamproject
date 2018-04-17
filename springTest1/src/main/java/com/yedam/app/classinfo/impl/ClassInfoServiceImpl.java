@@ -13,6 +13,10 @@ public class ClassInfoServiceImpl implements ClassInfoService {
 	@Autowired
 	ClassInfoDAO dao;
 	
+	@Override
+	public 	void getClassInfoList(Map<String, Object> vo) {
+		dao.getClassInfoList(vo);
+	}
 	
 	/* (non-Javadoc)
 	 * @see com.yedam.app.classinfo.ClassInfoService#insertClassInfo(java.util.Map)

@@ -43,7 +43,7 @@ public class SubjectController {
 		vo.setLast(paging.getLast());
 
 		// 결과저장
-		model.addAttribute("classList", classService.getClassList(cvo));
+		model.addAttribute("classList", classService.getClassListNP(cvo));
 		model.addAttribute("SubjectList", subjectService.getSubjectList(vo));
 		model.addAttribute("paging", paging);
 

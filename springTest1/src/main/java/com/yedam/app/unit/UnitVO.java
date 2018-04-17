@@ -10,11 +10,12 @@ public class UnitVO { 				//단위기간 출석부
 	private Integer absence;		//결석
 	private Integer goout;			//외출
 	
+	private Integer unitdays;		//단위일수
 	private String sdate; 			//단위시작일
 	private String edate;			//단위마지막일
 	
-	
-	
+	private String OUT_MSG; 		//프로시저 정상/에러메시지 출력
+	private String excelFile;		//엑셀파일 업로드
 	
 	
 	
@@ -80,6 +81,33 @@ public class UnitVO { 				//단위기간 출석부
 	}
 	
 	
+	
+	public Integer getUnitdays() {
+		return unitdays;
+	}
+	public void setUnitdays(Integer unitdays) {
+		this.unitdays = unitdays;
+	}
+	
+	
+	public String getOUT_MSG() {
+		return OUT_MSG;
+	}
+	public void setOUT_MSG(String OUT_MSG) {
+		this.OUT_MSG = OUT_MSG;
+	}
+	
+	
+	
+	
+	
+	
+	public String getExcelFile() {
+		return excelFile;
+	}
+	public void setExcelFile(String excelFile) {
+		this.excelFile = excelFile;
+	}
 	@Override
 	public String toString() {
 		return "UnitVO [c_no=" + c_no + ", student_name=" + student_name + ", class_no=" + class_no + ", unit=" + unit

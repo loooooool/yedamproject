@@ -21,6 +21,8 @@
 
 <script>
  $(function() {
+	 $('input:radio[value="${ members_VO.class_cd }"]').attr('checked', true); //과정구분
+	 $('input:radio[value="${ memberVO.open_route_cd }"]').attr('checked', true); //참여경로
 	    $( "#datepicker" ).datepicker({
 	      showButtonPanel: true
 	    });
@@ -46,13 +48,13 @@
 							<label for="nf-email"><strong> 과정구분 </strong></label>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="C1"
-									id="radio1" name="mypage_c"> <label
-									class="form-check-label" for="radio1"> 과정평가반 </label>
+									id="c1" name="mypage_c"> <label
+									class="form-check-label" for="c1"> 과정평가반 </label>
 							</div>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="C2"
-									id="radio2" name="mypage_c"> <label
-									class="form-check-label" for="radio2"> 단위기간평가반</label>
+									id="c2" name="mypage_c"> <label
+									class="form-check-label" for="c2"> 단위기간평가반</label>
 							</div>
 						</div>
 
@@ -60,13 +62,13 @@
 							<label for="nf-email"><strong>모집구분</strong></label>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="R1"
-									id="radio1" name="mypage_r"> <label
-									class="form-check-label" for="radio1"> 내일배움카드</label>
+									id="r1" name="mypage_r"> <label
+									class="form-check-label" for="r1"> 내일배움카드</label>
 							</div>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="R2"
-									id="radio2" name="mypage_r"> <label
-									class="form-check-label" for="radio2"> 취업성공패키지</label>
+									id="r2" name="mypage_r"> <label
+									class="form-check-label" for="r2"> 취업성공패키지</label>
 							</div>
 						</div>
 
@@ -81,81 +83,81 @@
 						
 						<div class="form-group">
 							<label for="nf-email"><strong>영문명</strong></label> <input
-								type="text" id="eng_name" name="eng_name" class="form-control"
-								placeholder="여권(passport)상의 영문명과 동일하게 작성하여 주세요"
-								onfocus="this.value=''"> 
+								type="text" id="eng_name" name="eng_name" class="form-control" 
+								value="${sessionScope.memberVO.eng_name}">
+								여권상의 영문명과 동일한 영문명
+								
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>최종학력</strong></label> <input
 								type="text" id="school_spec_cd" name="school_spec_cd"
-								class="form-control" onfocus="this.value=''">
+								class="form-control" value="${sessionScope.memberVO.school_spec_cd}">
 							<span class="help-block">예)대졸/전문졸/고졸</span>
 						</div>
 						
 						<div class="form-group">
 							<label for="nf-email"><strong>전공</strong></label> <input
 								type="text" id="major" name="major"
-								class="form-control" onfocus="this.value=''">
+								class="form-control" value="${sessionScope.memberVO.major}">
 							<span class="help-block"></span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>주민등록번호</strong></label> <input
 								type="text" id="social_number" name="social_number"
-								class="form-control" onfocus="this.value=''">
+								class="form-control" value="${sessionScope.memberVO.social_number}">
 							<span class="help-block">예)910808-2785623</span>
 						</div>
 
-						<!-- 이메일은 @gmail.com등의 주소형식 선택 기능 구현 -->
 						<div class="form-group">
 							<label for="nf-email"><strong>이메일</strong></label> <input
 								type="text" id="email" name="email" class="form-control"
-								onfocus="this.value=''"> <span
+								value="${sessionScope.memberVO.email}"> <span
 								class="help-block">예)abcde@gmail.com</span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>주소</strong></label> <input
 								type="text" id="address" name="address" class="form-control"
-								onfocus="this.value=''"> <span class="help-block"></span>
+								value="${sessionScope.memberVO.address}"> <span class="help-block"></span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>연락처</strong></label> <input
 								type="text" id="phone" name="phone" class="form-control"
-								placeholder="자택전화" onfocus="this.value=''"> <span
+								placeholder="자택전화" value="${sessionScope.memberVO.phone}"> <span
 								class="help-block"></span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>휴대폰</strong></label> <input
 								type="text" id="h_phone" name="h_phone" class="form-control"
-								placeholder="휴대폰" onfocus="this.value=''"> <span
+								placeholder="휴대폰" value="${sessionScope.memberVO.h_phone}"> <span
 								class="help-block"></span>
 						</div>
 
-						<div class="form-group">
-							<label for="nf-email"><strong>훈련참여경로(택1)</strong></label>
+						<div class="form-group" >
+							<label for="nf-email" ><strong>훈련참여경로(택1)</strong></label>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="O1"
-									id="radio1" name="open_route_cd"> <label
-									class="form-check-label" for="radio1"> 인터넷검색</label>
+									id="open_route_cd01" name="open_route_cd"> <label
+									class="form-check-label" for="open_route_cd01"> 인터넷검색</label>
 							</div>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="O2"
-									id="radio2" name="open_route_cd"> <label
-									class="form-check-label" for="radio2"> 현수막</label>
+									id="open_route_cd02" name="open_route_cd"> <label
+									class="form-check-label" for="open_route_cd02"> 현수막</label>
 							</div>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="O3"
-									id="radio3" name="open_route_cd"> <label
-									class="form-check-label" for="radio3"> 고용지원센터</label>
+									id="open_route_cd03" name="open_route_cd"> <label
+									class="form-check-label" for="open_route_cd03"> 고용지원센터</label>
 							</div>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="O4"
-									id="radio4" name="open_route_cd"> <label
-									class="form-check-label" for="radio4"> 지인권유</label>
+									id="open_route_cd04" name="open_route_cd"> <label
+									class="form-check-label" for="open_route_cd04"> 지인권유</label>
 							</div>
 						</div>
 
@@ -170,13 +172,13 @@
 							<label for="nf-email"><strong>실업급여 수급 여부</strong></label>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="U1"
-									id="radio1" name="unemployee_pay_yn"> <label
-									class="form-check-label" for="radio1"> 수급 </label>
+									id="u1" name="unemployee_pay_yn"> <label
+									class="form-check-label" for="u1"> 수급 </label>
 							</div>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="U2"
-									id="radio2" name="unemployee_pay_yn"> <label
-									class="form-check-label" for="radio2"> 미수급</label>
+									id="u2" name="unemployee_pay_yn"> <label
+									class="form-check-label" for="u2"> 미수급</label>
 							</div>
 						</div>
 
@@ -191,7 +193,7 @@
 							<label for="nf-email"><strong>이직 일자</strong></label> <input
 								type="date" id="job_change_date" name="job_change_date"
 								class="form-control" placeholder="최종 퇴사일을 적으세요" 
-								onfocus="this.value=''"> <span class="help-block"></span>
+								value="${sessionScope.memberVO.job_change_date}"> <span class="help-block"></span>
 						</div>
 
 
@@ -199,14 +201,14 @@
 							<label for="nf-email"><strong>보훈대상자</strong></label>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="B1"
-									id="radio1" name="bohun_yn"> <label
-									class="form-check-label" for="radio1"> 보훈 해당(보훈대상자 월
+									id="b1" name="bohun_yn"> <label
+									class="form-check-label" for="b1"> 보훈 해당(보훈대상자 월
 									4만원 지급, 3개월에 한번씩) </label>
 							</div>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="B2"
-									id="radio2" name="bohun_yn"> <label
-									class="form-check-label" for="radio2"> 해당없음 </label>
+									id="b2" name="bohun_yn"> <label
+									class="form-check-label" for="b2"> 해당없음 </label>
 							</div>
 							<br><br><br><br>
 							
@@ -222,9 +224,17 @@
 							<div class="card-body">
 								<input type="submit" class="btn btn-info" value="수정" /><br><br>
 								<input type="button" class="btn btn-secondary"
-									onclick="location.href='getClassList'" value="과정목록" />&nbsp;&nbsp;&nbsp;
+									onclick="location.href='getClassList'" value="전체과정목록" />&nbsp;&nbsp;&nbsp;
+								<input type="button" class="btn btn-secondary"
+									onclick="location.href='find_pwd'" value="비밀번호찾기" />&nbsp;&nbsp;&nbsp;
 								<input type="button" class="btn btn-secondary"
 									onclick="location.href='changePwdForm'" value="비밀번호변경" />&nbsp;&nbsp;&nbsp;
+								<input type="button" class="btn btn-secondary"
+									onclick="location.href=''" value="출석률 보기" />&nbsp;&nbsp;&nbsp;
+								<input type="button" class="btn btn-secondary"
+									onclick="location.href=''" value="시간표 보기" />&nbsp;&nbsp;&nbsp;
+								<input type="button" class="btn btn-secondary"
+									onclick="location.href=''" value="휴가 신청" />&nbsp;&nbsp;&nbsp;
 							</div>
 						</div>
 

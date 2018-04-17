@@ -95,10 +95,7 @@ public class ClassVO {
 	@Override
 	public String toString() {
 		return "ClassVO [cl_no=" + cl_no + ", class_name=" + class_name + ", address=" + address + ", timeTable="
-				+ timeTable + ", totalTime=" + totalTime + ", class_cd=" + class_cd + "]";
+				+ timeTable + ", totalTime=" + totalTime + ", class_cd=" + class_cd + ", class_nm=" + class_nm
+				+ ", first=" + first + ", last=" + last + ", totaldays=" + totaldays + "]";
 	}
-
-	
-
-	
 }
