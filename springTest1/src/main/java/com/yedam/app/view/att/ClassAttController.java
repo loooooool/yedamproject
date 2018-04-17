@@ -30,9 +30,9 @@ public class ClassAttController {
 	
 	
 	@RequestMapping("/getAttList")
-	public String getClassAtt(Model model, String class_cd) {
+	public String getClassAtt(Model model, Integer cl_no) {
 		
-		model.addAttribute("attList",classAttService.getAttList(class_cd));
+		model.addAttribute("attList",classAttService.getAttList(cl_no));
 		return "att/getAttList";
 	}
 }

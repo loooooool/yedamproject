@@ -13,9 +13,9 @@
 	
 var context='${pageContext.request.contextPath}';
 
-function getAttList(class_cd){
+function getAttList(cl_no){
 	
-	var params = "class_cd="+class_cd;
+	var params = "cl_no="+cl_no;
 	
 	location.href=context+"/getAttList?"+params;
 	
@@ -54,7 +54,7 @@ function getAttList(class_cd){
 							<td>${ca.totalTime}시간</td>
 							<td>${ca.totaldays}일</td>
 							<td>${ca.address}</td>
-							<td><button type="button" class="btn btn-sm btn-primary" value="${ca.class_cd}" onclick="getAttList('${ca.class_cd}')"><i class="fa fa-dot-circle-o"></i>출석부보기</button></td>
+							<td><button type="button" class="btn btn-sm btn-primary" onclick="getAttList('${ca.cl_no}')"><i class="fa fa-dot-circle-o"></i>출석부보기</button></td>
 							
 						</tr>
 					</c:forEach>

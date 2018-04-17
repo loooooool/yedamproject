@@ -5,6 +5,6 @@ import java.util.Map;
 
 public interface ClassAttService {
 
-	public List<Map<String, Object>> getAttList(String class_cd);
+	public List<Map<String, Object>> getAttList(Integer cl_no);
 
 }

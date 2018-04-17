@@ -38,7 +38,8 @@
 		,class_cd
 		,totaldays
 		FROM class
-		ORDER BY cl_no DESC
+		where class_cd='C1'
+		ORDER BY cl_no asc
 		
 	</select>
 

@@ -13,9 +13,9 @@ public class ClassAttDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public List<Map<String,Object>> getAttList(String class_cd){
+	public List<Map<String,Object>> getAttList(Integer cl_no){
 		
-		return sqlSession.selectList("classAtt.getAttList",class_cd);
+		return sqlSession.selectList("classAtt.getAttList",cl_no);
 		
 	}
 }

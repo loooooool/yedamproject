@@ -19,7 +19,7 @@ public class ClassAttServiceImpl implements ClassAttService {
 	 * @see com.yedam.app.att.impl.ClassAttService#getClassAttList()
 	 */
 	@Override
-	public List<Map<String,Object>> getAttList(String class_cd){
-		return dao.getAttList(class_cd);
+	public List<Map<String,Object>> getAttList(Integer cl_no){
+		return dao.getAttList(cl_no);
 	}
 }

@@ -15,12 +15,12 @@
 	
 	
 	
-	<select id="getAttList" resultMap="classAttResult" parameterType="String">
+	<select id="getAttList" resultMap="classAttResult" parameterType="Integer">
 	
 		select m.name
 		from class_info ci join member m
 		on(ci.member_id = m.member_id)
-		where ci.course_type_cd=#{class_cd}
+		where ci.cl_no=#{cl_no}
 	
 	</select>
 	
