@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -36,6 +37,12 @@ public class ClassController {
 
 	@Autowired
 	ClassService classService;
+
+	
+	@Value("${file.uploadfolder}")
+	String uploadfolder;
+
+
 	// 목록
 	@RequestMapping("/getClassList")
 	public String getClassList(Model model, ClassVO vo, Paging paging) {
@@ -125,7 +132,8 @@ public class ClassController {
 		classService.deleteClass(vo);
 		return "redirect:/getClassList";
 	}
-
+	
+	/******** 다운로드 ************/
 	private String getBrowser(HttpServletRequest request) {
 		String header = request.getHeader("User-Agent");
 		if (header.indexOf("MSIE") > -1) {
@@ -178,7 +186,7 @@ public class ClassController {
 	@RequestMapping(value = "/FileDown")
 	public void cvplFileDownload(@RequestParam String attachField, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		File uFile = new File("C:\\Users\\User\\Downloads", attachField);
+		File uFile = new File(uploadfolder, attachField);
 		long fSize = uFile.length();
 		if (fSize > 0) {
 			String mimetype = "application/x-msdownload";
