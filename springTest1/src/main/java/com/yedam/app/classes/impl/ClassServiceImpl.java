@@ -33,6 +33,11 @@ public class ClassServiceImpl implements ClassService{
 	public List<ClassVO> getClassList(ClassVO vo) {
 		return dao.getClassList(vo);
 	}
+	
+	@Override
+	public List<ClassVO> getClassList2(ClassVO vo) {
+		return dao.getClassList2(vo);
+	}
 
 	@Override
 	public ClassVO getClass(ClassVO vo) {
@@ -42,6 +47,12 @@ public class ClassServiceImpl implements ClassService{
 	@Override
 	public int getCount(ClassVO vo) {
 		return dao.getCount(vo);
+	}
+
+	@Override
+	public List<ClassVO> getClassListNP(ClassVO vo) {
+		
+		return dao.getClassListNP(vo);
 	}
 	
 

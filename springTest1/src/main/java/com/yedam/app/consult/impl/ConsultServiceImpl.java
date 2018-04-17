@@ -54,4 +54,12 @@ public class ConsultServiceImpl implements ConsultService{
 		
 	}
 
+
+	@Override
+	public List<ConsultVO> getConsultListSelect(String m_memberid) {
+		// TODO Auto-generated method stub
+		return dao.getConsultListSelect(m_memberid);
+	}
+
+	
 }

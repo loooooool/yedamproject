@@ -107,6 +107,33 @@
 		FROM CONSULT c
 		ORDER BY cdate DESC
 	</select>
+	
+	
+	
+	<select id="getConsultListSelect" resultType="consult" parameterType="String">
+		SELECT  c_no
+				,TO_CHAR(cdate,'YYYY-MM-DD') "cdate"
+				,s_detail
+				,(	SELECT m.name 
+					FROM member m
+					WHERE m.member_id = c.s_detail)	"s_name"
+				,cl_no
+				,( SELECT cl.class_name
+					FROM class cl
+					WHERE cl.cl_no = c.cl_no) "c_name"
+				,title
+				,content
+				,writer
+				,(	SELECT m.name
+					FROM member m
+					WHERE m.member_id=c.writer ) "c_writer"
+		FROM CONSULT c
+		where s_detail=#{m_memberid}
+		ORDER BY cdate DESC
+	</select>
+	
+	
+	
 
 	<select id="getStudentList" resultType="member" parameterType="consult">
 		SELECT m.name as "name"

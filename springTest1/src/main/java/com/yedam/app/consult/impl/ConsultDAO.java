@@ -48,5 +48,8 @@ public class ConsultDAO {
 		return sqlSession.selectList("consult.getStudentList",vo);
 	}
 
+	public List<ConsultVO> getConsultListSelect(String m_memberid){
+		return sqlSession.selectList("consult.getConsultListSelect", m_memberid);
+	}
 	
 }

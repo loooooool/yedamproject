@@ -82,7 +82,7 @@
          
         </div>
           <div class="card-footer">
-          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>회원가입</button>
+          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>학생등록</button>
           <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>다시입력</button>
         </div>
        </form>

@@ -41,12 +41,35 @@ public class ConsultController {
 		//결과저장
 		
 		model.addAttribute("memberList",memberService.getMemberList(mvo));
-		model.addAttribute("classList",classService.getClassList(cvo));
+		model.addAttribute("classList",classService.getClassListNP(cvo));
 		model.addAttribute("consultList",consultService.getConsultList(vo));
 		model.addAttribute("paging",paging);	
 		return "consult/getConsultList";
 		
 	}
+	
+	
+	@RequestMapping("/getConsultListSelect")
+	
+	public String getConsultListSelect(Model model, ConsultVO vo, ClassVO cvo, MemberVO mvo,Paging paging,String m_memberid) {
+		System.out.println("아이디 : "+m_memberid);
+		//전체 레코드 건수
+		paging.setTotalRecord(consultService.getCount(vo));
+		//vo의 first, last 셋팅
+		vo.setFirst(paging.getFirst());
+		vo.setLast(paging.getLast());
+		//결과저장
+		
+		model.addAttribute("memberList",memberService.getMemberList(mvo));
+		model.addAttribute("classList",classService.getClassListNP(cvo));
+		model.addAttribute("consultList",consultService.getConsultListSelect(m_memberid));
+		model.addAttribute("paging",paging);	
+		return "consult/getConsultList";
+		
+	}
+	
+	
+	
 	//상세보기
 	@RequestMapping("/getConsult")
 	public String getconsult(Model model, Integer c_no ) {
@@ -59,7 +82,7 @@ public class ConsultController {
 	//수정폼
 	@RequestMapping("/updateConsultForm")
 	public String updateConsultForm(Model model, ConsultVO vo, ClassVO cvo) {
-		model.addAttribute("classList",classService.getClassList(cvo));
+		model.addAttribute("classList",classService.getClassListNP(cvo));
 		model.addAttribute("consult", consultService.getConsult(vo));
 		return "consult/updateConsult";
 	}
@@ -90,7 +113,7 @@ public class ConsultController {
 	@RequestMapping("/insertConsultForm")
 	public String insertConsultForm(Model model, ConsultVO vo, ClassVO cvo, MemberVO mvo) {
 		model.addAttribute("memberList",memberService.getMemberList(mvo));
-		model.addAttribute("classList",classService.getClassList(cvo));
+		model.addAttribute("classList",classService.getClassListNP(cvo));
 		return "consult/insertConsultForm";
 	}
 	

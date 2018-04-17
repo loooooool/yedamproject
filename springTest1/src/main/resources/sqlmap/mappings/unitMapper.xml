@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="unit">
+
+	<insert id="insertUnit" parameterType="unit" statementType="CALLABLE">
+	{CALL UNITINSERT(
+						#{class_no}, 
+						#{unit},
+						#{unitdays},
+						#{sdate},
+						#{edate},
+						#{OUT_MSG, mode=OUT, jdbcType=VARCHAR, javaType=string}
+						)
+	}
+	</insert>
+
+	<select id="getUnitList" resultType="unit">
+	SELECT	c_no,
+			student_name,
+			class_no,
+			unit,
+			unitdays,
+			sdate,
+			edate,
+			late,
+			leave,
+			absence,
+			goout
+			
+	FROM	unit_attendance
+	</select>
+
+
+</mapper>

@@ -10,7 +10,7 @@
 <script>
 	function go_list(page) {
 		document.getElementsByName("page")[0].value = page;
-		// location.href="getBoardList?page="+page;
+		 //location.href="getClassList?page="+page;
 		document.forms[0].submit();
 	}
 </script>

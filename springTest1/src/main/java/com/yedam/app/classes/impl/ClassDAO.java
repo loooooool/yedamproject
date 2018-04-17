@@ -30,11 +30,18 @@ public class ClassDAO {
 		return sqlSession.selectList("class.getClassList", vo);
 	}
 	
+	public List<ClassVO> getClassList2(ClassVO vo) {
+		return sqlSession.selectList("class.getClassList2", vo);
+	}
+	
 	public ClassVO getClass(ClassVO vo) {
 		return sqlSession.selectOne("class.getClass", vo);
 	}
 	
 	public int getCount(ClassVO vo) {
 		return sqlSession.selectOne("class.getCount", vo);
+	}
+	public List<ClassVO> getClassListNP(ClassVO vo){
+		return sqlSession.selectList("class.getClassListNP", vo);
 	}
 }

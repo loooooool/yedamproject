@@ -13,7 +13,9 @@
 		<result property="totaldays" column="totaldays" />
 	</resultMap>
 
-	<select id="getClassList" resultType="class">
+	<select id="getClassListNP" resultType="class">
+
+	
 		SELECT cl_no
 		,class_name
 		,address
@@ -22,6 +24,27 @@
 		,totaldays
 		FROM class
 		ORDER BY cl_no DESC
+		
+	</select>
+
+
+	<select id="getClassList" resultType="class">
+	select a.* from ( select rownum rn, b.* from (
+	
+		SELECT cl_no
+		,class_name
+		,address
+		,totaltime
+		,GET_CODENAME(class_cd) "class_nm"
+		,totaldays
+		FROM class
+		ORDER BY cl_no DESC
+		
+	) b ) a where rn between #{first} and #{last}
+	</select>
+	
+	<select id="getClassList2" resultType="class">
+		select * from class
 	</select>
 
 	<select id="getClass" resultType="class" parameterType="class">

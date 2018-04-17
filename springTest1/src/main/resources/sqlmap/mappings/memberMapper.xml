@@ -10,70 +10,58 @@
 		select * from member
     	 order by member_cd desc
 		
+	</select>
+	
+	<select	id="">
+	
+	
 	</select> 
 	
 	<select id="getMember_id" resultType="member" parameterType="String">
-		select * from member 
+		select * from members_vo
 		
 		where member_id = #{member_id}
 	</select>
 	
+	<!-- 비밀번호 update -->
+	<update id="changePwd" parameterType="member">
+		update member 
+		set pwd = #{pwd2} 
+		where member_id = #{member_id}
+	</update>
+	
 	<!-- update : 패스워드, 이메일형식 -->
 	<update id="memberUpdate" parameterType="member">
 		update member 
-		set pwd = #{pwd}, 
-			eng_name = #{eng_name},
+		set eng_name = #{eng_name},
 			school_spec_cd = #{school_spec_cd},
 			major = #{major},
 			social_number = #{social_number},
-			email = #{email}, <!--  이메일 형식:@선택 혹은 직접입력 -->
+			email = #{email},
 			address = #{address},
 			phone = #{phone},
 			h_phone = #{h_phone},
 			open_route_cd = #{open_route_cd},
 			unemployee_pay_yn = #{unemployee_pay_yn},
 			previous_job = #{previous_job},
-			job_change_date = #{job_change_date},
-			bohun_yn = #{bohun_yn}			
-		where member_id = #{member_id},
-			  <!-- email = #{email} ||  "@" || #{email2} -->
+			<if test="job_change_date != null">job_change_date = #{job_change_date}</if>
+			bohun_yn = #{bohun_yn}
+		where member_id = #{member_id}
+		<!-- email = #{email} || "@" || #{email2} -->
 	</update>
 
 
-	<!-- //학생추가 -->
-	<insert id="insertMember" parameterType="map">
-		insert into member (member_id,pwd,member_cd,name,social_number) 
-		values ( #{id},'12345','M1',#{name},#{social_number})  
-			
-	</insert>
-	
-	<select id="getRn" resultType="String">
-	
-		select max(rownum) rn 
-		from member
-	
-	</select>
-	<!-- <select id="getCount" resultType="int" parameterType="emp">
-		select count(*) 
-		from hr.employees
-		 <where>
-		 <if test="searchKeyword != null and searchKeyword != ''" >
- 		 	<if test="searchCondition == 'last_name' ">
-		 		 and last_name like '%' ||#{searchKeyword}||'%'
-		 	</if>
-		 	<if test="searchCondition == 'salary' ">
-		 		  salary like '%' ||#{searchKeyword}||'%'
-		 	</if>
-		 </if>
-		 </where>
-	</select> -->
-	
-	<!-- <select id="getDeptEmpStatistic" resultType="map">
-		select dept.department_name "name", count(*) "cnt", avg(emp.salary) "sal"
-		from hr.departments dept join hr.employees emp
-		on(dept.department_id = emp.department_id)
-		group by dept.department_name
-	</select> -->
-	
+
+	<!-- <select id="getCount" resultType="int" parameterType="emp"> select 
+		count(*) from hr.employees <where> <if test="searchKeyword != null and searchKeyword 
+		!= ''" > <if test="searchCondition == 'last_name' "> and last_name like '%' 
+		||#{searchKeyword}||'%' </if> <if test="searchCondition == 'salary' "> salary 
+		like '%' ||#{searchKeyword}||'%' </if> </if> </where> </select> -->
+
+	<!-- <select id="getDeptEmpStatistic" resultType="map"> select dept.department_name 
+		"name", count(*) "cnt", avg(emp.salary) "sal" from hr.departments dept join 
+		hr.employees emp on(dept.department_id = emp.department_id) group by dept.department_name 
+		</select> -->
+
 
 </mapper>
