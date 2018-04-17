@@ -1,8 +1,12 @@
 package com.yedam.app.unit.impl;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yedam.app.unit.UnitInsertVO;
 import com.yedam.app.unit.UnitService;
 import com.yedam.app.unit.UnitVO;
 
@@ -13,9 +17,34 @@ public class UnitServiceImpl implements UnitService{
 	UnitDAO dao;
 	
 	@Override
-	public void insertUnit(UnitVO vo) {
-		dao.insertUnit(vo);
+	public void insertUnit(UnitInsertVO uvo ) {
+		UnitVO vo = new UnitVO();
+	
+		for(int i=0; i<uvo.getUnit().length;i++) {
+			vo.setClass_no(uvo.getClass_no());
+			vo.setUnit(uvo.getUnit()[i]);
+			vo.setUnitdays(uvo.getUnitdays()[i]);
+			vo.setEdate(uvo.getEdate()[i]);
+			vo.setSdate(uvo.getSdate()[i]);
+			dao.insertUnit(vo);
+			System.out.println(vo.getOUT_MSG());
+		}
 		
+	}
+
+
+	public void updateUnit(UnitVO vo) {
+		dao.updateUnit(vo);
+	}
+
+	
+	public void deleteUnit(UnitVO vo) {
+		dao.deleteUnit(vo);
+	}
+
+
+	public List<UnitVO> getUnitList(UnitVO vo) {
+		return dao.getUnitList(vo);
 	}
 
 	

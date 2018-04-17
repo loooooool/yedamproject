@@ -90,7 +90,7 @@
 						<label class="col-md-3 col-form-label" for="select1">단위시작일</label>
 						<div class='col-sm-3'>
 								<div class='input-group date' >
-									<input type='text' class="form-control" name="sdatepicker"  id="sdatepicker0" /> 
+									<input type='text' class="form-control" name="sdate"  id="sdatepicker0" /> 
 									<span class="input-group-addon"> 
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -100,7 +100,7 @@
 						<label class="col-md-3 col-form-label" for="select1">단위마지막일</label>
 						<div class='col-sm-3'>
 								<div class='input-group date' id='datetimepicker1'>
-									<input type='text' class="form-control" name="edatepicker" id="edatepicker0" /> 
+									<input type='text' class="form-control" name="edate" id="edatepicker0" /> 
 									<span class="input-group-addon"> 
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
