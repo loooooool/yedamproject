@@ -4,31 +4,41 @@
 <html>
 <head>
 <title>insertNotice.jsp</title>
+<!-- 절대경로 -->
 <script>
 	var context='${pageContext.request.contextPath}';
-	
-	
 </script>
+<!-- ckeditor -->
 <script src="${pageContext.request.contextPath}/scripts/ckeditor/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/scripts/ckeditor/config.js"></script>
 <script src="${pageContext.request.contextPath}/scripts/ckeditor/ko.js"></script>
-</head>
 
+<!-- enter key lock-->
+<script>
+function captureReturnKey(e) {
+    if(e.keyCode==13 && e.srcElement.type != 'textarea')
+    return false;
+}
+</script>
+
+
+</head>
 <body>
 	<div class="card" style="border: 50px solid white;">
-		<form action="insertNotice" method="post" enctype="multipart/form-data">
-			<h2>게시글 작성</h2>
+		<form action="insertNotice" method="post" enctype="multipart/form-data" onkeydown="return captureReturnKey(event)">
+			<h2>게시글 작성</h2><br>
 			<table class="table table-responsive-sm table-striped">
 				<colgroup>
-					<col width="40%">
+					<col width="33%">
 				</colgroup>
 				<tbody>
 					<!-- 작성자 고정 -->
 					<tr>
 						<td>
-							<div class="form-group row">
+							<div class="form-group row" >
 								<label class="col-md-3 col-form-label" for="writer">작성자</label>
-								<div class="col-md-9">
-									<input type="text" id="writer" name="writer" value="남성현"
+								<div class="col-md-9" >
+									<input type="text" id="writer" name="writer" value="남성현" style="background-color:white;"
 										class="form-control"  readonly /> 
 								</div>
 							</div>
@@ -68,9 +78,10 @@
 										class="form-control" placeholder="Content.."></textarea>
 									<script>
 							            CKEDITOR.replace( 'content', {
-											filebrowserUploadUrl: './ckeditorfileupload/fileUpload.jsp',height : '500px'
+											filebrowserUploadUrl: '${pageContext.request.contextPath}/ckeditorfileupload/fileUpload.jsp'
+														,height : '500px'
 										}); 
-							        </script>
+							        </script> 
 								</div>
 							</div>
 						</td>
@@ -88,7 +99,7 @@
 			<div align="right">
 				<input type="submit" value="등록" class="btn btn-info"/>
 				<input type="reset" value="취소" class="btn btn-success" onclick="CKEDITOR.instances.content.setData('')"/>
-				<input type="reset" value="목록" class="btn btn-secondary"/>
+				<input type="button" class="btn btn-secondary"  value="목록" onclick="location.href='./getNoticeList'" />
 			</div>
 		</form>
 	</div>

@@ -13,7 +13,7 @@ public class NoticeVO {
 	private Integer viewcount; //조회수
 	private String writer;     //작성자
 	private String filename;   //첨부파일
-	private Integer priority_yn;  //필독공지
+	private Integer priority_yn = 0;  //필독공지
 	private int cnt;
 	
 	private String searchCondition;

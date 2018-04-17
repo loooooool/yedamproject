@@ -12,7 +12,6 @@
 		<result property="writer" column="writer" />
 		<result property="filename" column="filename" />
 		<result property="priority_yn" column="priority_yn" />
-		<result property="view_cnt" column="view_cnt" />
 	</resultMap>
 
 	<!-- 공지사항 목록조회 -->
@@ -25,6 +24,7 @@
 				,writer
 				,ndate
 				,viewcount
+				,priority_yn
 				,filename 	
 		 from notice 
 		 ]]>
@@ -38,7 +38,7 @@
 		 	</if>
 		 </if>
 		 </where>
-		  order by n_no desc
+		  order by nvl(priority_yn,0) desc,n_no desc
 		 ) b ) a where rn between #{first} and #{last}		
 	</select>
 
@@ -74,25 +74,27 @@
 	</insert>
 	 
 	 <!-- 조회수 증가 -->
-	 <update id="updateView" parameterType="notice">
+	 <update id="updateView" parameterType="int">
          update notice
          set
             viewcount = nvl(viewcount, 0) + 1
          where
-            n_no = ${n_no}
+            n_no = #{n_no}
 	 </update>
 
 
 	<!-- 공지사항 수정 -->
 	<update id="updateNotice" parameterType="notice">
 		update notice set
-		title=#{title},
-		content=#{content},
-		ndate=#{ndate},
-		viewcount=#{viewcount},
-		writer=#{writer},
-		filename=#{filename},
-		priority_yn=#{priority_yn}
+		n_no=#{n_no}
+		,title=#{title}
+		,content=#{content}
+		,ndate=sysdate
+		,writer=#{writer}
+		,priority_yn=#{priority_yn}
+		<if test="filename != null and filename !=''">
+			,filename=#{filename}
+		</if>
 		where n_no=#{n_no}
 	</update>
 	
@@ -118,8 +120,8 @@
 	</select>
 	
 	<!-- 상세보기 -->
-	<select id="getNotice" resultType="int" parameterType="notice">
-		select count(*) from notice where n_no=#{n_no}
+	<select id="getNotice" resultType="notice" parameterType="notice">
+		select * from notice where n_no=#{n_no}
 	</select>
 	
 	

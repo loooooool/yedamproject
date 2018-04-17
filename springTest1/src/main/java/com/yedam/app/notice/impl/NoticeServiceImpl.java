@@ -24,10 +24,6 @@ public class NoticeServiceImpl implements NoticeService {
 	public void updateNotice(NoticeVO vo) {
 		dao.updateNotice(vo);
 	}
-	
-	public void updateView(NoticeVO vo) {
-		dao.updateView(vo);
-	}
 
 	@Override
 	public void deleteNotice(NoticeVO vo) {
@@ -35,7 +31,10 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public NoticeVO getNotice(NoticeVO vo) {
+	public NoticeVO getNotice(NoticeVO vo,boolean cntYn) {
+		if(cntYn == true) {
+			dao.updateView(vo.getN_no());
+		}
 		return dao.getNotice(vo);
 	}
 
