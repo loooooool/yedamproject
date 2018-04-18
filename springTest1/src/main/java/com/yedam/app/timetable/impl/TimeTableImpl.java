@@ -19,9 +19,4 @@ public class TimeTableImpl implements TimeTableService {
 		return dao.getTimeTableList(vo);
 	}
 
-	@Override
-	public int getCount(TimeTableVO vo) {
-		return dao.getCount(vo);
-	}
-
 }

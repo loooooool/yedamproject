@@ -81,17 +81,7 @@ function getMemberAddList(){
 			<h2>학생조회</h2>
 		</div>
 		<div class="card-body" style="border-bottom: :0px">
-			<%-- <div class="form-group row">
-				<label class="col-md-3 col-form-label" for="select1">과정</label>
-				<div class="col-md-9">
-					<select id="selectClass" name="select1"  onchange="getStudent()" class="form-control">
-						<option value="0">과정선택</option>
-						<c:forEach items="${classList}" var="cl">
-						<option value="${cl.cl_no}">${cl.class_name}</option>
-						</c:forEach>					
-					</select>
-				</div>
-			</div> --%>
+			
 
 
 			<div class="form-group row">

@@ -1,55 +1,85 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="my" tagdir="/WEB-INF/tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>나의 시간표</title>
-<script>
-	function go_list(page) {
-		document.getElementsByName("page")[0].value = page;
-		 //location.href="getClassList?page="+page;
-		document.forms[0].submit();
-	}
-</script>
+    <style>
+.search {
+	width: 100px;
+	font-size: 16px;
+	color: gray;
+	border: 1px solid gray;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+</style>
+    
 </head>
 <body>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<div class="card-header">
-					<h2>나의 시간표</h2>
-				</div>
-				<div class="card-body">
-					<form action="getClassList">
-						<input type="hidden" name="page" value="1" /> <br>
-						<table id="example" class="table table-responsive-sm table-striped" style="width: 100%">
-							<thead>
-								<tr>
-									<th scope="col">번호</th>
-									<th scope="col">날짜</th>
-									<th scope="col">훈련시간</th>
-									<th scope="col">세부내용</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${timeTable }" var="tt">
-									<tr>
-										<th scope="row">${tt.t_id}</th>
-										<td>${tt.s_date}</td>
-										<td>${tt.classtime_cd}</td>
-										<td>${tt.subject}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+	<c:if test="${courseType == 'C1'}">
+	
+		<div class="card" style="border: 50px solid white;">
+			<div class="card-header">
+				<h2>나의 시간표</h2>
+				<div class="card-body" align="right">
+					<form action="getTimeTableList" style="height: 15.96px;">
+						<select name="searchCondition" class="search">
+							<option value="">선택</option>
+							<c:forEach items="${conditionMap}" var="option">
+								<option value="${option.value}">${option.key}</option>
+							</c:forEach>
+						</select> <input type="text" name="searchKeyword" style="width: 160px;"></input>
+						<input type="submit" value="검색" class="btn btn-secondary" />
 					</form>
-					<my:paging paging="${paging }" jsfunc="go_list" />
+				</div>
+			</div>
+			<div>
+				<table class="table table-responsive-sm table-striped" style="width: 100%">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>날짜</th>
+							<th>훈련시간</th>
+							<th>과목</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${timeTable }" var="tt">
+							<tr>
+								<td>${tt.t_id}</td>
+								<td>${tt.s_date}</td>
+								<td>${tt.classtime_cd}</td>
+								<td>${tt.subject}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</c:if>
+	
+	<c:if test="${courseType != 'C1'}">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h2>나의 시간표</h2>
+					</div>
+					<div class="card-body">
+						<div class="form-group row">
+							단위기간평가반 시간표는 과정 상세 페이지에서 볼 수 있습니다.
+							<br>
+							<button type="button" class="btn btn-link btn-lg" 
+							onclick="location.href='../class/getClassList'">바로가기</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</c:if>
+	
 </body>
 </html>

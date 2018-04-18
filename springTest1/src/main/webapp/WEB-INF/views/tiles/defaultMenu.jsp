@@ -77,6 +77,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="buttons/button-group.html"><i class="icon-cursor"></i>출석현황</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="getClassAtt"><i class="icon-cursor"></i>과목출석부</a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
