@@ -1,4 +1,4 @@
-package com.yedam.app.classes;
+package com.yedam.app.att;
 
 import com.yedam.app.subject.SubjectAttVO;
 
