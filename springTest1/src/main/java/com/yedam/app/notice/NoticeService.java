@@ -1,6 +1,6 @@
 package com.yedam.app.notice;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public interface NoticeService {

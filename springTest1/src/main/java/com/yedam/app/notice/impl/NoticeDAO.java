@@ -1,6 +1,5 @@
 package com.yedam.app.notice.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;

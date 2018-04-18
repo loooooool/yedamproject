@@ -2,12 +2,14 @@ package com.yedam.app.holiday;
 
 import java.util.List;
 
+
+
 public interface HolidayService {
 
-	public void insertNotice(HolidayVO vo);
-	public void updateNotice(HolidayVO vo);
-	public void deleteNotice(HolidayVO vo);
-	public HolidayVO getNotice(HolidayVO vo,boolean cntYn);
-	public List<HolidayVO> getNoticeList(HolidayVO vo);
+	public void insertHoliday(HolidayVO vo);
+	public void updateHoliday(HolidayVO vo);
+	public void deleteHoliday(HolidayVO vo);
+	public HolidayVO getHoliday(HolidayVO vo);
+	public List<HolidayVO> getHolidayList(HolidayVO vo);
 	public int getCount(HolidayVO vo);
 }
