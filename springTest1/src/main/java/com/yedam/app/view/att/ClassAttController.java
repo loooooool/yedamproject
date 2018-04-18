@@ -41,8 +41,10 @@ public class ClassAttController {
 		List<Map<String,Object>> membername = classAttService.getAttList(cl_no);
 		//해당과정의 과목 목록
 		List<Map<String,Object>> subject = classAttService.getAttSubjectList(cl_no);
+		//출석률 퍼센테이지 구하는거
+		List<Map<String,Object>> percent = new ArrayList<Map<String,Object>>();
 		//최총출석률 \
-		List<Map<String,Object>> atttrans= new ArrayList<Map<String,Object>>();;
+		List<Map<String,Object>> atttrans= new ArrayList<Map<String,Object>>();
 		Map<String,Object> subjecttime;
 		//시간 초기화
 		for(Map<String,Object> mname : membername) {
@@ -81,7 +83,35 @@ public class ClassAttController {
 			
 			
 		}
+		
+		//출석률 퍼센테이지 구하는 for문
+		int cnt=0;
+		for(int i=0;i<atttrans.size();i++) {
+			Map<String,Object> per = new HashMap<String,Object>();
+			int subtime = ((Integer)atttrans.get(i).get("totaltime"));
+			int totoalsubtime = ((BigDecimal)subject.get(cnt).get("totaltime")).intValue();
+			//일부값 / 전체값 * 100
+			System.out.println("s :"+subtime);
+			System.out.println("d :"+totoalsubtime);
+			double percentage = ((double)subtime/(double)totoalsubtime)*100.0;
+			percentage = Math.round(percentage*100d)/100d;
+			System.out.println(percentage+"%");
+			per.put("percentage", percentage);
+			percent.add(per);
+			cnt++;
+			if(cnt>7) cnt=0;
+		}
+		
+		
+		
 		System.out.println(atttrans);
+		System.out.println(subject);
+		
+		
+		
+		
+		
+		
 		model.addAttribute("attList",classAttService.getAttList(cl_no));
 		model.addAttribute("attSubjectList",classAttService.getAttSubjectList(cl_no));
 		return "att/getAttList";
