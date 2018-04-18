@@ -10,7 +10,38 @@ public class HolidayVO {
 	private String day;
 	private String rotation_yn;
 	
+	private String searchCondition;
+	private String searchKeyword;
 	
+	private Integer first;
+	private Integer last;
+	
+	
+	
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	public Integer getFirst() {
+		return first;
+	}
+	public void setFirst(Integer first) {
+		this.first = first;
+	}
+	public Integer getLast() {
+		return last;
+	}
+	public void setLast(Integer last) {
+		this.last = last;
+	}
 	public Integer getH_no() {
 		return h_no;
 	}
