@@ -50,12 +50,6 @@ public class SchedulerController {
 		return "scheduler/getSchedulerList";
 	}
 	
-	//calendar
-	@RequestMapping("/getScheduler")
-	public String getCalendar(Model model, SchedulerVO vo) {
-		return "scheduler/scheduler";
-	}
-	
 	
 	//ajax요청
 	@RequestMapping("/getSchedulerList.ajax")
