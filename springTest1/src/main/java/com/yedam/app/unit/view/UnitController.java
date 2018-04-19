@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,19 +21,26 @@ import com.yedam.app.classes.ClassVO;
 import com.yedam.app.unit.UnitInsertVO;
 import com.yedam.app.unit.UnitService;
 import com.yedam.app.unit.UnitVO;
+import com.yedam.app.unit.impl.ExcelServiceImpl;
 
 @Controller
 public class UnitController {
 
+	@Autowired
+	ExcelServiceImpl excelService;
+	
 	@Autowired
 	ClassService classService;
 
 	@Autowired
 	UnitService unitService;
 	
+	@Value("${file.uploadfolder}")
+	String uploadfolder;
+	
 	@RequestMapping("/insertAttendanceForm")
 	public String insertAttendanceForm(Model model, ClassVO cvo) {
-		model.addAttribute("classList",classService.getClassListNP(cvo));
+		model.addAttribute("classList",classService.getClassListNP(cvo)); 
 		return "attendance/insertAttendance";
 	}
 	
@@ -44,6 +52,7 @@ public class UnitController {
 	
 	@RequestMapping("/getUnitList")
 	public String getUnitList(Model model,  UnitVO vo, ClassVO cvo ) {
+		
 		model.addAttribute("unitList",unitService.getUnitList(vo));
 		model.addAttribute("classList",classService.getClassListNP(cvo));
 		return "attendance/viewAttendance";
@@ -53,12 +62,13 @@ public class UnitController {
 	public String insertExcel(Model model, UnitVO vo,  HttpServletRequest request, HttpServletResponse response)  throws IOException{
 		// 첨부파일이 있는지 확인
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-		MultipartFile multipartFile = multipartRequest.getFile("attach_file");
+		MultipartFile multipartFile = multipartRequest.getFile("attach_file"); 
 
 		if (multipartFile != null && multipartFile.getSize() > 0) {
 			// 파일을 업로드 위치에 저장
-			multipartFile.transferTo(new File("d:/upload", multipartFile.getOriginalFilename()));
+			multipartFile.transferTo(new File(uploadfolder, multipartFile.getOriginalFilename()));
 			vo.setExcelFile(multipartFile.getOriginalFilename());
+			excelService.getSampleList(uploadfolder+"/"+multipartFile.getOriginalFilename());
 		}
 	
 		return "attendance/viewAttendance";
