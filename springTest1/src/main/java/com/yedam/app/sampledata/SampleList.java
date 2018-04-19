@@ -27,7 +27,7 @@ public class SampleList {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		Map<String, Object> val = null;
 		try {
-			fis = new FileInputStream("D:\\memo2.xls");
+			fis = new FileInputStream("D:\\memo3.xls");
 			try {
 				workbook = new HSSFWorkbook(fis);
 			} catch (IOException e) {

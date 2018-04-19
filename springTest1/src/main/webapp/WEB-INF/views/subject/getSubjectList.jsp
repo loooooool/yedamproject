@@ -11,7 +11,7 @@
 <script>
 	function go_list(page) {
 		document.getElementsByName("page")[0].value = page;
-		document.forms[0].submit();
+		document.subjectForm.submit();
 	}
 
 	window.onload = function() {}
@@ -40,7 +40,9 @@
 		<div class="card-header">
 			<h2>과목 목록</h2>
 		</div>
-		<div class="card-body" style="border-bottom: :0px">
+		<div class="card-body" style="border-bottom: 0px">
+		<form action="getSubjectList" name="subjectForm">
+			<input type="hidden" name="page" value="${paging.page}" />
 			<div class="form-group row">
 				<label class="col-md-3 col-form-label" for="select1">과정</label>
 				<div class="col-md-9">
@@ -52,9 +54,6 @@
 					</select>
 				</div>
 			</div>
-
-			<div class="card-body">
-				<form action="getSubjectList">
 					<br>
 					<div class="card-body" align="right">
 						<input type="button" class="btn btn-secondary" onclick="location.href='getSubjectList'" value="목록" />
@@ -84,8 +83,8 @@
 						</tbody>
 					</table>
 				</form>
-				<my:paging paging="${paging }" jsfunc="go_list" />
-				
+				<div>
+				<my:paging paging="${paging }" jsfunc="go_list" />	
 			</div>
 		</div>
 	</div>

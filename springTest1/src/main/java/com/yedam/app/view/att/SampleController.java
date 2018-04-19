@@ -29,7 +29,7 @@ public class SampleController {
 		
 		for(Map<String,Object> test : vo) {
 		
-			System.out.println(sampleService.getSampleData(test));
+			System.out.println("샘플 테스트 : "+sampleService.getSampleData(test));
 			Map<String,Object> att = new HashMap<String,Object>();
 			if(!(sampleService.getSampleData(test)).isEmpty()) {
 			
@@ -40,6 +40,7 @@ public class SampleController {
 				String end = code_name.substring(index+1);
 				
 				if(i==0) {
+					//10분까지는 출석인정
 					start = Integer.toString((Integer.parseInt(start)+10));
 				}
 				//test.get("name"),(sampleService.getSampleData(test)).get(i).get("t_id");

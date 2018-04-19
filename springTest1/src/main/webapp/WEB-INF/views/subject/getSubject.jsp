@@ -62,9 +62,11 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<div class="card-body" align="right">
-	<input type="button" class="btn btn-warning" onclick="location.href='../updateSubjectForm?su_no=${su.su_no}'" value="수정" />&nbsp;
-	<input type="button" class="btn btn-danger"  id="del" value="삭제" />&nbsp;
-	<input type="button" class="btn btn-secondary" onclick="location.href='../getSubjectList'" value="목록" />
+	<c:if test="${memberCD} == 'M2' && ${memberCD} == 'M3'">
+		<input type="button" class="btn btn-warning" onclick="location.href='../updateSubjectForm?su_no=${su.su_no}'" value="수정" />&nbsp;
+		<input type="button" class="btn btn-danger"  id="del" value="삭제" />&nbsp;
+	</c:if>
+		<input type="button" class="btn btn-secondary" onclick="location.href='../getSubjectList'" value="목록" />
 	</div>
 </body>
 </html>
