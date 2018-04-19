@@ -10,7 +10,15 @@ public class TimeTableVO {
 	private String ctypecd;
 	private String searchCondition;
 	private String searchKeyword;
+	private int cl_no;
 	
+	
+	public int getCl_no() {
+		return cl_no;
+	}
+	public void setCl_no(int cl_no) {
+		this.cl_no = cl_no;
+	}
 	public String getSearchCondition() {
 		return searchCondition;
 	}

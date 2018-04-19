@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classes.ClassVO;
 import com.yedam.app.common.Paging;
-import com.yedam.app.consult.ConsultVO;
+import com.yedam.app.member.MemberService;
 import com.yedam.app.member.MemberVO;
 import com.yedam.app.subject.SubjectService;
 import com.yedam.app.subject.SubjectVO;
@@ -30,12 +32,15 @@ public class SubjectController {
 
 	@Autowired
 	ClassService classService;
+	
+	@Autowired
+	MemberService memberService;
 
 	// 목록
 	@RequestMapping("/getSubjectList")
 	public String getSubjectList(Model model, SubjectVO vo, ClassVO cvo, Paging paging) {
 		// 전체 레코드 건수
-		paging.setPageUnit(5);
+		paging.setPageUnit(10);
 		paging.setTotalRecord(subjectService.getCount(vo));
 
 		// vo의 first, last setting
@@ -66,11 +71,18 @@ public class SubjectController {
 
 	// 상세보기
 	@RequestMapping("/getSubject/{su_no}")
-	public ModelAndView getSubject(@PathVariable Integer su_no) {
+	public ModelAndView getSubject(@PathVariable Integer su_no, 
+				@ModelAttribute("member") MemberVO mvo, HttpSession session) {
 		SubjectVO vo = new SubjectVO();
 		vo.setSu_no(su_no);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("member_id", "700101-04");
+		/* ((MemberVO)session.getAttribute("memberVO")).getMember_id()*/
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("su", subjectService.getSubject(vo));
+		mv.addObject("memberCD", memberService.getMemberList(mvo)); 
 		mv.setViewName("subject/getSubject");
 		return mv;
 	}
@@ -99,7 +111,16 @@ public class SubjectController {
 	
 	@RequestMapping("/getSubjectListAjax")
 	@ResponseBody
-	public List<SubjectVO> getSubjectListAjax( SubjectVO vo) {
+	public List<SubjectVO> getSubjectListAjax(Model model, SubjectVO vo, Paging paging) {
+		// 전체 레코드 건수
+			paging.setPageUnit(10);
+			paging.setTotalRecord(subjectService.getCount(vo));
+
+		// vo의 first, last setting
+			vo.setFirst(paging.getFirst());
+			vo.setLast(paging.getLast());
+			
+			model.addAttribute("paging", paging);
 		return subjectService.getSubjectListAjax(vo);
 	}
 

@@ -48,6 +48,4 @@ public class ClassDAO {
 	public List<ClassVO> getClassAttList(ClassVO vo){
 		return sqlSession.selectList("class.getClassAttList", vo);
 	}
-	
-	
 }

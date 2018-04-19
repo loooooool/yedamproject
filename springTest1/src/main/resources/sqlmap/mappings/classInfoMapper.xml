@@ -4,19 +4,13 @@
 
 <mapper namespace="classInfo">
 
-	<select id="getClassInfo" resultType="string">
-		select class_cd
+	<select id="getClassInfo" resultType="map">
+		select cl.class_cd, ci.cl_no, cl.class_name, cl.totalTime
 		from class cl, class_info ci
 		where cl.cl_no = ci.cl_no
 		and member_id = #{member_id}
 	</select>
 	
-	<select id="getCl_no" resultType="Integer">
-		select ci.cl_no
-		from class_info ci , member m
-		where m.member_id = #{member_id}
-	</select>
-
 	<insert id="insertClassInfo" parameterType="map">
 		insert into class_info 
 		values(#{id},#{course_type_cd},#{cl_no})

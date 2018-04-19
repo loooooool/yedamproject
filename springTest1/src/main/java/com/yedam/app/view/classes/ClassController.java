@@ -12,6 +12,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,7 +42,6 @@ public class ClassController {
 	
 	@Value("${file.uploadfolder}")
 	String uploadfolder;
-
 
 	// 목록
 	@RequestMapping("/getClassList")
