@@ -57,7 +57,7 @@ public class ClassServiceImpl implements ClassService{
 	@Override
 	public List<ClassVO> getClassAttList(ClassVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getClassAttList(vo);
 	}
 
 }
