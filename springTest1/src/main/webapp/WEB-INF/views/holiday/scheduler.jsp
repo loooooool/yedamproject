@@ -17,6 +17,7 @@
 </head>
 
 <body>
+<form action="getScheduler">
 <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
     <div class="dhx_cal_navline">
         <div class="dhx_cal_prev_button">&nbsp;</div>
@@ -31,12 +32,10 @@
     <div class="dhx_cal_data"></div>       
 </div>
 <script>
-/* scheduler.init('scheduler_here', new Date(),"month"); */
  scheduler.config.multi_day = true;
 		scheduler.config.xml_date="%Y-%m-%d %H:%i";
 		
 		scheduler.init('scheduler_here',new Date(),"month");
-		/* scheduler.load("./data/events.xml"); */
 		
 		var calendar = scheduler.renderCalendar({
 			container:"cal_here", 
@@ -49,6 +48,7 @@
 		scheduler.setCurrentView(scheduler._date, scheduler._mode);
 
 </script>
+</form>
 </body>
 
 </html>

@@ -6,7 +6,7 @@
 <html>
 <head><title>getNotice.jsp</title></head>
 
-<body >
+<body>
 	<div class="card" style="border: 50px solid white;">
 			<h2>공지사항</h2><br>
 			<table class="table table-responsive-sm table-striped" >
