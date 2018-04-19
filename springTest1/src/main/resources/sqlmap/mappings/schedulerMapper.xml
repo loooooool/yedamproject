@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="scheduler">
+	<resultMap type="scheduler" id="SchedulerResult">
+		<id property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="startday" column="startday" />
+		<result property="endday" column="endday" />
+		<result property="type" column="type" />
+		<result property="rotation_yn" column="rotation_yn" />
+	</resultMap>
+
+	<!-- 공휴일 목록조회 -->
+	<select id="getSchedulerList" resultType="scheduler">	 <!--id 값은 메소드 명 --> <!-- resultMap은 위 resultMap id와 매치 --> <!-- resultType : sql-map-config에 alias 사용 (원래는 경로 다 써야함) -->
+		<![CDATA[
+		select a.* from ( select rownum rn,b.* from(
+		select 	h_no 	
+				,name
+				,type
+				,year
+				,month
+				,day
+				,rotation_yn
+		 from scheduler
+		 ]]>
+		 <where>
+		 <if test="searchKeyword != null and searchKeyword != ''" >
+ 		 	<if test="searchCondition == 'name' "><!-- 공휴일명 -->
+		 		 and title like '%' ||#{searchKeyword}||'%'
+		 	</if>
+		 	<if test="searchCondition == 'type' "> <!-- 공휴일구분 -->
+		 		 content like '%' ||#{searchKeyword}||'%'
+		 	</if>
+		 </if>
+		 </where> 
+		 order by h_no 
+		 ) b ) a where rn between #{first} and #{last} 
+	</select>
+	
+	<!-- 공휴일,이벤트  -->
+	<select id="getSchedulerListajax" resultType="map">	 <!--id 값은 메소드 명 --> <!-- resultMap은 위 resultMap id와 매치 --> <!-- resultType : sql-map-config에 alias 사용 (원래는 경로 다 써야함) -->
+		select 	no as "id"
+				,name as "text"
+				,startday || '00:00' as "start_date"
+				,endday || '00:00' as "end_date"
+		 from scheduler
+	</select>
+
+	<!-- (임시)공휴일 등록 -->
+	<insert id="insertScheduler" parameterType="scheduler">
+		<selectKey keyProperty="h_no" resultType="int" order="BEFORE">
+			select nvl(max(h_no),0)+1 from scheduler
+		</selectKey>
+		insert into scheduler(
+		h_no
+		,name
+		,type
+		,year
+		,month
+		,day
+		,rocation_yn
+		)
+		values(
+		#{h_no}
+		,#{name}
+		,#{type}
+		,#{year}
+		,#{month}
+		,#{day} 
+		,nvl(#{rotation_yn},0)
+		)
+	</insert>
+
+
+	<!-- 공휴일 수정 -->
+	<update id="updateScheduler" parameterType="scheduler">
+		update scheduler set
+		h_no=#{h_no}
+		,name=#{name} 
+		,type=#{type}
+		,year=#{year}
+		,month=#{month}
+		,day=#{day}
+		,rotation_yn=#{rotation_yn}
+		where h_no=#{h_no}
+	</update>
+	
+	<!-- 상세보기 -->
+	<select id="getScheduler" resultType="scheduler" parameterType="scheduler">
+		select * from scheduler where h_no=#{h_no}
+	</select>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteScheduler" parameterType="scheduler">
+		delete scheduler where h_no=#{h_no}  
+	</delete>
+	
+	<!-- 검색목록 페이징 -->
+ 	<select id="getCount" resultType="int">
+		select count(*) from scheduler 
+		<where>
+		 <if test="searchKeyword != null and searchKeyword !=''" >
+ 		 	<if test="searchCondition == 'name' "> <!-- 공휴일명 -->
+		 		 and title like '%' ||#{searchKeyword}||'%'
+		 	</if>
+		 	<if test="searchCondition == 'type' "> <!-- 공휴일구분 -->
+		 		 content like '%' ||#{searchKeyword}||'%'
+		 	</if>
+		 </if>
+		 </where>
+	</select>
+	
+	
+</mapper>
