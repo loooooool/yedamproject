@@ -37,7 +37,7 @@ public class ConsultController {
 		paging.setTotalRecord(consultService.getCount(vo));
 		//vo의 first, last 셋팅
 		vo.setFirst(paging.getFirst());
-		vo.setLast(paging.getLast());
+		vo.setLast(paging.getLast()); 
 		//결과저장
 		
 		model.addAttribute("memberList",memberService.getMemberList(mvo));

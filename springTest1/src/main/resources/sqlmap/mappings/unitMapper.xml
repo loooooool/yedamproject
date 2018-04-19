@@ -45,7 +45,7 @@
 	}
 	</insert>
 
-	<select id="getUnitList" resultType="unit">
+	<select id="getUnitList" resultType="unit" parameterType="unit">
 	SELECT	c_no,
 			student_name,
 			class_no,
@@ -59,23 +59,18 @@
 			goout
 			
 	FROM	unit_attendance
+	WHERE  class_no = #{class_no}
 	</select>
 
-	<select id="unitList" resultType="unit">
-	SELECT	c_no,
-			student_name,
-			distinct(class_no),
-			unit,
-			unitdays,
-			sdate,
-			edate,
-			late,
-			leave,
-			absence,
-			goout
-			
-	FROM	unit_attendance
+	<select id="getSDATE" resultType="unit" parameterType="unit">
+	 SELECT distinct sdate 
+	 FROM UNIT_ATTENDANCE 
+	 WHERE class_no = #{class_no} 
+	 order by 1 asc;
+	
 	</select>
+	
+
 
 	<update id="lateUpdate" parameterType="unit" >
 	update unit_attendance set

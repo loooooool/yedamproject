@@ -26,9 +26,9 @@ public class UnitServiceImpl implements UnitService{
 			vo.setUnitdays(uvo.getUnitdays()[i]);
 			vo.setEdate(uvo.getEdate()[i]);
 			vo.setSdate(uvo.getSdate()[i]);
-			dao.insertUnit(vo);
+			dao.insertUnit(vo); 
 			System.out.println(vo.getOUT_MSG());
-		}
+		} 
 		
 	}
 
@@ -45,6 +45,12 @@ public class UnitServiceImpl implements UnitService{
 
 	public List<UnitVO> getUnitList(UnitVO vo) {
 		return dao.getUnitList(vo);
+	}
+
+
+	@Override
+	public List<UnitVO> getSDATE(UnitVO vo) {
+		return dao.getSDATE(vo);
 	}
 
 	

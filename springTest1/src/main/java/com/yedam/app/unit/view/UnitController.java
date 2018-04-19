@@ -51,12 +51,16 @@ public class UnitController {
 	}
 	
 	@RequestMapping("/getUnitList")
-	public String getUnitList(Model model,  UnitVO vo, ClassVO cvo ) {
+	public String getUnitList(Model model, UnitVO vo, ClassVO cvo) {
 		
-		model.addAttribute("unitList",unitService.getUnitList(vo));
 		model.addAttribute("classList",classService.getClassListNP(cvo));
+		if(vo.getClass_no()!=null){
+			model.addAttribute("unitList",unitService.getUnitList(vo));
+		}
 		return "attendance/viewAttendance";
 	}
+	
+
 	
 	@RequestMapping("/insertExcel")
 	public String insertExcel(Model model, UnitVO vo,  HttpServletRequest request, HttpServletResponse response)  throws IOException{
@@ -73,6 +77,7 @@ public class UnitController {
 	
 		return "attendance/viewAttendance";
 	}
+	
 	
 
 }

@@ -10,4 +10,6 @@ public interface UnitService {
 	public void updateUnit(UnitVO vo);
 	public void deleteUnit(UnitVO vo);
 	public List<UnitVO> getUnitList(UnitVO vo);
+	public List<UnitVO> getSDATE(UnitVO vo);
+
 }
