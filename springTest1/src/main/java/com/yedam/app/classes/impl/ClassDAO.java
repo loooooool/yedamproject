@@ -15,15 +15,15 @@ public class ClassDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	public void insertClass(ClassVO vo) {
-		sqlSession.insert("class.insertClass",vo);
+		sqlSession.insert("class.insertClass", vo);
 	}
 	
 	public void updateClass(ClassVO vo) {
-		sqlSession.update("class.updateClass",vo);
+		sqlSession.update("class.updateClass", vo);
 	}
 	
 	public void deleteClass(ClassVO vo) {
-		sqlSession.delete("class.deleteClass",vo);
+		sqlSession.delete("class.deleteClass", vo);
 	}
 	
 	public List<ClassVO> getClassList(ClassVO vo) {
@@ -48,4 +48,5 @@ public class ClassDAO {
 	public List<ClassVO> getClassAttList(ClassVO vo){
 		return sqlSession.selectList("class.getClassAttList", vo);
 	}
+	
 }

@@ -13,11 +13,6 @@
 		<result property="totaldays" column="totaldays" />
 	</resultMap>
 
-	<select id="getCl_no" resultType="class" parameterType="int">
-		select * from class
-		where cl_no = #{cl_no}
-	</select>
-
 	<select id="getClassListNP" resultType="class">
 		SELECT cl_no
 			,class_name
@@ -41,7 +36,6 @@
 		ORDER BY cl_no asc
 		
 	</select>
-
 
 	<select id="getClassList" resultType="class">
 	select a.* from ( select rownum rn, b.* from (

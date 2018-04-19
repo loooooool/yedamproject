@@ -62,7 +62,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<div class="card-body" align="right">
-	<c:if test="${memberCD} == 'M2' && ${memberCD} == 'M3'">
+	<c:if test="${sessionScope.memberVO.member_cd!='M1'}">
 		<input type="button" class="btn btn-warning" onclick="location.href='../updateSubjectForm?su_no=${su.su_no}'" value="수정" />&nbsp;
 		<input type="button" class="btn btn-danger"  id="del" value="삭제" />&nbsp;
 	</c:if>

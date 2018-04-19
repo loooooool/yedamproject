@@ -49,7 +49,9 @@
 			</form>
 			<my:paging paging="${paging }" jsfunc="go_list" />
 			<div class="card-body" align="right">
+			<c:if test="${sessionScope.memberVO.member_cd!='M1'}">
 				<input type="button" class="btn btn-info" onclick="location.href='insertClass'" value="등록" />
+			</c:if>
 			</div>
 		</div>
 	</div>
