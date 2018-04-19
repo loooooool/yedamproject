@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="comments" type="com.yedam.app.sugt.CommentsVO"/>
 		<typeAlias alias="class" type="com.yedam.app.classes.ClassVO"/>
 		<typeAlias alias="notice" type="com.yedam.app.notice.NoticeVO"/>
-		<typeAlias alias="scheduler" type="com.yedam.app.scheuler.SchedulerVO"/>
+		<typeAlias alias="scheduler" type="com.yedam.app.scheduler.SchedulerVO"/>
 		<typeAlias alias="consult" type="com.yedam.app.consult.ConsultVO"/>
 		<typeAlias alias="subject" type="com.yedam.app.subject.SubjectVO"/>
 		<typeAlias alias="unit" type="com.yedam.app.unit.UnitVO"/>
