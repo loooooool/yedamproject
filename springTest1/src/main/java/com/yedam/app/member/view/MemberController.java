@@ -53,14 +53,29 @@ public class MemberController {
 	// 수정폼
 	@RequestMapping("/memberUpdateForm")
 	public String memberUpdateForm(MemberVO vo, Model model, HttpSession session) {
-		vo.setMember_id(((MemberVO)session.getAttribute("memberVO")).getMember_id());
-		model.addAttribute("memberVO",memberService.getMember_id(vo));
+		vo.setMember_id(((MemberVO) session.getAttribute("memberVO")).getMember_id());
+		model.addAttribute("memberVO", memberService.getMember_id(vo));
 		return "member/memberUpdate";
 	}
 
 	// 수정처리
 	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
 	public String memberUpdate(MemberVO vo) {
+		memberService.memberUpdate(vo);
+		return "redirect:/";
+	}
+
+	// 관리자 수정(조회)폼
+	@RequestMapping("/adminMemberUpdateForm")
+	public String adminMemberUpdateForm(MemberVO vo, Model model, HttpSession session) {
+		vo.setMember_id(((MemberVO) session.getAttribute("memberVO")).getMember_id());
+		model.addAttribute("memberVO", memberService.getMember_id(vo));
+		return "member/adminMemberUpdateForm";
+	}
+
+	// 관리자 수정처리
+	@RequestMapping(value = "/adminMemberUpdate", method = RequestMethod.POST)
+	public String adminMemberUpdate(MemberVO vo) {
 		memberService.memberUpdate(vo);
 		return "redirect:/";
 	}
@@ -76,6 +91,7 @@ public class MemberController {
 	public String changePwd(MemberVO vo) {
 		int pwd2 = 0;
 		int checkPwd2 = 0;
+
 		if (pwd2 == checkPwd2) {
 			memberService.changePwd(vo);
 			return "redirect:/";
@@ -96,7 +112,7 @@ public class MemberController {
 		return "member/find_pwd";
 	}
 
-	//바인딩 (Date->String)
+	// 바인딩 (Date->String)
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

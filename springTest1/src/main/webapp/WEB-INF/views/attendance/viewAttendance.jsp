@@ -55,7 +55,11 @@ function getStudent(){
 					<th>남은출석일수</th>
 					<th>남은결석일수</th>
 					<th>현재출석율</th>
+					<c:forEach items="${unitList}" var="unit">
+					<th>${unit.sdate}</th>
+					</c:forEach> 
 					</tr>
+					
 			</thead>
 			<tbody>
 				<c:forEach items="${unitList}" var="unit">
