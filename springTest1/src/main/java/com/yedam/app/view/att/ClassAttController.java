@@ -96,12 +96,13 @@ public class ClassAttController {
 			double percentage = ((double)subtime/(double)totoalsubtime)*100.0;
 			percentage = Math.round(percentage*100d)/100d;
 			System.out.println(percentage+"%");
+			per.put("name2", atttrans.get(i).get("name"));
 			per.put("percentage", percentage);
 			percent.add(per);
 			cnt++;
-			if(cnt>7) cnt=0;
+			if(cnt>(subject.size()-1)) cnt=0;
 		}
-		
+		System.out.println(percent);
 		
 		
 		System.out.println(atttrans);
@@ -114,6 +115,7 @@ public class ClassAttController {
 		
 		model.addAttribute("attList",classAttService.getAttList(cl_no));
 		model.addAttribute("attSubjectList",classAttService.getAttSubjectList(cl_no));
+		model.addAttribute("percent",percent);
 		return "att/getAttList";
 	}
 }

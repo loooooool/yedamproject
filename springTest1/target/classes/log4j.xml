@@ -12,34 +12,34 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.yedam.second">
-		<level value="ERROR" />
+		<level value="info" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
-		<level value="ERROR" />
+		<level value="info" />
 	</logger>
 	
 	<logger name="org.springframework.beans">
-		<level value="ERROR" />
+		<level value="info" />
 	</logger>
 	
 	<logger name="org.springframework.context">
-		<level value="ERROR" />
+		<level value="info" />
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="ERROR" />
+		<level value="info" />
 	</logger>
 
  <!-- log4jdbc start -->
 	<logger name="jdbc.sqltiming" additivity="false">
-		<level value="ERROR" />
+		<level value="DEBUG" />
 		<appender-ref ref="console" />
 	</logger>
 	
 	<logger name="jdbc.sqlonly" additivity="false">
-		<level value="ERROR" />
+		<level value="DEBUG" />
 		<appender-ref ref="console" />
 	</logger>
 	
