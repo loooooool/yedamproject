@@ -19,11 +19,12 @@
     
 </head>
 <body>
-	<c:if test="${courseType == 'C1'}">
-	
+	<c:if test="${courseType[0].CLASS_CD == 'C1'}">
 		<div class="card" style="border: 50px solid white;">
 			<div class="card-header">
 				<h2>나의 시간표</h2>
+				<hr class="my-4">
+				<p>${courseType[0].CLASS_NAME } &nbsp; | &nbsp; ${courseType[0].TOTALTIME }시간</p>
 				<div class="card-body" align="right">
 					<form action="getTimeTableList" style="height: 15.96px;">
 						<select name="searchCondition" class="search">
@@ -59,9 +60,9 @@
 				</table>
 			</div>
 		</div>
-	</c:if>
-	
-	<c:if test="${courseType != 'C1'}">
+		</c:if>
+
+	<c:if test="${courseType[0].CLASS_CD != 'C1'}">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="card">
@@ -69,16 +70,17 @@
 						<h2>나의 시간표</h2>
 					</div>
 					<div class="card-body">
-						<div class="form-group row">
-							단위기간평가반 시간표는 과정 상세 페이지에서 볼 수 있습니다.
-							<br>
-							<button type="button" class="btn btn-link btn-lg" 
-							onclick="location.href='../class/getClassList'">바로가기</button>
+						<div class="form-group">
+							<div class="col-md-9">
+								단위기간평가반 시간표는 과정 상세 페이지에서 볼 수 있습니다.
+								<button type="button" class="btn btn-link btn-lg" 
+									onclick="location.href='./getClassList'">바로가기</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</c:if>
 	
 </body>

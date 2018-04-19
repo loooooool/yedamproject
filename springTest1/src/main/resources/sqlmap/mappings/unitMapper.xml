@@ -3,6 +3,35 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="unit">
+	
+	<insert id="insertExcel" parameterType="excel">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(no),0)+1 FROM tempattend
+		</selectKey>
+		
+		INSERT INTO TEMPATTEND(	no,
+								day,
+	 							card,
+								name,
+								classs,
+								starttime,
+								endtime,
+								intime,
+								outtime
+								)
+		VALUES(
+				#{no},
+				#{day},
+				#{card},
+				#{name},
+				#{classs},
+				#{start},
+				#{end},
+				#{in},
+				#{out}
+				)
+	</insert>
+
 
 	<insert id="insertUnit" parameterType="unit" statementType="CALLABLE">
 	{CALL UNITINSERT(
@@ -16,7 +45,7 @@
 	}
 	</insert>
 
-	<select id="getUnitList" resultType="unit">
+	<select id="getUnitList" resultType="unit" parameterType="unit">
 	SELECT	c_no,
 			student_name,
 			class_no,
@@ -30,7 +59,25 @@
 			goout
 			
 	FROM	unit_attendance
+	WHERE  class_no = #{class_no}
 	</select>
 
+	<select id="getSDATE" resultType="unit" parameterType="unit">
+	 SELECT distinct sdate 
+	 FROM UNIT_ATTENDANCE 
+	 WHERE class_no = #{class_no} 
+	 order by 1 asc;
+	
+	</select>
+	
+
+
+	<update id="lateUpdate" parameterType="unit" >
+	update unit_attendance set
+							leave = NVL(MAX(leave),0)+1
+	where 
+	
+	
+	</update>
 
 </mapper>

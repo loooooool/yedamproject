@@ -24,4 +24,11 @@ public class ClassAttDAO {
 		return sqlSession.selectList("classAtt.getAttSubjectList",cl_no);
 		
 	}
+	public List<Map<String,Object>> getAttTimeList(String name){
+		return sqlSession.selectList("classAtt.getAttTimeList",name);
+	}
+	
+	public Map<String,Object> getAttSubjectOne(String t_id){
+		return sqlSession.selectOne("classAtt.getAttSubjectOne",t_id);
+	}
 }

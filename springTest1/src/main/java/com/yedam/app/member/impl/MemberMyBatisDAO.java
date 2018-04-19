@@ -58,4 +58,13 @@ public class MemberMyBatisDAO {
 	public void find_pwd(MemberVO vo) {
 		sqlSession.update("member.find_pwd", vo);
 	}
+	
+	public void adminMemberUpdate(MemberVO vo) {
+		sqlSession.update("member.adminMemberUpdate", vo);
+	}
+	
+	public List<Map<String,Object>> getEmployeeAll(){
+		System.out.println("mybatis getEmployeeAll");
+		return sqlSession.selectList("emp.getEmployeeAll");
+	}
 }

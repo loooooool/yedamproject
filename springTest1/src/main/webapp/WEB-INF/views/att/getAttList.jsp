@@ -35,7 +35,11 @@
 					<c:forEach items="${attList}" var="at">
 						<tr>
 							<td>${at.name}</td>
-							
+							<c:forEach items="${percent}" var="pc">
+							<c:if test="${at.name eq pc.name2}">
+								<td>${pc.percentage}%</td>
+							</c:if>
+							</c:forEach>
 						</tr>
 					</c:forEach>
 

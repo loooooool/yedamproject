@@ -14,45 +14,38 @@
 	</resultMap>
 
 	<select id="getClassListNP" resultType="class">
-
-	
 		SELECT cl_no
-		,class_name
-		,address
-		,totaltime
-		,GET_CODENAME(class_cd) "class_nm"
-		,totaldays
+			,class_name
+			,address
+			,totaltime
+			,GET_CODENAME(class_cd) "class_nm"
+			,totaldays
 		FROM class
 		ORDER BY cl_no DESC
-		
 	</select>
 	
-	
 	<select id="getClassAttList" resultType="class">
-
-	
 		SELECT cl_no
-		,class_name
-		,address
-		,totaltime
-		,class_cd
-		,totaldays
+			,class_name
+			,address
+			,totaltime
+			,class_cd
+			,totaldays
 		FROM class
 		where class_cd='C1'
 		ORDER BY cl_no asc
 		
 	</select>
 
-
 	<select id="getClassList" resultType="class">
 	select a.* from ( select rownum rn, b.* from (
 	
 		SELECT cl_no
-		,class_name
-		,address
-		,totaltime
-		,GET_CODENAME(class_cd) "class_nm"
-		,totaldays
+			,class_name
+			,address
+			,totaltime
+			,GET_CODENAME(class_cd) "class_nm"
+			,totaldays
 		FROM class
 		ORDER BY cl_no DESC
 		
@@ -77,23 +70,23 @@
 			SELECT NVL(MAX(cl_no),0)+1 FROM CLASS
 		</selectKey>
 		INSERT INTO class(
-		cl_no
-		,class_name
-		,address
-		,totaltime
-		,totaldays
-		,class_cd
+					cl_no
+					,class_name
+					,address
+					,totaltime
+					,totaldays
+					,class_cd
 		<if test="timeTable != null and timeTable != ''">
 			,timetable
 		</if>
 		)
 		VALUES(
-		#{cl_no},
-		#{class_name},
-		#{address},
-		#{totalTime},
-		#{totaldays},
-		#{class_cd}
+					#{cl_no},
+					#{class_name},
+					#{address},
+					#{totalTime},
+					#{totaldays},
+					#{class_cd}
 		<if test="timeTable != null and timeTable != ''">
 			,#{timeTable}
 		</if>
@@ -103,8 +96,8 @@
 	<update id="updateClass" parameterType="class">
 
 		UPDATE class SET
-		class_name=#{class_name}
-		,address=#{address}
+					class_name=#{class_name}
+					,address=#{address}
 		<if test="timeTable != null and timeTable != ''">
 			,timetable=#{timeTable}
 		</if>

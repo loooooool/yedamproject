@@ -43,6 +43,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="timeTable" type="com.yedam.app.timetable.TimeTableVO"/>
 		<typeAlias alias="clas" type="com.yedam.app.classes.ClassAttVO" />
 		<typeAlias alias="subjecttime" type="com.yedam.app.subject_timetable.SubjectTimeVO" />
+		<typeAlias alias="excel" type="com.yedam.app.unit.ExcelVO" />
+		
 	</typeAliases>
 	
 

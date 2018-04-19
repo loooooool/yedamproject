@@ -69,5 +69,15 @@ public class MemberServiceImpl implements MemberService {
 	public void find_pwd(MemberVO vo) {
 		dao.find_pwd(vo);
 	}
+
+	@Override
+	public void adminMemberUpdate(MemberVO vo) {
+		dao.adminMemberUpdate(vo);
+	}
+
+	@Override
+	public List<Map<String, Object>> getEmployeeAll() {
+		return dao.getEmployeeAll();
+	}
 		
 }

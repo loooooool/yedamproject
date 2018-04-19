@@ -27,4 +27,20 @@ public class ClassAttServiceImpl implements ClassAttService {
 	public List<Map<String,Object>> getAttSubjectList(Integer cl_no){
 		return dao.getAttSubjectList(cl_no);
 	}
+
+
+	@Override
+	public List<Map<String, Object>> getAttTimeList(String name) {
+		// TODO Auto-generated method stub
+		return dao.getAttTimeList(name);
+	}
+
+	@Override
+	public Map<String, Object> getAttSubjectOne(String t_id) {
+		// TODO Auto-generated method stub
+		return dao.getAttSubjectOne(t_id);
+	}
+	
+	
+	
 }

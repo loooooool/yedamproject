@@ -6,14 +6,8 @@
 
 var context='${pageContext.request.contextPath}';
 
-function getStudent(){
-	var params = {cl_no : $("#selectStudent").val() }
-	$.getJSON(context+"/getStudentList",params, function(datas){
-		$("#studentName option:gt(0)").remove();
-		for(i=0; i<datas.length;i++){
-			$("#studentName").append("<option value='"+datas[i].member_id+"'>"+datas[i].name+"</option>");
-		}
-	})
+function getUnit(){
+	location.href="./getUnitList?class_no="+$("#selectStudent").val()
 }
 
 </script>
@@ -28,12 +22,14 @@ function getStudent(){
 			<div class="form-group row">
 				<label class="col-md-2 col-form-label" for="select1">과정</label>
 				<div class="col-md-6">
-					<select id="selectStudent" name="class_no"  class="form-control">
+				<form action="getUnit" method="post">
+					<select id="selectStudent" name="class_no"  class="form-control" onchange="getUnit()">
 						<option value="0">과정선택</option>
 						<c:forEach items="${classList}" var="cl">
 						<option value="${cl.cl_no}">${cl.class_name}</option>
 						</c:forEach>					
 					</select>
+				</form>
 				</div>
 				<form action="insertExcel" method="post" enctype="multipart/form-data">
 				<div class="col-md-3" align="center">
@@ -55,7 +51,11 @@ function getStudent(){
 					<th>남은출석일수</th>
 					<th>남은결석일수</th>
 					<th>현재출석율</th>
+					<c:forEach items="${unitList}" var="unit">
+					<th>${unit.sdate}</th>
+					</c:forEach> 
 					</tr>
+					
 			</thead>
 			<tbody>
 				<c:forEach items="${unitList}" var="unit">

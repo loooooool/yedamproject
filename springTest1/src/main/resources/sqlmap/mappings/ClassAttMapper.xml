@@ -10,7 +10,9 @@
  	
  	
  	<resultMap type="map" id="subjectAttResult">
-	<id property="subject" column="subject"/>
+	<id property="su_no" column="su_no"/>
+	<result property="subject" column="subject"/>
+	<result property="totaltime" column="totaltime"/>
  	</resultMap>
  	
  	
@@ -32,13 +34,30 @@
 	
 	<select id="getAttSubjectList" resultMap="subjectAttResult" parameterType="Integer">
 	
-		select subject
+		select su_no,subject,totaltime
     	from subject
     	where cl_no=#{cl_no}
 	
 	</select>
 	
-
 	
+	<select id="getAttTimeList" resultType="map" parameterType="String">
+	
+		select sa.a_id "a_id",m.name "name",sa.attendance "attendance",sa.t_id "t_id"
+		from class_info ci join member m
+		on(ci.member_id = m.member_id)
+        join subject_attendance sa
+        on(m.name = sa.s_name)
+		where m.name=#{name}
+	
+	</select>
+	
+
+	<select id="getAttSubjectOne" resultType="map" parameterType="String">
+		select subject "s_id"
+		from subject_timetable
+		where t_id=#{t_id}
+	
+	</select>
 
 </mapper>

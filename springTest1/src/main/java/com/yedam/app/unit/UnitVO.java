@@ -17,8 +17,17 @@ public class UnitVO { 				//단위기간 출석부
 	private String OUT_MSG; 		//프로시저 정상/에러메시지 출력
 	private String excelFile;		//엑셀파일 업로드
 	
+	private String day;				//출석 업데이트시 사용하는 츨석일자
 	
 	
+	
+	
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
+	}
 	public String getSdate() {
 		return sdate;
 	}

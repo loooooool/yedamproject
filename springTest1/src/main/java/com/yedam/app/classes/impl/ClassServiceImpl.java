@@ -51,7 +51,6 @@ public class ClassServiceImpl implements ClassService{
 
 	@Override
 	public List<ClassVO> getClassListNP(ClassVO vo) {
-		
 		return dao.getClassListNP(vo);
 	}
 
@@ -60,6 +59,5 @@ public class ClassServiceImpl implements ClassService{
 		// TODO Auto-generated method stub
 		return dao.getClassAttList(vo);
 	}
-	
 
 }

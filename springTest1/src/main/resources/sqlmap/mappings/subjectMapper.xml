@@ -15,17 +15,28 @@
 		<result property="class_name" column="class_name" />
 		<collection property="subject" resultMap="subject"></collection>
 	</resultMap>
+	
 
 	<select id="getSubjectList" resultType="subject">
 	select a.* from ( select rownum rn, b.* from (
 
 		select su.su_no "su_no"
-		,su.subject "subject"
-		,su.totalTime "totalTime"
-		,cl.class_name "class_name"
-		,su.status_yn "status_yn"
+				,su.subject "subject"
+				,su.totalTime "totalTime"
+				,cl.class_name "class_name"
+				,su.status_yn "status_yn"
 		from subject su join class cl
 		on(su.cl_no = cl.cl_no)
+		<where>
+			<if test="searchKeyword != null and searchKeyword != ''">
+				<if test="searchCondition == 'class_name' ">
+					and class_name like '%' ||#{searchKeyword}||'%'
+				</if>
+				<if test="searchCondition == 'subject' ">
+					subject like '%' ||#{searchKeyword}||'%'
+				</if>
+			</if>
+		</where>
 		order by su.su_no desc
 		
 	) b ) a where rn between #{first} and #{last}
@@ -34,10 +45,10 @@
 	<select id="getSubject" resultType="subject" parameterType="subject">
 
 		select su.su_no as "su_no"
-		,su.subject "subject"
-		,su.totalTime "totalTime"
-		,cl.class_name "class_name"
-		,su.status_yn "status_yn"
+				,su.subject "subject"
+				,su.totalTime "totalTime"
+				,cl.class_name "class_name"
+				,su.status_yn "status_yn"
 		from subject su join class cl
 		on(su.cl_no = cl.cl_no)
 		where
@@ -54,49 +65,36 @@
 			SELECT NVL(MAX(su_no),0)+1 FROM subject
 		</selectKey>
 		INSERT INTO subject(
-		su_no
-		,subject
-		,totalTime
-		,status_yn
-		,cl_no
-		)
+					su_no
+					,subject
+					,totalTime
+					,status_yn
+					,cl_no
+					)
 		VALUES(
-		#{su_no},
-		#{subject},
-		#{totalTime},
-		#{status_yn}
-		,#{cl_no}
+				#{su_no},
+				#{subject},
+				#{totalTime},
+				#{status_yn}
+				,#{cl_no}
 		)
 	</insert>
 
 	<update id="updateSubject" parameterType="subject">
 		update subject
 		SET
-		subject=#{subject}
-		,totalTime=#{totalTime}
+				subject=#{subject}
+				,totalTime=#{totalTime}
 		<if test="cl_no != ''">
-			,cl_no=#{cl_no}
+				,cl_no=#{cl_no}
 		</if>
-		,status_yn=#{status_yn}
-		where su_no=#{su_no}
+				,status_yn=#{status_yn}
+				where su_no=#{su_no}
 	</update>
 
 	<delete id="deleteSubject" parameterType="subject">
 		DELETE subject
 		WHERE su_no=#{su_no}
 	</delete>
-	
-	<select id="getSubjectListAjax" resultType="subject" parameterType="subject">
-	select su.su_no as "su_no"
-		,su.subject "subject"
-		,su.totalTime "totalTime"
-		,cl.class_name "class_name"
-		,su.status_yn "status_yn"
-		from subject su join class cl
-		on(su.cl_no = cl.cl_no)
-		where
-		su.cl_no=#{cl_no}
-
-	</select>
 	
 </mapper>

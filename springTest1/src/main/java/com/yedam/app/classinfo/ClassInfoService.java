@@ -5,7 +5,6 @@ import java.util.Map;
 
 public interface ClassInfoService {
 	
-	public String getClassInfo(Map<String, Object> vo);
+	public List<Map<String, Object>> getClassInfo(Map<String, Object> vo);
 	public void insertClassInfo(Map<String, Object> vo);
-
 }

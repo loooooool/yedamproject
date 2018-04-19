@@ -27,7 +27,7 @@ public class SuggestionController {
 			//결과저장
 			model.addAttribute("sugtList",sugtService.getSugtList(vo));
 			model.addAttribute("paging",paging);	
-			return "sugt/getSugtList";
+			return "sugt/getSugtList"; 
 			
 		}
 	//상세보기
