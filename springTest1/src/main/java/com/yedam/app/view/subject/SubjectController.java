@@ -32,13 +32,16 @@ public class SubjectController {
 
 	@Autowired
 	ClassService classService;
-	
+
 	@Autowired
 	MemberService memberService;
 
 	// 목록
 	@RequestMapping("/getSubjectList")
-	public String getSubjectList(Model model, SubjectVO vo, ClassVO cvo, Paging paging) {
+	public String getSubjectList(Model model, SubjectVO vo, ClassVO cvo, Paging paging, HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("member_id", ((MemberVO) session.getAttribute("memberVO")).getMember_id());
+
 		// 전체 레코드 건수
 		paging.setPageUnit(10);
 		paging.setTotalRecord(subjectService.getCount(vo));
@@ -53,6 +56,15 @@ public class SubjectController {
 		model.addAttribute("paging", paging);
 
 		return "subject/getSubjectList";
+	}
+
+	// 검색 처리
+	@ModelAttribute("conditionMap")
+	public Map<String, String> searchConditionMap() {
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("과정명", "class_name");
+		conditionMap.put("과목명", "subject");
+		return conditionMap;
 	}
 
 	// 등록폼
@@ -71,18 +83,15 @@ public class SubjectController {
 
 	// 상세보기
 	@RequestMapping("/getSubject/{su_no}")
-	public ModelAndView getSubject(@PathVariable Integer su_no, 
-				@ModelAttribute("member") MemberVO mvo, HttpSession session) {
+	public ModelAndView getSubject(@PathVariable Integer su_no, HttpSession session) {
 		SubjectVO vo = new SubjectVO();
 		vo.setSu_no(su_no);
-		
+
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("member_id", "700101-04");
-		/* ((MemberVO)session.getAttribute("memberVO")).getMember_id()*/
-		
+		map.put("member_id", ((MemberVO) session.getAttribute("memberVO")).getMember_id());
+
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("su", subjectService.getSubject(vo));
-		mv.addObject("memberCD", memberService.getMemberList(mvo)); 
 		mv.setViewName("subject/getSubject");
 		return mv;
 	}
@@ -108,20 +117,4 @@ public class SubjectController {
 		subjectService.deleteSubject(vo);
 		return "redirect:/getSubjectList";
 	}
-	
-	@RequestMapping("/getSubjectListAjax")
-	@ResponseBody
-	public List<SubjectVO> getSubjectListAjax(Model model, SubjectVO vo, Paging paging) {
-		// 전체 레코드 건수
-			paging.setPageUnit(10);
-			paging.setTotalRecord(subjectService.getCount(vo));
-
-		// vo의 first, last setting
-			vo.setFirst(paging.getFirst());
-			vo.setLast(paging.getLast());
-			
-			model.addAttribute("paging", paging);
-		return subjectService.getSubjectListAjax(vo);
-	}
-
 }

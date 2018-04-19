@@ -82,8 +82,10 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<div class="card-body" align="right">
+	<c:if test="${sessionScope.memberVO.member_cd!='M1'}">
 		<input type="button" class="btn btn-warning" onclick="location.href='../updateClassForm?cl_no=${cl.cl_no}'" value="수정" />&nbsp;
 		<input type="button" class="btn btn-danger" id="del" value="삭제" />&nbsp;
+	</c:if>
 		<input type="button" class="btn btn-secondary" onclick="location.href='../getClassList'" value="목록" />
 	</div>
 </body>

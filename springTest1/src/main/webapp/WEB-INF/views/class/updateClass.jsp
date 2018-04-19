@@ -10,6 +10,7 @@
     function update(){
         alert("수정하시겠습니까?");
     }
+
 </script>
 </head>
 <body>
@@ -19,7 +20,7 @@
 		</div>
 		<div class="card-body">
 			<form action="updateClass" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="cl_no" value="${cl.cl_no }">
+			<input type="hidden" name="cl_no" value="${cl.cl_no}">
 				<div class="form-group">
 					<label for="nf-email"><strong>과정명</strong></label> 
 					<input type="text" id="nf-email" name="class_name" class="form-control" value="${cl.class_name }"> 
@@ -33,7 +34,7 @@
 				<div class="form-group">
 				<c:if test="${not empty cl.timeTable}">
 					<label for="nf-email"><strong>기존 파일</strong></label>
-										${cl.timeTable } 
+					${cl.timeTable }
 				</c:if>
 				</div>				
 				<div class="form-group row">
