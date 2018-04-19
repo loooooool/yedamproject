@@ -8,4 +8,5 @@ public interface SampleService {
 	List<Map<String, Object>> getSampleData(Map<String, Object> vo);
 	public Map<String,Object> getCodeName(Map<String,Object> vo);
 	public void updateAtt(Map<String,Object> vo);
+	public void getSubjectTimeList();
 }
