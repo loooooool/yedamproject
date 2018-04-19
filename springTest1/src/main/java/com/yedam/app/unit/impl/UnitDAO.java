@@ -17,7 +17,7 @@ public class UnitDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	public void insertUnit(UnitVO vo) {
-		sqlSession.insert("unit.insertUnit",vo);
+		sqlSession.insert("unit.insertUnit",vo); 
 	}
 	
 	public void updateUnit(UnitVO vo){
@@ -32,24 +32,14 @@ public class UnitDAO {
 		return sqlSession.selectList("unit.getUnitList", vo);
 	}
 	
-	public void lateUpdate(UnitVO vo){
-		sqlSession.update("unit.lateUpdate",vo);
-	}
-
-	public void leaveUpdate(UnitVO vo){
-		sqlSession.update("unit.leaveUpdate",vo);
-	}
-	
-	public void absenceUpdate(UnitVO vo){
-		sqlSession.update("unit.absenceUpdate",vo);
-	}
-	
-	public void gooutUpdate(UnitVO vo){
-		sqlSession.update("unit.gooutUpdate",vo);
-	}
 	
 	public void insertExcel(ExcelVO vo) {
 		sqlSession.insert("unit.insertExcel",vo);
 	}
+	
+	public List<UnitVO> getSDATE(UnitVO vo){
+		return sqlSession.selectList("unit.getSDATE",vo);
+	}
+
 }
 

@@ -25,7 +25,7 @@ public class SampleController {
 								Locale locale) {
 		
 		SampleList sampleList = new SampleList();
-		List<Map<String,Object>> vo = sampleList.getSampleList();
+		List<Map<String,Object>> vo = sampleList.getSampleList("dd");
 		
 		for(Map<String,Object> test : vo) {
 		
@@ -33,7 +33,7 @@ public class SampleController {
 			Map<String,Object> att = new HashMap<String,Object>();
 			if(!(sampleService.getSampleData(test)).isEmpty()) {
 			
-			for(int i=0;i<(sampleService.getSampleData(test)).size();i++) {	
+			for(int i=0;i<(sampleService.getSampleData(test)).size();i++) {	 
 				String code_name = (String)(sampleService.getCodeName((sampleService.getSampleData(test)).get(i))).get("code_name");
 				int index = code_name.indexOf("~");
 				String start = code_name.substring(0,index);
