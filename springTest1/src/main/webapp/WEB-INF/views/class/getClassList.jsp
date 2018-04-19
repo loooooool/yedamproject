@@ -10,8 +10,7 @@
 <script>
 	function go_list(page) {
 		document.getElementsByName("page")[0].value = page;
-		 //location.href="getClassList?page="+page;
-		document.forms[0].submit();
+		document.classForm.submit();
 	}
 </script>
 </head>
@@ -21,8 +20,8 @@
 			<h2>과정 목록</h2>
 		</div>
 		<div class="card-body">
-			<form action="getClassList">
-				<input type="hidden" name="page" value="1" /> <br>
+			<form action="getClassList" name="classForm">
+				<input type="hidden" name="page" value="${paging.page}" /> <br>
 				<table id="example" class="table table-responsive-sm table-striped" style="width: 100%">
 					<thead>
 						<tr>

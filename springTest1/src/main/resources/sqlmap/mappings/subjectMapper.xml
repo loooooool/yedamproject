@@ -15,6 +15,10 @@
 		<result property="class_name" column="class_name" />
 		<collection property="subject" resultMap="subject"></collection>
 	</resultMap>
+	
+	<resultMap type="member" id="member">
+		<result property="member_cd" column="memberCD"/>
+	</resultMap>
 
 	<select id="getSubjectList" resultType="subject">
 	select a.* from ( select rownum rn, b.* from (
@@ -87,16 +91,22 @@
 	</delete>
 	
 	<select id="getSubjectListAjax" resultType="subject" parameterType="subject">
-	select su.su_no as "su_no"
-		,su.subject "subject"
-		,su.totalTime "totalTime"
-		,cl.class_name "class_name"
-		,su.status_yn "status_yn"
-		from subject su join class cl
-		on(su.cl_no = cl.cl_no)
-		where
-		su.cl_no=#{cl_no}
-
+		select su.su_no as "su_no"
+			,su.subject "subject"
+			,su.totalTime "totalTime"
+			,cl.class_name "class_name"
+			,su.status_yn "status_yn"
+			from subject su join class cl
+			on(su.cl_no = cl.cl_no)
+			where
+			su.cl_no=#{cl_no}
+		
+	</select>
+	
+	<select id="memberCD" resultType="subject" parameterType="subject">
+		select member_cd
+		from member
+		where member_id= #{member_id}
 	</select>
 	
 </mapper>

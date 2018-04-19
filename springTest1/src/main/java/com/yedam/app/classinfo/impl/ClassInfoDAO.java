@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.yedam.app.classes.ClassVO;
+
 @Repository
 public class ClassInfoDAO {
 
@@ -14,11 +16,12 @@ public class ClassInfoDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public String getClassInfo(Map<String, Object> vo) {
-		return sqlSession.selectOne("classInfo.getClassInfo", vo);
+	public List<Map<String, Object>> getClassInfo(Map<String, Object> vo) {
+		return sqlSession.selectList("classInfo.getClassInfo", vo);
 	}
 	
 	public void insertClassInfo(Map<String,Object> vo) {
 		sqlSession.insert("classInfo.insertClassInfo",vo);
 	}
+	
 }
