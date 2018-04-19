@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.yedam.app.att.ClassAttService;
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classes.ClassVO;
+import com.yedam.app.sampledata.SampleService;
 
 @Controller
 public class ClassAttController {
@@ -26,10 +27,12 @@ public class ClassAttController {
 	ClassAttService classAttService;
 	
 	
+	@Autowired
+	SampleService sampleService;
 	
 	@RequestMapping("/getClassAtt")
 	public String getClassAttList(Model model, ClassVO vo) {
-		
+		//sampleService.getSubjectTimeList();
 		model.addAttribute("classAttList",classService.getClassAttList(vo));
 		return "att/getClassAtt";
 	}

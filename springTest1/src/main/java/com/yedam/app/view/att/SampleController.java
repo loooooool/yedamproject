@@ -25,7 +25,7 @@ public class SampleController {
 								Locale locale) {
 		
 		SampleList sampleList = new SampleList();
-		List<Map<String,Object>> vo = sampleList.getSampleList();
+		List<Map<String,Object>> vo = sampleList.getSampleList("dd");
 		
 		for(Map<String,Object> test : vo) {
 		

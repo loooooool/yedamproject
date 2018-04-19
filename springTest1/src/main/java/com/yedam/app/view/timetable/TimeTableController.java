@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classinfo.ClassInfoService;
+import com.yedam.app.member.MemberVO;
 import com.yedam.app.timetable.TimeTableService;
 import com.yedam.app.timetable.TimeTableVO;
 
@@ -33,10 +34,10 @@ public class TimeTableController {
 
 	@RequestMapping("/getTimeTableList")
 	public String myTimeTable(Model model, 	TimeTableVO tvo,  HttpSession session) {
-		Map<String, Object> map = new HashMap<String, Object>();
 		// 1. 그 학생의 과정정보
-		map.put("member_id", "851017-01");
-		//((MemberVO)session.getAttribute("memberVO")).getMember_id();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("member_id", ((MemberVO)session.getAttribute("memberVO")).getMember_id());
+		
 		List<Map<String, Object>> list = classInfoService.getClassInfo(map);
 		model.addAttribute("courseType", list );
 		

@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,6 +33,8 @@ import com.yedam.app.classes.ClassService;
 import com.yedam.app.classes.ClassVO;
 import com.yedam.app.common.Paging;
 import com.yedam.app.consult.ConsultVO;
+import com.yedam.app.member.MemberService;
+import com.yedam.app.member.MemberVO;
 
 @Controller
 public class ClassController {
@@ -39,13 +42,18 @@ public class ClassController {
 	@Autowired
 	ClassService classService;
 
-	
+	@Autowired
+	MemberService memberService;
+
 	@Value("${file.uploadfolder}")
 	String uploadfolder;
 
 	// 목록
 	@RequestMapping("/getClassList")
-	public String getClassList(Model model, ClassVO vo, Paging paging) {
+	public String getClassList(Model model, ClassVO vo, Paging paging, HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("member_id", ((MemberVO) session.getAttribute("memberVO")).getMember_id());
+
 		// 전체 레코드 건수
 		paging.setPageUnit(5);
 		paging.setTotalRecord(classService.getCount(vo));
@@ -87,9 +95,13 @@ public class ClassController {
 
 	// 상세보기
 	@RequestMapping("/getClass/{cl_no}")
-	public ModelAndView getClass(@PathVariable Integer cl_no) {
+	public ModelAndView getClass(@PathVariable Integer cl_no, HttpSession session) {
 		ClassVO vo = new ClassVO();
 		vo.setCl_no(cl_no);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("member_id", ((MemberVO) session.getAttribute("memberVO")).getMember_id());
+
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("cl", classService.getClass(vo));
 		mv.setViewName("class/getClass");
@@ -132,7 +144,7 @@ public class ClassController {
 		classService.deleteClass(vo);
 		return "redirect:/getClassList";
 	}
-
+	
 	private String getBrowser(HttpServletRequest request) {
 		String header = request.getHeader("User-Agent");
 		if (header.indexOf("MSIE") > -1) {

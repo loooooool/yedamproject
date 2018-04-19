@@ -9,7 +9,26 @@ public class SubjectVO {
 	private int last;
 	private String class_name;
 	private int cl_no;
+	private String searchCondition;
+	private String searchKeyword;
 	
+	
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+
 	public int getCl_no() {
 		return cl_no;
 	}
@@ -77,7 +96,10 @@ public class SubjectVO {
 	@Override
 	public String toString() {
 		return "SubjectVO [su_no=" + su_no + ", status_yn=" + status_yn + ", subject=" + subject + ", totalTime="
-				+ totalTime + ", class_name=" + class_name + "]";
+				+ totalTime + ", first=" + first + ", last=" + last + ", class_name=" + class_name + ", cl_no=" + cl_no
+				+ ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + "]";
 	}
+
+	
 
 }
