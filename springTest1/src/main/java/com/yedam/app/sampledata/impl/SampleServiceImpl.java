@@ -39,11 +39,11 @@ public class SampleServiceImpl implements SampleService {
 	}
 	
 	
-	
-	public void getSubjectTimeList() {
+	@Override
+	public void getSubjectTimeList(String filepath) {
 
 		SampleList sampleList = new SampleList();
-		List<Map<String, Object>> vo = sampleList.getSampleList();
+		List<Map<String, Object>> vo = sampleList.getSampleList(filepath);
 
 		for (Map<String, Object> test : vo) {
 

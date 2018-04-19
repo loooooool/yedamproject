@@ -74,7 +74,7 @@ public class UnitController {
 			multipartFile.transferTo(new File(uploadfolder, multipartFile.getOriginalFilename()));
 			vo.setExcelFile(multipartFile.getOriginalFilename());
 			excelService.getSampleList(uploadfolder+"/"+multipartFile.getOriginalFilename());
-			sampleService.getSubjectTimeList();
+			sampleService.getSubjectTimeList(uploadfolder+"/"+multipartFile.getOriginalFilename());
 		}
 	
 		return "attendance/viewAttendance";
