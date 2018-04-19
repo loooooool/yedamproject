@@ -19,4 +19,5 @@ public interface MemberService {
 	public String getRn();
 	public void find_pwd(MemberVO vo);
 	public void adminMemberUpdate(MemberVO vo);
+	public List<Map<String,Object>> getEmployeeAll();
 }
