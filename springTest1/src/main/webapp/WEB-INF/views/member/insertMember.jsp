@@ -21,7 +21,10 @@
 
 	function addstu(){
 		var divclone = $("#copy").clone();
+		
 		divclone.appendTo("#copybody");
+		$('[name=name]:last').val('');
+		$('[name=social_number]:last').val('');
 	}
 </script>
 </head>
@@ -32,8 +35,8 @@
           
         </div>
         <form action="memberTestView" method="post" class="form-horizontal">
-        <div class="card-body" id="copybody">
-          
+        
+          <div class="card-body">
                  <!--  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     	과정명선택
                   </button>
@@ -61,10 +64,9 @@
                   <button type="button" class="btn btn-sm btn-primary" id="add" onclick="addstu()"><i class="fa fa-dot-circle-o"></i>학생추가</button>
                 
                <hr>
+       <div id="copybody">  
            <div id="copy">
-            <div class="form-group row">
-            
-            
+            <div class="form-group row"> 
               <label class="col-md-3 col-form-label" for="hf-email">이름</label>
               <div class="col-md-9">
                 <input type="text" id="name" name="name" class="form-control" placeholder="이름">
@@ -79,7 +81,8 @@
               </div>
             </div>
           </div>
-         
+         </div>
+       
         </div>
           <div class="card-footer">
           <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>학생등록</button>

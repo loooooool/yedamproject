@@ -42,7 +42,6 @@ function getMemberCS(member_id){
 	
 
 function getMemberAddList(){
-	alert($("#className").val());
 	var params = {m_detail : $("#className").val() }
 	
 	if($("#className").val()=='all'){
