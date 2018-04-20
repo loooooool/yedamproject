@@ -36,16 +36,16 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
-					<h1>${sessionScope.memberVO.name}님의훈련수강 신청서</h1>
+					<h1>${memberVO.name}님의훈련수강 신청서</h1>
 				</div>
 
 				<div class="card-body">
 					<form action="memberUpdate" method="post">
 
 						<input type="hidden" id=member_id name=member_id
-							value="${sessionScope.memberVO.member_id}"> <input
+							value="${memberVO.member_id}"> <input
 							type="hidden" id=member_cd name=member_cd
-							value="${sessionScope.memberVO.member_cd}">
+							value="${memberVO.member_cd}">
 
 						<div class="form-group">
 							<label for="nf-email"><strong> 과정구분 </strong></label>
@@ -96,14 +96,14 @@
 							<label for="nf-email"><strong>최종학력</strong></label> <input
 								type="text" id="school_spec_cd" name="school_spec_cd"
 								class="form-control"
-								value="${sessionScope.memberVO.school_spec_cd}"> <span
+								value="${memberVO.school_spec_cd}"> <span
 								class="help-block">예)대졸/전문졸/고졸</span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>전공</strong></label> <input
 								type="text" id="major" name="major" class="form-control"
-								value="${sessionScope.memberVO.major}"> <span
+								value="${memberVO.major}"> <span
 								class="help-block"></span>
 						</div>
 
@@ -111,35 +111,35 @@
 							<label for="nf-email"><strong>주민등록번호</strong></label> <input
 								type="text" id="social_number" name="social_number"
 								class="form-control"
-								value="${sessionScope.memberVO.social_number}"> <span
+								value="${memberVO.social_number}"> <span
 								class="help-block">예)910808-2785623</span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>이메일</strong></label> <input
 								type="text" id="email" name="email" class="form-control"
-								value="${sessionScope.memberVO.email}"> <span
+								value="${memberVO.email}"> <span
 								class="help-block">예)abcde@gmail.com</span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>주소</strong></label> <input
 								type="text" id="address" name="address" class="form-control"
-								value="${sessionScope.memberVO.address}"> <span
+								value="${memberVO.address}"> <span
 								class="help-block"></span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>연락처</strong></label> <input
 								type="text" id="phone" name="phone" class="form-control"
-								placeholder="자택전화" value="${sessionScope.memberVO.phone}">
+								placeholder="자택전화" value="${memberVO.phone}">
 							<span class="help-block"></span>
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>휴대폰</strong></label> <input
 								type="text" id="h_phone" name="h_phone" class="form-control"
-								placeholder="휴대폰" value="${sessionScope.memberVO.h_phone}">
+								placeholder="휴대폰" value="${memberVO.h_phone}">
 							<span class="help-block"></span>
 						</div>
 
@@ -199,7 +199,7 @@
 							<label for="nf-email"><strong>이직 일자</strong></label> <input
 								type="date" id="job_change_date" name="job_change_date"
 								class="form-control" placeholder="최종 퇴사일을 적으세요"
-								value="${sessionScope.memberVO.job_change_date}"> <span
+								value="${memberVO.job_change_date}"> <span
 								class="help-block"></span>
 						</div>
 
@@ -230,18 +230,6 @@
 							<div class="card-body">
 								<input type="submit" class="btn btn-info" value="수정" /><br>
 								<br>
-								<!-- <input type="button" class="btn btn-secondary"
-									onclick="location.href='getClassList'" value="전체과정목록" />&nbsp;&nbsp;&nbsp;
-								<input type="button" class="btn btn-secondary"
-									onclick="location.href='find_pwd'" value="비밀번호찾기" />&nbsp;&nbsp;&nbsp;
-								<input type="button" class="btn btn-secondary"
-									onclick="location.href='changePwdForm'" value="비밀번호변경" />&nbsp;&nbsp;&nbsp;
-								<input type="button" class="btn btn-secondary"
-									onclick="location.href=''" value="출석률 보기" />&nbsp;&nbsp;&nbsp;
-								<input type="button" class="btn btn-secondary"
-									onclick="location.href=''" value="시간표 보기" />&nbsp;&nbsp;&nbsp;
-								<input type="button" class="btn btn-secondary"
-									onclick="location.href=''" value="휴가 신청" />&nbsp;&nbsp;&nbsp; -->
 							</div>
 
 							<div class="card-body">

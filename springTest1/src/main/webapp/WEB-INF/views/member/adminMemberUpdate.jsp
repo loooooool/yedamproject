@@ -234,18 +234,6 @@
 
 							<div class="card-body">
 								<input type="submit" class="btn btn-info" value="수정" /><br><br>
-								<!-- <input type="button" class="btn btn-secondary"
-									onclick="location.href='getClassList'" value="전체과정목록" />&nbsp;&nbsp;&nbsp;
-								<input type="button" class="btn btn-secondary"
-									onclick="location.href='find_pwd'" value="비밀번호찾기" />&nbsp;&nbsp;&nbsp;
-								<input type="button" class="btn btn-secondary"
-									onclick="location.href='changePwdForm'" value="비밀번호변경" />&nbsp;&nbsp;&nbsp;
-								<input type="button" class="btn btn-secondary"
-									onclick="location.href=''" value="출석률 보기" />&nbsp;&nbsp;&nbsp;
-								<input type="button" class="btn btn-secondary"
-									onclick="location.href=''" value="시간표 보기" />&nbsp;&nbsp;&nbsp;
-								<input type="button" class="btn btn-secondary"
-									onclick="location.href=''" value="휴가 신청" />&nbsp;&nbsp;&nbsp; -->
 							</div>
 
 							<div class="card-body">
