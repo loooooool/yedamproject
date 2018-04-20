@@ -59,7 +59,6 @@
 			goout
 			
 	FROM	unit_attendance
-	WHERE  class_no = #{class_no}
 	</select>
 
 	<select id="getSDATE" resultType="unit" parameterType="unit">
