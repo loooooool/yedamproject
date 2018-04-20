@@ -76,7 +76,7 @@
 			</div>
 			
 			<div class="card-body">
-				<button type="button" class="btn btn-danger" onclick="location.href='adminMemberUpdate'" >학생정보수정</button>
+				<button type="button" class="btn btn-danger" onclick="location.href='adminMemberUpdate'" >학생정보수정양식</button>
 			</div>
 
 			<tbody id="table">

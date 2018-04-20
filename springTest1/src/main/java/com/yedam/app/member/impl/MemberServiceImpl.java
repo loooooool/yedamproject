@@ -75,9 +75,9 @@ public class MemberServiceImpl implements MemberService {
 		dao.adminMemberUpdate(vo);
 	}
 
-	@Override
-	public List<Map<String, Object>> getEmployeeAll() {
+	/*@Override
+	public List<Map<String, Object>> getMember() {
 		return dao.getEmployeeAll();
-	}
+	}*/
 		
 }

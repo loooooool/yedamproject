@@ -3,11 +3,8 @@ package com.yedam.app.member.view;
 import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +17,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.jasperreports.JasperReportsHtmlView;
 
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classes.ClassVO;
@@ -72,6 +68,16 @@ public class MemberController {
 		model.addAttribute("memberVO", memberService.getMember_id(vo));
 		return "member/memberUpdate";
 	}
+	
+	//관리자 정보수정
+	// 수정폼
+		@RequestMapping("/adminUpdateForm")
+		public String adminUpdateForm(MemberVO vo,String member_id, Model model, HttpSession session) {
+			//MemberVO vo = new MemberVO();
+			vo.setMember_id(member_id);
+			model.addAttribute("memberVO", memberService.getMember_id(vo));
+			return "member/memberUpdate";
+		}
 
 	// 수정처리
 	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
@@ -96,20 +102,20 @@ public class MemberController {
 		return "member/adminMemberUpdate";
 	}
 
-	//pdf 
-/*	@RequestMapping("report.do")
+	//pdf 출력
+	/*@RequestMapping("report.do")
 	public void report(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			JasperReport report = JasperCompileManager
+			JasperReportsHtmlView report = JasperCompileManager
 					.compileReport(request.getSession().getServletContext().getRealPath("report/getMember.jrxml"));
-			JRDataSource JRdataSource = new JRBeanCollectionDataSource(memberService.getEmployeeAll());
+			JRDataSource JRdataSource = new JRBeanCollectionDataSource(memberService.getMember());
 			JasperPrint print = JasperFillManager.fillReport(report, map, JRdataSource);
 			JRExporter exporter = new JRPdfExporter();
 			OutputStream out;
 			response.reset();
 			out = response.getOutputStream();
-			exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, "report3.pdf");
+			exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, "getMember.pdf");
 			exporter.setParameter(JRExporterParameter.JASPER_PRINT, print);
 			exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, out);
 			exporter.exportReport();
@@ -119,6 +125,7 @@ public class MemberController {
 			e.printStackTrace();
 		}
 	}*/
+	
 	// 비밀번호 변경 폼
 	@RequestMapping("/changePwdForm")
 	public String changePwdForm(MemberVO vo) {

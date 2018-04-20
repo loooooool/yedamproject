@@ -24,6 +24,14 @@
 
 	var context='${pageContext.request.contextPath}';
 
+	
+	function updateMember(member_id){
+		var params = "member_id="+member_id;
+		location.href=context+"/adminUpdateForm?"+params;
+	}
+	
+	
+	
 function getMemberCS(member_id){
 	
 	var params = "m_memberid="+member_id;
@@ -119,7 +127,7 @@ function getMemberAddList(){
 							<td>${mem.class_name}</td>
 							<td>${mem.address}</td>
 							<td>${mem.status_cd}</td>
-							<td><button type="button" class="btn btn-sm btn-primary" value="${mem.member_id}"><i class="fa fa-dot-circle-o"></i>정보수정</button></td>
+							<td><button type="button" class="btn btn-sm btn-primary" value="${mem.member_id}" onclick="updateMember('${mem.member_id}')"><i class="fa fa-dot-circle-o"></i>정보수정</button></td>
 							<td><button type="button" class="btn btn-sm btn-primary" value="${mem.member_id}" id="sbtn" onclick="getMemberCS('${mem.member_id}')"><i class="fa fa-dot-circle-o"></i>상담내용</button></td>
 							
 						</tr>
