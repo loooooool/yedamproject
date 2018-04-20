@@ -36,7 +36,7 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
-					<h1>${sessionScope.memberVO.name}님의훈련 수강 신청서</h1>
+					<h1>${sessionScope.memberVO.name}님의훈련수강 신청서</h1>
 				</div>
 
 				<div class="card-body">
@@ -216,24 +216,20 @@
 									name="bohun_yn"> <label class="form-check-label"
 									for="b2"> 해당없음 </label>
 							</div>
-							<br>
-							<br>
-							<br>
-							<br>
+							<br> <br> <br> <br>
 
 							<p>
 								위 본인은 귀 교육원 및 노동부 관련규정을 준수하고, 훈련생으로서 본분을 다할 것을 서약하며 상기와 같이
-								신청합니다.<br>
-								<br>
-								<br> 날짜를 선택하세요-> <input type="text" id="datepicker"><br>
-								<br>
-								<br> 신청인  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(서명 또는 인)
+								신청합니다.<br> <br> <br> 날짜를 선택하세요-> <input
+									type="text" id="datepicker"><br> <br> <br>
+								신청인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(서명 또는
+								인)
 							</p>
-							<br>
-							<br>
+							<br> <br>
 
 							<div class="card-body">
-								<input type="submit" class="btn btn-info" value="수정" /><br><br>
+								<input type="submit" class="btn btn-info" value="수정" /><br>
+								<br>
 								<!-- <input type="button" class="btn btn-secondary"
 									onclick="location.href='getClassList'" value="전체과정목록" />&nbsp;&nbsp;&nbsp;
 								<input type="button" class="btn btn-secondary"
@@ -249,11 +245,20 @@
 							</div>
 
 							<div class="card-body">
-								<button type="button" class="btn btn-secondary" onclick="location.href='find_pwd'">비밀번호 찾기</button>
-								<button type="button" class="btn btn-success" onclick="location.href='changePwdForm'">비밀번호 변경</button>
-								<button type="button" class="btn btn-info" onclick="location.href=''" value="출석률 보기">출석률 보기</button>
-								<button type="button" class="btn btn-warning" onclick="location.href=''" value="시간표 보기">시간표 보기</button>
-								<button type="button" class="btn btn-danger" onclick="location.href=''" value="휴가 신청">휴가 신청</button>
+								<button type="button" class="btn btn-secondary"
+									onclick="location.href='find_pwd'">비밀번호 찾기</button>
+								<button type="button" class="btn btn-success"
+									onclick="location.href='changePwdForm'">비밀번호 변경</button>
+								<button type="button" class="btn btn-info"
+									onclick="location.href=''" value="출석률 보기">출석률 보기</button>
+								<button type="button" class="btn btn-warning"
+									onclick="location.href='getTimeTableList'" value="시간표 보기">시간표
+									보기</button>
+								<c:if
+									test="${sessionScope.memberVO.member_cd=='M2' or sessionScope.memberVO.member_cd=='M3'}">
+								<button type="button" class="btn btn-info"
+									onclick="location.href='getMember.jrxml'" value="pdf">pdf 출력</button>	
+								</c:if>	
 							</div>
 						</div>
 

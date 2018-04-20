@@ -40,7 +40,7 @@
 				</div>
 
 				<div class="card-body">
-					<form action="memberUpdate" method="post">
+					<form action="memberUpdate" method="get">
 
 						<input type="hidden" id=member_id name=member_id
 							value="${sessionScope.memberVO.member_id}"> <input

@@ -63,8 +63,8 @@ public class MemberMyBatisDAO {
 		sqlSession.update("member.adminMemberUpdate", vo);
 	}
 	
-	public List<Map<String,Object>> getEmployeeAll(){
-		System.out.println("mybatis getEmployeeAll");
-		return sqlSession.selectList("emp.getEmployeeAll");
-	}
+	/*public List<Map<String,Object>> getMember(){
+		System.out.println("mybatis getMember");
+		return sqlSession.selectList("emp.getMember");
+	}*/
 }
