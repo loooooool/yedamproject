@@ -57,33 +57,15 @@
 				leave,
 				absence,
 				goout
-				
 		FROM	unit_attendance
 	</select>
-	
-	 <select id="getUnitListWClass" resultType="unit" parameterType="unit">
-		SELECT	c_no,
-				student_name,
-				class_no,
-				unit,
-				unitdays,
-				sdate,
-				edate,
-				late,
-				leave,
-				absence,
-				goout
-		FROM	unit_attendance
-		WHERE class_no=#{class_no}
-	</select>
-	
 	
 
 	<select id="getSDATE" resultType="unit" parameterType="unit">
-		 SELECT DISTINCT sdate 
+		 SELECT DISTINCT sdate,edate 
 		 FROM UNIT_ATTENDANCE 
 		 WHERE class_no = #{class_no} 
-		 order by 1 asc;
+		 order by 1 asc
 	
 	</select>
 	

@@ -58,10 +58,9 @@ public class UnitController {
 	public String getUnitList(Model model, UnitVO vo, ClassVO cvo) {
 		
 		model.addAttribute("classList",classService.getClassListNP(cvo));
-		System.out.println(vo.getClass_no());
+
 		if(vo.getClass_no()!=null){
-			System.out.println(vo.getClass_no());
-			//model.addAttribute("SDATE",unitService.getSDATE(vo));
+			model.addAttribute("SDATE",unitService.getSDATE(vo));
 			model.addAttribute("unitList",unitService.getUnitList(vo));
 			
 		}

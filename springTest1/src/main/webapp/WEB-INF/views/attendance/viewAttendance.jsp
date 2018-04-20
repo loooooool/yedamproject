@@ -53,7 +53,7 @@ function getUnit(){
 					<th>남은결석일수</th>
 					<th>현재출석율</th>
 					<c:forEach items="${SDATE}" var="unit">
-					<th>${unit.sdate}</th>
+					<th>${unit.sdate}~${unit.edate}</th>
 					</c:forEach> 
 					</tr>
 					
