@@ -79,14 +79,6 @@ public class MemberServiceImpl implements MemberService {
 	 * dao.getEmployeeAll(); }
 	 */
 
-	/*@Override
-	public void create(MemberVO vo) throws Exception {
-
-		String encPassword = passwordEncoder.encode(vo.pwd());
-		vo.setPwd(encPassword);
-		logger.info("암호화된 비밀번호 : " + vo.getUser_password());
-
-		dao.insertUser(vo); // 회원가입 DAO
-	}*/
+	
 
 }
