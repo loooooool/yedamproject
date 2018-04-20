@@ -8,22 +8,14 @@
 <head>
 <title>마이페이지 회원정보수정</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
 <script>
 	$(function() {
 		$('input:radio[value="${ members_VO.class_cd }"]').attr('checked', 'checked'); //과정구분
 		$('input:radio[value="${ memberVO.open_route_cd }"]').attr('checked', 'checked'); //참여경로
+		$("#job_change_date").datepicker({
+			showButtonPanel : true
+		});
 		$("#datepicker").datepicker({
 			showButtonPanel : true
 		});
@@ -191,8 +183,7 @@
 						<div class="form-group">
 							<label for="nf-email"><strong>이직 전 직장명</strong></label> <input
 								type="text" id="previous_job" name="previous_job"
-								class="form-control" placeholder="최종 근무지명을 적으세요"
-								onfocus="this.value=''"> <span class="help-block"></span>
+								class="form-control" placeholder="최종 근무지명을 적으세요" value="${memberVO.previous_job}">
 						</div>
 
 						<div class="form-group">
