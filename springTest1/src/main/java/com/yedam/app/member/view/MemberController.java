@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -53,6 +54,10 @@ public class MemberController {
 
 	@Autowired
 	CodeDAO dao;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+
 
 	@RequestMapping("/getMemberList")
 	public String getBoardList(Model model, MemberVO vo, Paging paging) {

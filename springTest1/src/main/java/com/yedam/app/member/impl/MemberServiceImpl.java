@@ -9,20 +9,19 @@ import org.springframework.stereotype.Service;
 import com.yedam.app.member.MemberService;
 import com.yedam.app.member.MemberVO;
 
-
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	MemberMyBatisDAO dao;
-	
+
 	@Override
 	public boolean login(MemberVO vo) {
-		//id 조회
+		// id 조회
 		MemberVO memberVO = (MemberVO) dao.getMember_id(vo);
-						
-		//입력 패스워드 db 패스워드 비교
-		if(memberVO != null && vo.getPwd().equals(memberVO.getPwd())) {
+
+		// 입력 패스워드 db 패스워드 비교
+		if (memberVO != null && vo.getPwd().equals(memberVO.getPwd())) {
 			return true;
 		}
 		return false;
@@ -34,10 +33,10 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getMember_id(vo);
 	}
 
-	/*@Override
-	public boolean loginCheck(MemberVO vo, HttpSession session) {
-		return false;
-	}*/
+	/*
+	 * @Override public boolean loginCheck(MemberVO vo, HttpSession session) {
+	 * return false; }
+	 */
 
 	@Override
 	public List<MemberVO> getMemberList(MemberVO vo) {
@@ -54,12 +53,12 @@ public class MemberServiceImpl implements MemberService {
 		dao.changePwd(vo);
 	}
 
-	//학생추가
+	// 학생추가
 	@Override
-	public void insertMember(Map<String,Object> vo) {
+	public void insertMember(Map<String, Object> vo) {
 		dao.insertMember(vo);
 	}
-	
+
 	@Override
 	public String getRn() {
 		return dao.getRn();
@@ -75,9 +74,19 @@ public class MemberServiceImpl implements MemberService {
 		dao.adminMemberUpdate(vo);
 	}
 
+	/*
+	 * @Override public List<Map<String, Object>> getMember() { return
+	 * dao.getEmployeeAll(); }
+	 */
+
 	/*@Override
-	public List<Map<String, Object>> getMember() {
-		return dao.getEmployeeAll();
+	public void create(MemberVO vo) throws Exception {
+
+		String encPassword = passwordEncoder.encode(vo.pwd());
+		vo.setPwd(encPassword);
+		logger.info("암호화된 비밀번호 : " + vo.getUser_password());
+
+		dao.insertUser(vo); // 회원가입 DAO
 	}*/
-		
+
 }
