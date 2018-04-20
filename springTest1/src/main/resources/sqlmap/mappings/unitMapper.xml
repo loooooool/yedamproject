@@ -34,7 +34,7 @@
 
 
 	<insert id="insertUnit" parameterType="unit" statementType="CALLABLE">
-	{CALL UNITINSERT(
+		{CALL UNITINSERT(
 						#{class_no}, 
 						#{unit},
 						#{unitdays},
@@ -42,39 +42,57 @@
 						#{edate},
 						#{OUT_MSG, mode=OUT, jdbcType=VARCHAR, javaType=string}
 						)
-	}
+		}
 	</insert>
 
 	<select id="getUnitList" resultType="unit" parameterType="unit">
-	SELECT	c_no,
-			student_name,
-			class_no,
-			unit,
-			unitdays,
-			sdate,
-			edate,
-			late,
-			leave,
-			absence,
-			goout
-			
-	FROM	unit_attendance
+		SELECT	c_no,
+				student_name,
+				class_no,
+				unit,
+				unitdays,
+				sdate,
+				edate,
+				late,
+				leave,
+				absence,
+				goout
+				
+		FROM	unit_attendance
 	</select>
+	
+	 <select id="getUnitListWClass" resultType="unit" parameterType="unit">
+		SELECT	c_no,
+				student_name,
+				class_no,
+				unit,
+				unitdays,
+				sdate,
+				edate,
+				late,
+				leave,
+				absence,
+				goout
+		FROM	unit_attendance
+		WHERE class_no=#{class_no}
+	</select>
+	
+	
 
 	<select id="getSDATE" resultType="unit" parameterType="unit">
-	 SELECT distinct sdate 
-	 FROM UNIT_ATTENDANCE 
-	 WHERE class_no = #{class_no} 
-	 order by 1 asc;
+		 SELECT DISTINCT sdate 
+		 FROM UNIT_ATTENDANCE 
+		 WHERE class_no = #{class_no} 
+		 order by 1 asc;
 	
 	</select>
 	
 
 
 	<update id="lateUpdate" parameterType="unit" >
-	update unit_attendance set
+		UPDATE unit_attendance set
 							leave = NVL(MAX(leave),0)+1
-	where 
+		WHERE 
 	
 	
 	</update>

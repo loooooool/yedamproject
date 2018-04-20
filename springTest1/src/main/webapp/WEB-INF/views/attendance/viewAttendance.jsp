@@ -8,6 +8,7 @@ var context='${pageContext.request.contextPath}';
 
 function getUnit(){
 	location.href="./getUnitList?class_no="+$("#selectStudent").val()
+			
 }
 
 </script>
@@ -51,7 +52,7 @@ function getUnit(){
 					<th>남은출석일수</th>
 					<th>남은결석일수</th>
 					<th>현재출석율</th>
-					<c:forEach items="${unitList}" var="unit">
+					<c:forEach items="${SDATE}" var="unit">
 					<th>${unit.sdate}</th>
 					</c:forEach> 
 					</tr>

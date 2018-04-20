@@ -42,13 +42,13 @@ public class UnitController {
 	@Value("${file.uploadfolder}")
 	String uploadfolder;
 	
-	@RequestMapping("/insertAttendanceForm")
+	@RequestMapping("/insertAttendanceForm") //등록 폼으로
 	public String insertAttendanceForm(Model model, ClassVO cvo) {
 		model.addAttribute("classList",classService.getClassListNP(cvo)); 
 		return "attendance/insertAttendance";
 	}
 	
-	@RequestMapping("/insertUnit")
+	@RequestMapping("/insertUnit") //등록처리
 	public String insertUnit(UnitInsertVO uvo){
 		unitService.insertUnit(uvo);
 		return "attendance/viewAttendance";
@@ -58,15 +58,19 @@ public class UnitController {
 	public String getUnitList(Model model, UnitVO vo, ClassVO cvo) {
 		
 		model.addAttribute("classList",classService.getClassListNP(cvo));
+		System.out.println(vo.getClass_no());
 		if(vo.getClass_no()!=null){
+			System.out.println(vo.getClass_no());
+			//model.addAttribute("SDATE",unitService.getSDATE(vo));
 			model.addAttribute("unitList",unitService.getUnitList(vo));
+			
 		}
 		return "attendance/viewAttendance";
 	}
 	
 
 	
-	@RequestMapping("/insertExcel")
+	@RequestMapping("/insertExcel") //엑셀 등록 처리
 	public String insertExcel(Model model, UnitVO vo,  HttpServletRequest request, HttpServletResponse response)  throws IOException{
 		// 첨부파일이 있는지 확인
 		
