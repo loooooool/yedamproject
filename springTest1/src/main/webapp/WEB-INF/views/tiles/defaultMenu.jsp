@@ -34,8 +34,6 @@
 					<li class="nav-item"><a class="nav-link"
 						href="base/carousel.html"><i class="icon-puzzle"></i>나의 출석률</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="base/collapse.html"><i class="icon-puzzle"></i>휴가신청</a></li>
-					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getSugtList"><i
 							class="icon-calculator"></i>건의하기 <span
 							class="badge badge-primary">NEW</span></a></li>
@@ -87,8 +85,6 @@
 							class="icon-cursor"></i>과목출석부
 					</a></li>
 				</ul></li>
-			<li class="nav-item"><a class="nav-link" href="charts.html"><i
-					class="icon-pie-chart"></i>일정표</a></li>
 			<li class="nav-item nav-dropdown"><a
 				class="nav-link nav-dropdown-toggle" href="#"><i
 					class="icon-star"></i>학생관리</a>
@@ -99,9 +95,7 @@
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/viewMember" id="sub"><i
 							class="icon-cursor"></i>학생조회</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="adminMemberUpdateForm" id="sub"><i class="icon-cursor"></i>학생정보</a>
-					</li>
+					
 				</ul></li>
 			<li class="nav-item"><a class="nav-link" href="widgets.html"><i
 					class="icon-calculator"></i>공휴일 <span class="badge badge-primary">NEW</span></a>
@@ -109,6 +103,10 @@
 			<li class="nav-item"><a class="nav-link"
 				href="${pageContext.request.contextPath}/getConsultList"><i
 					class="icon-calculator"></i>상담일지 <span class="badge badge-primary">NEW</span></a>
+			</li>
+			<li class="nav-item"><a class="nav-link"
+				href="${pageContext.request.contextPath}/getSugtList"><i
+					class="icon-calculator"></i>건의사항<span class="badge badge-primary">NEW</span></a>
 			</li>
 		</c:if>
 	</ul>
