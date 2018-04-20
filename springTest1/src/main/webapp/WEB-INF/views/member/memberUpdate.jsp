@@ -2,14 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
-<!DOCTYPE html>
-<html>
 
-<head>
 <title>마이페이지 회원정보수정</title>
 
-
+<link rel="stylesheet"
+	href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script>
+
 	$(function() {
 		$('input:radio[value="${ members_VO.class_cd }"]').attr('checked', 'checked'); //과정구분
 		$('input:radio[value="${ memberVO.open_route_cd }"]').attr('checked', 'checked'); //참여경로
@@ -213,8 +214,8 @@
 								위 본인은 귀 교육원 및 노동부 관련규정을 준수하고, 훈련생으로서 본분을 다할 것을 서약하며 상기와 같이
 								신청합니다.<br> <br> <br> 날짜를 선택하세요-> <input
 									type="text" id="datepicker"><br> <br> <br>
-								신청인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(서명 또는
-								인)
+								신청인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								(서명 또는인)
 							</p>
 							<br> <br>
 
@@ -247,4 +248,3 @@
 		</div>
 	</div>
 </body>
-</html>
