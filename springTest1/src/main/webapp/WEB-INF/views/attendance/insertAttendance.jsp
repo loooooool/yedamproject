@@ -3,11 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <script type="text/javascript">
+	
+	var context='${pageContext.request.contextPath}';
+	
 	$(function() {
-		  $("#sdatepicker0").datepicker();
-		  $("#edatepicker0").datepicker();
+		  $("#sdatepicker0").datepicker({
+			  dateFormat: "yymmdd"
+		  });
+			  
+		  $("#edatepicker0").datepicker({
+			 	dateFormat:"yymmdd"
+			  });
 		 });
 
+	
 	var i = 0; //id 인덱스
 	var x=0;
 	
@@ -26,22 +35,42 @@
 		unitcard2.find("#edatepicker"+i).attr('id',"edatepicker"+x); 
 		unitcard2.find("#unitdays"+i).attr('id',"unitdays"+x); 
 		
-	
-		 $("#sdatepicker"+x).removeClass('hasDatepicker').datepicker();
-		$("#edatepicker"+x).removeClass('hasDatepicker').datepicker();
-		
-	
-		
+		$("#sdatepicker"+x).removeClass('hasDatepicker').datepicker({dateFormat:"yymmdd"});
+		$("#edatepicker"+x).removeClass('hasDatepicker').datepicker({dateFormat:"yymmdd"});
+
+		$('[name=sdate]:last').val('');
+	    $('[name=edate]:last').val('');
+	    $('[name=unitdays]:last').val('');
 		i++;
 	}
 	
 	function removeCard(){
 		var last = $("#unitcard"+x);
-			
-		last.remove();		
-
+		last.remove();	
+	};
+	
+	
+	function check(){
+		
+		var item3 = "";
+		var total =0;
+		
+		for(var x=0; x<=i; x++){
+			item3 += $("#unit"+x).val()+$("#sdatepicker"+x).val()+$("#edatepicker"+x).val()+"\n";
+			total += $("#unitdays"+x).val();
+		}
+		
+		var check = confirm("과정명 : "+ $("#selectStudent option:selected").text()+"\n"+item3+total);
+		
+		if(check){
+			document.insert.submit();
+		}else
+			return false;
+	
+		
 		
 	};
+	
 	
 </script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
@@ -55,14 +84,14 @@
 			<h2>출석부생성</h2>
 		</div>
 		<div class="card-body" style="border-bottom: :0px">
-			<form action="insertUnit" method="post">
+			<form action="insertUnit" method="post" id="insert" name="insert">
 			<div class="form-group row">
 				<label class="col-md-3 col-form-label" for="select1">과정</label>
 				<div class="col-md-9">
 					<select id="selectStudent" name="class_no"  class="form-control">
-						<option value="0">과정선택</option>
+						<option value="0" selected="selected">과정선택</option>
 						<c:forEach items="${classList}" var="cl">
-						<option value="${cl.cl_no}">${cl.class_name}</option>
+						<option  id="op${cl.cl_no}" value="${cl.cl_no}" >${cl.class_name}</option>
 						</c:forEach>					
 					</select>
 				</div>
@@ -81,7 +110,7 @@
 					
 					<div class="form-group row">
 						<label class="col-md-3 col-form-label" for="select1">단위번호</label>
-						<div class="col-4">
+						<div class="col-sm-3">
 							<input type="text" class="form-control" name="unit" value="1" id="unit0" >
 						</div>
 					</div>
@@ -90,7 +119,7 @@
 						<label class="col-md-3 col-form-label" for="select1">단위시작일</label>
 						<div class='col-sm-3'>
 								<div class='input-group date' >
-									<input type='text' class="form-control" name="sdate"  id="sdatepicker0" /> 
+									<input readonly="readonly" type='text' class="form-control" name="sdate"  id="sdatepicker0" /> 
 									<span class="input-group-addon"> 
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -100,7 +129,7 @@
 						<label class="col-md-3 col-form-label" for="select1">단위마지막일</label>
 						<div class='col-sm-3'>
 								<div class='input-group date' id='datetimepicker1'>
-									<input type='text' class="form-control" name="edate" id="edatepicker0" /> 
+									<input readonly="readonly" type='text' class="form-control" name="edate" id="edatepicker0" /> 
 									<span class="input-group-addon"> 
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -110,7 +139,7 @@
 					
 					<div class="form-group row">
 						<label class="col-md-3 col-form-label" for="select1">수업일수</label>
-						<div class="col-4">
+						<div class="col-sm-3">
 							<input type="text" class="form-control" id="unitdays0" name="unitdays" placeholder="수업일수..">
 						</div>
 					</div>
@@ -121,7 +150,7 @@
 			</div>
 			
 			<div class="card-body" align="right" >
-			<input type="submit" class="btn btn-info" value="등록"/>
+			<input type="button" class="btn btn-info" value="등록"  onclick="check()"/>
           	<input type="reset" class="btn btn-danger" value="취소"/>
  	 		</div>
 
