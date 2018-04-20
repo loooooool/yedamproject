@@ -72,6 +72,16 @@ public class MemberController {
 		model.addAttribute("memberVO", memberService.getMember_id(vo));
 		return "member/memberUpdate";
 	}
+	
+	//관리자 정보수정
+	// 수정폼
+		@RequestMapping("/adminUpdateForm")
+		public String adminUpdateForm(MemberVO vo,String member_id, Model model, HttpSession session) {
+			//MemberVO vo = new MemberVO();
+			vo.setMember_id(member_id);
+			model.addAttribute("memberVO", memberService.getMember_id(vo));
+			return "member/memberUpdate";
+		}
 
 	// 수정처리
 	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)

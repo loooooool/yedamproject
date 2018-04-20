@@ -78,7 +78,7 @@
 						<div class="form-group">
 							<label for="nf-email"><strong>과정명</strong></label> <input
 								type="text" id="class_name" name="class_name"
-								class="form-control" value="${sessionScope.memberVO.class_name}"
+								class="form-control" value="${memberVO.class_name}"
 								readonly>
 						</div>
 
@@ -87,7 +87,7 @@
 						<div class="form-group">
 							<label for="nf-email"><strong>영문명</strong></label> <input
 								type="text" id="eng_name" name="eng_name" class="form-control"
-								value="${sessionScope.memberVO.eng_name}"> 여권상의 영문명과 동일한
+								value="${memberVO.eng_name}"> 여권상의 영문명과 동일한
 							영문명
 
 						</div>
