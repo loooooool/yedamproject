@@ -1,6 +1,7 @@
 package com.yedam.app.subject.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class SubjectDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public void insertSubject(SubjectVO vo) {
+	public void insertSubject(Map<String,Object> vo) {
 		sqlSession.insert("subject.insertSubject", vo);
 	}
 	

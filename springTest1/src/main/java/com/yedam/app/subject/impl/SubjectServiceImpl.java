@@ -1,6 +1,7 @@
 package com.yedam.app.subject.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class SubjectServiceImpl implements SubjectService {
 	SubjectDAO dao;
 
 	@Override
-	public void insertSubject(SubjectVO vo) {
+	public void insertSubject(Map<String,Object> vo) {
 		dao.insertSubject(vo);
 	}
 
@@ -48,7 +49,5 @@ public class SubjectServiceImpl implements SubjectService {
 	public List<SubjectVO> getSubjectListAjax(SubjectVO vo) {
 		return dao.getSubjectListAjax(vo);
 	}
-	
-	
 
 }

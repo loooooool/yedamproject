@@ -55,8 +55,8 @@
 			<tbody>
 				<c:forEach items="${SubjectList }" var="su">
 					<tr>
-						<th scope="row"><a href="getSubject/${su.su_no }">${su.su_no}</a></th>
-						<td>${su.subject}</td>
+						<td scope="row">${su.su_no}</td>
+						<td><a href="getSubject/${su.su_no}">${su.subject}</a></td>
 						<td>${su.totalTime}</td>
 						<td>${su.class_name}</td>
 						<td>${su.status_yn}</td>
@@ -66,11 +66,9 @@
 		</table>
 			<my:paging paging="${paging }" jsfunc="go_list" />
 			<div class="card-body" align="right">
-				<input type="button" class="btn btn-secondary"
-					onclick="location.href='getSubjectList'" value="목록" />
+				<input type="button" class="btn btn-secondary" onclick="location.href='getSubjectList'" value="목록" />
 				<c:if test="${sessionScope.memberVO.member_cd!='M1'}">
-					<input type="button" class="btn btn-info"
-						onclick="location.href='insertSubject'" value="등록" />
+					<input type="button" class="btn btn-info" onclick="location.href='insertSubjectForm'" value="등록" />
 				</c:if>
 			</div>
 </body>

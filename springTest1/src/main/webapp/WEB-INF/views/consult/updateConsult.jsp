@@ -31,6 +31,8 @@
 		})
 	}
 </script>
+<script src="${pageContext.request.contextPath}/scripts/ckeditor/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/scripts/ckeditor/ko.js"></script>
 </head>
 <body>
 
@@ -90,6 +92,11 @@
 	              <label class="col-md-3 col-form-label" for="textarea-input">내용</label>
 	              <div class="col-md-9">
 	                <textarea id="textarea-input" name="content" rows="9" class="form-control" placeholder="Content..">${consult.content}</textarea>
+	             		<script>
+				            CKEDITOR.replace( 'content', {
+								filebrowserUploadUrl: './ckeditorfileupload/fileUpload.jsp',height : '500px'
+							}); 
+						 </script>
 	              </div>
 	            </div>
 				<div class="card-body" align="right">

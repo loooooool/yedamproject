@@ -14,11 +14,8 @@
 		on (st.subject = su.su_no)
 		<where>
 			<if test="searchKeyword != null and searchKeyword != ''">
-				<if test="searchCondition == 's_date' ">
-					and s_date like '%' ||#{searchKeyword}||'%'
-				</if>
 				<if test="searchCondition == 'subject' ">
-					su.subject like '%' ||#{searchKeyword}||'%'
+					and su.subject like '%' ||#{searchKeyword}||'%'
 				</if>
 			</if>
 			<if test="cl_no != null">

@@ -65,6 +65,10 @@
 	
 	</update>
 	
+	<delete id="deleteCommentsWSugt" parameterType="sugt"> 
+		DELETE comments
+		WHERE parent_no = #{s_no}
+	</delete>
 
 
 </mapper>
