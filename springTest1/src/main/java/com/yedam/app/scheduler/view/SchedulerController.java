@@ -35,44 +35,38 @@ public class SchedulerController {
 		return conditionMap;
 	}
 	
-	// 목록,페이징 처리
-	@RequestMapping("/getSchedulerList")
-	public String getSchedulerList(Model model, SchedulerVO vo, Paging paging) {
-		// 전체 레코드 건수
-		paging.setPageUnit(10);
-		paging.setTotalRecord(schedulerService.getCount(vo));
-		// vo에 first와 last 셋팅
-		vo.setFirst(paging.getFirst());
-		vo.setLast(paging.getLast());
-		// 저장
-		model.addAttribute("schedulerList", schedulerService.getSchedulerList(vo));
-		model.addAttribute("paging", paging);
-		return "scheduler/getSchedulerList";
+	// 스케줄러
+	@RequestMapping("/Scheduler")
+	public String getSchedulerList(Model model, SchedulerVO vo) {
+		return "scheduler/scheduler";
 	}
 	
 	
-	//ajax요청
+	//ajaxlist
 	@RequestMapping("/getSchedulerList.ajax")
 	@ResponseBody
 	public  List<Map<String,Object>> getSchedulerListajax(SchedulerVO vo) {
-		/*Calendar cal = Calendar.getInstance();
-		if(vo.getYear() == null || vo.getYear().equals("")) {
-			vo.setYear(Integer.toString(cal.get(Calendar.YEAR)));
-		}else if(vo.getMonth() == null || vo.getMonth().equals("")) {
-			vo.setMonth(Integer.toString(cal.get(Calendar.MONTH)+1));
-		}*/
 		return schedulerService.getSchedulerListajax(vo);
 	}
 	
+	//ajaxinsert
+		@RequestMapping("/insertScheduler.ajax")
+		@ResponseBody
+		public SchedulerVO insertSchedulerajax(SchedulerVO vo) {
+			/*System.out.println("호호호홓"+vo);*/
+			schedulerService.insertSchedulerajax(vo);
+			return vo;
+		}
+		
 	
 	
 
-	// 상세 보기
+/*	// 상세 보기
 	@RequestMapping("/getScheduler")
 	public String getScheduler(Model model, SchedulerVO vo) {
 		model.addAttribute("scheduler", schedulerService.getScheduler(vo));
 		return "scheduler/getScheduler";
-	}
+	}*/
 	
 
 	// 등록 폼으로 가는 컨트롤러

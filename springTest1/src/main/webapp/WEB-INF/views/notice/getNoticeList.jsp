@@ -29,7 +29,7 @@
 		<div class="card-header">
 			<h2>공지사항</h2>
 				<div  class="card-body" align="right">
-					<form action="getNoticeList" name="noticeForm" style="height:15.96px;">
+					<form action="getNoticeList" name="noticeForm"  style="height:15.96px;">
 							<input type="hidden" name="page" value="${paging.page}" />
 							<select name="searchCondition" class="search">
 								<option value="">선택</option> 
@@ -65,14 +65,11 @@
 					</c:forEach>
 			</table>
 			<div class="card-body" align="right">
-				<a href="insertNotice">
-					<button type="button" class="btn btn-info">
-					글쓰기
-					</button>
-				</a>
-				<div align="left">
-			 		<my:paging paging="${paging}" jsfunc="go_list"/>
+			<div align="left">
+				 	<my:paging paging="${paging}" jsfunc="go_list"/>
 				</div>
+				<input type="button" class="btn btn-info"  value="글쓰기" onclick="location.href='./insertNotice'" />
+				<input type="button" class="btn btn-secondary"  value="목록" onclick="location.href='./getNoticeList'" />
 			</div>
 		</div>
 	</div>

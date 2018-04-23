@@ -4,8 +4,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head><title>getNotice.jsp</title></head>
+<head><title>getNotice.jsp</title>
+<script>
+$(document).ready(function(){ 
+	$('#del').click(function() { 
+		var result = confirm('정말로 삭제하시겠습니까?');
+			if(result) { 
+				location.replace('./deleteNotice?n_no=${notice.n_no }'); 
+			}
+			else { 
+				
+			} 
+	});
+});
 
+</script>
+</head>
 <body>
 	<div class="card" style="border: 50px solid white;">
 			<h2>공지사항</h2><br>
@@ -80,7 +94,7 @@
 			</table>
 			<div align="right">
 				<input type="button" class="btn btn-warning" value="수정" onclick="location.href='./updateNoticeForm?n_no=${notice.n_no}'"/>
-				<input type="button" class="btn btn-danger"  value="삭제" onclick="location.href='./deleteNotice?n_no=${notice.n_no}'"/>
+				<input type="button" class="btn btn-danger"  value="삭제" id="del" />
 				<input type="button" class="btn btn-secondary"  value="목록" onclick="location.href='./getNoticeList'" />
 			</div>
 	</div>

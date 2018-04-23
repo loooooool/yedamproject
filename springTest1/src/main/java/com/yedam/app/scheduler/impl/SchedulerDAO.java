@@ -39,6 +39,10 @@ public class SchedulerDAO {
 	public List<Map<String,Object>> getSchedulerListajax(SchedulerVO vo){
 		return  sqlSession.selectList("scheduler.getSchedulerListajax",vo);
 	}
+	
+	public void insertSchedulerajax(SchedulerVO vo){
+		sqlSession.insert("scheduler.insertSchedulerListajax",vo);
+	}
 
 	public int getCount(SchedulerVO vo) {
 		return sqlSession.selectOne("scheduler.getCount",vo);
