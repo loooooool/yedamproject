@@ -26,16 +26,18 @@ $(document).ready(function(){
             $("#pwd").focus();
             return false;
         }
-        /* if(member_id != "" ){
+       /*  if(member_id != request.getParameter("member_id")){
         	alert("아이디가 일치하지 않습니다.");
         	$("#member_id").focus(); // 입력포커스 이동
         	return false;
-        }
+        } 
         if(pwd != ""){
         	alert("비밀번호가 일치하지 않습니다.");
         	$("#pwd").focus(); // 입력포커스 이동
         	return false;
-        }  */
+        } else {
+        	return true;
+        } */
         // 제출
         document.form1.submit();
     });
