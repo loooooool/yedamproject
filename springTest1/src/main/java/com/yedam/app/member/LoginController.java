@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class LoginController {
 	
 	//로그인
 	@RequestMapping("/login")
-	public String login(@ModelAttribute("member") MemberVO vo, HttpSession session) {
+	public String login(@ModelAttribute("member") MemberVO vo, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("로그인 인증 처리");
 		if(memberService.login(vo)) {
 			session.setAttribute("memberVO", memberService.getMember_id(vo));
