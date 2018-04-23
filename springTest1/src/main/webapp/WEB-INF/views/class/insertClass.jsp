@@ -9,6 +9,15 @@
     function insert(){
         alert("등록하시겠습니까?");
     }
+    
+    function div_show(v,id){
+    	if(v == "C2"){
+    		document.getElementById(id).style.display = ""; //보여줌
+    	} else {
+    		document.getElementById(id).style.display = "none"; //숨김
+    	}
+    }
+    
 </script>
 
 </head>
@@ -42,16 +51,16 @@
 				<div class="form-group">
 					<label for="nf-email"><strong>과정 구분</strong></label>
 						<div class="form-check">
-							<input class="form-check-input" type="radio" value="C1" id="radio1" name="class_cd"> 
+							<input class="form-check-input" type="radio" value="C1" id="radio1" name="class_cd" onclick="div_show(this.value,'divshow');"> 
 							<label class="form-check-label" for="radio1"> 과정평가반</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="radio" value="C2" id="radio2" name="class_cd"> 
+							<input class="form-check-input" type="radio" value="C2" id="radio2" name="class_cd" onclick="div_show(this.value,'divshow');"> 
 							<label class="form-check-label" for="radio2"> 단위기간평가반</label>
 					</div>
 				</div>
-				<div class="form-group row">
-					<label class="col-md-3 col-form-label" for="file-input"><strong>시간표 업로드</strong></label>
+				<div class="form-group" id="divshow" style="display:none">
+					<label class="nf-email" for="file-input"><strong>시간표 업로드</strong></label>
 					<div class="col-md-10">
 						<input type="file" id="attach_file" name="attach_file">
 					</div>

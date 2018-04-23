@@ -12,8 +12,11 @@
 <script>
 
 	$(function() {
-		$('input:radio[value="${ members_VO.class_cd }"]').attr('checked', 'checked'); //과정구분
-		$('input:radio[value="${ memberVO.open_route_cd }"]').attr('checked', 'checked'); //참여경로
+		$('input:radio[name=class_cd][value="${ memberVO.class_cd }"]').attr('checked', 'checked'); //과정구분(과정평가/단위기간평가)
+		$('input:radio[name=course_type_cd][value="${ memberVO.course_type_cd }"]').attr('checked', 'checked'); //모집구분(취성패/내일)
+		$('input:radio[name=open_route_cd][value="${ memberVO.open_route_cd }"]').attr('checked', 'checked'); //훈련참여경로
+		$('input:radio[name=unemployee_pay_yn][value="${ memberVO.unemployee_pay_yn }"]').attr('checked', 'checked'); //훈련참여경로
+		$('input:radio[name=bohun_yn][value="${ memberVO.bohun_yn }"]').attr('checked', 'checked'); //보훈대상자여부
 		$("#job_change_date").datepicker({
 			showButtonPanel : true
 		});
@@ -24,12 +27,12 @@
 </script>
 
 </head>
-<body>
+<body>${members_VO }
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
-					<h1>${memberVO.name}님의훈련수강 신청서</h1>
+					<h1>${memberVO.name} 님의 훈련수강신청서</h1>
 				</div>
 
 				<div class="card-body">
@@ -44,12 +47,12 @@
 							<label for="nf-email"><strong> 과정구분 </strong></label>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="C1" id="c1"
-									name="mypage_c"> <label class="form-check-label"
+									name="class_cd"> <label class="form-check-label"
 									for="c1"> 과정평가반 </label>
 							</div>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="C2" id="c2"
-									name="mypage_c"> <label class="form-check-label"
+									name="class_cd"> <label class="form-check-label"
 									for="c2"> 단위기간평가반</label>
 							</div>
 						</div>
@@ -58,12 +61,12 @@
 							<label for="nf-email"><strong>모집구분</strong></label>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="R1" id="r1"
-									name="mypage_r"> <label class="form-check-label"
+									name="course_type_cd"> <label class="form-check-label"
 									for="r1"> 내일배움카드</label>
 							</div>
 							<div class="form-check">
 								<input class="form-check-input" type="radio" value="R2" id="r2"
-									name="mypage_r"> <label class="form-check-label"
+									name="course_type_cd"> <label class="form-check-label"
 									for="r2"> 취업성공패키지</label>
 							</div>
 						</div>
@@ -164,7 +167,7 @@
 							<label for="nf-email"><strong>훈련참여경로 기타</strong></label> <input
 								type="text" id="open_route_etc" name="open_route_etc"
 								class="form-control" placeholder="이밖의 훈련참여경로가 있으시다면 적으세요"
-								onfocus="this.value=''"> <span class="help-block"></span>
+								value="${memberVO.open_route_etc}" onfocus="this.value=''"> <span class="help-block"></span>
 						</div>
 
 						<div class="form-group">
@@ -184,15 +187,15 @@
 						<div class="form-group">
 							<label for="nf-email"><strong>이직 전 직장명</strong></label> <input
 								type="text" id="previous_job" name="previous_job"
-								class="form-control" placeholder="최종 근무지명을 적으세요" value="${memberVO.previous_job}">
+								class="form-control" placeholder="최종 근무지명을 적으세요" 
+								value="${memberVO.previous_job}">
 						</div>
 
 						<div class="form-group">
 							<label for="nf-email"><strong>이직 일자</strong></label> <input
-								type="date" id="job_change_date" name="job_change_date"
+								type="text" id="job_change_date" name="job_change_date"
 								class="form-control" placeholder="최종 퇴사일을 적으세요"
-								value="${memberVO.job_change_date}"> <span
-								class="help-block"></span>
+								value="${memberVO.job_change_date}"> 
 						</div>
 
 
@@ -225,8 +228,6 @@
 							</div>
 
 							<div class="card-body">
-								<button type="button" class="btn btn-secondary"
-									onclick="location.href='find_pwd'">비밀번호 찾기</button>
 								<button type="button" class="btn btn-success"
 									onclick="location.href='changePwdForm'">비밀번호 변경</button>
 								<button type="button" class="btn btn-info"
@@ -234,10 +235,11 @@
 								<button type="button" class="btn btn-warning"
 									onclick="location.href='getTimeTableList'" value="시간표 보기">시간표
 									보기</button>
+									
 								<c:if
 									test="${sessionScope.memberVO.member_cd=='M2' or sessionScope.memberVO.member_cd=='M3'}">
-								<button type="button" class="btn btn-info"
-									onclick="location.href='getMember.jrxml'" value="pdf">pdf 출력</button>	
+								<button type="button" class="btn btn-danger"
+									onclick="location.href='getMember.jrxml'" value="pdf">출력</button>	
 								</c:if>	
 							</div>
 						</div>

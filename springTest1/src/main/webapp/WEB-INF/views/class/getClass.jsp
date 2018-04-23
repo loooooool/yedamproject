@@ -54,13 +54,7 @@ $(document).ready(function(){
 					<div class="form-group row">
 						<label class="col-md-3 col-form-label"><strong>과정 구분</strong></label>
 						<div class="col-md-9">
-							<p class="form-control-static"></p>
-							
-							<input type="radio" name="class_cd" id = "radio1" value="C1"
-								<c:if test="${cl.class_cd eq 'C1'}"> checked="checked" </c:if> />과정평가반
-							<br>
-							<input type="radio" name="class_cd" id = "radio2" value="C2"
-								<c:if test="${cl.class_cd eq 'C2'}"> checked="checked" </c:if>/>단위기간평가반
+							<p class="form-control-static">${cl.class_nm}</p>
 						</div>
 					</div>
 					<div class="form-group row">

@@ -29,7 +29,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO getMember_id(MemberVO vo) {
-		// TODO Auto-generated method stub
 		return dao.getMember_id(vo);
 	}
 
@@ -74,19 +73,16 @@ public class MemberServiceImpl implements MemberService {
 		dao.adminMemberUpdate(vo);
 	}
 
+	/*@Override
+	public MemberVO getPwd(MemberVO vo) {
+		return dao.getPwd(vo);	
+	}*/
+
 	/*
 	 * @Override public List<Map<String, Object>> getMember() { return
 	 * dao.getEmployeeAll(); }
 	 */
 
-	/*@Override
-	public void create(MemberVO vo) throws Exception {
-
-		String encPassword = passwordEncoder.encode(vo.pwd());
-		vo.setPwd(encPassword);
-		logger.info("암호화된 비밀번호 : " + vo.getUser_password());
-
-		dao.insertUser(vo); // 회원가입 DAO
-	}*/
+	
 
 }
