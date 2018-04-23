@@ -1,7 +1,6 @@
 package com.yedam.app.view.timetable;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classinfo.ClassInfoService;
 import com.yedam.app.member.MemberVO;
+import com.yedam.app.sampledata.SampleService;
 import com.yedam.app.timetable.TimeTableService;
 import com.yedam.app.timetable.TimeTableVO;
 
@@ -31,6 +31,9 @@ public class TimeTableController {
 	
 	@Autowired
 	ClassService classService;
+	
+	@Autowired
+	SampleService sampleService;
 
 	@RequestMapping("/getTimeTableList")
 	public String myTimeTable(Model model, 	TimeTableVO tvo,  HttpSession session) {
@@ -56,4 +59,32 @@ public class TimeTableController {
 		/*conditionMap.put("날짜", "s_date");*/
 		return conditionMap;
 	}
+	
+	
+	//재용이가 짠거
+	//insert 폼
+	@RequestMapping("/insertTimeTableForm")
+	public String insertViewTimeTableForm() {
+		return "timetable/timetableinsertview";
+	}
+	//insert 처리
+	@RequestMapping("/insertTimeTableView")
+	public String insertViewTimeTable() {
+		List<Map<String,Object>> list = sampleService.getExcelTimeTable(null);
+		Map<String,Object> input;
+		
+		for(int i=0;i<list.size();i++) {
+			
+		}
+		if(sampleService.checkTimeTable().isEmpty()) {
+			System.out.println("데이터가 없습니다.");
+			
+		}
+		
+		
+		
+		return "timetable/timetableinsertview";
+	}
+	
+	
 }

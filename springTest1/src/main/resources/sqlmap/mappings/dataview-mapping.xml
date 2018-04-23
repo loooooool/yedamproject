@@ -43,6 +43,13 @@
 		where code_no=#{classtime_cd}
 
 	</select>
+	
+	<select id="checkTimeTable" resultType="map" parameterType="map">
+	
+		select t_id "t_id",s_date "s_date", classtime_cd "classtime_cd",subject "subject",temp "temp"
+		from subject_timetable
+	
+	</select>
 
 
 
@@ -55,7 +62,10 @@
 	</update>
 	
 
-
+	<insert id="insertTimeTable" parameterType="map">
+		insert into subject_timetable()
+	
+	</insert>
 
 	
 

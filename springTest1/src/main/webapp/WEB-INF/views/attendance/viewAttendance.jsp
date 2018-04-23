@@ -62,7 +62,7 @@ function getUnit(){
 				<c:forEach items="${unitList}" var="unit">
 					<tr>
 					<td>${unit.student_name}</td>
-					<td>${unit.class_no}</td>
+					<td>${attendDays.late}</td>
 					<td>현재출석일수</td>
 					<td>남은출석일수</td>
 					<td>남은결석일수</td>

@@ -1,13 +1,21 @@
 package com.yedam.app.sampledata.impl;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.yedam.app.sampledata.SampleList;
 import com.yedam.app.sampledata.SampleService;
@@ -38,6 +46,15 @@ public class SampleServiceImpl implements SampleService {
 		dao.updateAtt(vo);
 	}
 	
+	@Override
+	public void insertTimeTableAtt(Map<String,Object> vo) {
+		dao.insertTimeTableAtt(vo);
+	}
+	
+	@Override
+	public List<Map<String,Object>> checkTimeTable(){
+		return dao.checkTimeTable();
+	}
 	
 	@Override
 	public void getSubjectTimeList(String filepath) {
@@ -52,8 +69,7 @@ public class SampleServiceImpl implements SampleService {
 			if (!(getSampleData(test)).isEmpty()) {
 
 				for (int i = 0; i < (getSampleData(test)).size(); i++) {
-					String code_name = (String) (getCodeName((getSampleData(test)).get(i)))
-							.get("code_name");
+					String code_name = (String) (getCodeName((getSampleData(test)).get(i))).get("code_name");
 					int index = code_name.indexOf("~");
 					String start = code_name.substring(0, index);
 					String end = code_name.substring(index + 1);
@@ -92,6 +108,106 @@ public class SampleServiceImpl implements SampleService {
 
 		//return "sample/getSampleList";
 
+	}
+	
+	
+	@Override
+	public List<Map<String,Object>> getExcelTimeTable(String filepath) {
+		
+		FileInputStream fis;
+		XSSFWorkbook workbook = null;
+		
+		
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		Map<String, Object> val = null;
+		try {
+			fis = new FileInputStream("D:\\memo41.xlsx");
+			try {
+				workbook = new XSSFWorkbook(fis);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int rowindex = 0;
+		int columnindex = 1;
+		// 시트 수 (첫번째에만 존재하므로 0을 준다)
+		// 만약 각 시트를 읽기위해서는 FOR문을 한번더 돌려준다
+		XSSFSheet sheet = workbook.getSheetAt(0);
+		// 행의 수
+		int rows = sheet.getPhysicalNumberOfRows();
+		for (rowindex = 1; rowindex < rows; rowindex++) {
+			// 행을 읽는다
+			XSSFRow row = sheet.getRow(rowindex);
+			if (row != null) {
+				// 셀의 수
+				int cells = row.getPhysicalNumberOfCells(); // 4~9
+
+				// 셀값을 읽는다
+
+				XSSFCell[] cell = new XSSFCell[3];
+
+				for (int i = 0; i < 3; i++) {
+
+					
+					cell[i] = row.getCell((columnindex + i));
+					
+				}
+
+				String[] value = new String[3];
+				String strtemp=null;
+				for (int i = 0; i < 3; i++) {
+					// 셀이 빈값일경우를 위한 널체크
+					if (cell[i] == null) {
+						continue;
+					} else {
+						// 타입별로 내용 읽기
+					
+						switch (cell[i].getCellType()) {
+						case XSSFCell.CELL_TYPE_FORMULA:
+							value[i] = cell[i].getCellFormula();
+							break;
+						case XSSFCell.CELL_TYPE_NUMERIC:
+							Date date=cell[i].getDateCellValue();
+							value[i] = new SimpleDateFormat("yyyy/MM/dd").format(date);
+							break;
+						case XSSFCell.CELL_TYPE_STRING:
+							value[i] = cell[i].getStringCellValue() + "";
+
+							break;
+						case XSSFCell.CELL_TYPE_BLANK:
+							value[i] = cell[i].getBooleanCellValue() + "";
+
+							break;
+						case XSSFCell.CELL_TYPE_ERROR:
+							value[i] = cell[i].getErrorCellValue() + "";
+							break;
+						}
+					}
+				}
+				val = new HashMap<String, Object>();
+				val.put("day", value[0]);
+				val.put("time", value[1]);
+				val.put("subject", value[2]);
+				list.add(val);
+			}
+		
+	
+		}
+		
+		for(int i=0;i<list.size();i++) {
+			System.out.println("일자 : "+list.get(i).get("day"));
+			System.out.println("시간 : "+list.get(i).get("time").toString().replaceAll(":", ""));
+			System.out.println("과목 : "+list.get(i).get("subject"));
+		}
+		
+		
+	
+	return list;
+		
 	}
 	
 	
