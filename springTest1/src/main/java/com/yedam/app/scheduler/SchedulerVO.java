@@ -4,18 +4,13 @@ import java.sql.Date;
 
 public class SchedulerVO {
 	
-	private Integer no;
+	private Integer no =1;
 	private String name;
 	private Date startday;
 	private Date endday;
 	private String type;
 	private String rotation_yn;
-	
-	private String searchCondition;
-	private String searchKeyword;
-	
-	private Integer first;
-	private Integer last;
+
 	
 	public Integer getNo() {
 		return no;
@@ -53,36 +48,12 @@ public class SchedulerVO {
 	public void setRotation_yn(String rotation_yn) {
 		this.rotation_yn = rotation_yn;
 	}
-	public String getSearchCondition() {
-		return searchCondition;
-	}
-	public void setSearchCondition(String searchCondition) {
-		this.searchCondition = searchCondition;
-	}
-	public String getSearchKeyword() {
-		return searchKeyword;
-	}
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
-	}
-	public Integer getFirst() {
-		return first;
-	}
-	public void setFirst(Integer first) {
-		this.first = first;
-	}
-	public Integer getLast() {
-		return last;
-	}
-	public void setLast(Integer last) {
-		this.last = last;
-	}
+
 	
 	@Override
 	public String toString() {
 		return "SchedulerVO [no=" + no + ", name=" + name + ", startday=" + startday + ", endday=" + endday + ", type="
-				+ type + ", rotation_yn=" + rotation_yn + ", searchCondition=" + searchCondition + ", searchKeyword="
-				+ searchKeyword + ", first=" + first + ", last=" + last + "]";
+				+ type + ", rotation_yn=" + rotation_yn + ", searchCondition="+"]";
 	}
 	
 	

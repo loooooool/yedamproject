@@ -44,6 +44,7 @@
 			<mvc:exclude-mapping path="/login*"/>
 			<mvc:exclude-mapping path="/getNoticeList"/>
 			<mvc:exclude-mapping path="/getClassList"/>
+			<mvc:exclude-mapping path="/getSchedulerajax"/>
 			<bean class="com.yedam.app.common.LoginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

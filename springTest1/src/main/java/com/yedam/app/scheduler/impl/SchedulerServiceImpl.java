@@ -18,40 +18,21 @@ public class SchedulerServiceImpl implements SchedulerService{
 	@Autowired
 	SchedulerDAO dao;
 
-	@Override
-	public void insertScheduler(SchedulerVO vo) {
-		dao.insertScheduler(vo);
-	}
-
-	@Override
-	public void updateScheduler(SchedulerVO vo) {
-		dao.updateScheduler(vo);
-	}
-
-	@Override
-	public void deleteScheduler(SchedulerVO vo) {
-		dao.deleteScheduler(vo);
-	}
-
-	@Override
-	public SchedulerVO getScheduler(SchedulerVO vo) {
-		return dao.getScheduler(vo);
-	}
-
-	public List<SchedulerVO> getSchedulerList(SchedulerVO vo) {
-		return dao.getSchedulerList(vo);
-	}
 	
-	public List<Map<String,Object>> getSchedulerListajax(SchedulerVO vo) {
-		return dao.getSchedulerListajax(vo);
+	public List<Map<String,Object>> getSchedulerajax(SchedulerVO vo) {
+		return dao.getSchedulerajax(vo);
 	}
 	
 	public void insertSchedulerajax(SchedulerVO vo) {
 		dao.insertSchedulerajax(vo);
 	}
 	
-	
-	public int getCount(SchedulerVO vo) {
-		return dao.getCount(vo);
+	public void updateSchedulerajax(SchedulerVO vo) {
+		dao.updateSchedulerajax(vo);
 	}
+	
+	public void deleteSchedulerajax(SchedulerVO vo) {
+		dao.deleteSchedulerajax(vo);
+	}
+	
 }

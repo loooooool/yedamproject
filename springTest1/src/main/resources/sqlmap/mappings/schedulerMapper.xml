@@ -17,7 +17,7 @@
 	</select>
 	
 	<!-- 공휴일,이벤트  -->
-	<select id="getSchedulerListajax" resultType="map">	 <!--id 값은 메소드 명 --> <!-- resultMap은 위 resultMap id와 매치 --> <!-- resultType : sql-map-config에 alias 사용 (원래는 경로 다 써야함) -->
+	<select id="getSchedulerajax" resultType="map">	 <!--id 값은 메소드 명 --> <!-- resultMap은 위 resultMap id와 매치 --> <!-- resultType : sql-map-config에 alias 사용 (원래는 경로 다 써야함) -->
 		select 	no as "id"
 				,name as "text"
 				,startday as "start_date"
@@ -28,37 +28,37 @@
 	
 	
 
-	<!-- (임시)공휴일 등록 -->
+	<!--event,holiday 등록 -->
 	<insert id="insertSchedulerajax" parameterType="scheduler">
 		<selectKey keyProperty="no" resultType="int" order="BEFORE">
 			select nvl(max(no),0)+1 from scheduler
 		</selectKey>
 		insert into scheduler(
-		no
+		 no
 		,name
 		,startday
 		,endday
+			,type
+
 		)
 		values(
 		#{no}
 		,#{name}
 		,#{startday}
-		,#{endday}
+		,#{endday}	
+			,'s'
+		
 		)
 	</insert>
 
 
 	<!-- 공휴일 수정 -->
-	<update id="updateScheduler" parameterType="scheduler">
+	<update id="updateSchedulerajax" parameterType="scheduler">
 		update scheduler set
-		h_no=#{h_no}
-		,name=#{name} 
-		,type=#{type}
-		,year=#{year}
-		,month=#{month}
-		,day=#{day}
-		,rotation_yn=#{rotation_yn}
-		where h_no=#{h_no}
+		name=#{name} 
+		,startday=#{startday}
+		,endday=#{endday}
+		where no=#{no}
 	</update>
 	
 	<!-- 상세보기 -->
@@ -67,24 +67,9 @@
 	</select>
 	
 	<!-- 공지사항 삭제 -->
-	<delete id="deleteScheduler" parameterType="scheduler">
-		delete scheduler where h_no=#{h_no}  
+	<delete id="deleteSchedulerajax" parameterType="scheduler">
+		delete scheduler where no=#{no}  
 	</delete>
-	
-	<!-- 검색목록 페이징 -->
- 	<select id="getCount" resultType="int">
-		select count(*) from scheduler 
-		<where>
-		 <if test="searchKeyword != null and searchKeyword !=''" >
- 		 	<if test="searchCondition == 'name' "> <!-- 공휴일명 -->
-		 		 and title like '%' ||#{searchKeyword}||'%'
-		 	</if>
-		 	<if test="searchCondition == 'type' "> <!-- 공휴일구분 -->
-		 		 content like '%' ||#{searchKeyword}||'%'
-		 	</if>
-		 </if>
-		 </where>
-	</select>
 	
 	
 </mapper>
