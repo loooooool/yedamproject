@@ -11,5 +11,5 @@ public interface UnitService {
 	public void deleteUnit(UnitVO vo);
 	public List<UnitVO> getUnitList(UnitVO vo);
 	public List<UnitVO> getSDATE(UnitVO vo);
-
+	public UnitVO getAttendDays(UnitVO vo);
 }

@@ -62,7 +62,7 @@ public class UnitController {
 		if(vo.getClass_no()!=null){
 			model.addAttribute("SDATE",unitService.getSDATE(vo));
 			model.addAttribute("unitList",unitService.getUnitList(vo));
-			
+			model.addAttribute("attendDays",unitService.getAttendDays(vo));
 		}
 		return "attendance/viewAttendance";
 	}

@@ -53,6 +53,8 @@ public class UnitServiceImpl implements UnitService{
 		return dao.getSDATE(vo);
 	}
 
-	
+	public UnitVO getAttendDays(UnitVO vo) {
+		return dao.getAttendDays(vo);
+	}
 	
 }
