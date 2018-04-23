@@ -35,6 +35,9 @@
 				<if test="searchCondition == 'subject' ">
 					subject like '%' ||#{searchKeyword}||'%'
 				</if>
+				<if test="searchCondition == 'status_yn' ">
+					status_yn like '%' ||#{searchKeyword}||'%'
+				</if>
 			</if>
 		</where>
 		order by su.su_no desc
@@ -43,7 +46,6 @@
 	</select>
 
 	<select id="getSubject" resultType="subject" parameterType="subject">
-
 		select su.su_no as "su_no"
 				,su.subject "subject"
 				,su.totalTime "totalTime"
@@ -60,7 +62,7 @@
 		select count(*) from subject
 	</select>
 
-	<insert id="insertSubject" parameterType="subject">
+	<insert id="insertSubject" parameterType="map">
 		<selectKey keyProperty="su_no" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(su_no),0)+1 FROM subject
 		</selectKey>
@@ -72,12 +74,12 @@
 					,cl_no
 					)
 		VALUES(
-				#{su_no},
-				#{subject},
-				#{totalTime},
-				#{status_yn}
+				#{su_no}
+				,#{subject}
+				,#{totalTime}
+				,#{status_yn}
 				,#{cl_no}
-		)
+				)
 	</insert>
 
 	<update id="updateSubject" parameterType="subject">

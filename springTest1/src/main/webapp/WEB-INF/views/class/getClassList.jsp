@@ -36,9 +36,9 @@
 					<tbody>
 						<c:forEach items="${classList }" var="cl">
 							<tr>
-								<th scope="row"><a href="getClass/${cl.cl_no }">${cl.cl_no}</a></th>
+								<td scope="row">${cl.cl_no}</td>
 								<td>${cl.class_nm}</td>
-								<td>${cl.class_name}</td>
+								<td><a href="getClass/${cl.cl_no }">${cl.class_name}</a></td>
 								<td>${cl.address}</td>
 								<td>${cl.totalTime}</td>
 								<td>${cl.totaldays}</td>

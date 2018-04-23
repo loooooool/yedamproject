@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -64,20 +66,33 @@ public class SubjectController {
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		conditionMap.put("과정명", "class_name");
 		conditionMap.put("과목명", "subject");
+		conditionMap.put("사용여부", "status_yn");
 		return conditionMap;
 	}
 
 	// 등록폼
-	@RequestMapping(value = "insertSubject", method = RequestMethod.GET)
+	@RequestMapping("/insertSubjectForm")
 	public String insertSubjectForm(Model model, ClassVO vo) {
-		model.addAttribute("ClassList", classService.getClassList(vo));
+		model.addAttribute("ClassList", classService.getClassList2(vo));
 		return "subject/insertSubject";
 	}
 
 	// 등록처리
 	@RequestMapping(value = "insertSubject", method = RequestMethod.POST)
-	public String insertSubject(SubjectVO vo) {
-		subjectService.insertSubject(vo);
+	public String insertSubject(@RequestParam String[] subject, HttpServletRequest request) {
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		String[] id = new String[subject.length];
+		for (int i = 0; i < subject.length; i++) {
+			id[i] = subject[i];
+
+			map.put("subject", subject[i]);
+			map.put("totalTime", request.getParameter("totalTime"));
+			map.put("status_yn", request.getParameter("status_yn"));
+			map.put("cl_no", request.getParameter("cl_no"));
+
+			subjectService.insertSubject(map);
+		}
 		return "redirect:/getSubjectList";
 	}
 

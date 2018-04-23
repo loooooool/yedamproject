@@ -51,9 +51,7 @@ public class ClassController {
 	// 목록
 	@RequestMapping("/getClassList")
 	public String getClassList(Model model, ClassVO vo, Paging paging, HttpSession session) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("member_id", ((MemberVO) session.getAttribute("memberVO")).getMember_id());
-
+		
 		// 전체 레코드 건수
 		paging.setPageUnit(5);
 		paging.setTotalRecord(classService.getCount(vo));
@@ -99,8 +97,8 @@ public class ClassController {
 		ClassVO vo = new ClassVO();
 		vo.setCl_no(cl_no);
 
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("member_id", ((MemberVO) session.getAttribute("memberVO")).getMember_id());
+		/*Map<String, Object> map = new HashMap<String, Object>();
+		map.put("member_id", ((MemberVO) session.getAttribute("memberVO")).getMember_id());*/
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("cl", classService.getClass(vo));
