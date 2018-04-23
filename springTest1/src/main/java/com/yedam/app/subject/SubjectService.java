@@ -1,10 +1,11 @@
 package com.yedam.app.subject;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SubjectService {
 
-	public void insertSubject(SubjectVO vo);
+	public void insertSubject(Map<String, Object> vo);
 	public void updateSubject(SubjectVO vo);
 	public void deleteSubject(SubjectVO vo);
 	public List<SubjectVO> getSubjectList(SubjectVO vo);

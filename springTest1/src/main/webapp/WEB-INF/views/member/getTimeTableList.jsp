@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>나의 시간표</title>
+
     <style>
 .search {
 	width: 100px;
@@ -16,7 +17,39 @@
 	padding-bottom: 3px;
 }
 </style>
-    
+<!-- <script>
+$(function() {
+	  $( "#datepicker" ).datepicker({
+	    dateFormat: 'yy/mm/dd',
+	    prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	    dayNames: ['일','월','화','수','목','금','토'],
+	    dayNamesShort: ['일','월','화','수','목','금','토'],
+	    dayNamesMin: ['일','월','화','수','목','금','토'],
+	    showMonthAfterYear: true,
+	    changeMonth: true,
+	    changeYear: true,
+	    yearSuffix: '년'
+	  });
+	});
+	
+
+$(function(){
+	$("#dp").hide();
+		$(".search").change(function() {
+		if($("#op").val() == "s_date") {
+			$(".dp").show();
+			$("#searchKeyword").hide();
+		}  else {
+			$(".dp").hide();
+		}
+	}) 
+});
+
+</script> -->
+
 </head>
 <body>
 	<c:if test="${courseType[0].CLASS_CD == 'C1'}">
@@ -27,12 +60,13 @@
 				<p>${courseType[0].CLASS_NAME } &nbsp; | &nbsp; ${courseType[0].TOTALTIME }시간</p>
 				<div class="card-body" align="right">
 					<form action="getTimeTableList" style="height: 15.96px;">
-						<select name="searchCondition" class="search">
-							<option value="">선택</option>
+						<select name="searchCondition" class="search" onchange="keychange(${option.value})">
+							<option value="" id="op">선택</option>
 							<c:forEach items="${conditionMap}" var="option">
-								<option value="${option.value}">${option.key}</option>
+								<option value="${option.value}"> ${option.key} </option>
 							</c:forEach>
-						</select> <input type="text" name="searchKeyword" style="width: 160px;"></input>
+						</select> 
+						<input type="text" id="searchKeyword" name="searchKeyword" style="width: 160px;"/>
 						<input type="submit" value="검색" class="btn btn-secondary" />
 					</form>
 				</div>
@@ -73,8 +107,7 @@
 						<div class="form-group">
 							<div class="col-md-9">
 								단위기간평가반 시간표는 과정 상세 페이지에서 볼 수 있습니다.
-								<button type="button" class="btn btn-link btn-lg" 
-									onclick="location.href='./getClassList'">바로가기</button>
+								<button type="button" class="btn btn-link btn-lg" onclick="location.href='./getClassList'"> 바로가기</button>
 						</div>
 					</div>
 				</div>

@@ -18,7 +18,7 @@
 	</select> 
 	
 	<select id="getMember_id" resultType="member" parameterType="String">
-		select * from members_vo
+		select * from member
 		
 		where member_id = #{member_id}
 	</select>

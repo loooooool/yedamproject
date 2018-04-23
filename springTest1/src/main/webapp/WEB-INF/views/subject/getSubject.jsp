@@ -49,12 +49,7 @@ $(document).ready(function(){
 					<div class="form-group row">
 						<label class="col-md-3 col-form-label"><strong>사용 여부</strong></label>
 						<div class="col-md-9">
-							<p class="form-control-static"></p>
-							<input type="radio" name="status_yn" id = "radio1" value="Y"
-							<c:if test="${su.status_yn eq 'Y'}"> checked="checked" </c:if>/>YES
-							<br>
-							<input type="radio" name="status_yn" id = "radio2" value="N"
-							<c:if test="${su.status_yn eq 'N'}"> checked="checked" </c:if>/>NO
+							<p class="form-control-static">${su.status_yn }</p>
 						</div>
 					</div>
 				</div>

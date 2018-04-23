@@ -7,6 +7,7 @@
 		</div>
 	<div class="card-body" style="border-bottom: :0px">
 		<form action="insertSugt" method="post">
+		<input type="hidden" name="member_id" value="${sessionScope.memberVO.member_id}"/>
 		<div class="form-group row">
 	  		<label class="col-md-3 col-form-label" for="input-normal">제목</label>
 	   		      <div class="col-md-9">

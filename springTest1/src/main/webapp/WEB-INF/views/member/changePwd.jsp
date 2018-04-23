@@ -12,6 +12,11 @@
 	    var pwd2 = document.getElementById("pwd2").value;
 	    var checkPwd2 = document.getElementById("checkPwd2").value;
 	    
+	    if(pwd != ""){
+	    	alert("현재 비밀번호를 다시 입력하세요.");
+	    	return false;
+	    }
+	    
 	    if(pwd2 != checkPwd2 ) {
 	        alert("새로운 비밀번호가 일치하지 않습니다.");
 	        return false;

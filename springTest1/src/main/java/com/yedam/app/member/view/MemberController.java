@@ -55,7 +55,6 @@ public class MemberController {
 	CodeDAO dao;
 	
 	
-
 	@RequestMapping("/getMemberList")
 	public String getBoardList(Model model, MemberVO vo, Paging paging) {
 
@@ -71,7 +70,7 @@ public class MemberController {
 		return "member/memberUpdate";
 	}
 	
-	//관리자 정보수정
+//관리자 정보수정
 	// 수정폼
 		@RequestMapping("/adminUpdateForm")
 		public String adminUpdateForm(MemberVO vo,String member_id, Model model, HttpSession session) {
@@ -85,7 +84,7 @@ public class MemberController {
 	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
 	public String memberUpdate(MemberVO vo) {
 		memberService.memberUpdate(vo);
-		return "redirect:/";
+		return "member/memberUpdate";
 	}
 
 	// 관리자 수정(조회)폼
@@ -97,12 +96,12 @@ public class MemberController {
 		return "member/adminMemberUpdateForm";
 	}
 
-	// 관리자 수정처리
+	/*// 관리자 수정처리
 	@RequestMapping(value = "/adminMemberUpdate", method = RequestMethod.GET)
 	public String adminMemberUpdate(MemberVO vo) {
 		memberService.memberUpdate(vo);
-		return "member/adminMemberUpdate";
-	}
+		return "member/adminMemberUpdateForm";
+	}*/
 
 	//pdf 출력
 	/*@RequestMapping("report.do")
@@ -137,9 +136,14 @@ public class MemberController {
 	// 비밀번호 변경 처리
 	@RequestMapping(value = "/changePwd", method = RequestMethod.POST)
 	public String changePwd(MemberVO vo) {
-		int pwd2 = 0;
-		int checkPwd2 = 0;
+		String pwd = "";
+		String pwd2 = "";
+		String checkPwd2 = "";
 
+		if(pwd != vo.getPwd()){
+	    	return "redirect:/";
+	    }
+		
 		if (pwd2 == checkPwd2) {
 			memberService.changePwd(vo);
 			return "redirect:/";

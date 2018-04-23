@@ -25,6 +25,8 @@ public class MemberVO {
 	private Date job_change_date;
 	private String bohun_yn="";
 	private String class_name="";
+	private String class_cd="";
+	private String course_type_cd="";
 
 	
 	public String getPwd2() {
@@ -194,6 +196,24 @@ public class MemberVO {
 	public void setBohun_yn(String bohun_yn) {
 		this.bohun_yn = bohun_yn;
 	}
+	
+
+	public String getClass_cd() {
+		return class_cd;
+	}
+
+	public void setClass_cd(String class_cd) {
+		this.class_cd = class_cd;
+	}
+	
+
+	public String getCourse_type_cd() {
+		return course_type_cd;
+	}
+
+	public void setCourse_type_cd(String course_type_cd) {
+		this.course_type_cd = course_type_cd;
+	}
 
 	@Override
 	public String toString() {
@@ -203,7 +223,8 @@ public class MemberVO {
 				+ ", h_phone=" + h_phone + ", status_cd=" + status_cd + ", open_route_cd=" + open_route_cd
 				+ ", open_route_etc=" + open_route_etc + ", unemployee_pay_yn=" + unemployee_pay_yn + ", previous_job="
 				+ previous_job + ", job_change_date=" + job_change_date + ", bohun_yn=" + bohun_yn + ", class_name="
-				+ class_name + "]";
+				+ class_name + ", class_cd=" + class_cd + ", course_type_cd=" + course_type_cd + "]";
 	}
 
+	
 }

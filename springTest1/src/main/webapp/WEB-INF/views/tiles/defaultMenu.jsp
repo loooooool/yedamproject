@@ -4,7 +4,7 @@
 
 <nav class="sidebar-nav">
 	<ul class="nav">
-		<li class="nav-item"><a class="nav-link" href="/second"> <i
+		<li class="nav-item"><a class="nav-link" href="/app"> <i
 				class="icon-speedometer"></i> 홈<span class="badge badge-primary">NEW</span></a>
 		</li>
 

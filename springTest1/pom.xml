@@ -229,22 +229,17 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.7</version>
 		</dependency>
+<<<<<<< HEAD
 	<dependency>
    		<groupId>org.apache.commons</groupId>
    		<artifactId>commons-collections4</artifactId>
    		<version>4.1</version>
 	</dependency>
 		
+=======
+>>>>>>> branch 'master' of https://github.com/loooooool/yedamproject
 
 
-		
-		
-		
-		
-		
-		
-		
-		
 	</dependencies>
 	<build>
 		<plugins>

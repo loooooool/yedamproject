@@ -24,6 +24,7 @@ public class SuggestionDAO {
 
 	public void deleteSugt(SugtVO vo){
 		sqlSession.delete("sugt.deleteSugt",vo);
+		sqlSession.delete("sugt.deleteCommentsWSugt",vo);
 	}
 
 	public SugtVO getSugt(SugtVO vo){

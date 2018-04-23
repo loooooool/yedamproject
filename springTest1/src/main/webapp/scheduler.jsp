@@ -12,7 +12,8 @@ html, body {
 	overflow: hidden;
 }
 </style>
-<script src="${pageContext.request.contextPath}/scripts/jquery-3.3.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/scripts/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="./codebase/dhtmlxscheduler_flat.css"
 	type="text/css">
 <script src="./codebase/dhtmlxscheduler.js" type="text/javascript"></script>
@@ -60,32 +61,71 @@ html, body {
 		 end_date : "2018/04/24"
 		 } ];
 		 scheduler.parse(events, "json"); *///takes the name and format of the data source
-		scheduler.load("getSchedulerList.ajax", "json");
+		scheduler.load("getSchedulerajax", "json");
 
 		/* var dp = new dataProcessor("insertSchedulerList.ajax", "json");
 		dp.init(scheduler);  */
 
-		scheduler.attachEvent("onEventSave", function(id,ev,is_new) {
-			console.dir(ev)
-			if (!ev.text) {
-				alert("내용을 입력해주세요");
-				return false;
-			}
-				var sd= ev.start_date
-				var s = sd.getFullYear()+'/'+sd.getMonth()+'/'+sd.getDate();
-				
-				var ed= ev.end_date
-				var e = ed.getFullYear()+'/'+ed.getMonth()+'/'+ed.getDate();
-				
+		scheduler.attachEvent("onEventSave",function(id, ev, is_new) { //등록,수정
+							if (!ev.text) {
+								alert("내용을 입력해주세요");
+								return false;
+							}
+
+							if (is_new == null) { //수정
+								var sd = ev.start_date
+								var ed = ev.end_date
+								var param = {
+									no : id,
+									name : ev.text,
+									startday : new Date(sd.getFullYear(), sd
+											.getMonth(), sd.getDate()),
+									endday : new Date(ed.getFullYear(), ed
+											.getMonth(), ed.getDate())
+								}
+								$.ajax({
+											url : "${pageContext.request.contextPath}/updateSchedulerajax",
+											data : JSON.stringify(param),
+											contentType : "application/json;charset-utf-8",
+											type : "post",
+											success : function(datas) {
+											}
+										})
+								return true;
+							} else { //등록
+								var sd = ev.start_date
+								var ed = ev.end_date
+								var param = {
+									name : ev.text,
+									startday : new Date(sd.getFullYear(), sd
+											.getMonth(), sd.getDate()),
+									endday : new Date(ed.getFullYear(), ed
+											.getMonth(), ed.getDate())
+								}
+								$.ajax({
+											url : "${pageContext.request.contextPath}/insertSchedulerajax",
+											data : JSON.stringify(param),
+											contentType : "application/json;charset-utf-8",
+											type : "post",
+											success : function(datas){}
+										})
+								return true;
+							}
+
+						})
+			
+		scheduler.attachEvent("onEventDeleted",function(id){
+			var param = {no : id}
 			$.ajax({
-				url:"${pageContext.request.contextPath}/insertScheduler.ajax",
-				data:{name:ev.text,startday:s,endday:e},
-				success:function(datas){
-					
-				}
-			})
+						url : "${pageContext.request.contextPath}/deleteSchedulerajax",
+						data : JSON.stringify(param),
+						contentType : "application/json;charset-utf-8",
+						type : "post",
+						success : function(datas){}
+					})
 			return true;
-		})
+		});		
+						
 	</script>
 
 
