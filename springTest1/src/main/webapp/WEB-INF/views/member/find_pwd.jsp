@@ -19,7 +19,7 @@ $(document).ready(function(){
             return false; // 함수 종료
         }
         if(email == ""){
-            alert("비밀번호를 입력하세요.");
+            alert("가입시 입력하신 이메일을 입력하세요.");
             $("#email").focus();
             return false;
         }

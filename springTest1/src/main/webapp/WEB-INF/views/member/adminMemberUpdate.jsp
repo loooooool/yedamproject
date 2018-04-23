@@ -36,7 +36,7 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
-					<h1>${sessionScope.memberVO.name}님의훈련 수강 신청서</h1>
+					<h1>${sessionScope.memberVO.name} 님의 훈련 수강 신청서</h1>
 				</div>
 
 				<div class="card-body">
