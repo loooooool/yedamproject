@@ -15,15 +15,17 @@
 		<where>
 			<if test="searchKeyword != null and searchKeyword != ''">
 				<if test="searchCondition == 'subject' ">
-					and su.subject like '%' ||#{searchKeyword}||'%'
+					and su.subject like '%' || #{searchKeyword} ||'%'
 				</if>
+				<!-- <if test="searchCondition == 's_date' ">
+					s_date like '%' || #{searchKeyword} ||'%'
+				</if> -->
 			</if>
 			<if test="cl_no != null">
 					and su.cl_no = #{cl_no}
 			</if>
 		</where>
 		order by st.t_id
-
 
 	</select>
 
