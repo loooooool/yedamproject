@@ -31,8 +31,8 @@ public class MemberMyBatisDAO {
 		return sqlSession.selectOne("member.getMember_id",vo);
 	}
 	
-	public int getPwd(MemberVO vo) {
-		return sqlSession.update("member.getPwd", vo);
+	public void getPwd(MemberVO vo) {
+		sqlSession.update("member.getPwd", vo);
 	}
 
 	public MemberVO getName(MemberVO vo) {

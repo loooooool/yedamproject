@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 public interface MemberService {
 
 	public MemberVO getMember_id(MemberVO vo);
-	//public MemberVO getName(MemberVO vo);
+	//public MemberVO getPwd(MemberVO vo);
 	public boolean login(MemberVO vo);
 	//public boolean loginCheck(MemberVO vo, HttpSession session);
 	public List<MemberVO> getMemberList(MemberVO vo);
@@ -20,4 +20,5 @@ public interface MemberService {
 	public void find_pwd(MemberVO vo);
 	public void adminMemberUpdate(MemberVO vo);
 	//public List<Map<String,Object>> getMember();
+	
 }

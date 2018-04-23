@@ -29,7 +29,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO getMember_id(MemberVO vo) {
-		// TODO Auto-generated method stub
 		return dao.getMember_id(vo);
 	}
 
@@ -73,6 +72,11 @@ public class MemberServiceImpl implements MemberService {
 	public void adminMemberUpdate(MemberVO vo) {
 		dao.adminMemberUpdate(vo);
 	}
+
+	/*@Override
+	public MemberVO getPwd(MemberVO vo) {
+		return dao.getPwd(vo);	
+	}*/
 
 	/*
 	 * @Override public List<Map<String, Object>> getMember() { return
