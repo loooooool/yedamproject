@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
 window.onload = function() {
 	loadCommentList();  // 목록조회 ajax 요청
@@ -25,10 +25,12 @@ function makeCommentView(comment){
 	div.className = 'comment';
 	div.comment = comment;  //{id:1,.... }
 	
-	var str = "<strong>" + comment.member_id + "</strong>" + comment.content
-			  +"<input type=\"button\" class=\"btn btn-warning\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.co_no+"')\"/>"
+	var str = "<strong>" + comment.content + "</strong>" 
+	
+	var str2 = "<input type=\"button\" class=\"btn btn-warning\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.co_no+"')\"/>"
 			  +"<input type=\"button\" class=\"btn btn-danger\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.co_no+"')\"/>"
-	div.innerHTML = str;
+	
+	div.innerHTML = str+str2;
 	return div;
 }
 
@@ -89,18 +91,19 @@ function updateComment(){
 
 
 <body>
+
 <div class="card-body">
 	<div class="form-group row">
   		<label class="col-md-3 col-form-label" for="input-normal">제목</label>
    		      <div class="col-md-9">
-        	        <input type="text" id="input-normal" name="input-normal" class="form-control" placeholder="Normal" value="${sugt.title}">
+        	        <input type="text" disabled=disabled id="input-normal" name="input-normal" class="form-control" placeholder="Normal" value="${sugt.title}">
               </div>
    </div>
 
 	<div class="form-group row">
 		<label class="col-md-3 col-form-label" for="textarea-input">내용</label>
 		<div class="col-md-9">
-			<textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="Content..">${sugt.content}</textarea>
+			<textarea id="textarea-input" name="textarea-input" rows="9" disabled=disabled class="form-control" placeholder="Content..">${sugt.content}</textarea>
 		</div>
 	</div>
 	<div  align="right" >
@@ -108,9 +111,11 @@ function updateComment(){
 	</div>
 	<div class="card-body" align="right" >
           <a href="getSugtList" class="btn btn-secondary"> 목록</a>
-          <a href="insertSugtForm" class="btn btn-info">글쓰기</a>
+          
+          <c:if test="${sessionScope.memberVO.member_id == sugt.member_id}">
           <a href="updateSugtForm?s_no=${sugt.s_no}" class="btn btn-warning">수정</a>
           <a href="deleteSugt?s_no=${sugt.s_no}" class="btn btn-danger">삭제</a>
+          </c:if>
  	 </div>
  	
  	<hr>
@@ -121,7 +126,7 @@ function updateComment(){
 	 			<form action="" name="addForm"> 
 	 			<!-- 댓글등록폼 -->
 	 				<input type="hidden" name="parent_no" value="${sugt.s_no}"> 
-					<input type="hidden" name="member_id" value=" " /> 
+					<input type="hidden" name="member_id" value="${sessionScope.memberVO.member_id} " /> 
 	 				<div class="form-group row">
 						<label class="col-md-3 col-form-label" for="textarea-input">댓글</label>
 						<div class="col-md-9">

@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yedam.app.common.Paging;
+import com.yedam.app.sugt.CommentsService;
+import com.yedam.app.sugt.CommentsVO;
 import com.yedam.app.sugt.SuggestionService;
 import com.yedam.app.sugt.SugtVO;
 
@@ -14,6 +16,9 @@ public class SuggestionController {
 
 	@Autowired
 	SuggestionService sugtService;
+	
+	@Autowired
+	CommentsService commentsService;
 	
 	//목록보기
 	@RequestMapping("/getSugtList")
@@ -37,6 +42,7 @@ public class SuggestionController {
 		vo.setS_no(s_no);
 		sugtService.increaseCnt(vo);
 		model.addAttribute("sugt", sugtService.getSugt(vo)); 
+
 		return "sugt/getSugt";
 	}
 	
@@ -64,7 +70,6 @@ public class SuggestionController {
 	
 	@RequestMapping("/insertSugt")
 	public String insertSugt(SugtVO vo) {
-		vo.setMember_id("700101-04");
 		sugtService.insertSugt(vo);
 		return "redirect:/getSugtList";
 	}

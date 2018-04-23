@@ -28,7 +28,9 @@
 									+"<td>" +datas[i].writer+"</td></tr>");
 			}
 			
+		
 		})
+	
 	}
 </script>
 <script src="${pageContext.request.contextPath}/scripts/ckeditor/ckeditor.js"></script>
@@ -42,7 +44,7 @@
 		</div>
 		<div class="card-body" style="border-bottom: :0px">
 			<form action="insertConsult" method="post">
-				<input type="hidden" name="writer" value=""/>
+				<input type="hidden" name="writer" value="${sessionScope.memberVO.member_id}"/>
 				<div class="form-group row">
 					<label class="col-md-3 col-form-label" for="select1">과정</label>
 					<div class="col-md-9">
@@ -54,7 +56,7 @@
 						</select>
 					</div>
 				</div>
-			<hr>
+			<hr> 
 				
 				<div class="form-group row">
 					<label class="col-md-3 col-form-label" for="select1">학생이름</label>

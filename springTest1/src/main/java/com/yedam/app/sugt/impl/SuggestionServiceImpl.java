@@ -13,6 +13,8 @@ public class SuggestionServiceImpl implements SuggestionService{
 	@Autowired
 	SuggestionDAO dao;
 
+	@Autowired
+	CommentsDAO cdao;
 
 	public void insertSugt(SugtVO vo) {
 		dao.insertSugt(vo);
@@ -25,7 +27,7 @@ public class SuggestionServiceImpl implements SuggestionService{
 
 
 	public void deleteSugt(SugtVO vo) {
-		dao.deleteSugt(vo);
+		dao.deleteSugt(vo); 
 	}
 
 	public SugtVO getSugt(SugtVO vo) {
