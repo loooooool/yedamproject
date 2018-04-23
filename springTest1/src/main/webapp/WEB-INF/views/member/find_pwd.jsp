@@ -75,10 +75,10 @@ $(document).ready(function(){
               </div>
               <div class="row">
                 <div class="col-6">
-                  <button type="button" id="findBtn" class="btn btn-primary px-4" value="login"> 발송 </button>
+                  <input type="submit" id="findBtn" class="btn btn-primary px-4" value="발송"> </button>
                 </div>
                 <div class="col-6 text-right">
-                  <button type="button" id="cancleBtn" class="btn btn-primary px-4" value="Forgot password?" onclick="location.href='/second'">취소</button>  
+                  <button type="button" id="cancleBtn" class="btn btn-primary px-4" value="Forgot password?" onclick="location.href='/app'">취소</button>  
                 </div>
               </div>
             </div>
