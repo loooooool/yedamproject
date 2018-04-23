@@ -64,25 +64,30 @@
 				<ul class="nav-dropdown-items">
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getClassList"><i
-							class="icon-cursor"></i>과정관리</a></li>
+							class="icon-cursor" id="sub"></i>과정관리</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getSubjectList"><i
-							class="icon-cursor"></i>과목관리</a></li>
-				</ul></li>
+							class="icon-cursor" id="sub"></i>과목관리</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/insertTimeTableForm"><i
+							class="icon-cursor" id="sub"></i>시간표등록</a></li>
+				</ul>
+				
+			</li>
 
 			<li class="nav-item nav-dropdown"><a
 				class="nav-link nav-dropdown-toggle" href="#"><i
 					class="icon-cursor"></i>출결</a>
 				<ul class="nav-dropdown-items">
 					<li class="nav-item"><a class="nav-link"
-						href="buttons/buttons.html"> <i class="icon-cursor"></i>출석부생성
+						href="buttons/buttons.html"> <i class="icon-cursor" id="sub"></i>출석부생성
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="buttons/button-group.html"> <i class="icon-cursor"></i>출석현황
+						href="buttons/button-group.html"> <i class="icon-cursor" id="sub"></i>출석현황
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getClassAtt"> <i
-							class="icon-cursor"></i>과목출석부
+							class="icon-cursor" id="sub"></i>과목출석부
 					</a></li>
 				</ul></li>
 			<li class="nav-item nav-dropdown"><a

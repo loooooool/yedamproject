@@ -32,6 +32,12 @@ public class SampleBybatisDAO {
 		System.out.println("1건 업데이트 완료!");
 	}
 	
+	public void insertTimeTableAtt(Map<String,Object> vo) {
+		sqlSession.insert("dataview.insertTimeTable",vo);
+	}
 	
+	public List<Map<String,Object>> checkTimeTable(){
+		return sqlSession.selectList("dataview.checkTimeTable");
+	}
 	
 }
