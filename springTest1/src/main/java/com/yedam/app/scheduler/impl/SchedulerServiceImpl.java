@@ -46,6 +46,10 @@ public class SchedulerServiceImpl implements SchedulerService{
 		return dao.getSchedulerListajax(vo);
 	}
 	
+	public void insertSchedulerajax(SchedulerVO vo) {
+		dao.insertSchedulerajax(vo);
+	}
+	
 	
 	public int getCount(SchedulerVO vo) {
 		return dao.getCount(vo);

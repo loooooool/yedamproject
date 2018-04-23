@@ -13,5 +13,6 @@ public interface SchedulerService {
 	public SchedulerVO getScheduler(SchedulerVO vo);
 	public List<SchedulerVO> getSchedulerList(SchedulerVO vo);
 	public List<Map<String,Object>> getSchedulerListajax(SchedulerVO vo);
+	public void insertSchedulerajax(SchedulerVO vo);
 	public int getCount(SchedulerVO vo);
 }
