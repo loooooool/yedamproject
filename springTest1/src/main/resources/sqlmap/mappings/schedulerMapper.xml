@@ -13,63 +13,37 @@
 	</resultMap>
 
 	<!-- 공휴일 목록조회 -->
-	<select id="getSchedulerList" resultType="scheduler">	 <!--id 값은 메소드 명 --> <!-- resultMap은 위 resultMap id와 매치 --> <!-- resultType : sql-map-config에 alias 사용 (원래는 경로 다 써야함) -->
-		<![CDATA[
-		select a.* from ( select rownum rn,b.* from(
-		select 	h_no 	
-				,name
-				,type
-				,year
-				,month
-				,day
-				,rotation_yn
-		 from scheduler
-		 ]]>
-		 <where>
-		 <if test="searchKeyword != null and searchKeyword != ''" >
- 		 	<if test="searchCondition == 'name' "><!-- 공휴일명 -->
-		 		 and title like '%' ||#{searchKeyword}||'%'
-		 	</if>
-		 	<if test="searchCondition == 'type' "> <!-- 공휴일구분 -->
-		 		 content like '%' ||#{searchKeyword}||'%'
-		 	</if>
-		 </if>
-		 </where> 
-		 order by h_no 
-		 ) b ) a where rn between #{first} and #{last} 
+	<select id="scheduler" resultType="scheduler"><!--id 값은 메소드 명 --> <!-- resultMap은 위 resultMap id와 매치 --> <!-- resultType : sql-map-config에 alias 사용 (원래는 경로 다 써야함) -->
 	</select>
 	
 	<!-- 공휴일,이벤트  -->
 	<select id="getSchedulerListajax" resultType="map">	 <!--id 값은 메소드 명 --> <!-- resultMap은 위 resultMap id와 매치 --> <!-- resultType : sql-map-config에 alias 사용 (원래는 경로 다 써야함) -->
 		select 	no as "id"
 				,name as "text"
-				,startday || '00:00' as "start_date"
-				,endday || '00:00' as "end_date"
+				,startday as "start_date"
+				,endday as "end_date"
 		 from scheduler
 	</select>
+	
+	
+	
 
 	<!-- (임시)공휴일 등록 -->
-	<insert id="insertScheduler" parameterType="scheduler">
-		<selectKey keyProperty="h_no" resultType="int" order="BEFORE">
-			select nvl(max(h_no),0)+1 from scheduler
+	<insert id="insertSchedulerajax" parameterType="scheduler">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select nvl(max(no),0)+1 from scheduler
 		</selectKey>
 		insert into scheduler(
-		h_no
+		no
 		,name
-		,type
-		,year
-		,month
-		,day
-		,rocation_yn
+		,startday
+		,endday
 		)
 		values(
-		#{h_no}
+		#{no}
 		,#{name}
-		,#{type}
-		,#{year}
-		,#{month}
-		,#{day} 
-		,nvl(#{rotation_yn},0)
+		,#{startday}
+		,#{endday}
 		)
 	</insert>
 
