@@ -57,7 +57,7 @@
 					<tr>
 						<td scope="row">${su.su_no}</td>
 						<td><a href="getSubject/${su.su_no}">${su.subject}</a></td>
-						<td>${su.totalTime}</td>
+						<td>${su.totalTime}시간</td>
 						<td>${su.class_name}</td>
 						<td>${su.status_yn}</td>
 					</tr>

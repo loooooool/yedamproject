@@ -6,10 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>과정 등록</title>
 <script>
+
+	// 등록 버튼 누를 시
     function insert(){
         alert("등록하시겠습니까?");
     }
     
+	// 라디오버튼 숨기기
     function div_show(v,id){
     	if(v == "C2"){
     		document.getElementById(id).style.display = ""; //보여줌
@@ -35,17 +38,17 @@
 				</div>
 				<div class="form-group">
 					<label for="nf-email"><strong>강의실</strong></label>
-					<input type="text" id="nf-email" name="address" class="form-control" value="강의실" onfocus="this.value=''"> 
+					<input type="text" id="nf-email" name="address" class="form-control" value="예)3" onfocus="this.value=''"> 
 					<span class="help-block">강의실을 입력하세요</span>
 				</div>
 				<div class="form-group">
 					<label for="nf-email"><strong>총 수업시간</strong></label> 
-					<input type="text" id="nf-email" name="totalTime" class="form-control" value="총 수업시간" onfocus="this.value=''"> 
+					<input type="text" id="nf-email" name="totalTime" class="form-control" value="예)52" onfocus="this.value=''"> 
 					<span class="help-block">총	수업시간을 입력하세요</span>
 				</div>
 				<div class="form-group">
 					<label for="nf-email"><strong>총 수업일수</strong></label> 
-					<input type="text" id="nf-email" name="totaldays" class="form-control" value="총 수업일수" onfocus="this.value=''"> 
+					<input type="text" id="nf-email" name="totaldays" class="form-control" value="예)123" onfocus="this.value=''"> 
 					<span class="help-block">총	수업일수를 입력하세요</span>
 				</div>
 				<div class="form-group">

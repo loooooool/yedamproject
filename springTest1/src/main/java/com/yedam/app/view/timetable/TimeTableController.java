@@ -36,7 +36,7 @@ public class TimeTableController {
 	SampleService sampleService;
 
 	@RequestMapping("/getTimeTableList")
-	public String myTimeTable(Model model, 	TimeTableVO tvo,  HttpSession session) {
+	public String myTimeTable(Model model, TimeTableVO tvo, HttpSession session) {
 		// 1. 그 학생의 과정정보
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("member_id", ((MemberVO)session.getAttribute("memberVO")).getMember_id());
