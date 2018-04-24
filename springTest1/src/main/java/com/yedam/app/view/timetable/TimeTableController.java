@@ -56,7 +56,6 @@ public class TimeTableController {
 	public Map<String, String> searchConditionMap() {
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		conditionMap.put("과목", "subject");
-		/*conditionMap.put("날짜", "s_date");*/
 		return conditionMap;
 	}
 	

@@ -115,7 +115,7 @@ public class SubjectController {
 	@RequestMapping("/updateSubjectForm")
 	public String updateSubjectForm(Model model, SubjectVO vo, ClassVO vo2) {
 		model.addAttribute("su", subjectService.getSubject(vo));
-		model.addAttribute("ClassList", classService.getClassList(vo2));
+		model.addAttribute("ClassList", classService.getClassList2(vo2));
 		return "subject/updateSubject";
 	}
 
