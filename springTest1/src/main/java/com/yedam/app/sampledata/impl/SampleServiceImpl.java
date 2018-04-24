@@ -1,5 +1,6 @@
 package com.yedam.app.sampledata.impl;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,21 +12,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.yedam.app.sampledata.SampleList;
 import com.yedam.app.sampledata.SampleService;
+import com.yedam.app.unit.UnitVO;
 
 @Service("sampleService")
 public class SampleServiceImpl implements SampleService {
 
+	
 	@Autowired
 	SampleBybatisDAO dao;
 
@@ -124,7 +133,7 @@ public class SampleServiceImpl implements SampleService {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		Map<String, Object> val = null;
 		try {
-			fis = new FileInputStream("D:\\memo41.xlsx");
+			fis = new FileInputStream(filepath);
 			try {
 				workbook = new XSSFWorkbook(fis);
 			} catch (IOException e) {
@@ -232,8 +241,13 @@ public class SampleServiceImpl implements SampleService {
 	}
 	
 	@Override
-	public void insertViewTimeTable(Model model, @RequestParam int sub_no) {
-		List<Map<String,Object>> list = getExcelTimeTable(null);
+	public void insertViewTimeTable(Model model, @RequestParam int sub_no,String filepath){
+		//엑셀추가 부분 시작
+		
+		
+		
+		//끝
+		List<Map<String,Object>> list = getExcelTimeTable(filepath);
 		Map<String,Object> input=null;
 		Map<String,Object> value=null;
 		int count;
