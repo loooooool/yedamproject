@@ -1,6 +1,7 @@
 package com.yedam.app.member.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,6 +47,7 @@ public class MemberMyBatisDAO {
 	public void changePwd(MemberVO vo) {
 		sqlSession.update("member.changePwd", vo);
 	}
+	
 	
 	public void insertMember(Map<String,Object> vo) {
 		sqlSession.insert("member.insertMember",vo);

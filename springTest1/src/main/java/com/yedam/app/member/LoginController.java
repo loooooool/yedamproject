@@ -36,7 +36,6 @@ public class LoginController {
 		System.out.println("로그인 인증 처리");
 		if(memberService.login(vo)) {
 			session.setAttribute("memberVO", memberService.getMember_id(vo));
-			//session.setAttribute("memberVO", memberService.getPwd(vo));
 			return "redirect:/";
 		} else {
 			return "member/loginForm";
