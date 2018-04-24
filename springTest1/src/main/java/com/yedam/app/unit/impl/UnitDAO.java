@@ -40,6 +40,11 @@ public class UnitDAO {
 	public List<UnitVO> getSDATE(UnitVO vo){
 		return sqlSession.selectList("unit.getSDATE",vo);
 	}
-
+	
+	public UnitVO getAttendDays(UnitVO vo) {
+		return sqlSession.selectOne("unit.getAttendDays",vo);
+		
+	}
+	
 }
 

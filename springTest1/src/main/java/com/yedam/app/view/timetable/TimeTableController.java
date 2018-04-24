@@ -37,7 +37,7 @@ public class TimeTableController {
 	SampleService sampleService;
 
 	@RequestMapping("/getTimeTableList")
-	public String myTimeTable(Model model, 	TimeTableVO tvo,  HttpSession session) {
+	public String myTimeTable(Model model, TimeTableVO tvo, HttpSession session) {
 		// 1. 그 학생의 과정정보
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("member_id", ((MemberVO)session.getAttribute("memberVO")).getMember_id());
@@ -57,7 +57,6 @@ public class TimeTableController {
 	public Map<String, String> searchConditionMap() {
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		conditionMap.put("과목", "subject");
-		/*conditionMap.put("날짜", "s_date");*/
 		return conditionMap;
 	}
 	

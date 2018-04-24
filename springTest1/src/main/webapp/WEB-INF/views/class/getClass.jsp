@@ -36,7 +36,7 @@ $(document).ready(function(){
 					<div class="form-group row">
 						<label class="col-md-3 col-form-label"><strong>강의실</strong></label>
 						<div class="col-md-9">
-							<p class="form-control-static">${cl.address}</p>
+							<p class="form-control-static">${cl.address}강의실</p>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -60,7 +60,7 @@ $(document).ready(function(){
 					<div class="form-group row">
 						<label class="col-md-3 col-form-label"><strong>시간표</strong></label>
 						<div class="col-md-9">
-							<c:if test="${not empty cl.timeTable}">
+							<c:if test="${!empty cl.timeTable}">
 								<p class="form-control-static">
 								${cl.timeTable }
 								<button type="button" class="btn btn-link btn-lg" 

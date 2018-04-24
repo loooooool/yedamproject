@@ -7,7 +7,7 @@
 	<!-- getMemberList 목록검색 -->
 	<select id="getMemberList" resultType="member" parameterType="String">
 	
-		select * from member
+		select * from members_vo
     	 order by member_cd desc
 		
 	</select>
@@ -18,7 +18,7 @@
 	</select> 
 	
 	<select id="getMember_id" resultType="member" parameterType="String">
-		select * from member
+		select * from members_vo
 		
 		where member_id = #{member_id}
 	</select>
