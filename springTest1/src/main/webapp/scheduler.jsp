@@ -61,7 +61,7 @@ html, body {
 		 end_date : "2018/04/24"
 		 } ];
 		 scheduler.parse(events, "json"); *///takes the name and format of the data source
-		scheduler.load("getSchedulerajax", "json");
+		scheduler.load("getSchedulerajax","json");
 
 		/* var dp = new dataProcessor("insertSchedulerList.ajax", "json");
 		dp.init(scheduler);  */
@@ -125,7 +125,6 @@ html, body {
 					})
 			return true;
 		});		
-						
 	</script>
 
 

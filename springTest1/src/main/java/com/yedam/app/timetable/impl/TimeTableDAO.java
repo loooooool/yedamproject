@@ -17,4 +17,8 @@ public class TimeTableDAO {
 		return sqlSession.selectList("timeTable.getTimeTableList", vo);
 	}
 	
+	public List<TimeTableVO> getClassTimeTable(TimeTableVO vo) {
+		return sqlSession.selectList("timeTable.getClassTimeTable", vo);
+	}
+	
 }

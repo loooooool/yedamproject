@@ -57,7 +57,11 @@ public class UnitController {
 	@RequestMapping("/getUnitList")
 	public String getUnitList(Model model, UnitVO vo, ClassVO cvo) {
 
+<<<<<<< HEAD
 		
+=======
+			
+>>>>>>> branch 'master' of https://github.com/loooooool/yedamproject.git
 		model.addAttribute("classList",classService.getClassListNP(cvo));
 	
 		if(vo.getClass_no()!=null && !vo.getClass_no().equals("")){
@@ -84,7 +88,7 @@ public class UnitController {
 			// 파일을 업로드 위치에 저장
 			multipartFile.transferTo(new File(uploadfolder, multipartFile.getOriginalFilename()));
 			vo.setExcelFile(multipartFile.getOriginalFilename());
-			excelService.getSampleList(uploadfolder+"/"+multipartFile.getOriginalFilename());
+			//excelService.getSampleList(uploadfolder+"/"+multipartFile.getOriginalFilename());
 			sampleService.getSubjectTimeList(uploadfolder+"/"+multipartFile.getOriginalFilename());
 		}
 	
