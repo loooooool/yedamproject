@@ -125,21 +125,7 @@ public class ExcelServiceImpl {
 				
 				dao.insertExcel(evo);  //!!!!!!!!!!status 가 n 인것만 인서트 되도록 조정해야함
 
-/*				for(int i=0; i<vo.size() ; i++) {
-					if(((String)val.get("name") == vo.get(i).getStudent_name()) // 학생이름 조회 
-							&& (Integer.parseInt(vo.get(i).getSdate()) <= (Integer)val.get("day")) // 출석날짜가 단위기간 시작날짜보다 크고
-							&& (Integer.parseInt(vo.get(i).getEdate()) >= (Integer)val.get("day")) ) { // 마지막 날짜보다 작을때
-						
-						if((Integer) val.get("in") >Integer.parseInt( (String) val.get("start"))) { //입실시간이 수업시작보다 작으면
-							dao.lateUpdate(vo.get(i)); //지각
-						}
-						if((Integer) val.get("out") < Integer.parseInt( (String) val.get("end"))) { //퇴실시간이 수업끝시간보다 작으면
-							dao.leaveUpdate(vo.get(i)); //조퇴
-						}
-							
-					}
-
-				}*/
+				dao.caculateAttend();
 				
 				
 				
