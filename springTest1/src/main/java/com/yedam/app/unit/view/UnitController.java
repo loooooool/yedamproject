@@ -56,10 +56,12 @@ public class UnitController {
 	
 	@RequestMapping("/getUnitList")
 	public String getUnitList(Model model, UnitVO vo, ClassVO cvo) {
-		
+
+
 		model.addAttribute("classList",classService.getClassListNP(cvo));
-		cvo.setCl_no(vo.getClass_no());	
-		if(vo.getClass_no()!=null){
+	
+		if(vo.getClass_no()!=null && !vo.getClass_no().equals("")){
+			cvo.setCl_no(vo.getClass_no());
 			model.addAttribute("SDATE",unitService.getSDATE(vo));
 			model.addAttribute("unitList",unitService.getUnitList(vo));
 			model.addAttribute("attendDays",unitService.getAttendDays(vo));
@@ -82,11 +84,11 @@ public class UnitController {
 			// 파일을 업로드 위치에 저장
 			multipartFile.transferTo(new File(uploadfolder, multipartFile.getOriginalFilename()));
 			vo.setExcelFile(multipartFile.getOriginalFilename());
-			excelService.getSampleList(uploadfolder+"/"+multipartFile.getOriginalFilename());
+			//excelService.getSampleList(uploadfolder+"/"+multipartFile.getOriginalFilename());
 			sampleService.getSubjectTimeList(uploadfolder+"/"+multipartFile.getOriginalFilename());
 		}
 	
-		return "attendance/viewAttendance";
+		return "forward:/getUnitList";
 	}
 	
 	

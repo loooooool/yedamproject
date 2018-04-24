@@ -1,18 +1,24 @@
 package com.yedam.app.view.timetable;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classinfo.ClassInfoService;
@@ -20,6 +26,7 @@ import com.yedam.app.member.MemberVO;
 import com.yedam.app.sampledata.SampleService;
 import com.yedam.app.timetable.TimeTableService;
 import com.yedam.app.timetable.TimeTableVO;
+import com.yedam.app.unit.UnitVO;
 
 @Controller
 public class TimeTableController {
@@ -35,6 +42,10 @@ public class TimeTableController {
 	
 	@Autowired
 	SampleService sampleService;
+	
+	@Value("${file.uploadfolder}")
+	String uploadfolder;
+	
 
 	@RequestMapping("/getTimeTableList")
 	public String myTimeTable(Model model, TimeTableVO tvo, HttpSession session) {
@@ -51,13 +62,13 @@ public class TimeTableController {
 
 		return "member/getTimeTableList";
 	}
-
-	// 검색 처리
-	@ModelAttribute("conditionMap")
-	public Map<String, String> searchConditionMap() {
-		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("과목", "subject");
-		return conditionMap;
+	
+	// 과정별 시간표 보기
+	@RequestMapping("/getClassTimeTable")
+	public String getClassTimeTable(Model model, TimeTableVO tvo, HttpSession session) {
+		
+		model.addAttribute("timeTable", timeTableService.getClassTimeTable(tvo));
+		return "class/getClassTimeTable";
 	}
 	
 	
@@ -66,54 +77,38 @@ public class TimeTableController {
 	@RequestMapping("/insertTimeTableForm")
 	public String insertViewTimeTableForm(Model model) {
 		//List<ClassVO> list = ;
+		//System.out.println(((MemberVO)session.getAttribute("memberVO")).getName());
 		model.addAttribute("classList", classService.getClassList2(null));
 		return "timetable/timetableinsertview";
 	}
 	//insert 처리
 	@RequestMapping("/insertTimeTableView")
-	public String insertViewTimeTable(Model model, @RequestParam int sub_no) {
-		/*List<Map<String,Object>> list = sampleService.getExcelTimeTable(null);
-		Map<String,Object> input=null;
-		Map<String,Object> value=null;
+	public String insertViewTimeTable(Model model,UnitVO vo, @RequestParam int sub_no, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		//엑셀 추가부분 
 		
-		for(int i=0;i<list.size();i++) {
-			System.out.println("일자1 : "+list.get(i).get("day"));
-			System.out.println("시간 1: "+list.get(i).get("time").toString().replaceAll(":", ""));
-			System.out.println("과목 1: "+list.get(i).get("subject"));
-			System.out.println("코드값 : "+sub_no);
-			input = new HashMap<String,Object>();
-			value = new HashMap<String,Object>();
-			input.put("subject",list.get(i).get("subject"));
-			input.put("cl_no",sub_no );
-			
-			String code_no= (String)sampleService.convertCode(list.get(i).get("time").toString().replaceAll(":", "")).get("code_no");
-			BigDecimal su_no = (BigDecimal)(sampleService.convertSubject(input).get("su_no"));
-			System.out.println(sampleService.getRowNum());
-			System.out.println("코드 : "+code_no);
-			System.out.println("코드2 : "+su_no);
-			System.out.println("max : "+(((BigDecimal)(sampleService.getRowNum().get("rn"))).intValue()+1));
-			if(sampleService.checkTimeTable().isEmpty()) {
-				value.put("t_id", "s1");
-				value.put("s_date", list.get(i).get("day"));
-				value.put("classtime_cd", code_no);
-				value.put("subject", su_no);
-				value.put("temp", 1);
-				sampleService.insertTimeTableAtt(value);
-			}else {
-				value.put("t_id", "s"+(((BigDecimal)(sampleService.getRowNum().get("rn"))).intValue()+1));
-				value.put("s_date", list.get(i).get("day"));
-				value.put("classtime_cd", code_no);
-				value.put("subject", su_no);
-				value.put("temp", (((BigDecimal)(sampleService.getRowNum().get("rn"))).intValue()+1));
-				sampleService.insertTimeTableAtt(value);
-			}
-		}*/
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		MultipartFile multipartFile = multipartRequest.getFile("attach_file"); 
 		
-		sampleService.insertViewTimeTable(model,sub_no);
+		
+		if (multipartFile != null && multipartFile.getSize() > 0) {
+			// 파일을 업로드 위치에 저장
+			multipartFile.transferTo(new File(uploadfolder, multipartFile.getOriginalFilename()));
+			vo.setExcelFile(multipartFile.getOriginalFilename());
+			//excelService.getSampleList(uploadfolder+"/"+multipartFile.getOriginalFilename());
+			//sampleService.getSubjectTimeList(uploadfolder+"/"+multipartFile.getOriginalFilename());
+		}
+		
+		
+		
+		//끝
+		
+		sampleService.insertViewTimeTable(model,sub_no,uploadfolder+"/"+multipartFile.getOriginalFilename());
+		sampleService.getClassMemberList(sub_no);
 		model.addAttribute("classList", classService.getClassList2(null));
 		
 		return "timetable/timetableinsertview";
 	}
+	
 	
 	
 }

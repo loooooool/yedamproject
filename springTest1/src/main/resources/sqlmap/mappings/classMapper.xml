@@ -61,6 +61,7 @@
 			,class_name
 			,address
 			,totaltime
+			,class_cd
 			,GET_CODENAME(class_cd) "class_nm"
 			,totaldays
 			,timetable

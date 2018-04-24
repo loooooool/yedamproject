@@ -68,8 +68,10 @@
 			<div align="left">
 				 	<my:paging paging="${paging}" jsfunc="go_list"/>
 				</div>
+				<c:if test="${sessionScope.memberVO.member_cd=='M3'}">
 				<input type="button" class="btn btn-info"  value="글쓰기" onclick="location.href='./insertNotice'" />
 				<input type="button" class="btn btn-secondary"  value="목록" onclick="location.href='./getNoticeList'" />
+				</c:if>
 			</div>
 		</div>
 	</div>

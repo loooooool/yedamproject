@@ -43,7 +43,10 @@ public class UnitDAO {
 	
 	public UnitVO getAttendDays(UnitVO vo) {
 		return sqlSession.selectOne("unit.getAttendDays",vo);
-		
+	}
+	
+	public void caculateAttend() {
+		sqlSession.update("unit.calculateAttend");
 	}
 	
 }

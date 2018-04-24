@@ -19,4 +19,9 @@ public class TimeTableImpl implements TimeTableService {
 		return dao.getTimeTableList(vo);
 	}
 
+	@Override
+	public List<TimeTableVO> getClassTimeTable(TimeTableVO vo) {
+		return dao.getClassTimeTable(vo);
+	}
+
 }

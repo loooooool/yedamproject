@@ -4,18 +4,30 @@
 
 <nav class="sidebar-nav">
 	<ul class="nav">
-		<li class="nav-item"><a class="nav-link" href="/app"> <i
-				class="icon-speedometer"></i> 홈<span class="badge badge-primary">NEW</span></a>
+		<li class="nav-item">
+			<a class="nav-link" href="/app"> <i	class="icon-speedometer"></i> 홈</a>
 		</li>
 
 		<li class="nav-title">예담</li>
-		<li class="nav-item"><a
-			href="${pageContext.request.contextPath}/getNoticeList"
-			class="nav-link"><i class="icon-drop"></i>공지사항</a></li>
-		<li class="nav-item"><a href="typography.html" class="nav-link"><i
-				class="icon-pencil"></i>예담 수업</a></li>
-		<li class="nav-item"><a href="typography.html" class="nav-link"><i
-				class="icon-pencil"></i>예담 달력</a></li>
+		
+		<li class="nav-item"><a href="${pageContext.request.contextPath}/getNoticeList"	class="nav-link">
+			<i class="icon-drop"></i>공지사항</a></li>
+		
+		<li class="nav-item nav-dropdown">
+				<a class="nav-link nav-dropdown-toggle" href="#">
+					<i class="icon-cursor"></i>예담 수업</a>
+				<ul class="nav-dropdown-items">
+					<li class="nav-item">
+						<a class="nav-link" href="${pageContext.request.contextPath}/getClassList">
+						<i class="icon-cursor"></i>과정</a></li>
+					<li class="nav-item">
+						<a class="nav-link"	href="${pageContext.request.contextPath}/getSubjectList">
+						<i class="icon-cursor"></i>과목</a></li>
+				</ul>
+		</li>
+		
+		<li class="nav-item"><a href="typography.html" class="nav-link">
+			<i class="icon-pencil"></i>예담 달력</a></li>
 
 		<!------------ 회원 ------------>
 		<c:if test="${sessionScope.memberVO.member_cd=='M1'}">
@@ -32,24 +44,13 @@
 						href="${pageContext.request.contextPath}/getTimeTableList"><i
 							class="icon-puzzle"></i>나의 시간표</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="base/carousel.html"><i class="icon-puzzle"></i>나의 출석률</a></li>
+						href="${pageContext.request.contextPath}/getAttListMy"><i class="icon-puzzle"></i>나의 출석률</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getSugtList"><i
 							class="icon-calculator"></i>건의하기 <span
 							class="badge badge-primary">NEW</span></a></li>
-				</ul></li>
-
-			<li class="nav-item nav-dropdown"><a
-				class="nav-link nav-dropdown-toggle" href="#"><i
-					class="icon-cursor"></i>과정</a>
-				<ul class="nav-dropdown-items">
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/getClassList"><i
-							class="icon-cursor"></i>과정 목록</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/getSubjectList"><i
-							class="icon-cursor"></i>과목 목록</a></li>
-				</ul></li>
+				</ul>
+			</li>
 		</c:if>
 
 
@@ -80,16 +81,20 @@
 					class="icon-cursor"></i>출결</a>
 				<ul class="nav-dropdown-items">
 					<li class="nav-item"><a class="nav-link"
-						href="buttons/buttons.html"> <i class="icon-cursor" id="sub"></i>출석부생성
+						href="${pageContext.request.contextPath}/insertAttendanceForm"> <i class="icon-cursor" id="sub"></i>단위출석부생성
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="buttons/button-group.html"> <i class="icon-cursor" id="sub"></i>출석현황
+						href="${pageContext.request.contextPath}/insertTimeTableForm"> <i class="icon-cursor" id="sub"></i>과정출석부생성
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/getUnitList"> <i class="icon-cursor" id="sub"></i>출석현황
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getClassAtt"> <i
 							class="icon-cursor" id="sub"></i>과목출석부
 					</a></li>
-				</ul></li>
+				</ul>
+			</li>
 			<li class="nav-item nav-dropdown"><a
 				class="nav-link nav-dropdown-toggle" href="#"><i
 					class="icon-star"></i>학생관리</a>
@@ -103,15 +108,15 @@
 					
 				</ul></li>
 			<li class="nav-item"><a class="nav-link" href="widgets.html"><i
-					class="icon-calculator"></i>공휴일 <span class="badge badge-primary">NEW</span></a>
+					class="icon-calculator"></i>공휴일 </a>
 			</li>
 			<li class="nav-item"><a class="nav-link"
 				href="${pageContext.request.contextPath}/getConsultList"><i
-					class="icon-calculator"></i>상담일지 <span class="badge badge-primary">NEW</span></a>
+					class="icon-calculator"></i>상담일지</a>
 			</li>
 			<li class="nav-item"><a class="nav-link"
 				href="${pageContext.request.contextPath}/getSugtList"><i
-					class="icon-calculator"></i>건의사항<span class="badge badge-primary">NEW</span></a>
+					class="icon-calculator"></i>건의사항</a>
 			</li>
 		</c:if>
 	</ul>
@@ -120,7 +125,7 @@
 <button class="sidebar-minimizer brand-minimizer" type="button"></button>
 <style>
 #sub {
-	margin-left: 30px;
+	margin-left: 25px;
 }
 </style>
 

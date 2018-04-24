@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.yedam.app.common.Paging;
+import com.yedam.app.member.MemberService;
 import com.yedam.app.notice.NoticeService;
 import com.yedam.app.notice.NoticeVO;
 
@@ -27,6 +28,9 @@ public class NoticeController {
 
 	@Autowired
 	NoticeService noticeService;
+	
+	@Autowired
+	MemberService memberService;
 	
 	@Value("${file.uploadfolder}")
 	String uploadfolder;

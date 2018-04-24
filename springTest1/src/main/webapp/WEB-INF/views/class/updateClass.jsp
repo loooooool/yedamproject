@@ -11,6 +11,11 @@
         alert("수정하시겠습니까?");
     }
     
+    $(function(){
+    	div_show("${cl.class_cd}","divshow");
+    	
+    })
+    
     function div_show(s,ss){
     	if(s == "C2"){
     		document.getElementById(ss).style.display = "";
@@ -53,12 +58,12 @@
 					<label for="nf-email"><strong>과정 구분</strong></label>
 					<div class="form-check">
 						<input type="radio" name="class_cd" id="radio1" value="C1" onclick="div_show(this.value,'divshow');"
-							<c:if test="${cl.class_cd eq 'C1'}"> checked="checked" </c:if> />과정평가반
+							<c:if test="${cl.class_nm eq '과정평가반'}"> checked="checked" </c:if> />과정평가반
 						<br> <input type="radio" name="class_cd" id="radio2" value="C2" onclick="div_show(this.value,'divshow');"
-							<c:if test="${cl.class_cd eq 'C2'}"> checked="checked" </c:if> />단위기간평가반
+							<c:if test="${cl.class_nm eq '단위기간평가반'}"> checked="checked" </c:if> />단위기간평가반
 					</div>
 				</div>
-				<div class="form-group" id="divshow" style="display:none">
+				<div class="form-group" id="divshow" style="display:none" > 
 					<label class="nf-email" for="file-input"><strong>시간표 수정</strong></label>
 					<div class="col-md-10">
 						<c:if test="${not empty cl.timeTable}">

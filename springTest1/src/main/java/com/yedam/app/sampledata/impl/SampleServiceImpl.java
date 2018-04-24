@@ -1,5 +1,6 @@
 package com.yedam.app.sampledata.impl;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,21 +12,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.yedam.app.sampledata.SampleList;
 import com.yedam.app.sampledata.SampleService;
+import com.yedam.app.unit.UnitVO;
 
 @Service("sampleService")
 public class SampleServiceImpl implements SampleService {
 
+	
 	@Autowired
 	SampleBybatisDAO dao;
 
@@ -124,7 +133,7 @@ public class SampleServiceImpl implements SampleService {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		Map<String, Object> val = null;
 		try {
-			fis = new FileInputStream("D:\\memo41.xlsx");
+			fis = new FileInputStream(filepath);
 			try {
 				workbook = new XSSFWorkbook(fis);
 			} catch (IOException e) {
@@ -231,17 +240,26 @@ public class SampleServiceImpl implements SampleService {
 		return dao.getRowNum();
 	}
 	
-	
-	public void insertViewTimeTable(Model model, @RequestParam int sub_no) {
-		List<Map<String,Object>> list = getExcelTimeTable(null);
+	@Override
+	public void insertViewTimeTable(Model model, @RequestParam int sub_no,String filepath){
+		//엑셀추가 부분 시작
+		
+		
+		
+		//끝
+		List<Map<String,Object>> list = getExcelTimeTable(filepath);
 		Map<String,Object> input=null;
 		Map<String,Object> value=null;
+		int count;
+		if(checkTimeTable().isEmpty()) {			
+			count = 0;
+		}else {
+			count = ((BigDecimal)(getRowNum().get("rn"))).intValue();
+			
+		}
 		
 		for(int i=0;i<list.size();i++) {
-			/*System.out.println("일자1 : "+list.get(i).get("day"));
-			System.out.println("시간 1: "+list.get(i).get("time").toString().replaceAll(":", ""));
-			System.out.println("과목 1: "+list.get(i).get("subject"));
-			System.out.println("코드값 : "+sub_no);*/
+			
 			input = new HashMap<String,Object>();
 			value = new HashMap<String,Object>();
 			input.put("subject",list.get(i).get("subject"));
@@ -249,27 +267,41 @@ public class SampleServiceImpl implements SampleService {
 			
 			String code_no= (String)convertCode(list.get(i).get("time").toString().replaceAll(":", "")).get("code_no");
 			BigDecimal su_no = (BigDecimal)(convertSubject(input).get("su_no"));
-			/*System.out.println(sampleService.getRowNum());
-			System.out.println("코드 : "+code_no);
-			System.out.println("코드2 : "+su_no);
-			System.out.println("max : "+(((BigDecimal)(sampleService.getRowNum().get("rn"))).intValue()+1));*/
-			if(checkTimeTable().isEmpty()) {
-				value.put("t_id", "s1");
-				value.put("s_date", list.get(i).get("day"));
-				value.put("classtime_cd", code_no);
-				value.put("subject", su_no);
-				value.put("temp", 1);
-				insertTimeTableAtt(value);
-			}else {
-				value.put("t_id", "s"+(((BigDecimal)(getRowNum().get("rn"))).intValue()+1));
-				value.put("s_date", list.get(i).get("day"));
-				value.put("classtime_cd", code_no);
-				value.put("subject", su_no);
-				value.put("temp", (((BigDecimal)(getRowNum().get("rn"))).intValue()+1));
-				insertTimeTableAtt(value);
+				
+			value.put("t_id", "s"+(++count));
+			value.put("s_date", list.get(i).get("day"));
+			value.put("classtime_cd", code_no);
+			value.put("subject", su_no);
+			value.put("temp", count);
+			value.put("cl_no", sub_no);
+			insertTimeTableAtt(value);
+			
+		}
+	}
+	@Override
+	public void getClassMemberList(@RequestParam int sub_no){
+		List<Map<String,Object>> memberlist = dao.getClassMemberList(sub_no);
+		List<Map<String,Object>> timetablelist = dao.getTimetableList(sub_no);
+		Map<String,Object> value=null;
+		
+		int count;
+		if(dao.checkAttTable().isEmpty()) {			
+			count = 0;
+		}else {
+			count = ((BigDecimal)(dao.getRowNumAtt().get("rn"))).intValue();
+			
+		}
+		
+		for(int i=0;i<memberlist.size();i++) {
+			
+			for(int j=0;j<timetablelist.size();j++) {
+				value=new HashMap<String,Object>();
+				value.put("a_id", "a"+(++count));
+				value.put("s_name", memberlist.get(i).get("name"));
+				value.put("attendance", 0);
+				value.put("t_id", timetablelist.get(j).get("t_id"));
+				dao.insertAttendance(value);
 			}
 		}
 	}
-	
-	
 }

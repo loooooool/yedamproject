@@ -26,15 +26,7 @@
 				<hr class="my-4">
 				<p>${courseType[0].CLASS_NAME } &nbsp; | &nbsp; ${courseType[0].TOTALTIME }시간</p>
 				<div class="card-body" align="right">
-					<form action="getTimeTableList" style="height: 15.96px;">
-						<select name="searchCondition" class="search">
-							<option value="">선택</option>
-							<c:forEach items="${conditionMap}" var="option">
-								<option value="${option.value}">${option.key}</option>
-							</c:forEach>
-						</select> <input type="text" name="searchKeyword" style="width: 160px;"></input>
-						<input type="submit" value="검색" class="btn btn-secondary" />
-					</form>
+					<form action="getTimeTableList"></form>
 				</div>
 			</div>
 			<div>

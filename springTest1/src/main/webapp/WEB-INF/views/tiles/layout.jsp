@@ -83,9 +83,9 @@
   
 <!--      Breadcrumb -->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item"><a href="#">Admin</a></li>
-        <li class="breadcrumb-item active">Dashboard</li>
+        <li ><h2>예담직업전문학교</h2></li>
+        <li ><a href="#"></a></li>
+        <li ></li>
 
       </ol>
 
