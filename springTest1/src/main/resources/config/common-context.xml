@@ -47,6 +47,7 @@
 			<mvc:exclude-mapping path="/find_pwd*"/>
 			<mvc:exclude-mapping path="/mailsend*"/>
 			<mvc:exclude-mapping path="/getSchedulerajax*"/>
+			<mvc:exclude-mapping path="/getSchedulers*"/>
 			<bean class="com.yedam.app.common.LoginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
