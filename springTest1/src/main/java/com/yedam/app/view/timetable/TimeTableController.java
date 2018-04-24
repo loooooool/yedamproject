@@ -63,13 +63,13 @@ public class TimeTableController {
 
 		return "member/getTimeTableList";
 	}
-
-	// 검색 처리
-	@ModelAttribute("conditionMap")
-	public Map<String, String> searchConditionMap() {
-		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("과목", "subject");
-		return conditionMap;
+	
+	// 과정별 시간표 보기
+	@RequestMapping("/getClassTimeTable")
+	public String getClassTimeTable(Model model, TimeTableVO tvo, HttpSession session) {
+		
+		model.addAttribute("timeTable", timeTableService.getClassTimeTable(tvo));
+		return "class/getClassTimeTable";
 	}
 	
 	
@@ -108,6 +108,7 @@ public class TimeTableController {
 		
 		return "timetable/timetableinsertview";
 	}
+	
 	
 	
 }

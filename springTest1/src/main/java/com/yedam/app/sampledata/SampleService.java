@@ -23,6 +23,7 @@ public interface SampleService {
 	public Map<String,Object> convertCode(String code_name);
 	public Map<String,Object> convertSubject(Map<String,Object> vo);
 	public Map<String,Object> getRowNum();
+
 	public void insertViewTimeTable(Model model, @RequestParam int sub_no,String filepath);
 	public void getClassMemberList(@RequestParam int sub_no);
 	
