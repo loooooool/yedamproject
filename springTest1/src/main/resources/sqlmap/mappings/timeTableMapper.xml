@@ -12,21 +12,27 @@
 				su.subject "subject"
 		from subject_timetable st join subject su
 		on (st.subject = su.su_no)
-		<where>
-			<if test="searchKeyword != null and searchKeyword != ''">
-				<if test="searchCondition == 'subject' ">
-					and su.subject like '%' || #{searchKeyword} ||'%'
-				</if>
-				<!-- <if test="searchCondition == 's_date' ">
-					s_date like '%' || #{searchKeyword} ||'%'
-				</if> -->
-			</if>
+	<!-- 	<where>
 			<if test="cl_no != null">
-					and su.cl_no = #{cl_no}
+				and su.cl_no = #{cl_no}
 			</if>
-		</where>
-		order by st.t_id
+		</where> -->
+		order by st.temp
 
+	</select>
+
+	<select id="getClassTimeTable" resultType="timeTable">
+	
+		select SUBSTR(st.t_id, '2') "t_id",
+		        TO_CHAR(st.s_date,'YYYY-MM-DD') "s_date",
+		        get_codename(classtime_cd) "classtime_cd",
+		        su.subject "subject"
+		from subject_timetable st join class cl
+		on (st.cl_no = cl.cl_no)
+        join subject su
+        on (st.subject = su.su_no)
+		order by st.temp
+		
 	</select>
 
 </mapper>

@@ -18,16 +18,18 @@
 		$('input:radio[name=unemployee_pay_yn][value="${ memberVO.unemployee_pay_yn }"]').attr('checked', 'checked'); //훈련참여경로
 		$('input:radio[name=bohun_yn][value="${ memberVO.bohun_yn }"]').attr('checked', 'checked'); //보훈대상자여부
 		$("#job_change_date").datepicker({
-			showButtonPanel : true
+			showButtonPanel : true,
+			dateFormat : "yy/mm/dd"
 		});
 		$("#datepicker").datepicker({
-			showButtonPanel : true
+			showButtonPanel : true,
+			dateFormat : "yy/mm/dd"
 		});
 	});
 </script>
 
 </head>
-<body>${members_VO }
+<body>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card">
@@ -36,7 +38,7 @@
 				</div>
 
 				<div class="card-body">
-					<form action="memberUpdate" method="post">
+					<form action="memberUpdate" method="POST">
 
 						<input type="hidden" id=member_id name=member_id
 							value="${memberVO.member_id}"> <input

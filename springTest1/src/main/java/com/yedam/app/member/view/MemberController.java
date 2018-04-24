@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.jasperreports.JasperReportsHtmlView;
@@ -74,27 +75,27 @@ public class MemberController {
 	// 수정폼
 		@RequestMapping("/adminUpdateForm")
 		public String adminUpdateForm(MemberVO vo,String member_id, Model model, HttpSession session) {
-			//MemberVO vo = new MemberVO();
 			vo.setMember_id(member_id);
 			model.addAttribute("memberVO", memberService.getMember_id(vo));
 			return "member/memberUpdate";
 		}
 
 	// 수정처리
-	@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
-	public String memberUpdate(MemberVO vo) {
-		memberService.memberUpdate(vo);
-		return "member/memberUpdate";
-	}
+		@RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
+		public String memberUpdate(MemberVO vo) {
+			System.out.println("회원정보 수정 처리");
+			memberService.memberUpdate(vo);
+			return "member/memberUpdate";
+		}
 
-	// 관리자 수정(조회)폼
+	/*// 관리자 수정(조회)폼
 	@RequestMapping("/adminMemberUpdateForm")
 	public String adminMemberUpdateForm(MemberVO vo, Model model, HttpSession session, ClassVO cvo) {
 		vo.setMember_id(((MemberVO) session.getAttribute("memberVO")).getMember_id());
 		model.addAttribute("memberVO", memberService.getMember_id(vo));
 		model.addAttribute("classList", classService.getClassListNP(cvo));
 		return "member/adminMemberUpdateForm";
-	}
+	}*/
 
 	/*// 관리자 수정처리
 	@RequestMapping(value = "/adminMemberUpdate", method = RequestMethod.GET)
@@ -167,7 +168,7 @@ public class MemberController {
 	// 바인딩 (Date->String)
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor2(formatter, true));// null값 허용 여부
 		binder.registerCustomEditor(int.class, new CustomNumberEditor2(Integer.class, null, true));// null값 허용 여부
 	}

@@ -68,10 +68,10 @@ public class MemberServiceImpl implements MemberService {
 		dao.find_pwd(vo);
 	}
 
-	@Override
+	/*@Override
 	public void adminMemberUpdate(MemberVO vo) {
 		dao.adminMemberUpdate(vo);
-	}
+	}*/
 
 	/*@Override
 	public MemberVO getPwd(MemberVO vo) {

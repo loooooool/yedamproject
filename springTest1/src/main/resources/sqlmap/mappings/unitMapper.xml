@@ -58,6 +58,9 @@
 				absence,
 				goout
 		FROM	unit_attendance
+		WHERE student_name NOT IN ('XMAN')
+		AND class_no = #{class_no}
+		Order by student_name, unit
 	</select>
 	
 
@@ -66,9 +69,15 @@
 		 FROM UNIT_ATTENDANCE 
 		 WHERE class_no = #{class_no} 
 		 order by 1 asc
-	
 	</select>
 	
+	<select id="getAttendDays" resultType="unit" parameterType="unit">
+		SELECT  SUM(late) as "late"
+		FROM unit_attendance
+		WHERE student_name='XMAN'
+		AND class_no=#{class_no}
+	
+	</select>
 
 
 	<update id="lateUpdate" parameterType="unit" >

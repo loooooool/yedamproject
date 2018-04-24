@@ -20,23 +20,23 @@
 		<div class="card-body">
 			<form action="updateSubject" method="post">
 			<input type="hidden" name="su_no" value="${su.su_no }">
-				<div class="form-group">
-					<label for="nf-email"><strong>과목명</strong></label> 
-					<input type="text" id="nf-email" name="subject" class="form-control" value="${su.subject }"> 
-					<span class="help-block">수정할 과목명을 입력하세요</span>
-				</div>
 				<div class="form-group row">
 					<label class="col-md-3 col-form-label" for="select1"><strong>과정명</strong></label>
 					<div class="col-md-12">
 					<c:if test="${!empty ClassList}">
 						<select id="select1" name="cl_no" class="form-control">
-							<option value="0">선택</option>
+							<option value="${cl.cl_no }">${cl.class_name }이 선택됨</option>
 							<c:forEach items="${ClassList }" var="cl">
 							<option value="${cl.cl_no }">${cl.class_name }</option>
 							</c:forEach>
 						</select>
 						</c:if>
 					</div>
+				</div>
+				<div class="form-group">
+					<label for="nf-email"><strong>과목명</strong></label> 
+					<input type="text" id="nf-email" name="subject" class="form-control" value="${su.subject }"> 
+					<span class="help-block">수정할 과목명을 입력하세요</span>
 				</div>
 				<div class="form-group">
 					<label for="nf-email"><strong>시간</strong></label> 
