@@ -12,25 +12,27 @@
 				su.subject "subject"
 		from subject_timetable st join subject su
 		on (st.subject = su.su_no)
-	<!-- 	<where>
+		<where>
 			<if test="cl_no != null">
 				and su.cl_no = #{cl_no}
 			</if>
-		</where> -->
+		</where> 
 		order by st.temp
 
 	</select>
 
-	<select id="getClassTimeTable" resultType="timeTable">
+	<select id="getClassTimeTable" resultType="timeTable" parameterType="timeTable">
 	
 		select SUBSTR(st.t_id, '2') "t_id",
 		        TO_CHAR(st.s_date,'YYYY-MM-DD') "s_date",
 		        get_codename(classtime_cd) "classtime_cd",
-		        su.subject "subject"
+		        su.subject "subject",
+		        cl.class_name "class_name"
 		from subject_timetable st join class cl
 		on (st.cl_no = cl.cl_no)
         join subject su
         on (st.subject = su.su_no)
+        where cl.cl_no = #{cl_no}
 		order by st.temp
 		
 	</select>

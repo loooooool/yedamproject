@@ -58,7 +58,7 @@
 							<c:if test="${cl.class_nm eq '단위기간평가반'}"> checked="checked" </c:if> />단위기간평가반
 					</div>
 				</div>
-				<div class="form-group" id="divshow" style="display:none"> 
+				<div class="form-group" id="divshow" style="display:none" > 
 					<label class="nf-email" for="file-input"><strong>시간표 수정</strong></label>
 					<div class="col-md-10">
 						<c:if test="${not empty cl.timeTable}">

@@ -70,8 +70,9 @@ $(document).ready(function(){
 							</c:if>
 							<c:if test="${empty cl.timeTable}">
 								<c:if test="${cl.class_cd == 'C1'}">
-								<button type="button" class="btn btn-link" 
-									onclick="location.href='../getClassTimeTable'">과정별 시간표 바로가기</button>
+								<button type="button"  class="btn btn-link" 
+									onclick="location.href='${pageContext.request.contextPath}/getClassTimeTable?cl_no=${cl.cl_no }'">
+									과정별 시간표 바로가기</button>
 								</c:if>
 								<c:if test="${cl.class_cd == 'C2'}">
 								<p class="form-control-static">첨부된 파일 없음</p>

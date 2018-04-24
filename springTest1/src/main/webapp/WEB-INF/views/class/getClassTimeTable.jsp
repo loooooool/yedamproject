@@ -21,14 +21,14 @@
 	<div class="card" style="border: 50px solid white;">
 		<div class="card-header">
 			<h2>과정별 시간표</h2>
-			<!-- <hr class="my-4">
-				<p>과정명 표시</p> -->
+			<hr class="my-4">
+				<p>과정명 표시</p>
 			<div class="card-body" align="right">
 				<form action="getClassTimeTable"></form>
 			</div>
 		</div>
 		<div>
-			<table class="table table-responsive-sm table-striped"	style="width: 100%">
+			<table class="table table-responsive-sm table-striped" style="width: 100%">
 				<thead>
 					<tr>
 						<th scope="col">번호</th>
