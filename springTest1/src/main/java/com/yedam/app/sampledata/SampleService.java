@@ -19,4 +19,6 @@ public interface SampleService {
 	public Map<String,Object> convertSubject(Map<String,Object> vo);
 	public Map<String,Object> getRowNum();
 	public void insertViewTimeTable(Model model, @RequestParam int sub_no);
+	void insertViewTimeTable(Model model, int sub_no, String string);
+	void getClassMemberList(int sub_no);
 }
