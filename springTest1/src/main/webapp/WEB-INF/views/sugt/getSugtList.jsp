@@ -5,7 +5,7 @@
 <script>
 function go_list(page){
 	document.getElementsByName("page")[0].value=page;
-	document.forms[0].submit();
+	document.Form.submit();
 	//location.href="getBoardList?page="+page;
 }
 
@@ -19,6 +19,8 @@ function go_list(page){
 			<h2>건의사항</h2>
 		</div>
 		<div class="card-body" style="border-bottom: :0px">
+		<form action="getSugtList" name="Form">
+		<input type="hidden" name="page" value="${paging.page}"/>
 			<table class="table table-responsive-sm table-striped">
 				<thead>
 					<tr>
@@ -45,7 +47,7 @@ function go_list(page){
 				<a href="insertSugtForm"><input type="button" class="btn btn-info " value="글쓰기"/></a>
 			</div>
 			
-			
+			</form>
 			<my:paging paging="${paging}" jsfunc="go_list" />
 		</div>
 	</div>

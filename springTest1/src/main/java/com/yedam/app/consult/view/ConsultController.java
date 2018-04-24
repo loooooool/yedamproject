@@ -52,13 +52,6 @@ public class ConsultController {
 	@RequestMapping("/getConsultListSelect")
 	
 	public String getConsultListSelect(Model model, ConsultVO vo, ClassVO cvo, MemberVO mvo,Paging paging,String m_memberid) {
-		System.out.println("아이디 : "+m_memberid);
-		//전체 레코드 건수
-		paging.setTotalRecord(consultService.getCount(vo));
-		//vo의 first, last 셋팅
-		vo.setFirst(paging.getFirst());
-		vo.setLast(paging.getLast());
-		//결과저장
 		
 		model.addAttribute("memberList",memberService.getMemberList(mvo));
 		model.addAttribute("classList",classService.getClassListNP(cvo));
