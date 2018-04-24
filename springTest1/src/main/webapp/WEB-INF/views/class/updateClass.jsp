@@ -11,7 +11,12 @@
         alert("수정하시겠습니까?");
     }
     
-     function div_show(s,ss){
+    $(function(){
+    	div_show("${cl.class_cd}","divshow");
+    	
+    })
+    
+    function div_show(s,ss){
     	if(s == "C2"){
     		document.getElementById(ss).style.display = "";
     	} else {
@@ -58,7 +63,7 @@
 							<c:if test="${cl.class_nm eq '단위기간평가반'}"> checked="checked" </c:if> />단위기간평가반
 					</div>
 				</div>
-				<div class="form-group" id="divshow" style="display:none"> 
+				<div class="form-group" id="divshow" style="display:none" > 
 					<label class="nf-email" for="file-input"><strong>시간표 수정</strong></label>
 					<div class="col-md-10">
 						<c:if test="${not empty cl.timeTable}">

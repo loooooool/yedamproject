@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <script>
-window.onload = function() {
+function go_list(page) {
+	document.getElementsByName("page")[0].value = page;
+	document.Form.submit();
 }
 
 	var context='${pageContext.request.contextPath}';
@@ -37,7 +39,9 @@ window.onload = function() {
 </script>
 </head>
 <body>
-
+	<form action="getConsultList" name="Form">
+	<input type="hidden" name="page" value="${paging.page}" />
+	</form>
 	<div class="card">
 		<div class="card-header">
 			<h2>상담일지</h2>

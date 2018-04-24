@@ -57,7 +57,6 @@ public class UnitController {
 	@RequestMapping("/getUnitList")
 	public String getUnitList(Model model, UnitVO vo, ClassVO cvo) {
 
-
 		model.addAttribute("classList",classService.getClassListNP(cvo));
 	
 		if(vo.getClass_no()!=null && !vo.getClass_no().equals("")){
