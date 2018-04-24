@@ -23,13 +23,8 @@ public interface SampleService {
 	public Map<String,Object> convertCode(String code_name);
 	public Map<String,Object> convertSubject(Map<String,Object> vo);
 	public Map<String,Object> getRowNum();
-<<<<<<< HEAD
-	public void insertViewTimeTable(Model model, @RequestParam int sub_no);
-	void insertViewTimeTable(Model model, int sub_no, String string);
-	void getClassMemberList(int sub_no);
-=======
+
 	public void insertViewTimeTable(Model model, @RequestParam int sub_no,String filepath);
 	public void getClassMemberList(@RequestParam int sub_no);
 	
->>>>>>> branch 'master' of https://github.com/loooooool/yedamproject.git
 }
