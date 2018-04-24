@@ -88,6 +88,7 @@
 	</select>
 	
 	<select id="getConsultList" resultType="consult">
+	select a.* from ( select rownum rn, b.* from (
 		SELECT  c_no
 				,TO_CHAR(cdate,'YYYY-MM-DD') "cdate"
 				,s_detail
@@ -106,11 +107,13 @@
 					WHERE m.member_id=c.writer ) "c_writer"
 		FROM CONSULT c
 		ORDER BY cdate DESC
+		) b ) a where rn between #{first} and #{last}
 	</select>
 	
 	
 	
 	<select id="getConsultListSelect" resultType="consult" parameterType="String">
+	
 		SELECT  c_no
 				,TO_CHAR(cdate,'YYYY-MM-DD') "cdate"
 				,s_detail
@@ -130,6 +133,7 @@
 		FROM CONSULT c
 		where s_detail=#{m_memberid}
 		ORDER BY cdate DESC
+	
 	</select>
 	
 	

@@ -47,6 +47,7 @@
 	</select>
 	
 	<select id="getSugtList" resultType="sugt">
+	select a.* from ( select rownum rn, b.* from (	
 		SELECT  s_no
 				,title
 				,content
@@ -55,6 +56,8 @@
 				,member_id
 		FROM SUGGESTION 
 		ORDER BY s_date DESC
+		
+	) b ) a where rn between #{first} and #{last}
 	</select>
 
 	<update id="increaseCnt" parameterType="sugt">
