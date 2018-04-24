@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yedam.app.classes.ClassService;
+import com.yedam.app.classes.ClassVO;
 import com.yedam.app.classinfo.ClassInfoService;
 import com.yedam.app.member.MemberVO;
 import com.yedam.app.sampledata.SampleService;
+import com.yedam.app.subject_timetable.SubjectTimeService;
+import com.yedam.app.subject_timetable.SubjectTimeVO;
 import com.yedam.app.timetable.TimeTableService;
 import com.yedam.app.timetable.TimeTableVO;
 
@@ -35,7 +38,11 @@ public class TimeTableController {
 	
 	@Autowired
 	SampleService sampleService;
+	
+	@Autowired
+	SubjectTimeService subjectTimeService;
 
+	// 마이페이지 - 나의 시간표
 	@RequestMapping("/getTimeTableList")
 	public String myTimeTable(Model model, TimeTableVO tvo, HttpSession session) {
 		// 1. 그 학생의 과정정보
@@ -51,14 +58,16 @@ public class TimeTableController {
 
 		return "member/getTimeTableList";
 	}
-
-	// 검색 처리
-	@ModelAttribute("conditionMap")
-	public Map<String, String> searchConditionMap() {
-		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("과목", "subject");
-		return conditionMap;
+	
+	// 과정별 시간표 보기
+	@RequestMapping("/getClassTimeTable")
+	public String getClassTimeTable(Model model, TimeTableVO tvo, HttpSession session) {
+		
+		model.addAttribute("timeTable", timeTableService.getClassTimeTable(tvo));
+		return "class/getClassTimeTable";
 	}
+	
+	
 	
 	
 	//재용이가 짠거

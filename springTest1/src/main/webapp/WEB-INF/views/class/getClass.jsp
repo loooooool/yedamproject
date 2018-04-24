@@ -13,7 +13,7 @@ $(document).ready(function(){
 			if(result) { 
 				location.replace('../deleteClass?cl_no=${cl.cl_no }'); 
 			} else { 
-			} 
+		} 
 	});
 });
 
@@ -27,12 +27,14 @@ $(document).ready(function(){
 					<h2>과정 상세</h2>
 				</div>
 				<div class="card-body">
+				<form action="classname" method="get">
 					<div class="form-group row">
 						<label class="col-md-3 col-form-label"><strong>과정명</strong></label>
 						<div class="col-md-9">
 							<p class="form-control-static">${cl.class_name}</p>
 						</div>
 					</div>
+					</form>
 					<div class="form-group row">
 						<label class="col-md-3 col-form-label"><strong>강의실</strong></label>
 						<div class="col-md-9">
@@ -63,11 +65,17 @@ $(document).ready(function(){
 							<c:if test="${!empty cl.timeTable}">
 								<p class="form-control-static">
 								${cl.timeTable }
-								<button type="button" class="btn btn-link btn-lg" 
+								<button type="button" class="btn btn-link" 
 									onclick="location.href='../FileDown?attachField=${cl.timeTable }'">다운로드</button></p>
 							</c:if>
 							<c:if test="${empty cl.timeTable}">
+								<c:if test="${cl.class_cd == 'C1'}">
+								<button type="button" class="btn btn-link" 
+									onclick="location.href='../getClassTimeTable'">과정별 시간표 바로가기</button>
+								</c:if>
+								<c:if test="${cl.class_cd == 'C2'}">
 								<p class="form-control-static">첨부된 파일 없음</p>
+								</c:if>
 							</c:if>
 						</div>
 					</div>
