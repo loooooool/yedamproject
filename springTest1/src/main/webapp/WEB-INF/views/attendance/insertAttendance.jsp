@@ -57,7 +57,7 @@
 		var totalS ="";
 		for(var x=0; x<=i; x++){
 			item3 += $("#unit"+x).val()+"단위기간 "+$("#sdatepicker"+x).val()+" ~ "+$("#edatepicker"+x).val()+"\n";
-			total = total + $("#unitdays"+x).val();
+			total = total + parseInt($("#unitdays"+x).val());
 		}
 		totalS = "총 수업일수 :"+total;
 		var check = confirm("과정명 : "+ $("#selectStudent option:selected").text()+"\n"+item3+totalS);

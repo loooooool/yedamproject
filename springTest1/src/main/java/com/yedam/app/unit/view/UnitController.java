@@ -57,11 +57,6 @@ public class UnitController {
 	@RequestMapping("/getUnitList")
 	public String getUnitList(Model model, UnitVO vo, ClassVO cvo) {
 
-<<<<<<< HEAD
-		
-=======
-			
->>>>>>> branch 'master' of https://github.com/loooooool/yedamproject.git
 		model.addAttribute("classList",classService.getClassListNP(cvo));
 	
 		if(vo.getClass_no()!=null && !vo.getClass_no().equals("")){
