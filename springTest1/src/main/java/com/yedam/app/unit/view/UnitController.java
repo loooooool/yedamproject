@@ -90,6 +90,12 @@ public class UnitController {
 		return "forward:/getUnitList";
 	}
 	
-	
+	@RequestMapping("/getUnit")
+	public String getUnit(Model model, UnitVO vo)
+	{	
+		model.addAttribute("SDATE",unitService.getSDATE(vo));	
+		model.addAttribute("unit", unitService.getUnit(vo));
+		return "attendance/myAttendance";
+	}
 
 }

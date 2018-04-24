@@ -56,5 +56,12 @@ public class UnitServiceImpl implements UnitService{
 	public UnitVO getAttendDays(UnitVO vo) {
 		return dao.getAttendDays(vo);
 	}
+
+
+	public UnitVO getUnit(UnitVO vo) {
+		return dao.getUnit(vo);
+	}
+	
+	
 	
 }

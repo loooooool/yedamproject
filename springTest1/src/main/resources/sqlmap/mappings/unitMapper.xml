@@ -73,7 +73,12 @@
 	<select id="getSDATE" resultType="unit" parameterType="unit">
 		 SELECT DISTINCT sdate,edate 
 		 FROM UNIT_ATTENDANCE 
+		 <if test="class_no != '' and class_no !=null ">
 		 WHERE class_no = #{class_no} 
+		 </if>
+		 <if test="student_name != '' and student_name !=null ">
+		 WHERE student_name=#{student_name}
+		 </if>
 		 order by 1 asc
 	</select>
 	
@@ -90,8 +95,28 @@
 		UPDATE unit_attendance set
 							leave = NVL(MAX(leave),0)+1
 		WHERE 
-	
-	
 	</update>
+	
+	<select id="getUnit" parameterType="unit" resultType="unit">
+		SELECT 
+				c_no,
+				student_name,
+				late,
+				leave,
+				absence,
+				unit,
+				class_no,
+				goout,
+				unitdays,
+				sdate,
+				edate
+				
+		FROM UNIT_ATTENDANCE
+		WHERE student_name=#{student_name}
+		ORDER BY unitdays
+	</select>
+	
+	
+	
 
 </mapper>
