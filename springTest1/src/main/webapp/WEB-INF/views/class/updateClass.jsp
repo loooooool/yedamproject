@@ -11,7 +11,12 @@
         alert("수정하시겠습니까?");
     }
     
-     function div_show(s,ss){
+    $(function(){
+    	div_show("${cl.class_cd}","divshow");
+    	
+    })
+    
+    function div_show(s,ss){
     	if(s == "C2"){
     		document.getElementById(ss).style.display = "";
     	} else {
