@@ -70,7 +70,7 @@
 	</select>
 	
 	<select id="getAttendDays" resultType="unit" parameterType="unit">
-		SELECT  late 
+		SELECT  SUM(late) as "late"
 		FROM unit_attendance
 		WHERE student_name='XMAN'
 		AND class_no=#{class_no}

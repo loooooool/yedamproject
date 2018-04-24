@@ -58,11 +58,13 @@ public class UnitController {
 	public String getUnitList(Model model, UnitVO vo, ClassVO cvo) {
 		
 		model.addAttribute("classList",classService.getClassListNP(cvo));
-
+		cvo.setCl_no(vo.getClass_no());	
 		if(vo.getClass_no()!=null){
 			model.addAttribute("SDATE",unitService.getSDATE(vo));
 			model.addAttribute("unitList",unitService.getUnitList(vo));
 			model.addAttribute("attendDays",unitService.getAttendDays(vo));
+			model.addAttribute("classs",classService.getClass(cvo));
+		
 		}
 		return "attendance/viewAttendance";
 	}

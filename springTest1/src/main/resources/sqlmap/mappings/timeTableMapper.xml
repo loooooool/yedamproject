@@ -22,7 +22,7 @@
 					and su.cl_no = #{cl_no}
 			</if>
 		</where>
-		order by st.t_id
+		order by st.temp
 
 	</select>
 
