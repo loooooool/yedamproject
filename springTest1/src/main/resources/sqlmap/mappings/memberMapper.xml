@@ -30,7 +30,7 @@
 		where member_id = #{member_id}
 	</update>
 	
-	<!-- update : 패스워드, 이메일형식 -->
+	<!-- update -->
 	<update id="memberUpdate" parameterType="member">
 		update member 
 		set eng_name = #{eng_name},
@@ -41,11 +41,13 @@
 			address = #{address},
 			phone = #{phone},
 			h_phone = #{h_phone},
+			status_cd = #{status_cd},
 			open_route_cd = #{open_route_cd},
+			open_route_etc = #{open_route_etc},
 			unemployee_pay_yn = #{unemployee_pay_yn},
 			previous_job = #{previous_job},
+			bohun_yn = #{bohun_yn},
 			<if test="job_change_date != null">job_change_date = #{job_change_date}</if>
-			bohun_yn = #{bohun_yn}
 		where member_id = #{member_id}
 		<!-- email = #{email} || "@" || #{email2} -->
 	</update>
