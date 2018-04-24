@@ -110,6 +110,7 @@ public class TimeTableController {
 		}*/
 		
 		sampleService.insertViewTimeTable(model,sub_no);
+		sampleService.getClassMemberList(sub_no);
 		model.addAttribute("classList", classService.getClassList2(null));
 		
 		return "timetable/timetableinsertview";
