@@ -67,7 +67,7 @@
 			<my:paging paging="${paging }" jsfunc="go_list" />
 			<div class="card-body" align="right">
 				<input type="button" class="btn btn-secondary" onclick="location.href='getSubjectList'" value="목록" />
-				<c:if test="${sessionScope.memberVO.member_cd!='M1'}">
+				<c:if test="${sessionScope.memberVO.member_cd=='M3'}">
 					<input type="button" class="btn btn-info" onclick="location.href='insertSubjectForm'" value="등록" />
 				</c:if>
 			</div>

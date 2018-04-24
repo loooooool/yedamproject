@@ -6,23 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>과정별 시간표</title>
-<style>
-.search {
-	width: 100px;
-	font-size: 16px;
-	color: gray;
-	border: 1px solid gray;
-	padding-top: 3px;
-	padding-bottom: 3px;
-}
-</style>
+
 </head>
 <body>
-	<div class="card" style="border: 50px solid white;">
+	<div class="card" style="border: 30px solid white;">
 		<div class="card-header">
 			<h2>과정별 시간표</h2>
 			<hr class="my-4">
-				<p>과정명 표시</p>
+				<p><%=request.getParameter("class_name") %></p>
 			<div class="card-body" align="right">
 				<form action="getClassTimeTable"></form>
 			</div>
