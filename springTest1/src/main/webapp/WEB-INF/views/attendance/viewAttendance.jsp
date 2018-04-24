@@ -36,6 +36,7 @@ function getUnit(){
 				</form>
 				</div>
 				<form action="insertExcel" method="post" enctype="multipart/form-data">
+				<%-- <input type="hidden" name="class_no" value="${cl.cl_no}"/> --%>
 				<div class="col-md-3" align="center">
 					<input type="file" class="btn btn-info" name="attach_file" />
 				</div>

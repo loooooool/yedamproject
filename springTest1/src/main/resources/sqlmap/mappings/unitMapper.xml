@@ -45,6 +45,10 @@
 		}
 	</insert>
 
+	<update id="calculateAttend" statementType="CALLABLE">
+		{CALL calculate_attend()}
+	</update>
+
 	<select id="getUnitList" resultType="unit" parameterType="unit">
 		SELECT	c_no,
 				student_name,
@@ -59,7 +63,9 @@
 				goout
 		FROM	unit_attendance
 		WHERE student_name NOT IN ('XMAN')
+		<if test="class_no != '' and class_no !=null ">
 		AND class_no = #{class_no}
+		</if>
 		Order by student_name, unit
 	</select>
 	
