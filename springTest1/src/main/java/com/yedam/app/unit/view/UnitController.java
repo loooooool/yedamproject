@@ -56,10 +56,12 @@ public class UnitController {
 	
 	@RequestMapping("/getUnitList")
 	public String getUnitList(Model model, UnitVO vo, ClassVO cvo) {
-		
-		model.addAttribute("classList",classService.getClassListNP(cvo));
-		cvo.setCl_no(vo.getClass_no());	
+
+			
+		model.addAttribute("classList",classService.getClassListNP(null));
+	
 		if(vo.getClass_no()!=null){
+			cvo.setCl_no(vo.getClass_no());
 			model.addAttribute("SDATE",unitService.getSDATE(vo));
 			model.addAttribute("unitList",unitService.getUnitList(vo));
 			model.addAttribute("attendDays",unitService.getAttendDays(vo));

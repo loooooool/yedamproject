@@ -163,5 +163,11 @@
 		</div>
 </div>
 			
+			<%@include file="../timetable/timetableinsertview.jsp" %>
+			
+			
 </body>
 </html>
+
+
+

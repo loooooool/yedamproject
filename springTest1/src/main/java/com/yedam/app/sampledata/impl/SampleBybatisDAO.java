@@ -6,6 +6,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Repository
 public class SampleBybatisDAO {
@@ -40,6 +41,10 @@ public class SampleBybatisDAO {
 		return sqlSession.selectList("dataview.checkTimeTable");
 	}
 	
+	public List<Map<String,Object>> checkAttTable(){
+		return sqlSession.selectList("dataview.checkAttTable");
+	}
+	
 	
 	public Map<String,Object> convertCode(String code_name){
 		return sqlSession.selectOne("dataview.convertCode",code_name);
@@ -51,5 +56,22 @@ public class SampleBybatisDAO {
 	
 	public Map<String,Object> getRowNum(){
 		return sqlSession.selectOne("dataview.getRowNum");
+	}
+	
+	public Map<String,Object> getRowNumAtt(){
+		return sqlSession.selectOne("dataview.getRowNumAtt");
+	}
+	
+	public List<Map<String,Object>> getClassMemberList(int sub_no){
+		return sqlSession.selectList("dataview.getClassMemberList",sub_no);
+	}
+	
+	public List<Map<String,Object>> getTimetableList(int sub_no){
+		return sqlSession.selectList("dataview.getTimetableList",sub_no);
+	}
+	
+	public void insertAttendance(Map<String,Object> vo) {
+		
+		sqlSession.insert("dataview.insertAttendance",vo);
 	}
 }
