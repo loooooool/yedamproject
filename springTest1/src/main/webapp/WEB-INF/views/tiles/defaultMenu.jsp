@@ -32,7 +32,7 @@
 						href="${pageContext.request.contextPath}/getTimeTableList"><i
 							class="icon-puzzle"></i>나의 시간표</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="base/carousel.html"><i class="icon-puzzle"></i>나의 출석률</a></li>
+						href="${pageContext.request.contextPath}/getAttListMy"><i class="icon-puzzle"></i>나의 출석률</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getSugtList"><i
 							class="icon-calculator"></i>건의하기 <span
