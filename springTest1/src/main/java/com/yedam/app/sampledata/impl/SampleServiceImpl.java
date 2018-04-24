@@ -3,6 +3,7 @@ package com.yedam.app.sampledata.impl;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +17,8 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yedam.app.sampledata.SampleList;
 import com.yedam.app.sampledata.SampleService;
@@ -209,7 +212,64 @@ public class SampleServiceImpl implements SampleService {
 	return list;
 		
 	}
+
+	@Override
+	public Map<String, Object> convertCode(String code_name) {
+		// TODO Auto-generated method stub
+		return dao.convertCode(code_name);
+	}
+
+	@Override
+	public Map<String, Object> convertSubject(Map<String,Object> vo) {
+		// TODO Auto-generated method stub
+		return dao.convertSubject(vo);
+	}
+
+	@Override
+	public Map<String,Object> getRowNum() {
+		// TODO Auto-generated method stub
+		return dao.getRowNum();
+	}
 	
+	
+	public void insertViewTimeTable(Model model, @RequestParam int sub_no) {
+		List<Map<String,Object>> list = getExcelTimeTable(null);
+		Map<String,Object> input=null;
+		Map<String,Object> value=null;
+		
+		for(int i=0;i<list.size();i++) {
+			/*System.out.println("일자1 : "+list.get(i).get("day"));
+			System.out.println("시간 1: "+list.get(i).get("time").toString().replaceAll(":", ""));
+			System.out.println("과목 1: "+list.get(i).get("subject"));
+			System.out.println("코드값 : "+sub_no);*/
+			input = new HashMap<String,Object>();
+			value = new HashMap<String,Object>();
+			input.put("subject",list.get(i).get("subject"));
+			input.put("cl_no",sub_no );
+			
+			String code_no= (String)convertCode(list.get(i).get("time").toString().replaceAll(":", "")).get("code_no");
+			BigDecimal su_no = (BigDecimal)(convertSubject(input).get("su_no"));
+			/*System.out.println(sampleService.getRowNum());
+			System.out.println("코드 : "+code_no);
+			System.out.println("코드2 : "+su_no);
+			System.out.println("max : "+(((BigDecimal)(sampleService.getRowNum().get("rn"))).intValue()+1));*/
+			if(checkTimeTable().isEmpty()) {
+				value.put("t_id", "s1");
+				value.put("s_date", list.get(i).get("day"));
+				value.put("classtime_cd", code_no);
+				value.put("subject", su_no);
+				value.put("temp", 1);
+				insertTimeTableAtt(value);
+			}else {
+				value.put("t_id", "s"+(((BigDecimal)(getRowNum().get("rn"))).intValue()+1));
+				value.put("s_date", list.get(i).get("day"));
+				value.put("classtime_cd", code_no);
+				value.put("subject", su_no);
+				value.put("temp", (((BigDecimal)(getRowNum().get("rn"))).intValue()+1));
+				insertTimeTableAtt(value);
+			}
+		}
+	}
 	
 	
 }

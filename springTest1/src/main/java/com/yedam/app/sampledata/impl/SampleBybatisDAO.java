@@ -40,4 +40,16 @@ public class SampleBybatisDAO {
 		return sqlSession.selectList("dataview.checkTimeTable");
 	}
 	
+	
+	public Map<String,Object> convertCode(String code_name){
+		return sqlSession.selectOne("dataview.convertCode",code_name);
+	}
+	
+	public Map<String,Object> convertSubject(Map<String,Object> vo){
+		return sqlSession.selectOne("dataview.convertSubject",vo);
+	}
+	
+	public Map<String,Object> getRowNum(){
+		return sqlSession.selectOne("dataview.getRowNum");
+	}
 }

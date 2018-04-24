@@ -39,9 +39,9 @@
 								<td scope="row">${cl.cl_no}</td>
 								<td>${cl.class_nm}</td>
 								<td><a href="getClass/${cl.cl_no }">${cl.class_name}</a></td>
-								<td>${cl.address}</td>
-								<td>${cl.totalTime}</td>
-								<td>${cl.totaldays}</td>
+								<td>${cl.address}강의실</td>
+								<td>${cl.totalTime}시간</td>
+								<td>${cl.totaldays}일</td>
 							</tr>
 						</c:forEach>
 					</tbody>

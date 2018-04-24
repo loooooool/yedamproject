@@ -62,7 +62,7 @@
 					<label class="nf-email" for="file-input"><strong>시간표 수정</strong></label>
 					<div class="col-md-10">
 						<c:if test="${not empty cl.timeTable}">
-							<label for="nf-email"><strong>기존 파일 : ${cl.timeTable }</strong></label>
+							<label for="nf-email"><strong>기존 파일 : ${cl.timeTable }</strong></label><br>
 						</c:if>
 						<c:if test="${empty timeTable}">
 							<input type="file" id="file-input" name="attach_file">

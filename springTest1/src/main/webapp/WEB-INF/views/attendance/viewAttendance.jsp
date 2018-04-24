@@ -46,27 +46,38 @@ function getUnit(){
 			<table class="table table-bordered table-striped">
 			<thead>
 					<tr>
-					<th>성명</th>
-					<th>현재수업일수</th>
-					<th>현재출석일수</th>
-					<th>남은출석일수</th>
-					<th>남은결석일수</th>
-					<th>현재출석율</th>
+					<th rowspan="2" align="center">성명</th>
+					<th rowspan="2" align="center">현재수업일수</th>
+					<th rowspan="2" align="center">현재출석일수</th>
+					<th rowspan="2" align="center">남은출석일수</th>
+					<th rowspan="2" align="center">남은결석일수</th>
+					<th rowspan="2" align="center">현재출석율</th>
+			
 					<c:forEach items="${SDATE}" var="unit">
-					<th>${unit.sdate}~${unit.edate}</th>
+					<th colspan="4">${unit.sdate}~${unit.edate} </th>
 					</c:forEach> 
 					</tr>
+					<tr>
+					<c:forEach items="${SDATE}" var="unit">
+					<th>지각</th>
+					<th>조퇴</th>								
+					<th>외출</th>
+					<th>결석</th>	
+					</c:forEach>
+					</tr>
+					
+					
 					
 			</thead>
 			<tbody>
 				<c:forEach items="${unitList}" var="unit">
 					<tr>
-					<td>${unit.student_name}</td>
-					<td>${attendDays.late}</td>
-					<td>현재출석일수</td>
-					<td>남은출석일수</td>
-					<td>남은결석일수</td>
-					<td>현재출석율</td>
+					<td width="100px" align="center">${unit.student_name}</td>  					<!-- 성명 -->
+					<td>${attendDays.late}</td>		<!-- 현재수업일수 -->
+					<td>${attendDays.late-unit.absence}</td>		<!-- 현재출석일수 -->
+					<td>${classs.totaltime}-${attendDays.late}</td>	<!-- 남은출석일수 -->
+					<td>남은결석일수 </td>								<!-- 남은결석일수 -->
+					<td>(${attendDays.late}-${unit.absence})/${classs.totaltime}</td>	<!-- 현재출석율 -->
 					</tr>
 				</c:forEach>
 			

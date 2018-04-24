@@ -48,12 +48,12 @@ $(function(){
              <div id="copy">
 				<div class="form-group">
 					<label for="nf-email"><strong>과목명</strong></label> 
-					<input type="text" id="nf-email" name="subject" class="form-control" value="${su.subject }" onfocus="this.value=''"> 
+					<input type="text" id="nf-email" name="subject" class="form-control" value="과목명" onfocus="this.value=''"> 
 					<span class="help-block">과목명을 입력하세요</span>
 				</div>
 				<div class="form-group">
 					<label for="nf-email"><strong>시간</strong></label> 
-					<input type="text" id="nf-email" name="totalTime" class="form-control" value="${su.totalTime }" onfocus="this.value=''"> 
+					<input type="text" id="nf-email" name="totalTime" class="form-control" value="예)10" onfocus="this.value=''"> 
 					<span class="help-block">시간을 입력하세요</span>
 				</div>
 				<div class="form-group">

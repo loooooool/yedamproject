@@ -25,10 +25,13 @@ function makeCommentView(comment){
 	div.className = 'comment';
 	div.comment = comment;  //{id:1,.... }
 	
-	var str = "<strong>" + comment.content + "</strong>" 
-	
-	var str2 = "<input type=\"button\" class=\"btn btn-warning\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.co_no+"')\"/>"
+	var str = "<strong>" + comment.content +"</strong>" 
+	var str2 = ""
+	console.log("${sessionScope.memberVO.member_id}"== comment.member_id)
+	if("${sessionScope.memberVO.member_id}"== comment.member_id){
+	 str2 = "<input type=\"button\" class=\"btn btn-warning\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.co_no+"')\"/>"
 			  +"<input type=\"button\" class=\"btn btn-danger\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.co_no+"')\"/>"
+			  }
 	
 	div.innerHTML = str+str2;
 	return div;
@@ -107,7 +110,7 @@ function updateComment(){
 		</div>
 	</div>
 	<div  align="right" >
-		작성일 : ${sugt.s_date} 조회수 : ${sugt.cnt} 
+		작성일: ${sugt.s_date} 조회수 : ${sugt.cnt} 
 	</div>
 	<div class="card-body" align="right" >
           <a href="getSugtList" class="btn btn-secondary"> 목록</a>
@@ -126,7 +129,7 @@ function updateComment(){
 	 			<form action="" name="addForm"> 
 	 			<!-- 댓글등록폼 -->
 	 				<input type="hidden" name="parent_no" value="${sugt.s_no}"> 
-					<input type="hidden" name="member_id" value="${sessionScope.memberVO.member_id} " /> 
+					<input type="hidden" name="member_id" value="${sessionScope.memberVO.member_id}" /> 
 	 				<div class="form-group row">
 						<label class="col-md-3 col-form-label" for="textarea-input">댓글</label>
 						<div class="col-md-9">
