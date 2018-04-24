@@ -28,7 +28,7 @@
 	select st.t_id,to_char(st.s_date,'YYYY-MM-DD') s_date,st.classtime_cd,st.subject,sb.totaltime,sb.cl_no 
 	from subject_timetable st join subject sb
 	on (sb.su_no = st.subject)
-	where s_date=#{day} and cl_no=(select cl_no from class where class_name=#{classs} and class_cd='C1')
+	where s_date=#{day} and sb.cl_no=(select cl_no from class where class_name=#{classs} and class_cd='C1')
 
 
 
