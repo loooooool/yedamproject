@@ -71,7 +71,7 @@ $(document).ready(function(){
 							<c:if test="${empty cl.timeTable}">
 								<c:if test="${cl.class_cd == 'C1'}">
 								<button type="button"  class="btn btn-link" 
-									onclick="location.href='${pageContext.request.contextPath}/getClassTimeTable?cl_no=${cl.cl_no }'">
+									onclick="location.href='${pageContext.request.contextPath}/getClassTimeTable?cl_no=${cl.cl_no}&class_name=${cl.class_name}'">
 									과정별 시간표 바로가기</button>
 								</c:if>
 								<c:if test="${cl.class_cd == 'C2'}">
