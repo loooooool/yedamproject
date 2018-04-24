@@ -51,7 +51,25 @@
 	
 	</select>
 
+	<select id="convertCode" resultType="map" parameterType="String">
+		select code_no "code_no"
+		from code
+		where code_name=#{name}
+	
+	</select>
+	
+	<select id="convertSubject" resultType="map" parameterType="map">
+		select su_no "su_no"
+		from subject
+		where subject=#{subject} and cl_no=#{cl_no}
+	
+	</select>
 
+	<select id="getRowNum" resultType="map">
+		select max(rownum) "rn"
+		from subject_timetable
+	
+	</select>
 
 	<update id="updateAtt" parameterType="map">
 
@@ -63,7 +81,8 @@
 	
 
 	<insert id="insertTimeTable" parameterType="map">
-		insert into subject_timetable()
+		insert into subject_timetable 
+		values(#{t_id},#{s_date},#{classtime_cd},#{subject},#{temp})
 	
 	</insert>
 
