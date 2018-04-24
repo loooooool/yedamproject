@@ -59,6 +59,8 @@
 				goout
 		FROM	unit_attendance
 		WHERE student_name NOT IN ('XMAN')
+		AND class_no = #{class_no}
+		Order by student_name, unit
 	</select>
 	
 
