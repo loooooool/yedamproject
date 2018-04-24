@@ -25,7 +25,7 @@
 					<div class="col-md-12">
 					<c:if test="${!empty ClassList}">
 						<select id="select1" name="cl_no" class="form-control">
-							<option value="0">선택</option>
+							<option value="${cl.cl_no }">${cl.class_name }이 선택됨</option>
 							<c:forEach items="${ClassList }" var="cl">
 							<option value="${cl.cl_no }">${cl.class_name }</option>
 							</c:forEach>
