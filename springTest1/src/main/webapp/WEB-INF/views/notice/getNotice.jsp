@@ -93,9 +93,11 @@ $(document).ready(function(){
 					</tbody>
 			</table>
 			<div align="right">
+			<c:if test="${sessionScope.memberVO.member_cd=='M3'}">
 				<input type="button" class="btn btn-warning" value="수정" onclick="location.href='./updateNoticeForm?n_no=${notice.n_no}'"/>
 				<input type="button" class="btn btn-danger"  value="삭제" id="del" />
 				<input type="button" class="btn btn-secondary"  value="목록" onclick="location.href='./getNoticeList'" />
+			</c:if>
 			</div>
 	</div>
 </body>

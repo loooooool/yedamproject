@@ -38,7 +38,7 @@ function captureReturnKey(e) {
 							<div class="form-group row" >
 								<label class="col-md-3 col-form-label" for="writer">작성자</label>
 								<div class="col-md-9" >
-									<input type="text" id="writer" name="writer" value="남성현" style="background-color:white;"
+									<input type="text" id="writer" name="writer" value="${sessionScope.memberVO.name}" style="background-color:white;"
 										class="form-control"  readonly /> 
 								</div>
 							</div>
