@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <script>
 
 var context='${pageContext.request.contextPath}';
@@ -13,6 +15,7 @@ function getUnit(){
 
 </script>
 </head>
+
 <body>
 	<div class="card">
 		<div class="card-header">
@@ -43,6 +46,8 @@ function getUnit(){
 		
 			</div>
 			<hr>
+			<c:set value="" var="oldname"/>
+			
 			<table class="table table-bordered table-striped">
 			<thead>
 					<tr>
@@ -52,7 +57,7 @@ function getUnit(){
 					<th rowspan="2" align="center">남은출석일수</th>
 					<th rowspan="2" align="center">남은결석일수</th>
 					<th rowspan="2" align="center">현재출석율</th>
-			
+					<!-- <th rowspan="2" align="center">지각/조퇴/결석</th> -->
 					<c:forEach items="${SDATE}" var="unit">
 					<th colspan="4">${unit.sdate}~${unit.edate} </th>
 					</c:forEach> 
@@ -65,22 +70,31 @@ function getUnit(){
 					<th>결석</th>	
 					</c:forEach>
 					</tr>
-					
-					
-					
+
 			</thead>
 			<tbody>
+				
 				<c:forEach items="${unitList}" var="unit">
-					<tr>
-					<td width="100px" align="center">${unit.student_name}</td>  					<!-- 성명 -->
-					<td>${attendDays.late}</td>		<!-- 현재수업일수 -->
-					<td>${attendDays.late-unit.absence}</td>		<!-- 현재출석일수 -->
-					<td>${classs.totaltime}-${attendDays.late}</td>	<!-- 남은출석일수 -->
-					<td>남은결석일수 </td>								<!-- 남은결석일수 -->
-					<td>(${attendDays.late}-${unit.absence})/${classs.totaltime}</td>	<!-- 현재출석율 -->
-					</tr>
+					<c:if test="${ oldname =='' || unit.student_name != oldname}">
+						<tr>
+						<td width="100px" align="center">${unit.student_name}</td>  <!-- 성명 -->
+						<td>${attendDays.late}</td>									<!-- 현재수업일수 -->
+						<td>${attendDays.late-unit.absence}</td>					<!-- 현재출석일수 -->
+						<td>${classs.totalTime-attendDays.late}</td>				<!-- 남은출석일수 -->
+						<td>남은결석일수 </td>											<!-- 남은결석일수 -->
+						<td><fmt:formatNumber value="${attendDays.late-unit.absence/classs.totalTime}" pattern=".00"/></td>	<!-- 현재출석율 -->
+					</c:if>		
+						 	<%-- <c:forEach begin="1" end="${SDATE.length}" varStatus="status"> --%>
+						 		
+							<td>${unit.late}</td>
+							<td>${unit.leave}</td>
+							<td>${unit.goout}</td>
+							<td>${unit.absence}</td>
+							<%-- </c:forEach> --%>
+					
+					<c:set value="${unit.student_name}" var="oldname"/>
 				</c:forEach>
-			
+			</tr>
 			</tbody>		
 					
 			
