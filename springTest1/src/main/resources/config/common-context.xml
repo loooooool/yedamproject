@@ -45,6 +45,10 @@
 			<mvc:exclude-mapping path="/login*"/>
 			<mvc:exclude-mapping path="/getNoticeList*"/>
 			<mvc:exclude-mapping path="/getClassList*"/>
+			<mvc:exclude-mapping path="/getSubjectList*"/>
+			<mvc:exclude-mapping path="/getClassTimeTable*"/>
+			<mvc:exclude-mapping path="/getSubject*"/>
+			<mvc:exclude-mapping path="/FileDown"/>
 			<mvc:exclude-mapping path="/find_pwd*"/>
 			<mvc:exclude-mapping path="/mailSend"/>
 			<mvc:exclude-mapping path="/getSchedulerajax*"/>

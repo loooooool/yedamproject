@@ -16,6 +16,7 @@
 		<li class="nav-item nav-dropdown">
 				<a class="nav-link nav-dropdown-toggle" href="#">
 					<i class="icon-cursor"></i>예담 수업</a>
+					
 				<ul class="nav-dropdown-items">
 					<li class="nav-item">
 						<a class="nav-link" href="${pageContext.request.contextPath}/getClassList">
@@ -32,9 +33,9 @@
 		<!------------ 회원 ------------>
 		<c:if test="${sessionScope.memberVO.member_cd=='M1'}">
 			<li class="nav-title">${sessionScope.memberVO.name}회원님</li>
-			<li class="nav-item nav-dropdown"><a
-				class="nav-link nav-dropdown-toggle" href="#"><i
-					class="icon-puzzle"></i>마이페이지</a>
+			<li class="nav-item nav-dropdown">
+				<a class="nav-link nav-dropdown-toggle" href="#">
+					<i class="icon-puzzle"></i>마이페이지</a>
 
 				<ul class="nav-dropdown-items">
 					<li class="nav-item"><a class="nav-link"
@@ -61,7 +62,7 @@
 
 			<li class="nav-item nav-dropdown"><a
 				class="nav-link nav-dropdown-toggle" href="#"><i
-					class="icon-cursor"></i>과정</a>
+					class="icon-drop"></i>과정</a>
 				<ul class="nav-dropdown-items">
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getClassList"><i
@@ -69,9 +70,9 @@
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getSubjectList"><i
 							class="icon-cursor" id="sub"></i>과목관리</a></li>
-					<li class="nav-item"><a class="nav-link"
+					<%-- <li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/insertTimeTableForm"><i
-							class="icon-cursor" id="sub"></i>시간표등록</a></li>
+							class="icon-cursor" id="sub"></i>시간표등록</a></li> --%>
 				</ul>
 				
 			</li>
@@ -131,6 +132,10 @@
 
 
 <script>
+
+
+
+
 $.navigation = $('nav > ul.nav');
 // Add class .active to current link
 $.navigation.find('a').each(function(){
