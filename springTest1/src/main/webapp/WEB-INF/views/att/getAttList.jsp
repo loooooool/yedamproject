@@ -25,7 +25,7 @@
 			<table class="table2 table-striped">
 				<thead>
 					<tr>
-						<th>학생명</th>
+						<th style="width:80px">학생명</th>
 						<c:forEach items="${attSubjectList}" var="as">
 						<th>${as.subject}</th>
 						</c:forEach>
@@ -37,7 +37,7 @@
 							<td>${at.name}</td>
 							<c:forEach items="${percent}" var="pc">
 							<c:if test="${at.name eq pc.name2}">
-								<td>${pc.percentage}%</td>
+								<td <c:if test='${pc.percentage >80}'>style="background-color:skyblue"</c:if>>${pc.percentage}%</td>
 							</c:if>
 							</c:forEach>
 						</tr>
