@@ -68,9 +68,9 @@
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getSubjectList"><i
 							class="icon-cursors" id="sub"></i>과목관리</a></li>
-					<li class="nav-item"><a class="nav-link"
+					<%-- <li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/insertTimeTableForm"><i
-							class="icon-cursors" id="sub"></i>시간표등록</a></li>
+							class="icon-cursors" id="sub"></i>시간표등록</a></li> --%>
 				</ul>
  
 			<li class="nav-item nav-dropdown"><a
@@ -81,7 +81,7 @@
 						href="${pageContext.request.contextPath}/insertAttendanceForm"> <i class="icon-cursors" id="sub"></i>단위출석부생성
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/insertTimeTableForm"> <i class="icon-cursors" id="sub"></i>과정출석부생성
+						href="${pageContext.request.contextPath}/insertTimeTableForm"> <i class="icon-cursors" id="sub"></i>과목출석부생성
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getUnitList"> <i class="icon-cursors" id="sub"></i>출석현황
