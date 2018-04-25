@@ -94,19 +94,16 @@
 			</li>
 			<li class="nav-item nav-dropdown"><a
 				class="nav-link nav-dropdown-toggle" href="#"><i
-					class="icon-stars"></i>학생관리</a>
+					class="icon-stars" ></i>학생관리</a>
 				<ul class="nav-dropdown-items">
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/insertMemberForm"
-						id="sub"><i class="icon-cursors"></i>학생등록</a></li>
+						><i class="icon-cursors" id="sub"></i>학생등록</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/viewMember" id="sub"><i
-							class="icon-cursors"></i>학생조회</a></li>
+						href="${pageContext.request.contextPath}/viewMember" ><i
+							class="icon-cursors" id="sub"></i>학생조회</a></li>
 					
 				</ul></li>
-			<li class="nav-item"><a class="nav-link" href="widgets.html"><i
-					class="icon-calculators"></i>공휴일 </a>
-			</li>
 			<li class="nav-item"><a class="nav-link"
 				href="${pageContext.request.contextPath}/getConsultList"><i
 					class="icon-calculators"></i>상담일지</a>

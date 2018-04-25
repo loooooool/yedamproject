@@ -134,7 +134,6 @@ function getMemberAddList(){
 
 				</tbody>
 			</table>
-					  	<my:paging paging="${paging}" jsfunc="go_list" />
 		</div>
 	</div>
 
