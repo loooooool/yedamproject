@@ -30,10 +30,10 @@
 		<where>
 			<if test="searchKeyword != null and searchKeyword != ''">
 				<if test="searchCondition == 'class_name' ">
-					and class_name like '%' ||#{searchKeyword} ||'%'
+					and upper(class_name) like '%' || upper(#{searchKeyword}) ||'%'
 				</if>
 				<if test="searchCondition == 'subject' ">
-					subject like '%' ||#{searchKeyword} ||'%'
+					upper(subject) like '%' || upper(#{searchKeyword}) ||'%'
 				</if>
 				<if test="searchCondition == 'status_yn' ">
 					upper(status_yn) like '%' || upper(#{searchKeyword}) ||'%'
