@@ -49,5 +49,9 @@ public class UnitDAO {
 		sqlSession.update("unit.calculateAttend");
 	}
 	
+	public  List<UnitVO> getUnit(UnitVO vo) {
+		return sqlSession.selectList("unit.getUnit",vo);
+	}
+	
 }
 

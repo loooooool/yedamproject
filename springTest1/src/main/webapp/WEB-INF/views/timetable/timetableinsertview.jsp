@@ -22,8 +22,8 @@
 		<option value="${list.cl_no}">${list.class_name}</option>
 	</c:forEach>
 	
-</select>
-<input type="file" class="btn btn-info" name="attach_file" />
+</select><br>
+<input type="file" class="btn btn-info" name="attach_file" /><br>
 <input type="submit" value="시간표등록"/>
 </form>
 

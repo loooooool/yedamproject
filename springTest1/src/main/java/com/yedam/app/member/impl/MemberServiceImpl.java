@@ -42,11 +42,13 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getMemberList(vo);
 	}
 
+	// 수정
 	@Override
 	public void memberUpdate(MemberVO vo) {
 		dao.memberUpdate(vo);
 	}
 
+	// 비밀번호 변경
 	@Override
 	public void changePwd(MemberVO vo) {
 		dao.changePwd(vo);
@@ -63,26 +65,27 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getRn();
 	}
 
+	// 비밀번호 찾기
 	@Override
 	public void find_pwd(MemberVO vo) {
 		dao.find_pwd(vo);
 	}
 
-	/*@Override
-	public void adminMemberUpdate(MemberVO vo) {
-		dao.adminMemberUpdate(vo);
-	}*/
+	// 비밀번호 확인
 
-	/*@Override
-	public MemberVO getPwd(MemberVO vo) {
-		return dao.getPwd(vo);	
-	}*/
+
+	/*
+	 * @Override public void adminMemberUpdate(MemberVO vo) {
+	 * dao.adminMemberUpdate(vo); }
+	 */
+
+	/*
+	 * @Override public MemberVO getPwd(MemberVO vo) { return dao.getPwd(vo); }
+	 */
 
 	/*
 	 * @Override public List<Map<String, Object>> getMember() { return
 	 * dao.getEmployeeAll(); }
 	 */
-
-	
 
 }

@@ -31,4 +31,12 @@ public class ClassAttDAO {
 	public Map<String,Object> getAttSubjectOne(String t_id){
 		return sqlSession.selectOne("classAtt.getAttSubjectOne",t_id);
 	}
+	
+	public Map<String,Object> getClassInfoOne(String id){
+		return sqlSession.selectOne("classAtt.getClassInfoOne",id);
+	}
+	
+	public Map<String,Object> getMemberId(String name){
+		return sqlSession.selectOne("classAtt.getMemberId",name);
+	}
 }

@@ -71,7 +71,7 @@ $(document).ready(function(){
 							<c:if test="${empty cl.timeTable}">
 								<c:if test="${cl.class_cd == 'C1'}">
 								<button type="button"  class="btn btn-link" 
-									onclick="location.href='${pageContext.request.contextPath}/getClassTimeTable?cl_no=${cl.cl_no }'">
+									onclick="location.href='${pageContext.request.contextPath}/getClassTimeTable?cl_no=${cl.cl_no}&class_name=${cl.class_name}'">
 									과정별 시간표 바로가기</button>
 								</c:if>
 								<c:if test="${cl.class_cd == 'C2'}">
@@ -85,7 +85,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<div class="card-body" align="right">
-	<c:if test="${sessionScope.memberVO.member_cd!='M1'}">
+	<c:if test="${sessionScope.memberVO.member_cd=='M3'}">
 		<input type="button" class="btn btn-warning" onclick="location.href='../updateClassForm?cl_no=${cl.cl_no}'" value="수정" />&nbsp;
 		<input type="button" class="btn btn-danger" id="del" value="삭제" />&nbsp;
 	</c:if>

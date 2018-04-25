@@ -59,5 +59,17 @@
 		where t_id=#{t_id}
 	
 	</select>
+	
+	<select id="getClassInfoOne" resultType="map" parameterType="String">
+	select cl_no "cl_no" from class_info
+	where member_id=#{id}
+	</select>
+	
+	<select id="getMemberId" resultType="map" parameterType="String">
+		select member_id "member_id"
+		from member
+		where name=#{name}
+	
+	</select>
 
 </mapper>

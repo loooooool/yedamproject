@@ -41,9 +41,6 @@ public class SubjectController {
 	// 목록
 	@RequestMapping("/getSubjectList")
 	public String getSubjectList(Model model, SubjectVO vo, ClassVO cvo, Paging paging, HttpSession session) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("member_id", ((MemberVO) session.getAttribute("memberVO")).getMember_id());
-
 		// 전체 레코드 건수
 		paging.setPageUnit(10);
 		paging.setTotalRecord(subjectService.getCount(vo));
@@ -101,9 +98,6 @@ public class SubjectController {
 	public ModelAndView getSubject(@PathVariable Integer su_no, HttpSession session) {
 		SubjectVO vo = new SubjectVO();
 		vo.setSu_no(su_no);
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("member_id", ((MemberVO) session.getAttribute("memberVO")).getMember_id());
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("su", subjectService.getSubject(vo));

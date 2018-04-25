@@ -27,3 +27,24 @@
 </c:if>
 
 
+
+   
+   <c:if test="${empty sessionScope.memberVO}"> <!-- sessionScope id가 없으면 -->
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item d-md-down-none">
+        <a class="loginForm" href="loginForm">login<i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+      </li>
+    </ul>
+   </c:if>    
+   
+   <c:if test="${not empty sessionScope.memberVO}"> <!-- sessionScope id가 있으면 -->
+   	${sessionScope.memberVO.name} 님 어서오세요!
+   	 <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item d-md-down-none">
+        <a class="login" href="logout">logout<i class="icon-list"></i></a>
+      </li>
+     </ul>
+   </c:if>
+     
+ 
+>>>>>>> branch 'master' of https://github.com/loooooool/yedamproject.git

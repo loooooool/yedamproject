@@ -40,6 +40,18 @@ public class ClassAttServiceImpl implements ClassAttService {
 		// TODO Auto-generated method stub
 		return dao.getAttSubjectOne(t_id);
 	}
+
+	@Override
+	public Map<String, Object> getClassInfoOne(String id) {
+		// TODO Auto-generated method stub
+		return dao.getClassInfoOne(id);
+	}
+
+	@Override
+	public Map<String, Object> getMemberId(String name) {
+		// TODO Auto-generated method stub
+		return dao.getMemberId(name);
+	}
 	
 	
 	

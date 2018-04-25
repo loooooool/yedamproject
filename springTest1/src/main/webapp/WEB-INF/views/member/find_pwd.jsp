@@ -19,10 +19,11 @@ $(document).ready(function(){
             return false; // 함수 종료
         }
         if(email == ""){
-            alert("가입시 입력하신 이메일을 입력하세요.");
+            alert("임시 비밀번호를 발급받을 이메일을 입력하세요.");
             $("#email").focus();
             return false;
         }
+       
         // 제출
         document.form1.submit();
     });
@@ -60,7 +61,7 @@ $(document).ready(function(){
           <div class="card p-4">
             <div class="card-body">
               <h1>비밀번호 찾기</h1>
-              <p class="text-muted">임시 비밀번호는 입력하신 이메일로 발송됩니다.</p>
+              <p class="text-muted">임시 비밀번호는 가입시 작성하신 이메일로 발송됩니다.</p>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="icon-user"></i></span>
