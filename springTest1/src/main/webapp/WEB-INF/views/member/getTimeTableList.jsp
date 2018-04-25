@@ -20,7 +20,7 @@
 </head>
 <body>
 	<c:if test="${courseType[0].CLASS_CD == 'C1'}">
-		<div class="card" style="border: 50px solid white;">
+		<div class="card" style="border: 50px solid white; margin-bottom:450px;">
 			<div class="card-header">
 				<h2>나의 시간표</h2>
 				<hr class="my-4">

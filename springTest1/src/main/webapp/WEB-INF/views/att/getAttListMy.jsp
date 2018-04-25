@@ -18,7 +18,7 @@
 		<div class="card-header">
 			<h2>과정 출석률</h2>
 		</div>
-		<div class="card-body" style="border-bottom: :0px">
+		<div class="card-body" style="margin-bottom:440px;">
 			
 
 		
@@ -50,7 +50,6 @@
 
 				</tbody>
 			</table>
-					  	<my:paging paging="${paging}" jsfunc="go_list" />
 		</div>
 	</div>
 
