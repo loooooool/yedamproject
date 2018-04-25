@@ -34,8 +34,8 @@ $(document).ready(function(){
 </script>
 </head>
 
-<body class="app flex-row align-items-center">
-<form action="login" name="form1" method="post">
+<body class="app flex-row align-items-center" >
+<form action="login" name="form1" method="post" style="margin-bottom:450px;">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">

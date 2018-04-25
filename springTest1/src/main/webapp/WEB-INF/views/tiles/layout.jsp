@@ -82,12 +82,7 @@
     <main class="main">
   
 <!--      Breadcrumb -->
-      <ol class="breadcrumb">
-        <li ><h2>예담직업전문학교</h2></li>
-        <li ><a href="#"></a></li>
-        <li ></li>
-
-      </ol>
+     <div style="padding-top:25px;"></div>
 
        <div class="container-fluid">
         <div id="ui-view"></div>
