@@ -65,7 +65,7 @@
 		,#{content}
 		,sysdate
 		,0
-		,#{writer} 
+		,#{writer}
 		,nvl(#{priority_yn},0)
 		<if test="filename != null and filename !=''">
 			,#{filename}
