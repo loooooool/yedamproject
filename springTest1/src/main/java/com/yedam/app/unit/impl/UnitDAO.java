@@ -49,5 +49,17 @@ public class UnitDAO {
 		sqlSession.update("unit.calculateAttend");
 	}
 	
+	public  List<UnitVO> getUnit(UnitVO vo) {
+		return sqlSession.selectList("unit.getUnit",vo);
+	}
+	
+	public UnitVO getAbsence(UnitVO vo){
+		return sqlSession.selectOne("unit.getAbsence",vo);
+	}
+	
+	public List<UnitVO> getScore(UnitVO vo) {
+		return sqlSession.selectList("unit.getScore",vo);
+	}
+	
 }
 

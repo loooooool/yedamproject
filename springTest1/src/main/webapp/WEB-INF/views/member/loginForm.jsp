@@ -34,8 +34,8 @@ $(document).ready(function(){
 </script>
 </head>
 
-<body class="app flex-row align-items-center">
-<form action="login" name="form1" method="post">
+<body class="app flex-row align-items-center" >
+<form action="login" name="form1" method="post" style="margin-bottom:450px;">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -54,7 +54,7 @@ $(document).ready(function(){
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="icon-lock"></i></span>
                 </div>
-                <input type="password" id="pwd" class="form-control" placeholder="Password" name="pwd">
+                <input type="password" id="pwd" class="form-control" placeholder="Password" name="pwd"  onkeypress="if(event.keyCode==13){$('#btnLogin').click();}"/>
               </div>
               <div class="row">
                 <div class="col-6">

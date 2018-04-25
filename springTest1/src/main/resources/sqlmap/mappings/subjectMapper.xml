@@ -18,6 +18,7 @@
 	
 
 	<select id="getSubjectList" resultType="subject">
+	<![CDATA[
 	select a.* from ( select rownum rn, b.* from (
 
 		select su.su_no "su_no"
@@ -27,13 +28,14 @@
 				,su.status_yn "status_yn"
 		from subject su join class cl
 		on(su.cl_no = cl.cl_no)
+		]]>
 		<where>
 			<if test="searchKeyword != null and searchKeyword != ''">
 				<if test="searchCondition == 'class_name' ">
-					and class_name like '%' ||#{searchKeyword} ||'%'
+					and upper(class_name) like '%' || upper(#{searchKeyword}) ||'%'
 				</if>
 				<if test="searchCondition == 'subject' ">
-					subject like '%' ||#{searchKeyword} ||'%'
+					upper(subject) like '%' || upper(#{searchKeyword}) ||'%'
 				</if>
 				<if test="searchCondition == 'status_yn' ">
 					upper(status_yn) like '%' || upper(#{searchKeyword}) ||'%'
@@ -58,8 +60,25 @@
 
 	</select>
 
+	<!-- 검색목록 페이징 -->
 	<select id="getCount" resultType="int">
-		select count(*) from subject
+		
+		select count(*) from subject su join class cl on (su.cl_no = cl.cl_no)
+		
+		<where>
+			<if test="searchKeyword != null and searchKeyword != ''">
+				<if test="searchCondition == 'class_name' ">
+					and upper(class_name) like '%' || upper(#{searchKeyword}) ||'%'
+				</if>
+				<if test="searchCondition == 'subject' ">
+					upper(subject) like '%' || upper(#{searchKeyword}) ||'%'
+				</if>
+				<if test="searchCondition == 'status_yn' ">
+					upper(status_yn) like '%' || upper(#{searchKeyword}) ||'%'
+				</if>
+			</if>
+		</where>
+		
 	</select>
 
 	<insert id="insertSubject" parameterType="map">

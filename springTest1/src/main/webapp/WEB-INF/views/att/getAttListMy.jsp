@@ -16,7 +16,7 @@
 
 <div class="card">
 		<div class="card-header">
-			<h2>나의 출석률</h2>
+			<h2>과정 출석률</h2>
 		</div>
 		<div class="card-body" style="border-bottom: :0px">
 			
@@ -41,7 +41,7 @@
 						
 							<c:forEach items="${percent}" var="pc">
 							<c:if test="${at.name eq pc.name2}">
-								<td>${pc.percentage}%</td>
+								<td style="background-color:yellow">${pc.percentage}%</td>
 							</c:if>
 							</c:forEach>
 					</c:if>

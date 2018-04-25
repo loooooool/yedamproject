@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <script>
 
 var context='${pageContext.request.contextPath}';
@@ -48,6 +48,7 @@ function getUnit(){
 			</div>
 			<hr>
 			<c:set value="" var="oldname"/>
+			<c:set value="0" var="day"/>
 			
 			<table class="table table-bordered table-striped">
 			<thead>
@@ -56,8 +57,9 @@ function getUnit(){
 					<th rowspan="2" align="center">현재수업일수</th>
 					<th rowspan="2" align="center">현재출석일수</th>
 					<th rowspan="2" align="center">남은출석일수</th>
-					<th rowspan="2" align="center">남은결석일수</th>
 					<th rowspan="2" align="center">현재출석율</th>
+					<th rowspan="2" align="center">남은결석일수</th>
+					
 					<!-- <th rowspan="2" align="center">지각/조퇴/결석</th> -->
 					<c:forEach items="${SDATE}" var="unit">
 					<th colspan="4">${unit.sdate}~${unit.edate} </th>
@@ -73,28 +75,33 @@ function getUnit(){
 					</tr>
 
 			</thead>
+
 			<tbody>
-				
-				<c:forEach items="${unitList}" var="unit">
+				 
+	
+				<c:forEach items="${unitList}" var="unit" varStatus="status">
+					<c:set var="ind" value="${status.index/fn:length(SDATE)}"/>
+					<fmt:parseNumber var="ind2" value="${ind}" integerOnly="true"/>
 					<c:if test="${ oldname =='' || unit.student_name != oldname}">
 						<tr>
 						<td width="100px" align="center">${unit.student_name}</td>  <!-- 성명 -->
 						<td>${attendDays.late}</td>									<!-- 현재수업일수 -->
 						<td>${attendDays.late-unit.absence}</td>					<!-- 현재출석일수 -->
-						<td>${classs.totalTime-attendDays.late}</td>				<!-- 남은출석일수 -->
-						<td>남은결석일수 </td>											<!-- 남은결석일수 -->
+						<td>${classs.totalTime-attendDays.late}</td>				<!-- 남은출석일수 -->		
 						<td><fmt:formatNumber value="${attendDays.late-unit.absence/classs.totalTime}" pattern=".00"/></td>	<!-- 현재출석율 -->
-					</c:if>		
-						 	<%-- <c:forEach begin="1" end="${SDATE.length}" varStatus="status"> --%>
-						 		
-							<td>${unit.late}</td>
-							<td>${unit.leave}</td>
-							<td>${unit.goout}</td>
-							<td>${unit.absence}</td>
-							<%-- </c:forEach> --%>
 					
+						
+						<td>${absence.absenceDays-scores[ind2].score}</td>
+						</c:if>
+	
+						<td>${unit.late}</td>
+						<td>${unit.leave}</td>
+						<td>${unit.goout}</td>
+						<td>${unit.absence}</td>
+					
+				
 					<c:set value="${unit.student_name}" var="oldname"/>
-				</c:forEach>
+				</c:forEach> 
 			</tr>
 			</tbody>		
 					
