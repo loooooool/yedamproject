@@ -25,7 +25,7 @@
 					<label class="col-md-3 col-form-label" for="select1"><strong>과정명</strong></label>
 					<div class="col-md-12">
 					<c:if test="${!empty ClassList}">
-						<select id="select1" name="class_name" class="form-control">
+						<select id="select1" name="class_name" class="form-control" disabled="disabled">
 							<option value="">수정할 과정명을 선택하세요</option>
 							<c:forEach items="${ClassList }" var="cl">
 							<option value="${cl.cl_no}" 
