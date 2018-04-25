@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 public interface MemberService {
 
 	public MemberVO getMember_id(MemberVO vo);
+	public List<Map> getMember_idPdf(MemberVO vo);
 	//public MemberVO getPwd(MemberVO vo);
 	public boolean login(MemberVO vo);
 	//public boolean loginCheck(MemberVO vo, HttpSession session);

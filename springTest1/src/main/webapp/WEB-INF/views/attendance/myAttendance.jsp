@@ -3,13 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
 <script>
 </script>
 </head>
 <body>
 	<div class="card">
 		<div class="card-header">
-			<h2>나의 단위출석률</h2>
+			<h2>단위출석률</h2>
 		</div>
 		<div class="card-body" style="border-bottom: :0px">
 		<table class="table table-bordered table-striped">
@@ -42,11 +44,12 @@
 						<tr>
 					
 						<td width="100px" align="center">${sessionScope.memberVO.name}</td><!-- 성명 -->
-						 
 						<td>${attendDays.late}</td>									<!-- 현재수업일수 -->
 						<td>${attendDays.late-unit.absence}</td>					<!-- 현재출석일수 -->
 						<td>${classs.totalTime-attendDays.late}</td>				<!-- 남은출석일수 -->
-						<td>남은결석일수 </td>											<!-- 남은결석일수 -->
+					
+						<td>${absence.absenceDays-scores.score} </td>							<!-- 남은결석일수 -->
+						
 						<td><fmt:formatNumber value="${attendDays.late-unit.absence/classs.totalTime}" pattern=".00"/></td>	<!-- 현재출석율 -->
 					
 				<c:forEach items="${unit2}" var="unit">

@@ -3,8 +3,10 @@ package com.yedam.app.member.view;
 import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,13 +17,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.jasperreports.JasperReportsHtmlView;
 
 import com.yedam.app.classes.ClassService;
-import com.yedam.app.classes.ClassVO;
 import com.yedam.app.classinfo.ClassInfoService;
 import com.yedam.app.code.impl.CodeDAO;
 import com.yedam.app.common.CustomDateEditor2;
@@ -30,7 +30,7 @@ import com.yedam.app.common.Paging;
 import com.yedam.app.member.MemberService;
 import com.yedam.app.member.MemberVO;
 
-/*import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRExporter;
 import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -38,7 +38,8 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.export.JRPdfExporter;*/
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+
 
 @Controller
 public class MemberController {
@@ -106,13 +107,13 @@ public class MemberController {
 	}*/
 
 	//pdf 출력
-	/*@RequestMapping("report.do")
-	public void report(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping("report.do")
+	public void report(HttpServletRequest request, HttpServletResponse response, MemberVO vo) throws Exception {
 		try {
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			JasperReportsHtmlView report = JasperCompileManager
-					.compileReport(request.getSession().getServletContext().getRealPath("report/getMember.jrxml"));
-			JRDataSource JRdataSource = new JRBeanCollectionDataSource(memberService.getMember());
+			JasperReport report = JasperCompileManager.compileReport(request.getSession().getServletContext().getRealPath("report/getMember.jrxml"));
+		
+			JRDataSource JRdataSource = new JRBeanCollectionDataSource(memberService.getMember_idPdf(vo));
 			JasperPrint print = JasperFillManager.fillReport(report, map, JRdataSource);
 			JRExporter exporter = new JRPdfExporter();
 			OutputStream out;
@@ -127,7 +128,7 @@ public class MemberController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 	
 	// 비밀번호 변경 폼
 	@RequestMapping("/changePwdForm")

@@ -32,7 +32,7 @@
            </div>
 
 		<div class="card-footer">
-          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>학생등록</button>
+          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>출석부생성</button>
         </div>
 
 </form>

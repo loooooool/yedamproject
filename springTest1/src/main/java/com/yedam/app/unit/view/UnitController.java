@@ -72,6 +72,8 @@ public class UnitController {
 			model.addAttribute("SDATE",unitService.getSDATE(vo));
 			model.addAttribute("unitList",unitService.getUnitList(vo));
 			model.addAttribute("attendDays",unitService.getAttendDays(vo));
+			model.addAttribute("absence",unitService.getAbsence(vo));
+			model.addAttribute("scores",unitService.getScore(vo));
 			model.addAttribute("classs",classService.getClass(cvo));
 		
 		}
@@ -114,9 +116,11 @@ public class UnitController {
 	
 		vo.setClass_no(cl_no);
 		cvo.setCl_no(cl_no);
+		model.addAttribute("score",unitService.getScore(vo));
 		model.addAttribute("SDATE",unitService.getSDATE(vo));	
 		model.addAttribute("unitList",unitService.getUnitList(vo));
 		model.addAttribute("attendDays",unitService.getAttendDays(vo));
+		model.addAttribute("absence",unitService.getAbsence(vo));
 		model.addAttribute("classs",classService.getClass(cvo));
 		return "attendance/myAttendance";
 	}

@@ -18,10 +18,17 @@
 }
 </style>
 <script>
+
+$(function(){
+	$("#searchCondition").val("${subjectVO.searchCondition}")
+	
+})
+
 	function go_list(page) {
 		document.getElementsByName("page")[0].value = page;
 		document.subjectForm.submit();
 	}
+	
 </script>
 </head>
 <body>
@@ -31,12 +38,12 @@
 		<div class="card-body" align="right">
 			<form action="getSubjectList" style="height: 15.96px;" name="subjectForm">
 				<input type="hidden" name="page" value="${paging.page}" /> 
-				<select name="searchCondition" class="search">
+				<select name="searchCondition" id="searchCondition" class="search">
 					<option value="">선택</option>
 					<c:forEach items="${conditionMap}" var="option">
 						<option value="${option.value}">${option.key}</option>
 					</c:forEach>
-				</select> <input type="text" name="searchKeyword" style="width: 160px;"></input>
+				</select> <input type="text" name="searchKeyword" style="width: 160px;" value="${subjectVO.searchKeyword}"></input>
 				<input type="submit" value="검색" class="btn btn-secondary" />
 			</form>
 		</div>
@@ -66,7 +73,7 @@
 		</table>
 			<my:paging paging="${paging }" jsfunc="go_list" />
 			<div class="card-body" align="right">
-				<input type="button" class="btn btn-secondary" onclick="location.href='getSubjectList'" value="목록" />
+				<input type="button" class="btn btn-secondary" onclick="location.href='./getSubjectList'" value="목록" />
 				<c:if test="${sessionScope.memberVO.member_cd=='M3'}">
 					<input type="button" class="btn btn-info" onclick="location.href='insertSubjectForm'" value="등록" />
 				</c:if>
