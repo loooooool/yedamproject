@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
 <script>
 </script>
 </head>
@@ -42,11 +44,12 @@
 						<tr>
 					
 						<td width="100px" align="center">${sessionScope.memberVO.name}</td><!-- 성명 -->
-						 
 						<td>${attendDays.late}</td>									<!-- 현재수업일수 -->
 						<td>${attendDays.late-unit.absence}</td>					<!-- 현재출석일수 -->
 						<td>${classs.totalTime-attendDays.late}</td>				<!-- 남은출석일수 -->
-						<td>남은결석일수 </td>											<!-- 남은결석일수 -->
+					
+						<td>${absence.absenceDays-scores.score} </td>							<!-- 남은결석일수 -->
+						
 						<td><fmt:formatNumber value="${attendDays.late-unit.absence/classs.totalTime}" pattern=".00"/></td>	<!-- 현재출석율 -->
 					
 				<c:forEach items="${unit2}" var="unit">

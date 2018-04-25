@@ -57,6 +57,9 @@ public class UnitDAO {
 		return sqlSession.selectOne("unit.getAbsence",vo);
 	}
 	
+	public List<UnitVO> getScore(UnitVO vo) {
+		return sqlSession.selectList("unit.getScore",vo);
+	}
 	
 }
 

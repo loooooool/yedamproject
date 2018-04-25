@@ -66,6 +66,12 @@ public class UnitServiceImpl implements UnitService{
 	public UnitVO getAbsence(UnitVO vo){
 		return dao.getAbsence(vo);
 		
+		
+	}
+	public List<UnitVO> getScore(UnitVO vo) {
+
+		return dao.getScore(vo);
+		
 	}
 	
 }
