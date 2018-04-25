@@ -77,6 +77,7 @@ public class MemberController {
 		public String adminUpdateForm(MemberVO vo,String member_id, Model model, HttpSession session) {
 			vo.setMember_id(member_id);
 			model.addAttribute("memberVO", memberService.getMember_id(vo));
+			//model.addAttribute("classVO", )
 			return "member/memberUpdate";
 		}
 
@@ -137,20 +138,12 @@ public class MemberController {
 	// 비밀번호 변경 처리
 	@RequestMapping(value = "/changePwd", method = RequestMethod.POST)
 	public String changePwd(MemberVO vo) {
-		String pwd = "";
-		String pwd2 = "";
-		String checkPwd2 = "";
-
-		if(pwd != vo.getPwd()){
-	    	return "redirect:/";
-	    }
-		
-		if (pwd2 == checkPwd2) {
-			memberService.changePwd(vo);
-			return "redirect:/";
-		} else {
-			return "redirect:/changePwdForm";
+		memberService.changePwd(vo);
+		String pwd="";
+		if(pwd.equals(vo.getPwd()) ) {
+			
 		}
+		return "redirect:memberUpdateForm";
 	}
 
 	// 비밀번호 찾기 폼

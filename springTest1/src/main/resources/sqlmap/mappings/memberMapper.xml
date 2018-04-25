@@ -23,6 +23,7 @@
 		where member_id = #{member_id}
 	</select>
 	
+
 	<!-- 비밀번호 update -->
 	<update id="changePwd" parameterType="member">
 		update member 
@@ -33,7 +34,8 @@
 	<!-- update -->
 	<update id="memberUpdate" parameterType="member">
 		update member 
-		set eng_name = #{eng_name},
+		set name = #{name},
+			eng_name = #{eng_name},
 			school_spec_cd = #{school_spec_cd},
 			major = #{major},
 			social_number = #{social_number},
