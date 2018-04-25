@@ -54,7 +54,7 @@ $(document).ready(function(){
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="icon-lock"></i></span>
                 </div>
-                <input type="password" id="pwd" class="form-control" placeholder="Password" name="pwd">
+                <input type="password" id="pwd" class="form-control" placeholder="Password" name="pwd"  onkeypress="if(event.keyCode==13){$('#btnLogin').click();}"/>
               </div>
               <div class="row">
                 <div class="col-6">

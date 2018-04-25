@@ -14,18 +14,33 @@
 </select>
 <input type="submit" value="시간표등록"/>
 </form> --%>
-
+ <div class="card-header">
+          <strong><h2>출석부 생성</h2></strong>
+          
+        </div>
 
 <form action="./insertTimeTableView" method="post" enctype="multipart/form-data">
-<select name="sub_no" id="sub_no">
-	<c:forEach items="${classList}" var="list">
-		<option value="${list.cl_no}">${list.class_name}</option>
-	</c:forEach>
-	
-</select><br>
-<input type="file" class="btn btn-info" name="attach_file" /><br>
-<input type="submit" value="시간표등록"/>
+
+
+<div class="card-body">  
+             <select name="sub_no" id="sub_no">
+					<c:forEach items="${classList}" var="list">
+					<option value="${list.cl_no}">${list.class_name}</option>
+					</c:forEach>
+			</select>
+			<input type="file" class="btn btn-info" name="attach_file" /><br> 
+           </div>
+
+		<div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>학생등록</button>
+        </div>
+
 </form>
+
+
+
+
+
 
 <!-- <form action="insertExcel" method="post" enctype="multipart/form-data">
 				<div class="col-md-3" align="center">
