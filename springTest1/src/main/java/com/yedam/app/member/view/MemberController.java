@@ -86,7 +86,7 @@ public class MemberController {
 		public String memberUpdate(MemberVO vo) {
 			System.out.println("회원정보 수정 처리");
 			memberService.memberUpdate(vo);
-			return "redirect:/";
+			return "member/memberUpdate";
 		}
 
 	/*// 관리자 수정(조회)폼
