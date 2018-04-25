@@ -9,7 +9,7 @@
 <body>
 	<div class="card">
 		<div class="card-header">
-			<h2>나의 단위출석률</h2>
+			<h2>단위출석률</h2>
 		</div>
 		<div class="card-body" style="border-bottom: :0px">
 		<table class="table table-bordered table-striped">

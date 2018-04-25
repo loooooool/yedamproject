@@ -48,6 +48,7 @@ function getUnit(){
 			</div>
 			<hr>
 			<c:set value="" var="oldname"/>
+			<c:set value="0" var="day"/>
 			
 			<table class="table table-bordered table-striped">
 			<thead>
@@ -73,6 +74,7 @@ function getUnit(){
 					</tr>
 
 			</thead>
+
 			<tbody>
 				
 				<c:forEach items="${unitList}" var="unit">
@@ -81,8 +83,8 @@ function getUnit(){
 						<td width="100px" align="center">${unit.student_name}</td>  <!-- 성명 -->
 						<td>${attendDays.late}</td>									<!-- 현재수업일수 -->
 						<td>${attendDays.late-unit.absence}</td>					<!-- 현재출석일수 -->
-						<td>${classs.totalTime-attendDays.late}</td>				<!-- 남은출석일수 -->
-						<td>남은결석일수 </td>											<!-- 남은결석일수 -->
+						<td>${classs.totalTime-attendDays.late}</td>				<!-- 남은출석일수 -->		
+						<td>${day} </td>											<!-- 남은결석일수 -->
 						<td><fmt:formatNumber value="${attendDays.late-unit.absence/classs.totalTime}" pattern=".00"/></td>	<!-- 현재출석율 -->
 					</c:if>		
 						 	<%-- <c:forEach begin="1" end="${SDATE.length}" varStatus="status"> --%>
