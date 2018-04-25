@@ -27,7 +27,7 @@ public class UnitServiceImpl implements UnitService{
 			vo.setEdate(uvo.getEdate()[i]);
 			vo.setSdate(uvo.getSdate()[i]);
 			dao.insertUnit(vo); 
-			System.out.println(vo.getOUT_MSG());
+			
 		} 
 		
 	}
@@ -62,6 +62,10 @@ public class UnitServiceImpl implements UnitService{
 		return dao.getUnit(vo);
 	}
 	
-	
+
+	public UnitVO getAbsence(UnitVO vo){
+		return dao.getAbsence(vo);
+		
+	}
 	
 }

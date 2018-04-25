@@ -72,6 +72,7 @@ public class UnitController {
 			model.addAttribute("SDATE",unitService.getSDATE(vo));
 			model.addAttribute("unitList",unitService.getUnitList(vo));
 			model.addAttribute("attendDays",unitService.getAttendDays(vo));
+			model.addAttribute("absenceDays",unitService.getAttendDays(vo));
 			model.addAttribute("classs",classService.getClass(cvo));
 		
 		}
@@ -117,6 +118,7 @@ public class UnitController {
 		model.addAttribute("SDATE",unitService.getSDATE(vo));	
 		model.addAttribute("unitList",unitService.getUnitList(vo));
 		model.addAttribute("attendDays",unitService.getAttendDays(vo));
+		model.addAttribute("absenceDays",unitService.getAttendDays(vo));
 		model.addAttribute("classs",classService.getClass(cvo));
 		return "attendance/myAttendance";
 	}

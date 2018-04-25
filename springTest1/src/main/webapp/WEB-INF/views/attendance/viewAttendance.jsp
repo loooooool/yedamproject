@@ -84,7 +84,7 @@ function getUnit(){
 						<td>${attendDays.late}</td>									<!-- 현재수업일수 -->
 						<td>${attendDays.late-unit.absence}</td>					<!-- 현재출석일수 -->
 						<td>${classs.totalTime-attendDays.late}</td>				<!-- 남은출석일수 -->		
-						<td>${day} </td>											<!-- 남은결석일수 -->
+						<td>${absenceDays.absenceDays} </td>											<!-- 남은결석일수 -->
 						<td><fmt:formatNumber value="${attendDays.late-unit.absence/classs.totalTime}" pattern=".00"/></td>	<!-- 현재출석율 -->
 					</c:if>		
 						 	<%-- <c:forEach begin="1" end="${SDATE.length}" varStatus="status"> --%>

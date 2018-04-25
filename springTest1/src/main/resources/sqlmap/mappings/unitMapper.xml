@@ -114,6 +114,13 @@
 		ORDER BY unitdays
 	</select>
 	
+	<select id="getAbsence" parameterType="unit" resultType="unit">
+		SELECT sum(trunc(unitdays*0.2,0)) as "absenceDays"
+		FROM unit_attendance
+		WHERE class_no = #{class_no}
+		AND student_name='XMAN'
+	</select>
+	
 
 
 </mapper>
