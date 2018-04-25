@@ -20,7 +20,7 @@
 			<h2>과정 목록</h2>
 		</div>
 		<div class="card-body">
-			<form action="getClassList" name="classForm">
+			<form action="getClassList" name="classForm" style="margin-bottom:340px;">
 				<input type="hidden" name="page" value="${paging.page}" /> <br>
 				<table id="example" class="table table-responsive-sm table-striped" style="width: 100%">
 					<thead>

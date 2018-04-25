@@ -3,7 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+
 <script>
+$(function(){
+	$("#searchCondition").val("${noticeVO.searchCondition}")
+	
+})
+
 	function go_list(page) {
 		document.getElementsByName("page")[0].value = page;
 		document.noticeForm.submit();
@@ -37,7 +43,7 @@
 									<option value="${option.value}">${option.key}</option>		
 								</c:forEach>
 							</select>
-							<input type="text" name="searchKeyword" style="width:160px;"></input>
+							<input type="text" name="searchKeyword" style="width:160px;" value="${noticeVO.searchCondition}"></input>
 							<input type="submit" value="Search" class="btn btn-secondary" />
 					</form>
 				</div>

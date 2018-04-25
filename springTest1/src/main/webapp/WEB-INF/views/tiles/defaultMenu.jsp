@@ -4,7 +4,7 @@
 
 <nav class="sidebar-nav">
 	<ul class="nav">
-		<li class="nav-item"><a class="nav-link" href="getSchedulers">
+		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/getSchedulers">
 		<i class="icon-speedometers"></i> 홈</a>
 		</li>
 
@@ -37,19 +37,19 @@
 				<ul class="nav-dropdown-items">
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/memberUpdateForm"><i
-							class="icon-puzzles"></i>회원정보수정</a></li>
+							class="icon-puzzles" id="sub"></i>회원정보수정</a></li>
 							
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getTimeTableList"><i
-							class="icon-puzzles"></i>나의 시간표</a></li>
+							class="icon-puzzles" id="sub"></i>나의 시간표</a></li>
 							
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getUnit">
-						<i class="icon-puzzles"></i>나의 출석률</a></li>
+						<i class="icon-puzzles" id="sub"></i>나의 출석률</a></li>
 						
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getSugtList"><i
-							class="icon-calculators"></i>건의하기 <span
+							class="icon-calculators" id="sub"></i>건의하기 <span
 							class="badge badge-primary">NEW</span></a></li>
 				</ul>
 			</li>
@@ -94,19 +94,16 @@
 			</li>
 			<li class="nav-item nav-dropdown"><a
 				class="nav-link nav-dropdown-toggle" href="#"><i
-					class="icon-stars"></i>학생관리</a>
+					class="icon-stars" ></i>학생관리</a>
 				<ul class="nav-dropdown-items">
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/insertMemberForm"
-						id="sub"><i class="icon-cursors"></i>학생등록</a></li>
+						><i class="icon-cursors" id="sub"></i>학생등록</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/viewMember" id="sub"><i
-							class="icon-cursors"></i>학생조회</a></li>
+						href="${pageContext.request.contextPath}/viewMember" ><i
+							class="icon-cursors" id="sub"></i>학생조회</a></li>
 					
 				</ul></li>
-			<li class="nav-item"><a class="nav-link" href="widgets.html"><i
-					class="icon-calculators"></i>공휴일 </a>
-			</li>
 			<li class="nav-item"><a class="nav-link"
 				href="${pageContext.request.contextPath}/getConsultList"><i
 					class="icon-calculators"></i>상담일지</a>

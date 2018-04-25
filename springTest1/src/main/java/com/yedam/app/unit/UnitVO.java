@@ -18,10 +18,25 @@ public class UnitVO { 				//단위기간 출석부
 	private String excelFile;		//엑셀파일 업로드
 	
 	private String day;				//출석 업데이트시 사용하는 츨석일자
+	private Integer absenceDays;	//결석가능일수
+	private Double score;			//지각, 조퇴, 결석, 외출 점수
 	
 	
 	
 	
+	
+	public Double getScore() {
+		return score;
+	}
+	public void setScore(Double score) {
+		this.score = score;
+	}
+	public Integer getAbsenceDays() {
+		return absenceDays;
+	}
+	public void setAbsenceDays(Integer absenceDays) {
+		this.absenceDays = absenceDays;
+	}
 	public String getDay() {
 		return day;
 	}

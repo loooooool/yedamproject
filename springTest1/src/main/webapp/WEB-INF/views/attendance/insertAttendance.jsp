@@ -84,7 +84,7 @@
 			<h2>출석부생성</h2>
 		</div>
 		<div class="card-body" style="border-bottom: :0px">
-			<form action="insertUnit" method="post" id="insert" name="insert">
+			<form action="insertUnit" method="post" id="insert" name="insert" style="margin-bottom:220px;">
 			<div class="form-group row">
 				<label class="col-md-3 col-form-label" for="select1">과정</label>
 				<div class="col-md-9">
@@ -97,17 +97,17 @@
 				</div>
 			</div>
 			
-		<hr>
+		<hr></hr>
 		
 			<div class="card" id="unitcardparent">
 				<div class="card-body" align="right" >
        		   		<input type="button" class="btn btn-info" onclick="addCard()" value="추가"/>
         		 	<input type="button" class="btn btn-danger" onclick="removeCard()" value="삭제"/>
  				</div>
-			
+
 				<!-- -------------------------------------------추가부분------------------------------------------------- -->
 				<div class="card-body" id="unitcard0" style="border: 1px solid lightgray:border-bottom:0px">
-					
+					<hr></hr>	
 					<div class="form-group row">
 						<label class="col-md-3 col-form-label" for="select1">단위번호</label>
 						<div class="col-sm-3">

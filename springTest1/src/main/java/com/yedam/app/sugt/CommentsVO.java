@@ -8,10 +8,20 @@ public class CommentsVO {
 	private String content;		    //댓글내용
 	private String member_id; 		//작성자(익명처리)
 	private Date co_date;  			//댓글 작성일자
+	private String c_date;
 	private Integer parent_no;	    //게시글번호(참조키)
 	private int    pageUnit;
 	
 	
+	
+	
+	
+	public String getC_date() {
+		return c_date;
+	}
+	public void setC_date(String c_date) {
+		this.c_date = c_date;
+	}
 	public Integer getCo_no() {
 		return co_no;
 	}
@@ -30,6 +40,8 @@ public class CommentsVO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
+	
+	
 	public Date getCo_date() {
 		return co_date;
 	}

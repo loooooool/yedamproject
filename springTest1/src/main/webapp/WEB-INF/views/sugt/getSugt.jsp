@@ -1,6 +1,16 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+.buttons{
+	display:inline-block;
+	width:75%;
+	align:right;
+}
+</style>
 <script>
 window.onload = function() {
 	loadCommentList();  // 목록조회 ajax 요청
@@ -25,12 +35,12 @@ function makeCommentView(comment){
 	div.className = 'comment';
 	div.comment = comment;  //{id:1,.... }
 	
-	var str = "<strong>" + comment.content +"</strong>" 
+	
+	var str = "익명 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + "<span class=\"buttons\">" + comment.content+"</span>" 
 	var str2 = ""
-	console.log("${sessionScope.memberVO.member_id}"== comment.member_id)
 	if("${sessionScope.memberVO.member_id}"== comment.member_id){
-	 str2 = "<input type=\"button\" class=\"btn btn-warning\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.co_no+"')\"/>"
-			  +"<input type=\"button\" class=\"btn btn-danger\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.co_no+"')\"/>"
+	 str2 = comment.c_date+"&nbsp;<input type=\"button\" class=\"btn btn-\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.co_no+"')\"/>"+"&nbsp;"
+			  +"<input type=\"button\" class=\"btn btn-danger\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.co_no+"')\"/><hr>"
 			  }
 	
 	div.innerHTML = str+str2;
@@ -95,18 +105,22 @@ function updateComment(){
 
 <body>
 
+<div class="card">
+		<div class="card-header">
+			<h2>건의사항</h2>
+		</div>
 <div class="card-body">
 	<div class="form-group row">
   		<label class="col-md-3 col-form-label" for="input-normal">제목</label>
    		      <div class="col-md-9">
-        	        <input type="text" disabled=disabled id="input-normal" name="input-normal" class="form-control" placeholder="Normal" value="${sugt.title}">
+        	        <input type="text" disabled=disabled id="input-normal" name="input-normal" class="form-control" placeholder="Normal" value="${sugt.title}" style="background-color:white;">
               </div>
    </div>
 
 	<div class="form-group row">
 		<label class="col-md-3 col-form-label" for="textarea-input">내용</label>
 		<div class="col-md-9">
-			<textarea id="textarea-input" name="textarea-input" rows="9" disabled=disabled class="form-control" placeholder="Content..">${sugt.content}</textarea>
+			<textarea id="textarea-input" name="textarea-input" rows="9" disabled=disabled class="form-control" placeholder="Content.." style="background-color:white;">${sugt.content}</textarea>
 		</div>
 	</div>
 	<div  align="right" >
@@ -130,6 +144,8 @@ function updateComment(){
 	 			<!-- 댓글등록폼 -->
 	 				<input type="hidden" name="parent_no" value="${sugt.s_no}"> 
 					<input type="hidden" name="member_id" value="${sessionScope.memberVO.member_id}" /> 
+				
+			
 	 				<div class="form-group row">
 						<label class="col-md-3 col-form-label" for="textarea-input">댓글</label>
 						<div class="col-md-9">
@@ -141,12 +157,15 @@ function updateComment(){
 						</div>
 				</form>
 			</div>
+
+
 			
 			<div id="commentUpdate" style="display: none">
 	 			<form action="" name="updateForm">
 	 				<input type="hidden" name="parent_no" value="${sugt.s_no}"> 
 					<input type="hidden" name="co_no" value="" /> 
-					<input type="hidden" name="member_id" value="" /> 
+					<input type="hidden" name="member_id" value="" />
+				
 					
 	 				<div class="form-group row">
 						<label class="col-md-3 col-form-label" for="textarea-input">댓글</label>
@@ -164,6 +183,6 @@ function updateComment(){
 </div>
 	</div>
 
- 	
+ 	</div>
  	
  	 

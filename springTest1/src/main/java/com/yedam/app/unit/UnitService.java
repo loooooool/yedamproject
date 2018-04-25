@@ -13,4 +13,6 @@ public interface UnitService {
 	public List<UnitVO> getSDATE(UnitVO vo);
 	public UnitVO getAttendDays(UnitVO vo);
 	public  List<UnitVO> getUnit(UnitVO vo);
+	public UnitVO getAbsence(UnitVO vo);
+	public List<UnitVO> getScore(UnitVO vo);
 }

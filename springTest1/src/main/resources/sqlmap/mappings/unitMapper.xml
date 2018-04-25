@@ -114,6 +114,21 @@
 		ORDER BY unitdays
 	</select>
 	
+	<select id="getAbsence" parameterType="unit" resultType="unit">
+		SELECT sum(trunc(unitdays*0.2,0)) as "absenceDays"
+		FROM unit_attendance
+		WHERE class_no = #{class_no}
+		AND student_name='XMAN'
+	</select>
+	
+	<select id="getScore" parameterType="unit" resultType="unit">
+		SELECT  trunc(sum(late/3),1)+ trunc(sum(leave/3),1)+ trunc(sum(goout/3),1)+ trunc(sum(absence),1) as "score", student_name
+		FROM unit_attendance
+		WHERE class_no = #{class_no}
+		and student_name not in 'XMAN'
+        group by student_name
+        order by student_name
+	</select>
 
 
 </mapper>

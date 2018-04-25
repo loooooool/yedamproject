@@ -15,6 +15,7 @@
 			<hr class="my-4">
 				<p><%=request.getParameter("class_name") %></p>
 			<div class="card-body" align="right">
+				<input type="button" class="btn btn-secondary" onclick="location.href='./getClassList'" value="목록" />
 				<form action="getClassTimeTable"></form>
 			</div>
 		</div>

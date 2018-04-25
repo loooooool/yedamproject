@@ -29,7 +29,7 @@ function getAttList(cl_no){
 </head>
 <body>
 
-<div class="card">
+<div class="card" style="margin-bottom:500px;">
 		<div class="card-header">
 			<h2>과목별 출석부 조회</h2>
 		</div>
@@ -61,7 +61,6 @@ function getAttList(cl_no){
 
 				</tbody>
 			</table>
-					  	<my:paging paging="${paging}" jsfunc="go_list" />
 		</div>
 	</div>
 

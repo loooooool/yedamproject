@@ -32,7 +32,7 @@ $(function(){
 			<div class="form-group row">
 					<label class="col-md-3 col-form-label" for="select1"><strong>과정명</strong></label>
 					<div class="col-md-12">
-						<select id="cl_no" name="cl_no" class="form-control">
+						<select id="select1" name="class_name" class="form-control">
 							<option value="" selected="selected">과정 선택</option>
 							<c:forEach items="${ClassList }" var="cl">
 							<option value="${cl.cl_no }">${cl.class_name }</option>
@@ -41,8 +41,8 @@ $(function(){
 					</div>
 				</div>
 			
-			<button type="button" class="btn btn-sm btn-primary" id="add" onclick="addsub()">
-				<i class="fa fa-dot-circle-o"></i>과정추가</button>
+			<button type="button" class="btn btn-info" id="add" onclick="addsub()">
+				과목 추가</button>
             <hr>
             
              <div id="copy">
@@ -56,18 +56,7 @@ $(function(){
 					<input type="text" id="nf-email" name="totalTime" class="form-control" value="예)10" onfocus="this.value=''"> 
 					<span class="help-block">시간을 입력하세요</span>
 				</div>
-				<div class="form-group">
-					<label for="nf-email"><strong>사용여부</strong></label>
-						<div class="form-check">
-							<input class="form-check-input" type="radio" value="Y" id="radio1" name="status_yn"> 
-							<label class="form-check-label" for="radio1"> YES</label>
-						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="radio" value="N" id="radio2" name="status_yn2"> 
-							<label class="form-check-label" for="radio2"> NO</label>
 					<hr>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

@@ -96,7 +96,7 @@
 				#{su_no}
 				,#{subject}
 				,#{totalTime}
-				,#{status_yn}
+				,'Y'
 				,#{cl_no}
 				)
 	</insert>
@@ -110,7 +110,7 @@
 				,cl_no=#{cl_no}
 		</if>
 				,status_yn=#{status_yn}
-				where su_no=#{su_no}
+		where su_no=#{su_no}
 	</update>
 
 	<delete id="deleteSubject" parameterType="subject">
