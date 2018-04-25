@@ -72,7 +72,7 @@
 						href="${pageContext.request.contextPath}/insertTimeTableForm"><i
 							class="icon-cursors" id="sub"></i>시간표등록</a></li>
 				</ul>
-
+ 
 			<li class="nav-item nav-dropdown"><a
 				class="nav-link nav-dropdown-toggle" href="#"><i
 					class="icon-cursors"></i>출결</a>
