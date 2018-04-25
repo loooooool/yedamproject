@@ -41,7 +41,7 @@
 						
 							<c:forEach items="${percent}" var="pc">
 							<c:if test="${at.name eq pc.name2}">
-								<td style="background-color:yellow">${pc.percentage}%</td>
+								<td <c:if test='${pc.percentage >80}'>style="background-color:skyblue"</c:if><c:if test='${pc.percentage <80}'>style="background-color:beige"</c:if>>${pc.percentage}%</td>
 							</c:if>
 							</c:forEach>
 					</c:if>
