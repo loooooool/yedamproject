@@ -58,7 +58,7 @@ public class UnitServiceImpl implements UnitService{
 	}
 
 
-	public UnitVO getUnit(UnitVO vo) {
+	public  List<UnitVO> getUnit(UnitVO vo) {
 		return dao.getUnit(vo);
 	}
 	

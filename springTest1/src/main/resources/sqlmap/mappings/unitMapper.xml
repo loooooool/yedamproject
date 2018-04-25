@@ -76,9 +76,7 @@
 		 <if test="class_no != '' and class_no !=null ">
 		 WHERE class_no = #{class_no} 
 		 </if>
-		 <if test="student_name != '' and student_name !=null ">
-		 WHERE student_name=#{student_name}
-		 </if>
+
 		 order by 1 asc
 	</select>
 	
@@ -116,7 +114,6 @@
 		ORDER BY unitdays
 	</select>
 	
-	
-	
+
 
 </mapper>
