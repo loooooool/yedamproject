@@ -3,9 +3,12 @@ package com.yedam.app.unit.view;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.yedam.app.att.ClassAttService;
 import com.yedam.app.classes.ClassService;
 import com.yedam.app.classes.ClassVO;
+import com.yedam.app.member.MemberVO;
 import com.yedam.app.sampledata.SampleService;
 import com.yedam.app.unit.UnitInsertVO;
 import com.yedam.app.unit.UnitService;
@@ -38,6 +43,8 @@ public class UnitController {
 	@Autowired
 	SampleService sampleService;
 	
+	@Autowired
+	ClassAttService classAttService;
 	
 	@Value("${file.uploadfolder}")
 	String uploadfolder;
@@ -91,6 +98,27 @@ public class UnitController {
 		return "forward:/getUnitList";
 	}
 	
+	@RequestMapping("/getUnit")
+	public String getUnit(Model model, UnitVO vo,HttpSession session)
+	{	
+		MemberVO mvo = new MemberVO();
+		mvo = (MemberVO) session.getAttribute("memberVO");
+		vo.setStudent_name(mvo.getName());
+		System.out.println(vo);
+		model.addAttribute("unit2",unitService.getUnit(vo));
+		
+		Map<String,Object> cl = classAttService.getClassInfoOne((String)classAttService.getMemberId(((MemberVO)session.getAttribute("memberVO")).getName()).get("member_id"));
+		int cl_no = ((BigDecimal)cl.get("cl_no")).intValue();
 	
+		ClassVO cvo = new ClassVO();
+	
+		vo.setClass_no(cl_no);
+		cvo.setCl_no(cl_no);
+		model.addAttribute("SDATE",unitService.getSDATE(vo));	
+		model.addAttribute("unitList",unitService.getUnitList(vo));
+		model.addAttribute("attendDays",unitService.getAttendDays(vo));
+		model.addAttribute("classs",classService.getClass(cvo));
+		return "attendance/myAttendance";
+	}
 
 }

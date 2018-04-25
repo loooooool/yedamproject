@@ -28,6 +28,8 @@
 			dateFormat : "yy/mm/dd"
 		});
 	});
+	
+	
 </script>
 
 </head>
@@ -42,8 +44,9 @@
 				<div class="card-body">
 					<form action="memberUpdate" method="POST">
 
-						<input type="hidden" id=member_id name=member_id
-							value="${memberVO.member_id}"> <input type="hidden"
+						<input type="hidden" 
+							id=member_id name=member_id	value="${memberVO.member_id}"> 
+						<input type="hidden"
 							id=member_cd name=member_cd value="${memberVO.member_cd}">
 
 						<div class="form-group">
@@ -247,7 +250,7 @@
 								<br> <br>
 
 								<div class="card-body">
-									<input type="submit" class="btn btn-info" value="수정" /><br>
+									<input type="submit" id="upBtn" class="btn btn-info" value="수정" /><br>
 									<br>
 								</div>
 
