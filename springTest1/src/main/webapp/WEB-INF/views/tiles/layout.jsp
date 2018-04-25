@@ -20,8 +20,7 @@
   <script src="${pageContext.request.contextPath}/scripts/bootstrap.js"></script>
   <script src="${pageContext.request.contextPath}/scripts/pace.min.js"></script>
 
-  <!-- Plugins and scripts required by all views -->
-  <script src="${pageContext.request.contextPath}/scripts/charts.js"></script>
+
 
   <!-- CoreUI main scripts -->
   <script src="${pageContext.request.contextPath}/scripts/app.js"></script>
