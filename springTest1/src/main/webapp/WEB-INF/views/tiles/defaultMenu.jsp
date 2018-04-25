@@ -4,7 +4,7 @@
 
 <nav class="sidebar-nav">
 	<ul class="nav">
-		<li class="nav-item"><a class="nav-link" href="/app">
+		<li class="nav-item"><a class="nav-link" href="getSchedulers">
 		<i class="icon-speedometers"></i> 홈</a>
 		</li>
 
@@ -18,12 +18,12 @@
 					<i class="icon-cursors"></i>예담 수업</a>
 					
 				<ul class="nav-dropdown-items">
-					<li class="nav-item">
-						<a class="nav-link" href="${pageContext.request.contextPath}/getClassList">
-						<i class="icon-cursors"></i>과정</a></li>
-					<li class="nav-item">
-						<a class="nav-link"	href="${pageContext.request.contextPath}/getSubjectList">
-						<i class="icon-cursors"></i>과목</a></li>
+					<li class="nav-item" >
+						<a class="nav-link"  href="${pageContext.request.contextPath}/getClassList">
+						<i class="icon-cursors" id="sub"></i>과정</a></li>
+					<li class="nav-item" >
+						<a class="nav-link" href="${pageContext.request.contextPath}/getSubjectList">
+						<i class="icon-cursors" id="sub"></i>과목</a></li>
 				</ul>
 		</li>
 	
@@ -54,24 +54,6 @@
 				</ul>
 			</li>
 		</c:if>	
-			<li class="nav-item nav-dropdown"><a
-				class="nav-link nav-dropdown-toggle" href="#"><i
-					class="icon-cursors"></i>과정</a>
-				<ul class="nav-dropdown-items">
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/getClassList"><i
-							class="icon-cursors"></i>과정 목록</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/getSubjectList"><i
-							class="icon-cursors"></i>과목 목록</a></li>
-				</ul>
-			</li>
-		</ul>
-	
-		
-		
-
-
 		<!------------ 관리자 ------------>
 		<c:if test="${sessionScope.memberVO.member_cd=='M2' or sessionScope.memberVO.member_cd=='M3'}">
 			<li class="nav-title">${sessionScope.memberVO.name}관리자님</li>
