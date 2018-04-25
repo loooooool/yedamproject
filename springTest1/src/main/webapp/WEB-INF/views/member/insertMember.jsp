@@ -34,7 +34,7 @@
           <strong>학생 등록</strong>
           
         </div>
-        <form action="memberTestView" method="post" class="form-horizontal">
+        <form action="memberTestView" method="post" class="form-horizontal" style="margin-bottom:470px;">
         
           <div class="card-body">
                  <!--  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

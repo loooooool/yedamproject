@@ -19,7 +19,7 @@
           
         </div>
 
-<form action="./insertTimeTableView" method="post" enctype="multipart/form-data">
+<form action="./insertTimeTableView" method="post" enctype="multipart/form-data" style="margin-bottom:585px;">
 
 
 <div class="card-body">  

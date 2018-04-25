@@ -70,5 +70,8 @@
 	</div>
 </body>
 </html>
+
+	<c:if test="${sessionScope.memberVO.class_cd =='C1'}">
 	<iframe src= "./getAttListMy"  style="width: 100%; height:800px; border:1px;"></iframe>
+	</c:if>
 	<%-- <%@include file="../att/getAttListMy.jsp"%> --%>

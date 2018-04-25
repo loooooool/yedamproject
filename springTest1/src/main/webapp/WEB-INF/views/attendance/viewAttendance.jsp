@@ -17,7 +17,7 @@ function getUnit(){
 </head>
 
 <body>
-	<div class="card">
+	<div class="card" style="margin-bottom:500px;">
 		<div class="card-header">
 			<h2>출석부현황</h2>
 		</div>

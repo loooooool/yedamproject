@@ -96,7 +96,7 @@
 				#{su_no}
 				,#{subject}
 				,#{totalTime}
-				,#{status_yn}
+				,'Y'
 				,#{cl_no}
 				)
 	</insert>
