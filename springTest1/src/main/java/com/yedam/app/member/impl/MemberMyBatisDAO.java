@@ -32,6 +32,10 @@ public class MemberMyBatisDAO {
 		return sqlSession.selectOne("member.getMember_id",vo);
 	}
 	
+	public List<Map> getMember_idPdf(MemberVO vo) {
+		return sqlSession.selectList("member.getMember_idPdf",vo);
+	}
+	
 	/*public void getPwd(MemberVO vo) {
 		sqlSession.update("member.getPwd", vo);
 	}*/

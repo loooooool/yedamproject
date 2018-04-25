@@ -32,11 +32,6 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getMember_id(vo);
 	}
 
-	/*
-	 * @Override public boolean loginCheck(MemberVO vo, HttpSession session) {
-	 * return false; }
-	 */
-
 	@Override
 	public List<MemberVO> getMemberList(MemberVO vo) {
 		return dao.getMemberList(vo);
@@ -71,8 +66,10 @@ public class MemberServiceImpl implements MemberService {
 		dao.find_pwd(vo);
 	}
 
-	// 비밀번호 확인
-
+	@Override
+	public List<Map> getMember_idPdf(MemberVO vo) {
+		return dao.getMember_idPdf(vo);
+	}
 
 	/*
 	 * @Override public void adminMemberUpdate(MemberVO vo) {

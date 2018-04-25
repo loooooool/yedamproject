@@ -38,7 +38,7 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
-					<h1>${sessionScope.memberVO.name}님의 훈련수강신청서</h1>
+					<h1>${memberVO.name}님의 훈련수강신청서</h1>
 				</div>
 
 				<div class="card-body">
@@ -266,7 +266,7 @@
 									<c:if
 										test="${sessionScope.memberVO.member_cd=='M2' or sessionScope.memberVO.member_cd=='M3'}">
 										<button type="button" class="btn btn-danger"
-											onclick="location.href='getMember.jrxml'" value="pdf">출력</button>
+											onclick="location.href='report.do?member_id=${memberVO.member_id}'" value="pdf">출력</button>
 									</c:if>
 								</div>
 							</div>

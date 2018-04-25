@@ -23,6 +23,36 @@
 		where member_id = #{member_id}
 	</select>
 	
+	<select id="getMember_idPdf" resultType="map" parameterType="String">
+select MEMBER_ID
+,PWD
+,GET_CODENAME(MEMBER_CD) MEMBER_CD
+,NAME
+,ENG_NAME
+,SOCIAL_NUMBER
+,SCHOOL_SPEC_CD
+,MAJOR
+,EMAIL
+,ADDRESS
+,PHONE
+,H_PHONE
+,GET_CODENAME(OPEN_ROUTE_CD) OPEN_ROUTE_CD
+,OPEN_ROUTE_ETC
+,PREVIOUS_JOB
+,JOB_CHANGE_DATE
+,GET_CODENAME(BOHUN_YN) BOHUN_YN
+,GET_CODENAME(COURSE_TYPE_CD) COURSE_TYPE_CD
+,CL_NO
+,CLASS_NAME
+,C_ADDRESS
+,TIMETABLE
+,TOTALTIME
+,GET_CODENAME(CLASS_CD) CLASS_CD
+,TOTALDAYS
+,GET_CODENAME(UNEMPLOYEE_PAY_YN) UNEMPLOYEE_PAY_YN
+from members_vo where member_id  = #{member_id}
+	</select>
+	
 
 	<!-- 비밀번호 update -->
 	<update id="changePwd" parameterType="member">
