@@ -4,7 +4,7 @@
 
 <nav class="sidebar-nav">
 	<ul class="nav">
-		<li class="nav-item"><a class="nav-link" href="getSchedulers">
+		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/getSchedulers">
 		<i class="icon-speedometers"></i> 홈</a>
 		</li>
 
