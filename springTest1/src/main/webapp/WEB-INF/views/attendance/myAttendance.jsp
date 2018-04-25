@@ -9,7 +9,7 @@
 <body>
 	<div class="card">
 		<div class="card-header">
-			<h2>나의 출석률</h2>
+			<h2>나의 단위출석률</h2>
 		</div>
 		<div class="card-body" style="border-bottom: :0px">
 		<table class="table table-bordered table-striped">
@@ -67,5 +67,5 @@
 	</div>
 </body>
 </html>
-
-<%@include file="../att/getAttListMy.jsp"%>
+	<iframe src= "./getAttListMy"  style="width: 100%; height:800px; border:1px;"></iframe>
+	<%-- <%@include file="../att/getAttListMy.jsp"%> --%>

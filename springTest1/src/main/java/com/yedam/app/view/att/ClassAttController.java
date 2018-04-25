@@ -211,6 +211,6 @@ public class ClassAttController {
 		model.addAttribute("attList",classAttService.getAttList(cl_no));
 		model.addAttribute("attSubjectList",classAttService.getAttSubjectList(cl_no));
 		model.addAttribute("percent",percent);
-		return "att/getAttListMy";
+		return "popup/att/getAttListMy";
 	}
 }
