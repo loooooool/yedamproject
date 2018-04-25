@@ -16,12 +16,12 @@
 	<!-- sessionScope id가 없으면 -->
 	<ul class="nav navbar-nav ml-auto"></ul>
 	<div class="nav-item d-md-down-none" style="padding-right:120px;"><a class="loginForm"
-		href="loginForm">LOGIN</a></div>
+		href="loginForm">●로그인</a></div>
 </c:if>
 <c:if test="${not empty sessionScope.memberVO}">
 	<!-- sessionScope id가 있으면 -->
 	<div style="align:right; padding:100px;" class="nav-item d-md-down-none">
-		${sessionScope.memberVO.name} 님 어서오세요! <a class="login" href="logout">&nbsp;&nbsp;LOGOUT</a>
+		${sessionScope.memberVO.name} 님 어서오세요! <a class="login" href="logout">&nbsp;&nbsp;로그아웃</a>
 	</div>
 </c:if>
 
