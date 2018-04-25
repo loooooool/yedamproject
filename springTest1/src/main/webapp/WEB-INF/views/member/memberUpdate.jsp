@@ -257,9 +257,8 @@
 								<div class="card-body">
 									<button type="button" class="btn btn-success"
 										onclick="location.href='changePwdForm'">비밀번호 변경</button>
-									<button type="button" class="btn btn-warning"
-										onclick="location.href='getTimeTableList'" value="시간표 보기">시간표
-										보기</button>
+									<button type="button" class="btn btn-info"
+										onclick="location.href='./getAttListMy'" value="출석률 보기">출석률 보기</button>
 
 									<c:if
 										test="${sessionScope.memberVO.member_cd=='M2' or sessionScope.memberVO.member_cd=='M3'}">
