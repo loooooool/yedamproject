@@ -32,7 +32,7 @@ $(function(){
 			<div class="form-group row">
 					<label class="col-md-3 col-form-label" for="select1"><strong>과정명</strong></label>
 					<div class="col-md-12">
-						<select id="cl_no" name="cl_no" class="form-control">
+						<select id="select1" name="class_name" class="form-control">
 							<option value="" selected="selected">과정 선택</option>
 							<c:forEach items="${ClassList }" var="cl">
 							<option value="${cl.cl_no }">${cl.class_name }</option>
