@@ -5,40 +5,28 @@
 <nav class="sidebar-nav">
 	<ul class="nav">
 		<li class="nav-item"><a class="nav-link" href="/app">
-		<i
-		class="icon-speedometers"></i> 홈</a>
-		<li class="nav-item">
-			<a class="nav-link" href="/app"> <i	class="icon-speedometer"></i> 홈</a>
+		<i class="icon-speedometers"></i> 홈</a>
 		</li>
 
 		<li class="nav-title">예담</li>
-		<li class="nav-item"><a
-			href="${pageContext.request.contextPath}/getNoticeList"
+		<li class="nav-item"><a href="${pageContext.request.contextPath}/getNoticeList"
 			class="nav-link"><i class="icon-drops"></i>공지사항</a></li>
-		<li class="nav-item"><a href="typography.html" class="nav-link"><i
-				class="icon-pencils"></i>예담 수업</a></li>
-	
-		
-		<li class="nav-item"><a href="${pageContext.request.contextPath}/getNoticeList"	class="nav-link">
-			<i class="icon-drop"></i>공지사항</a></li>
-		
+			
+
 		<li class="nav-item nav-dropdown">
 				<a class="nav-link nav-dropdown-toggle" href="#">
-					<i class="icon-cursor"></i>예담 수업</a>
+					<i class="icon-cursors"></i>예담 수업</a>
 					
 				<ul class="nav-dropdown-items">
 					<li class="nav-item">
 						<a class="nav-link" href="${pageContext.request.contextPath}/getClassList">
-						<i class="icon-cursor"></i>과정</a></li>
+						<i class="icon-cursors"></i>과정</a></li>
 					<li class="nav-item">
 						<a class="nav-link"	href="${pageContext.request.contextPath}/getSubjectList">
-						<i class="icon-cursor"></i>과목</a></li>
+						<i class="icon-cursors"></i>과목</a></li>
 				</ul>
 		</li>
-		
-		<li class="nav-item"><a href="typography.html" class="nav-link">
-			<i class="icon-pencil"></i>예담 달력</a></li>
-
+	
 		<!------------ 회원 ------------>
 		<c:if test="${sessionScope.memberVO.member_cd=='M1'}">
 			<li class="nav-title">${sessionScope.memberVO.name}회원님</li>
@@ -57,21 +45,15 @@
 							
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getUnit">
-						<i class="icon-puzzles"></i>나의 단위출석률</a></li>
-						
-					<li class="nav-item"><a class="nav-link"
-						href="base/carousel.html"><i class="icon-puzzles"></i>나의 출석률</a></li>
-						
-						<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/getAttListMy">
-						<i class="icon-puzzles"></i>나의 과정출석률</a></li>
+						<i class="icon-puzzles"></i>나의 출석률</a></li>
 						
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getSugtList"><i
 							class="icon-calculators"></i>건의하기 <span
 							class="badge badge-primary">NEW</span></a></li>
-				</ul></li>
-
+				</ul>
+			</li>
+		</c:if>	
 			<li class="nav-item nav-dropdown"><a
 				class="nav-link nav-dropdown-toggle" href="#"><i
 					class="icon-cursors"></i>과정</a>
@@ -82,15 +64,16 @@
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getSubjectList"><i
 							class="icon-cursors"></i>과목 목록</a></li>
-				</ul></li>
 				</ul>
 			</li>
-		</c:if>
+		</ul>
+	
+		
+		
 
 
 		<!------------ 관리자 ------------>
-		<c:if
-			test="${sessionScope.memberVO.member_cd=='M2' or sessionScope.memberVO.member_cd=='M3'}">
+		<c:if test="${sessionScope.memberVO.member_cd=='M2' or sessionScope.memberVO.member_cd=='M3'}">
 			<li class="nav-title">${sessionScope.memberVO.name}관리자님</li>
 
 			<li class="nav-item nav-dropdown"><a
@@ -151,7 +134,7 @@
 					class="icon-calculators"></i>건의사항</a>
 			</li>
 		</c:if>
-	</ul>
+	
 
 </nav>
 <button class="sidebar-minimizer brand-minimizer" type="button"></button>
