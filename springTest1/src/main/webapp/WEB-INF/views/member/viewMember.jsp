@@ -52,8 +52,8 @@ function getMemberAddList(){
 									+"<td>"+datas[i].class_name+"</td>"
 									+"<td>" +datas[i].address+"</td>"
 									+"<td>" +datas[i].status_cd+"</td>"
-									+"<td><button type='button' class='btn btn-sm btn-primary' value=''"+datas[i].member_id+"'><i class='fa fa-dot-circle-o'></i>정보수정</button></td>"
-									+"<td><button type='button' class='btn btn-sm btn-primary' value=''"+datas[i].member_id+"' id='sbtn'><i class='fa fa-dot-circle-o'></i>상담내용</button></td>");
+									+"<td><button type='button' class='btn btn-sm btn-primary' value='"+datas[i].member_id+"' onclick=\"updateMember('"+datas[i].member_id+"')\"><i class='fa fa-dot-circle-o'></i>정보수정</button></td>"
+									+"<td><button type='button' class='btn btn-sm btn-primary' value='"+datas[i].member_id+"' id='sbtn'><i class='fa fa-dot-circle-o'></i>상담내용</button></td>");
 			}
 			
 		})
@@ -65,7 +65,7 @@ function getMemberAddList(){
 									+"<td>"+datas[i].class_name+"</td>"
 									+"<td>" +datas[i].address+"</td>"
 									+"<td>" +datas[i].status_cd+"</td>"
-									+"<td><button type='button' class='btn btn-sm btn-primary' value='"+datas[i].member_id+"'><i class='fa fa-dot-circle-o'></i>정보수정</button></td>"
+									+"<td><button type='button' class='btn btn-sm btn-primary' value='"+datas[i].member_id+"' onclick=\"updateMember('"+datas[i].member_id+"')\"><i class='fa fa-dot-circle-o'></i>정보수정</button></td>"
 									+"<td><button type='button' class='btn btn-sm btn-primary' value='"+datas[i].member_id+"' id='sbtn' onclick='getMemberCS()'><i class='fa fa-dot-circle-o'></i>상담내용</button></td>");
 			}
 			
