@@ -89,6 +89,9 @@ html, body {
 											contentType : "application/json;charset-utf-8",
 											type : "post",
 											success : function(datas) {
+												if(datas == null){
+													alert("권한이 없습니다");
+												}
 											}
 										})
 								return true;
