@@ -115,7 +115,8 @@ function getMemberAddList(){
 						<th>과정명</th>
 						<th>강의장</th>
 						<th>수료여부</th>
-						<th></th>
+						<th><button type="button" class="btn btn-danger"
+											onclick="location.href='report.do?member_id=${memberVO.member_id}'" value="pdf">pdf출력</button></th>
 						<th></th>
 					</tr>
 				</thead>
