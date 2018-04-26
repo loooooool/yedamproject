@@ -69,7 +69,7 @@ from members_vo where member_id = '920505-03']]>
 	<field name="OPEN_ROUTE_CD" class="java.lang.String"/>
 	<field name="OPEN_ROUTE_ETC" class="java.lang.String"/>
 	<field name="PREVIOUS_JOB" class="java.lang.String"/>
-	<field name="JOB_CHANGE_DATE" class="java.sql.Timestamp"/>
+	<field name="JOB_CHANGE_DATE" class="java.lang.String"/>
 	<field name="BOHUN_YN" class="java.lang.String"/>
 	<field name="COURSE_TYPE_CD" class="java.lang.String"/>
 	<field name="CL_NO" class="java.math.BigDecimal"/>
