@@ -7,7 +7,7 @@
 <style>
 .buttons{
 	display:inline-block;
-	width:75%;
+	width:65%;
 	align:right;
 }
 </style>
@@ -36,7 +36,7 @@ function makeCommentView(comment){
 	div.comment = comment;  //{id:1,.... }
 	
 	
-	var str = "익명 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + "<span class=\"buttons\">" + comment.content+"</span>" 
+	var str = "<label class=\"col-md-2 col-form-label\" for=\"input-normal\">익명</label>"+ "<span class=\"buttons\">" + comment.content+"</span>" 
 	var str2 = ""
 	if("${sessionScope.memberVO.member_id}"== comment.member_id){
 	 str2 = comment.c_date+"&nbsp;<input type=\"button\" class=\"btn btn-\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.co_no+"')\"/>"+"&nbsp;"
@@ -111,14 +111,14 @@ function updateComment(){
 		</div>
 <div class="card-body">
 	<div class="form-group row">
-  		<label class="col-md-3 col-form-label" for="input-normal">제목</label>
+  		<label class="col-md-2 col-form-label" for="input-normal">제목</label>
    		      <div class="col-md-9">
         	        <input type="text" disabled=disabled id="input-normal" name="input-normal" class="form-control" placeholder="Normal" value="${sugt.title}" style="background-color:white;">
               </div>
    </div>
 
 	<div class="form-group row">
-		<label class="col-md-3 col-form-label" for="textarea-input">내용</label>
+		<label class="col-md-2 col-form-label" for="textarea-input">내용</label>
 		<div class="col-md-9">
 			<textarea id="textarea-input" name="textarea-input" rows="9" disabled=disabled class="form-control" placeholder="Content.." style="background-color:white;">${sugt.content}</textarea>
 		</div>
@@ -147,7 +147,7 @@ function updateComment(){
 				
 			
 	 				<div class="form-group row">
-						<label class="col-md-3 col-form-label" for="textarea-input">댓글</label>
+						<label class="col-md-2 col-form-label" for="textarea-input">댓글</label>
 						<div class="col-md-9">
 						<textarea id="textarea-input" name="content" rows="4" class="form-control" placeholder="Content.."></textarea>
 						</div>	
@@ -168,7 +168,7 @@ function updateComment(){
 				
 					
 	 				<div class="form-group row">
-						<label class="col-md-3 col-form-label" for="textarea-input">댓글</label>
+						<label class="col-md-2 col-form-label" for="textarea-input">댓글</label>
 						<div class="col-md-9">
 						<textarea id="textarea-input" name="content" rows="4" class="form-control" placeholder="Content..">${sugt.content}</textarea>
 						</div>	

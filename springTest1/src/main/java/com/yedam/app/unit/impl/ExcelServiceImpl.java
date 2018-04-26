@@ -125,7 +125,7 @@ public class ExcelServiceImpl {
 				
 				dao.insertExcel(evo);  //!!!!!!!!!!status 가 n 인것만 인서트 되도록 조정해야함
 
-				dao.caculateAttend();
+			
 				
 				
 				
@@ -135,7 +135,7 @@ public class ExcelServiceImpl {
 			}
 		
 		}
-			
+		dao.caculateAttend();
 		
 	}
 	
