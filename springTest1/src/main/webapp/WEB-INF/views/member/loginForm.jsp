@@ -2,12 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>로그인폼 페이지</title>
-<!--  로그인 성공,실패 알림 포함 -->
-
 <script>
 $(document).ready(function(){
     $("#btnLogin").click(function(){
@@ -32,9 +26,7 @@ $(document).ready(function(){
     });
 });
 </script>
-</head>
 
-<body class="app flex-row align-items-center" >
 <form action="login" name="form1" method="post" style="margin-bottom:450px;">
   <div class="container">
     <div class="row justify-content-center">
@@ -77,9 +69,3 @@ $(document).ready(function(){
 </form>
 
     
-  <!-- Bootstrap and necessary plugins -->
-  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
-  <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
-</body>

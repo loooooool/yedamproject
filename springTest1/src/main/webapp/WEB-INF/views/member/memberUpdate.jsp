@@ -33,7 +33,7 @@
 </script>
 
 </head>
-<body>${memberVO.member_id}
+<body>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card">
@@ -257,14 +257,8 @@
 								<div class="card-body">
 									<button type="button" class="btn btn-success"
 										onclick="location.href='changePwdForm'">비밀번호 변경</button>
-									<button type="button" class="btn btn-info"
-										onclick="location.href=''" value="출석률 보기">출석률 보기</button>
-									<button type="button" class="btn btn-warning"
-										onclick="location.href='getTimeTableList'" value="시간표 보기">시간표
-										보기</button>
 
-									<c:if
-										test="${sessionScope.memberVO.member_cd=='M2' or sessionScope.memberVO.member_cd=='M3'}">
+									<c:if test="${sessionScope.memberVO.member_cd=='M2' or sessionScope.memberVO.member_cd=='M3'}">
 										<button type="button" class="btn btn-danger"
 											onclick="location.href='report.do?member_id=${memberVO.member_id}'" value="pdf">출력</button>
 									</c:if>

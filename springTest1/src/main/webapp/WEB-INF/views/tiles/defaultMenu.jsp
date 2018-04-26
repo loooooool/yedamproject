@@ -12,7 +12,7 @@
 		<li class="nav-item"><a href="${pageContext.request.contextPath}/getNoticeList"
 			class="nav-link"><i class="icon-drops"></i>공지사항</a></li>
 			
-
+	<c:if test="${sessionScope.memberVO.member_cd !='M3'}">
 		<li class="nav-item nav-dropdown">
 				<a class="nav-link nav-dropdown-toggle" href="#">
 					<i class="icon-cursors"></i>예담 수업</a>
@@ -26,7 +26,7 @@
 						<i class="icon-cursors" id="sub"></i>과목</a></li>
 				</ul>
 		</li>
-	
+	</c:if>
 		<!------------ 회원 ------------>
 		<c:if test="${sessionScope.memberVO.member_cd=='M1'}">
 			<li class="nav-title">${sessionScope.memberVO.name}회원님</li>
@@ -73,26 +73,7 @@
 							class="icon-cursors" id="sub"></i>시간표등록</a></li> --%>
 				</ul>
  
-			<li class="nav-item nav-dropdown"><a
-				class="nav-link nav-dropdown-toggle" href="#"><i
-					class="icon-cursors"></i>출결</a>
-				<ul class="nav-dropdown-items">
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/insertAttendanceForm"> <i class="icon-cursors" id="sub"></i>단위출석부생성
-					</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/insertTimeTableForm"> <i class="icon-cursors" id="sub"></i>과목출석부생성
-					</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/getUnitList"> <i class="icon-cursors" id="sub"></i>출석현황
-					</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/getClassAtt"> <i
-							class="icon-cursors" id="sub"></i>과목출석부
-					</a></li>
-				</ul>
-			</li>
-			<li class="nav-item nav-dropdown"><a
+ 			<li class="nav-item nav-dropdown"><a
 				class="nav-link nav-dropdown-toggle" href="#"><i
 					class="icon-stars" ></i>학생관리</a>
 				<ul class="nav-dropdown-items">
@@ -104,6 +85,27 @@
 							class="icon-cursors" id="sub"></i>학생조회</a></li>
 					
 				</ul></li>
+ 
+			<li class="nav-item nav-dropdown"><a
+				class="nav-link nav-dropdown-toggle" href="#"><i
+					class="icon-cursors"></i>출결</a>
+				<ul class="nav-dropdown-items">
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/insertAttendanceForm"> <i class="icon-cursors" id="sub"></i>단위출석부생성
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/insertTimeTableForm"> <i class="icon-cursors" id="sub"></i>과목출석부생성
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/getUnitList"> <i class="icon-cursors" id="sub"></i>단위출석현황
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/getClassAtt"> <i
+							class="icon-cursors" id="sub"></i>과목출석현황
+					</a></li>
+				</ul>
+			</li>
+			
 			<li class="nav-item"><a class="nav-link"
 				href="${pageContext.request.contextPath}/getConsultList"><i
 					class="icon-calculators"></i>상담일지</a>

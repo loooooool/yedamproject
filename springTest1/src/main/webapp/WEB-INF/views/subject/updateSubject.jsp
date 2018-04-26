@@ -25,13 +25,15 @@
 					<label class="col-md-3 col-form-label" for="select1"><strong>과정명</strong></label>
 					<div class="col-md-12">
 					<c:if test="${!empty ClassList}">
-						<select id="select1" name="select1" class="form-control">
+						<select id="select1" name="class_name" class="form-control" disabled="disabled">
 							<option value="">수정할 과정명을 선택하세요</option>
 							<c:forEach items="${ClassList }" var="cl">
-							<option value="${cl.cl_no }">${cl.class_name }</option>
+							<option value="${cl.cl_no}" 
+								<c:if test="${cl.class_name eq su.class_name}"> selected="selected" </c:if>>
+								${cl.class_name }</option>
 							</c:forEach>
 						</select>
-						</c:if>
+					</c:if>
 					</div>
 				</div>
 				<div class="form-group">

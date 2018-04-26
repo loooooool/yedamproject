@@ -76,16 +76,16 @@ public class SubjectController {
 
 	// 등록처리
 	@RequestMapping(value = "insertSubject", method = RequestMethod.POST)
-	public String insertSubject(@RequestParam String[] subject, HttpServletRequest request) {
+	public String insertSubject(@RequestParam String[] subject,@RequestParam String[] totalTime, HttpServletRequest request) {
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		String[] id = new String[subject.length];
+		///String[] id = new String[subject.length];
 		for (int i = 0; i < subject.length; i++) {
-			id[i] = subject[i];
+			//id[i] = subject[i];
 
 			map.put("subject", subject[i]);
-			map.put("totalTime", request.getParameter("totalTime"));
-			map.put("status_yn", request.getParameter("status_yn"));
+			map.put("totalTime", totalTime[i]);
+			//map.put("status_yn", request.getParameter("status_yn"));
 			map.put("cl_no", request.getParameter("cl_no"));
 
 			subjectService.insertSubject(map);

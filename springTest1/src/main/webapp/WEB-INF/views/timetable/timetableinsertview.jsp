@@ -3,7 +3,21 @@
    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head><title>Insert title here</title></head>
+<head><title>Insert title here</title>
+
+<script>
+
+	function formevent(){
+		
+		$("#loadingimg").show();
+		document.sub2.submit();
+		
+	}
+
+</script>
+
+
+</head>
 <body>
 <%-- <form action="./insertTimeTableView">
 <select name="sub_no" id="sub_no">
@@ -19,7 +33,7 @@
           
         </div>
 
-<form action="./insertTimeTableView" method="post" enctype="multipart/form-data" >
+<form action="./insertTimeTableView" method="post" enctype="multipart/form-data" id="sub2" name="sub2">
 
 
 <div class="card-body">  
@@ -32,12 +46,12 @@
            </div>
 
 		<div class="card-footer">
-          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>출석부생성</button>
+          <button type="button" class="btn btn-sm btn-primary" onclick="formevent()"><i class="fa fa-dot-circle-o"></i>출석부생성</button>
         </div>
+		<img src="resources/img/loading.gif" style="display:none; margin-left:550px" id="loadingimg" name="loadingimg">
 
+		
 </form>
-
-
 
 
 

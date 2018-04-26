@@ -71,9 +71,20 @@ function getMemberAddList(){
 			
 		})
 	}
-	
-	
 }
+
+$(document).ready(function(){
+	$("#btnPdf").click(function(){
+		if($("[name='select1']").val() == "" || $("[name='select1']").val() == "all"){
+			alert("과정을 선택하세요");
+		} else{
+			location.href='report.do?class_name=' + $("[name='select1']").val();	
+		}
+		
+		
+	})
+})
+
 
 
 
@@ -115,7 +126,8 @@ function getMemberAddList(){
 						<th>과정명</th>
 						<th>강의장</th>
 						<th>수료여부</th>
-						<th></th>
+						<th><button type="button" class="btn btn-danger" id=btnPdf>
+							pdf출력</button></th>
 						<th></th>
 					</tr>
 				</thead>
