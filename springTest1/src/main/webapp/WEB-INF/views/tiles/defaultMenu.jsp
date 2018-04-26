@@ -97,11 +97,11 @@
 						href="${pageContext.request.contextPath}/insertTimeTableForm"> <i class="icon-cursors" id="sub"></i>과목출석부생성
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/getUnitList"> <i class="icon-cursors" id="sub"></i>출석현황
+						href="${pageContext.request.contextPath}/getUnitList"> <i class="icon-cursors" id="sub"></i>단위출석현황
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/getClassAtt"> <i
-							class="icon-cursors" id="sub"></i>과목출석부
+							class="icon-cursors" id="sub"></i>과목출석현황
 					</a></li>
 				</ul>
 			</li>
