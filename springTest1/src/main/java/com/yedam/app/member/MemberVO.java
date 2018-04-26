@@ -27,7 +27,7 @@ public class MemberVO {
 	private String class_name="";
 	private String class_cd="";
 	private String course_type_cd="";
-
+	private String cl_no="";
 	
 	public String getPwd2() {
 		return pwd2;
@@ -214,6 +214,15 @@ public class MemberVO {
 	public void setCourse_type_cd(String course_type_cd) {
 		this.course_type_cd = course_type_cd;
 	}
+	
+
+	public String getCl_no() {
+		return cl_no;
+	}
+
+	public void setCl_no(String cl_no) {
+		this.cl_no = cl_no;
+	}
 
 	@Override
 	public String toString() {
@@ -223,7 +232,8 @@ public class MemberVO {
 				+ ", h_phone=" + h_phone + ", status_cd=" + status_cd + ", open_route_cd=" + open_route_cd
 				+ ", open_route_etc=" + open_route_etc + ", unemployee_pay_yn=" + unemployee_pay_yn + ", previous_job="
 				+ previous_job + ", job_change_date=" + job_change_date + ", bohun_yn=" + bohun_yn + ", class_name="
-				+ class_name + ", class_cd=" + class_cd + ", course_type_cd=" + course_type_cd + "]";
+				+ class_name + ", class_cd=" + class_cd + ", course_type_cd=" + course_type_cd + ", cl_no=" + cl_no
+				+ "]";
 	}
 
 	
