@@ -28,7 +28,7 @@
 		SELECT co_no            
 			   ,content         
 			   ,member_id      
-			   ,co_date
+			   ,to_char(co_date,'yyyy-mm-dd HH24:mi:ss') c_date
 			   ,parent_no
 		  FROM COMMENTS  
 		 WHERE co_no = #{co_no}

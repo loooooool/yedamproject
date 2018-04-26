@@ -50,7 +50,7 @@
 					
 						<td>${absence.absenceDays-scores.score} </td>							<!-- 남은결석일수 -->
 						
-						<td><fmt:formatNumber value="${attendDays.late-unit.absence/classs.totalTime}" pattern=".00"/></td>	<!-- 현재출석율 -->
+						<td><fmt:formatNumber value="${(attendDays.late-unit.absence)*100/classs.totalTime}" pattern=".00"/>%</td>	<!-- 현재출석율 -->
 					
 				<c:forEach items="${unit2}" var="unit">
 						
