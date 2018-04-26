@@ -12,7 +12,7 @@
 		<li class="nav-item"><a href="${pageContext.request.contextPath}/getNoticeList"
 			class="nav-link"><i class="icon-drops"></i>공지사항</a></li>
 			
-
+	<c:if test="sessionScope.memberVO.member_cd !='M3'}">
 		<li class="nav-item nav-dropdown">
 				<a class="nav-link nav-dropdown-toggle" href="#">
 					<i class="icon-cursors"></i>예담 수업</a>
@@ -26,7 +26,7 @@
 						<i class="icon-cursors" id="sub"></i>과목</a></li>
 				</ul>
 		</li>
-	
+	</c:if>
 		<!------------ 회원 ------------>
 		<c:if test="${sessionScope.memberVO.member_cd=='M1'}">
 			<li class="nav-title">${sessionScope.memberVO.name}회원님</li>
