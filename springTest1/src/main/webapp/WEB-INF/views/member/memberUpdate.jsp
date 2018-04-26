@@ -33,7 +33,7 @@
 </script>
 
 </head>
-<body>${memberVO.member_id}
+<body>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card">
