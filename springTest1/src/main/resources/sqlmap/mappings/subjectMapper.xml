@@ -87,16 +87,16 @@
 		</selectKey>
 		INSERT INTO subject(
 					su_no
+					,status_yn
 					,subject
 					,totalTime
-					,status_yn
 					,cl_no
 					)
 		VALUES(
 				#{su_no}
+				,'Y'
 				,#{subject}
 				,#{totalTime}
-				,'Y'
 				,#{cl_no}
 				)
 	</insert>
