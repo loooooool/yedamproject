@@ -93,7 +93,7 @@ public class UnitController {
 			// 파일을 업로드 위치에 저장
 			multipartFile.transferTo(new File(uploadfolder, multipartFile.getOriginalFilename()));
 			vo.setExcelFile(multipartFile.getOriginalFilename());
-			//excelService.getSampleList(uploadfolder+"/"+multipartFile.getOriginalFilename());
+			excelService.getSampleList(uploadfolder+"/"+multipartFile.getOriginalFilename());
 			sampleService.getSubjectTimeList(uploadfolder+"/"+multipartFile.getOriginalFilename());
 		}
 	
