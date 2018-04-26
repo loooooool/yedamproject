@@ -40,8 +40,11 @@ function makeCommentView(comment){
 	var str2 = ""
 	if("${sessionScope.memberVO.member_id}"== comment.member_id){
 	 str2 = comment.c_date+"&nbsp;<input type=\"button\" class=\"btn btn-\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.co_no+"')\"/>"+"&nbsp;"
-			  +"<input type=\"button\" class=\"btn btn-danger\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.co_no+"')\"/><hr>"
+			  +"<input type=\"button\" class=\"btn btn-danger\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.co_no+"')\"/>"
 			  }
+	if("${sessionScope.memberVO.member_id}"!= comment.member_id){
+		str2 = comment.c_date
+	}
 	
 	div.innerHTML = str+str2;
 	return div;
