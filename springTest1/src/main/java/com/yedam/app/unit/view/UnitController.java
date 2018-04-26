@@ -58,7 +58,7 @@ public class UnitController {
 	@RequestMapping("/insertUnit") //등록처리
 	public String insertUnit(UnitInsertVO uvo){
 		unitService.insertUnit(uvo);
-		return "attendance/viewAttendance";
+		return "attendance/insertAttendance";
 	}
 	
 	@RequestMapping("/getUnitList")
