@@ -3,6 +3,8 @@ package com.yedam.app.scheduler.view;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yedam.app.member.MemberVO;
 import com.yedam.app.scheduler.SchedulerService;
 import com.yedam.app.scheduler.SchedulerVO;
 
@@ -25,7 +28,7 @@ public class SchedulerController {
 		return "scheduler/getscheduler";
 	}
 
-	//scheduler page 호출
+	// scheduler page 호출
 	@RequestMapping("/getSchedulerajax")
 	@ResponseBody
 	public List<Map<String, Object>> getSchedulerajax(SchedulerVO vo) {
@@ -33,28 +36,41 @@ public class SchedulerController {
 		return schedulerService.getSchedulerajax(vo);
 	}
 
-	//event,holiday 등록
+	// event,holiday 등록
 	@RequestMapping("/insertSchedulerajax")
 	@ResponseBody
-	public SchedulerVO insertSchedulerajax(@RequestBody SchedulerVO vo) {
-		schedulerService.insertSchedulerajax(vo);
-		return vo;
+	public SchedulerVO insertSchedulerajax(@RequestBody SchedulerVO vo, HttpSession session) {
+		if (((MemberVO) session.getAttribute("memberVO")).getMember_cd().equals("M3")) {
+			schedulerService.insertSchedulerajax(vo);
+			return vo;
+		} else {
+			return null;
+		}
 	}
-	
-	//event,holiday 수정
+
+	// event,holiday 수정
 	@RequestMapping("updateSchedulerajax")
 	@ResponseBody
-	public SchedulerVO updateSchedulerajax(@RequestBody SchedulerVO vo) {
-		schedulerService.updateSchedulerajax(vo);
-		return vo;
+	public SchedulerVO updateSchedulerajax(@RequestBody SchedulerVO vo, HttpSession session) {
+		if (((MemberVO) session.getAttribute("memberVO")).getMember_cd().equals("M3")) {
+			schedulerService.updateSchedulerajax(vo);
+			return vo;
+		} else {
+			return null;
 		}
-	
-	//event,holiday 삭제
+
+	}
+
+	// event,holiday 삭제
 	@RequestMapping("deleteSchedulerajax")
 	@ResponseBody
-	public SchedulerVO deleteSchedulerajax(@RequestBody SchedulerVO vo) {
+	public SchedulerVO deleteSchedulerajax(@RequestBody SchedulerVO vo,HttpSession session) {
+		if(((MemberVO)session.getAttribute("memberVO")).getMember_cd().equals("M3")) {
 		schedulerService.deleteSchedulerajax(vo);
 		return vo;
+		}else {
+			return null;
 		}
+	}
 	
 }

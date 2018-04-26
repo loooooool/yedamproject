@@ -13,6 +13,13 @@ function getUnit(){
 			
 }
 
+function formevent(){
+	
+	$("#loadingimg").show();
+	document.sub2.submit();
+	
+}
+
 </script>
 </head>
 
@@ -35,13 +42,14 @@ function getUnit(){
 					</select>
 				</form>
 				</div>
-				<form action="insertExcel" method="post" enctype="multipart/form-data">
+				<form action="insertExcel" method="post" enctype="multipart/form-data" id="sub2" name="sub2">
 				<%-- <input type="hidden" name="class_no" value="${cl.cl_no}"/> --%>
 				<div class="col-md-3" align="center">
 					<input type="file" class="btn btn-info" name="attach_file" />
 				</div>
 				<div class="col-md-1" align="center">
-					<input type="submit" class="btn btn-warning" value="등록"/>
+					<input type="button" class="btn btn-warning" value="등록" onclick="formevent()"/>
+					
 				</div>
 				</form>
 		
@@ -107,6 +115,8 @@ function getUnit(){
 					
 			
 			</table>
+			<img src="resources/img/loading.gif" style="display:none; margin-left:550px" id="loadingimg" name="loadingimg">
+				
 		</div>
 	</div>
 </body>
